@@ -15,6 +15,7 @@ import {
 import { BlendFunction } from 'postprocessing';
 import { RandomizedTextEffect } from './random_tekst';
 import TypingText from './typing_text';
+import { useTransition } from './transition_provider';
 // Extend the geometry to resolve the R3F warning
 extend({ IcosahedronGeometry });
 const vertexShader = `
@@ -202,6 +203,7 @@ const Home: React.FC = () => {
   const [showWelcome, setShowWelcome] = useState(false);
   const [showPimplifyRandom, setShowPimplifyRandom] = useState(false);
   const [showPimplifyTyping, setShowPimplifyTyping] = useState(false);
+  const { startTransition } = useTransition();
 
   useEffect(() => {
     // Start "Welkom bij:" after 3 seconds
@@ -227,6 +229,11 @@ const Home: React.FC = () => {
     };
   }, []);
 
+  const handleTextClick = () => {
+    // Trigger transition to portfolio page
+    startTransition('/portfolio');
+  };
+
   return (
     <div className='relative flex items-center justify-center w-screen h-screen overflow-auto bg-[#22ff7e]'>
       <Canvas
@@ -250,52 +257,68 @@ const Home: React.FC = () => {
           <Noise premultiply blendFunction={BlendFunction.ADD} />
         </EffectComposer>
       </Canvas>
-      <div className='absolute z-10 flex items-center gap-2'>
+      <div
+        className='absolute z-10 flex items-center gap-2 cursor-pointer select-none'
+        onClick={handleTextClick}
+      >
         {showWelcome && (
-          <h1 className='text-[8vw] text-white font-bold'>
+          <h1 className='text-[8vw] text-white font-bold hover:scale-105 transition-transform'>
             <RandomizedTextEffect text='Welkom bij:' />
           </h1>
         )}
         {showPimplifyRandom && (
-          <h1 className='text-[8vw] text-white font-bold'>
+          <h1 className='text-[8vw] text-white font-bold hover:scale-105 transition-transform'>
             <RandomizedTextEffect text='Pimplify' />
           </h1>
         )}
         {showPimplifyTyping && (
-          <TypingText
-            text={[
-              'Pimplify',
-              'Persoonlijk',
-              'Innovatief',
-              'Modern',
-              'Pragmatisch',
-              'Lean',
-              'Innoverend',
-              'Functioneel',
-              'You-focused'
-            ]}
-            textFonts={[
-              'font-fjalla-one',
-              'font-quicksand',
-              'font-bebas-neue',
-              'font-playfair',
-              'font-righteous',
-              'font-archivo-black',
-              'font-orbitron',
-              'font-anton',
-              'font-permanent-marker'
-            ]}
-            startIndex={1}
-            stopAtIndex={0}
-            className='text-[8vw] text-white'
-            as='h1'
-            typingSpeed={50}
-            deletingSpeed={30}
-            pauseDuration={2000}
-            loop={true}
-            showCursor={true}
-            cursorClassName='bg-white'
-          />
+          <div className='hover:scale-105 transition-transform'>
+            <TypingText
+              text={[
+                'Pimplify',
+                'Persoonlijk',
+                'Innovatief',
+                'Modern',
+                'Pragmatisch',
+                'Lean',
+                'Innoverend',
+                'Functioneel',
+                'You-focused'
+              ]}
+              textFonts={[
+                'font-fjalla-one',
+                'font-quicksand',
+                'font-bebas-neue',
+                'font-playfair',
+                'font-righteous',
+                'font-archivo-black',
+                'font-orbitron',
+                'font-anton',
+                'font-permanent-marker'
+              ]}
+              textColors={[
+                'white',
+                'white',
+                'hsl(140.6 84.2% 92.5%)',
+                'hsl(140.6 84.2% 92.5%)',
+                'hsl(141 78.9% 85.1%)',
+                'hsl(141 78.9% 85.1%)',
+                'hsl(141 78.9% 85.1%)',
+                'hsl(141.7 76.6% 73.1%)',
+                'hsl(141.7 76.6% 73.1%)'
+              ]}
+              startIndex={1}
+              stopAtIndex={0}
+              className='text-[8vw]'
+              as='h1'
+              typingSpeed={50}
+              deletingSpeed={30}
+              pauseDuration={2000}
+              loop={true}
+              showCursor={true}
+              cursorClassName='bg-white'
+            />
+          </div>
         )}
       </div>
     </div>

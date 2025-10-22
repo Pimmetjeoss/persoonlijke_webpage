@@ -72,6 +72,11 @@ const TypingText = ({
     // Convert font-family class to CSS variable
     return `var(--${fontClass})`;
   }, [currentTextIndex, textFonts]);
+
+  const currentFontWeight = useMemo(() => {
+    // First word (Pimplify at index 0) should be bold like "Welkom bij:"
+    return currentTextIndex === 0 ? '700' : 'normal';
+  }, [currentTextIndex]);
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
     const observer = new IntersectionObserver(
@@ -189,7 +194,8 @@ const TypingText = ({
       className="inline"
       style={{
         color: getCurrentTextColor(),
-        fontFamily: currentFont
+        fontFamily: currentFont,
+        fontWeight: currentFontWeight
       }}
     >
       {displayedText}

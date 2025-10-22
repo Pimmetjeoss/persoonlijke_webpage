@@ -13,6 +13,7 @@ import {
   Permanent_Marker
 } from "next/font/google";
 import "./globals.css";
+import { TransitionProvider } from "./components/transition_provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,7 +95,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fjallaOne.variable} ${quicksand.variable} ${bebasNeue.variable} ${playfairDisplay.variable} ${righteous.variable} ${archivoBlack.variable} ${orbitron.variable} ${anton.variable} ${permanentMarker.variable} antialiased`}
       >
-        {children}
+        <TransitionProvider
+          colors={[
+            'hsl(141, 78.9%, 85.1%)',
+            'hsl(142.1, 76.2%, 36.3%)',
+            'hsl(144.9, 80.4%, 10%)'
+          ]}
+          duration={2}
+          stagger={0.4}
+          direction="up"
+        >
+          {children}
+        </TransitionProvider>
       </body>
     </html>
   );
