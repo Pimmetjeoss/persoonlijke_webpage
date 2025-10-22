@@ -14,6 +14,7 @@ import {
 } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';
 import { RandomizedTextEffect } from './random_tekst';
+import TypingText from './typing_text';
 // Extend the geometry to resolve the R3F warning
 extend({ IcosahedronGeometry });
 const vertexShader = `
@@ -248,9 +249,27 @@ const Home: React.FC = () => {
           </h1>
         )}
         {showPimplify && (
-          <h1 className='text-[8vw] text-white font-bold'>
-            <RandomizedTextEffect text='Pimplify' />
-          </h1>
+          <TypingText
+            text={[
+              'Pimplify',
+              'Persoonlijk',
+              'Innovatief',
+              'Modern',
+              'Pragmatisch',
+              'Lean',
+              'Innoverend',
+              'Functioneel',
+              'You-focused'
+            ]}
+            className='text-[8vw] text-white font-bold'
+            as='h1'
+            typingSpeed={50}
+            deletingSpeed={30}
+            pauseDuration={2000}
+            loop={true}
+            showCursor={true}
+            cursorClassName='bg-white'
+          />
         )}
       </div>
     </div>
