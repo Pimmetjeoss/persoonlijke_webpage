@@ -200,7 +200,8 @@ const Blob: React.FC<BlobProps> = ({ color = '#2cb978' }) => {
 // Updated index page
 const Home: React.FC = () => {
   const [showWelcome, setShowWelcome] = useState(false);
-  const [showPimplify, setShowPimplify] = useState(false);
+  const [showPimplifyRandom, setShowPimplifyRandom] = useState(false);
+  const [showPimplifyTyping, setShowPimplifyTyping] = useState(false);
 
   useEffect(() => {
     // Start "Welkom bij:" after 3 seconds
@@ -208,14 +209,21 @@ const Home: React.FC = () => {
       setShowWelcome(true);
     }, 3000);
 
-    // Start "Pimplify" 2 seconds after "Welkom bij:" appears
-    const pimplifyTimer = setTimeout(() => {
-      setShowPimplify(true);
+    // Start "Pimplify" RandomizedTextEffect 2 seconds after "Welkom bij:" appears
+    const pimplifyRandomTimer = setTimeout(() => {
+      setShowPimplifyRandom(true);
     }, 5000); // 3 + 2 seconds
+
+    // Start typing animation after RandomizedTextEffect completes
+    const pimplifyTypingTimer = setTimeout(() => {
+      setShowPimplifyRandom(false);
+      setShowPimplifyTyping(true);
+    }, 9000); // 9 seconds
 
     return () => {
       clearTimeout(welcomeTimer);
-      clearTimeout(pimplifyTimer);
+      clearTimeout(pimplifyRandomTimer);
+      clearTimeout(pimplifyTypingTimer);
     };
   }, []);
 
@@ -248,7 +256,12 @@ const Home: React.FC = () => {
             <RandomizedTextEffect text='Welkom bij:' />
           </h1>
         )}
-        {showPimplify && (
+        {showPimplifyRandom && (
+          <h1 className='text-[8vw] text-white font-bold'>
+            <RandomizedTextEffect text='Pimplify' />
+          </h1>
+        )}
+        {showPimplifyTyping && (
           <TypingText
             text={[
               'Pimplify',
@@ -261,7 +274,20 @@ const Home: React.FC = () => {
               'Functioneel',
               'You-focused'
             ]}
-            className='text-[8vw] text-white font-bold'
+            textFonts={[
+              'font-fjalla-one',
+              'font-quicksand',
+              'font-bebas-neue',
+              'font-playfair',
+              'font-righteous',
+              'font-archivo-black',
+              'font-orbitron',
+              'font-anton',
+              'font-permanent-marker'
+            ]}
+            startIndex={1}
+            stopAtIndex={0}
+            className='text-[8vw] text-white'
             as='h1'
             typingSpeed={50}
             deletingSpeed={30}

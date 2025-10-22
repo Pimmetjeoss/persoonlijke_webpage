@@ -16,6 +16,9 @@ interface TypingTextProps {
   deletingSpeed?: number;
   loop?: boolean;
   textColors?: string[];
+  textFonts?: string[];
+  startIndex?: number;
+  stopAtIndex?: number;
   variableSpeed?: { min: number; max: number };
   onSentenceComplete?: (sentence: string, index: number) => void;
   startOnVisible?: boolean;
@@ -36,6 +39,9 @@ const TypingText = ({
   cursorClassName = '',
   cursorBlinkDuration = 0.5,
   textColors = [],
+  textFonts = [],
+  startIndex = 0,
+  stopAtIndex,
   variableSpeed,
   onSentenceComplete,
   startOnVisible = false,
@@ -45,7 +51,7 @@ const TypingText = ({
   const [displayedText, setDisplayedText] = useState('');
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentTextIndex, setCurrentTextIndex] = useState(startIndex);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
@@ -59,6 +65,13 @@ const TypingText = ({
     if (textColors.length === 0) return 'currentColor';
     return textColors[currentTextIndex % textColors.length];
   };
+
+  const currentFont = useMemo(() => {
+    if (textFonts.length === 0) return '';
+    const fontClass = textFonts[currentTextIndex % textFonts.length];
+    // Convert font-family class to CSS variable
+    return `var(--${fontClass})`;
+  }, [currentTextIndex, textFonts]);
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
     const observer = new IntersectionObserver(
@@ -95,13 +108,24 @@ const TypingText = ({
       if (isDeleting) {
         if (displayedText === '') {
           setIsDeleting(false);
+
+          // Check if we should stop at the specified index
+          const nextIndex = (currentTextIndex + 1) % textArray.length;
+          if (stopAtIndex !== undefined && nextIndex === stopAtIndex) {
+            // Stop the animation - type the stop word and stay there
+            setCurrentTextIndex(stopAtIndex);
+            setCurrentCharIndex(0);
+            timeout = setTimeout(() => {}, pauseDuration);
+            return;
+          }
+
           if (currentTextIndex === textArray.length - 1 && !loop) {
             return;
           }
           if (onSentenceComplete) {
             onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
           }
-          setCurrentTextIndex(prev => (prev + 1) % textArray.length);
+          setCurrentTextIndex(nextIndex);
           setCurrentCharIndex(0);
           timeout = setTimeout(() => {}, pauseDuration);
         } else {
@@ -119,6 +143,10 @@ const TypingText = ({
             variableSpeed ? getRandomSpeed() : typingSpeed
           );
         } else if (textArray.length > 1) {
+          // Check if we're at the stop index - don't delete, just stay
+          if (stopAtIndex !== undefined && currentTextIndex === stopAtIndex) {
+            return;
+          }
           timeout = setTimeout(() => {
             setIsDeleting(true);
           }, pauseDuration);
@@ -157,15 +185,21 @@ const TypingText = ({
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props
     },
-    <span className="inline" style={{ color: getCurrentTextColor() }}>
+    <span
+      className="inline"
+      style={{
+        color: getCurrentTextColor(),
+        fontFamily: currentFont
+      }}
+    >
       {displayedText}
     </span>,
     showCursor && (
       <span
         ref={cursorRef}
         className={`inline-block opacity-100 ${shouldHideCursor ? 'hidden' : ''} ${
-          cursorCharacter === '|' 
-            ? `h-5 w-[1px] translate-y-1 bg-foreground ${cursorClassName}` 
+          cursorCharacter === '|'
+            ? `h-5 w-[1px] translate-y-1 bg-foreground ${cursorClassName}`
             : `ml-1 ${cursorClassName}`
         }`}
       >
