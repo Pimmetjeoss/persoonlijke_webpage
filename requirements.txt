@@ -3,3 +3,4 @@ three
 @react-three/drei
 @react-three/postprocessing
 postprocessing
+gsap
