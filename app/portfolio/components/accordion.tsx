@@ -146,6 +146,9 @@ interface AccordionItemProps {
    */
   value: string;
   className?: string;
+  style?: React.CSSProperties;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 /**
@@ -155,6 +158,9 @@ export function AccordionItem({
   children,
   value,
   className,
+  style,
+  onMouseEnter,
+  onMouseLeave,
 }: AccordionItemProps) {
   const { isActive } = useAccordion();
 
@@ -162,6 +168,9 @@ export function AccordionItem({
     <div
       data-active={isActive || undefined}
       className={cn("rounded-lg overflow-hidden mb-2 group", className)}
+      style={style}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </div>
@@ -181,6 +190,9 @@ interface AccordionHeaderProps {
    */
   customIcon?: boolean;
   className?: string;
+  style?: React.CSSProperties;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 /**
@@ -190,6 +202,9 @@ export function AccordionHeader({
   children,
   customIcon,
   className,
+  style,
+  onMouseEnter,
+  onMouseLeave,
 }: AccordionHeaderProps) {
   const { isActive, value, onChangeIndex } = useAccordion();
 
@@ -206,10 +221,13 @@ export function AccordionHeader({
     <motion.div
       data-active={isActive || undefined}
       className={cn(
-        "p-4 cursor-pointer w-full transition-all font-semibold  text-neutral-500   data-[active]:bg-neutral-100  hover:bg-neutral-100 hover:text-black flex justify-between gap-2 items-center",
+        "p-4 cursor-pointer w-full transition-all font-semibold text-neutral-500 hover:text-black flex justify-between gap-2 items-center",
         className,
       )}
+      style={style}
       onClick={handleClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
       {!customIcon && (
@@ -240,6 +258,10 @@ interface AccordionPanelProps {
    * article className
    */
   articleClassName?: string;
+  /**
+   * style
+   */
+  style?: React.CSSProperties;
 }
 
 /**
@@ -249,6 +271,7 @@ export function AccordionPanel({
   children,
   className,
   articleClassName,
+  style,
 }: AccordionPanelProps) {
   const { isActive } = useAccordion();
 
@@ -261,8 +284,9 @@ export function AccordionPanel({
           animate={{ height: "auto", overflow: "hidden" }}
           exit={{ height: 0 }}
           transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+          style={style}
           className={cn(
-            " bg-neutral-100 px-2 data-[active]:bg-neutral-100 text-black ",
+            " px-2 text-black ",
             className,
           )}
         >
@@ -278,7 +302,7 @@ export function AccordionPanel({
               bounce: 0,
             }}
             className={cn(
-              "px-3 bg-transparent  pb-4 space-y-2",
+              "px-3 pb-4 space-y-2",
               articleClassName,
             )}
           >

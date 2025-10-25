@@ -3,12 +3,6 @@
 import { useRef, useState } from "react"
 import { Plus } from "lucide-react"
 import { workExperiences } from "../data/work-experience"
-import {
-  Accordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-} from "./accordion"
 import { TimelineContent } from "./timeline-animation"
 
 export function WorkExperience() {
@@ -34,7 +28,6 @@ export function WorkExperience() {
       <div className="h-[50vh]" />
 
       <div>
-        <Accordion defaultValue="cruise">
           {workExperiences.map((experience, index) => (
             <TimelineContent
               key={experience.id}
@@ -42,22 +35,22 @@ export function WorkExperience() {
               timelineRef={timelineRef}
               once={true}
             >
-              <AccordionItem
-                value={experience.id}
-                className="mb-0 rounded-none border-t-[3px] border-black relative transition-all duration-300 ease-out hover:-translate-y-6 hover:z-20 overflow-hidden hover:overflow-visible"
+              <div
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative w-full"
                 style={{
-                  backgroundColor: hoveredIndex === index ? hoverColors[index] : 'transparent',
+                  backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
                 }}
               >
-                <AccordionHeader
-                  className="pt-4 pb-2 px-4 md:px-8 lg:px-16 transition-colors duration-300 ease-out group"
-                  customIcon
-                  style={{
-                    backgroundColor: hoveredIndex === index ? hoverColors[index] : 'transparent',
-                  }}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
+              <div
+                className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full"
+                style={{
+                  zIndex: hoveredIndex === index ? 50 : 1,
+                  backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
+                }}
+              >
+                <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">
                   <div className="grid grid-cols-[1fr_auto] gap-8 items-end w-full max-w-7xl mx-auto">
                     {/* Company Name */}
                     <div>
@@ -84,58 +77,11 @@ export function WorkExperience() {
                       </div>
                     </div>
                   </div>
-                </AccordionHeader>
-
-                <AccordionPanel
-                  className="px-4 md:px-8 lg:px-16 pb-4 rounded-none transition-colors duration-300"
-                  style={{
-                    backgroundColor: hoveredIndex === index
-                      ? hoverColors[index]
-                      : "hsl(140.6 84.2% 92.5%)"
-                  }}
-                  articleClassName="px-0 py-4 max-w-7xl mx-auto"
-                >
-                  <div className="max-w-4xl">
-                    {/* Description */}
-                    <p
-                      className="text-base md:text-lg mb-4 leading-relaxed"
-                      style={{ color: "hsl(143.8 61.2% 20.2%)" }}
-                    >
-                      {experience.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <div>
-                      <h3
-                        className="text-sm font-semibold uppercase tracking-wider mb-2"
-                        style={{ color: "hsl(142.8 64.2% 24.1%)" }}
-                      >
-                        Key Highlights
-                      </h3>
-                      <ul className="space-y-1.5">
-                        {experience.highlights.map((highlight, idx) => (
-                          <li
-                            key={idx}
-                            className="flex gap-3 items-start text-sm md:text-base leading-relaxed"
-                            style={{ color: "hsl(143.8 61.2% 20.2%)" }}
-                          >
-                            <span
-                              className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                              style={{
-                                backgroundColor: "hsl(142.1 76.2% 36.3%)",
-                              }}
-                            />
-                            {highlight}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </AccordionPanel>
-              </AccordionItem>
+                </div>
+              </div>
+              </div>
             </TimelineContent>
           ))}
-        </Accordion>
 
         {/* Bottom border for last item */}
         <div className="h-[3px] w-full bg-black" />
