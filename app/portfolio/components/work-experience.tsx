@@ -44,10 +44,10 @@ export function WorkExperience() {
             >
               <AccordionItem
                 value={experience.id}
-                className="mb-0 rounded-none border-t-[3px] border-black relative"
+                className="mb-0 rounded-none border-t-[3px] border-black relative transition-transform duration-300 ease-out hover:-translate-y-3 hover:z-20 overflow-hidden hover:overflow-visible"
               >
                 <AccordionHeader
-                  className="pt-4 pb-2 px-4 md:px-8 lg:px-16 data-[active]:bg-transparent transition-all duration-300 ease-out group hover:-translate-y-3 hover:z-10"
+                  className="pt-4 pb-2 px-4 md:px-8 lg:px-16 data-[active]:bg-transparent transition-colors duration-300 ease-out group"
                   customIcon
                   style={{
                     backgroundColor: hoveredIndex === index ? hoverColors[index] : 'transparent',
@@ -84,8 +84,12 @@ export function WorkExperience() {
                 </AccordionHeader>
 
                 <AccordionPanel
-                  className="px-4 md:px-8 lg:px-16 pb-4 rounded-none"
-                  style={{ backgroundColor: "hsl(141 78.9% 85.1%)" }}
+                  className="px-4 md:px-8 lg:px-16 pb-4 rounded-none transition-colors duration-300"
+                  style={{
+                    backgroundColor: hoveredIndex === index
+                      ? hoverColors[index]
+                      : "hsl(140.6 84.2% 92.5%)"
+                  }}
                   articleClassName="px-0 py-4 max-w-7xl mx-auto"
                 >
                   <div className="max-w-4xl">
