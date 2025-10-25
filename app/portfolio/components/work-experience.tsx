@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Plus } from "lucide-react"
 import { workExperiences } from "../data/work-experience"
 import {
@@ -13,6 +13,16 @@ import { TimelineContent } from "./timeline-animation"
 
 export function WorkExperience() {
   const timelineRef = useRef<HTMLDivElement>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
+  // Hover colors from kleuren.txt - each item gets a unique color
+  const hoverColors = [
+    "hsl(138.5 76.5% 96.7%)", // #11 - AMAZON (lichtste groen)
+    "hsl(141 78.9% 85.1%)",   // #9 - APPLE (zeer licht groen)
+    "hsl(141.9 69.2% 58%)",   // #7 - CRUISE (medium groen)
+    "hsl(142.1 76.2% 36.3%)", // #5 - UBER (medium donker groen)
+    "hsl(142.8 64.2% 24.1%)", // #3 - LYFT (donker groen)
+  ]
 
   return (
     <div
@@ -34,11 +44,16 @@ export function WorkExperience() {
             >
               <AccordionItem
                 value={experience.id}
-                className="mb-0 rounded-none border-t-[3px] border-black"
+                className="mb-0 rounded-none border-t-[3px] border-black relative"
               >
                 <AccordionHeader
-                  className="pt-2 pb-0 px-4 md:px-8 lg:px-16 hover:bg-transparent data-[active]:bg-transparent transition-all group overflow-hidden"
+                  className="pt-4 pb-2 px-4 md:px-8 lg:px-16 data-[active]:bg-transparent transition-all duration-300 ease-out group hover:-translate-y-3 hover:z-10"
                   customIcon
+                  style={{
+                    backgroundColor: hoveredIndex === index ? hoverColors[index] : 'transparent',
+                  }}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
                   <div className="grid grid-cols-[1fr_auto] gap-8 items-end w-full max-w-7xl mx-auto">
                     {/* Company Name */}
