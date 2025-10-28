@@ -1,7 +1,8 @@
 "use client"
 
-import { useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { Plus } from "lucide-react"
+import { motion } from "motion/react"
 import { workExperiences } from "../data/work-experience"
 import { TimelineContent } from "./timeline-animation"
 
@@ -15,6 +16,7 @@ export function WorkExperience() {
     "hsl(141 78.9% 85.1%)",   // #9 - APPLE (zeer licht groen)
     "hsl(141.9 69.2% 58%)",   // #7 - CRUISE (medium groen)
     "hsl(142.1 76.2% 36.3%)", // #5 - UBER (medium donker groen)
+    "hsl(142.4 71.8% 29.2%)", // #4 - TESLA (tussen UBER en LYFT)
     "hsl(142.8 64.2% 24.1%)", // #3 - LYFT (donker groen)
   ]
 
@@ -29,8 +31,8 @@ export function WorkExperience() {
 
       <div>
           {workExperiences.map((experience, index) => (
+            <React.Fragment key={experience.id}>
             <TimelineContent
-              key={experience.id}
               animationNum={index + 1}
               timelineRef={timelineRef}
               once={true}
@@ -81,11 +83,15 @@ export function WorkExperience() {
               </div>
               </div>
             </TimelineContent>
+            </React.Fragment>
           ))}
 
         {/* Bottom border for last item */}
         <div className="h-[3px] w-full bg-black" />
       </div>
+
+      {/* Spacer for sticky footer */}
+      <div className="h-12" />
     </div>
   )
 }

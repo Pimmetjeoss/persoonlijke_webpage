@@ -65,6 +65,20 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
+    id: "tesla",
+    company: "TESLA",
+    role: "UX DESIGNER",
+    period: "(2016-2017)",
+    description:
+      "Designed cutting-edge user interfaces for Tesla's autopilot and infotainment systems, pushing the boundaries of automotive UX.",
+    highlights: [
+      "Created intuitive touchscreen interfaces for Model S and Model X",
+      "Designed safety-critical UI elements for autopilot features",
+      "Improved driver engagement metrics by 35% through UX optimization",
+      "Collaborated with engineering teams on HMI design standards",
+    ],
+  },
+  {
     id: "lyft",
     company: "LYFT",
     role: "ART DIRECTOR",
