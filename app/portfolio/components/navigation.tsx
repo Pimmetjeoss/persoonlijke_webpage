@@ -2,7 +2,11 @@
 
 import Link from "next/link"
 
-export function Navigation() {
+interface NavigationProps {
+  onPlayClick?: () => void
+}
+
+export function Navigation({ onPlayClick }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="px-4 md:px-8 lg:px-16 py-4">
@@ -30,9 +34,9 @@ export function Navigation() {
 
           {/* Right - Navigation buttons */}
           <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-2 rounded-full transition-all"
+            <button
+              onClick={onPlayClick}
+              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-2 rounded-full transition-all cursor-pointer"
               style={{
                 backgroundColor: 'transparent',
                 color: 'hsl(144.9 80.4% 10%)',
@@ -48,7 +52,7 @@ export function Navigation() {
               }}
             >
               PLAY
-            </Link>
+            </button>
           </div>
         </div>
       </div>

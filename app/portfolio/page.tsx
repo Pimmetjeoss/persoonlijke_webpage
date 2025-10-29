@@ -1,9 +1,10 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { WorkExperience } from "./components"
 import { Footer } from "./components/footer"
 import { Navigation } from "./components/navigation"
+import { PacmanPopup } from "./components/pacman-popup"
 import Lottie, { LottieRefCurrentProps } from "lottie-react"
 import emailAnimation from "@/public/animations/email.json"
 import instagramAnimation from "@/public/animations/instagram.json"
@@ -13,11 +14,13 @@ export default function Portfolio() {
   const emailRef = useRef<LottieRefCurrentProps>(null)
   const instagramRef = useRef<LottieRefCurrentProps>(null)
   const linkedinRef = useRef<LottieRefCurrentProps>(null)
+  const [isPacmanOpen, setIsPacmanOpen] = useState(false)
 
   return (
     <div className="relative min-h-screen">
-      <Navigation />
+      <Navigation onPlayClick={() => setIsPacmanOpen(true)} />
       <WorkExperience />
+      <PacmanPopup isOpen={isPacmanOpen} onClose={() => setIsPacmanOpen(false)} />
 
       {/* Sticky Footer */}
       <div className="fixed bottom-0 left-0 right-0 bg-white w-full py-2 px-4 md:px-8 lg:px-16 border-t-2 border-black z-50">
