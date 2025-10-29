@@ -2,7 +2,18 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "mcp__playwright__*",
+      "Bash(npm run dev:*)",
+      "Bash(timeout 10 bash -c 'until curl -s http://localhost:3000/portfolio > /dev/null 2>&1; do sleep 1; done && echo \"\"Server is ready\"\"')",
+      "Bash(git restore:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_console_messages",
+      "Bash(dir:*)",
+      "mcp__serena__find_file",
+      "mcp__serena__activate_project",
+      "mcp__serena__search_for_pattern"
     ],
     "deny": [],
     "ask": []

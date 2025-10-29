@@ -5,23 +5,51 @@ import Link from "next/link"
 export function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="flex items-center justify-between px-4 md:px-8 lg:px-16 py-4">
-        {/* Left - Logo/Name */}
-        <Link href="/" className="text-lg md:text-xl font-bold px-6 py-2 border-2 border-black rounded-full hover:bg-black hover:text-white transition-colors">
-          PIMPLIFY
-        </Link>
+      <div className="px-4 md:px-8 lg:px-16 py-4">
+        <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
+          {/* Left - Logo/Name */}
+          <Link
+            href="/"
+            className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-2 rounded-full transition-all"
+            style={{
+              backgroundColor: 'transparent',
+              color: 'hsl(144.9 80.4% 10%)',
+              borderColor: 'hsl(144.9 80.4% 10%)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'hsl(142.4 71.8% 29.2%)'
+              e.currentTarget.style.color = 'white'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent'
+              e.currentTarget.style.color = 'hsl(144.9 80.4% 10%)'
+            }}
+          >
+            PIMPLIFY
+          </Link>
 
-        {/* Right - Navigation buttons */}
-        <div className="flex items-center gap-4">
-          <Link href="/" className="text-sm md:text-base px-6 py-2 border-2 border-black rounded-full hover:bg-black hover:text-white transition-colors">
-            PLAY
-          </Link>
-          <Link href="/portfolio" className="text-sm md:text-base px-6 py-2 border-2 border-black rounded-full bg-black text-white">
-            ABOUT
-          </Link>
-          <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-2 border-black rounded-full bg-black text-white text-xs md:text-sm font-medium">
-            EN
-          </button>
+          {/* Right - Navigation buttons */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-2 rounded-full transition-all"
+              style={{
+                backgroundColor: 'transparent',
+                color: 'hsl(144.9 80.4% 10%)',
+                borderColor: 'hsl(144.9 80.4% 10%)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'hsl(142.4 71.8% 29.2%)'
+                e.currentTarget.style.color = 'white'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent'
+                e.currentTarget.style.color = 'hsl(144.9 80.4% 10%)'
+              }}
+            >
+              PLAY
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
