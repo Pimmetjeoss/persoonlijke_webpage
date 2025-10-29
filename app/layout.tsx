@@ -101,8 +101,8 @@ export default function RootLayout({
             'hsl(142.1, 76.2%, 36.3%)',
             'hsl(144.9, 80.4%, 10%)'
           ]}
-          duration={2}
-          stagger={0.4}
+          duration={3}
+          stagger={0.6}
           direction="up"
         >
           {children}

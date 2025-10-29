@@ -16,6 +16,7 @@ import { BlendFunction } from 'postprocessing';
 import { RandomizedTextEffect } from './random_tekst';
 import TypingText from './typing_text';
 import { useTransition } from './transition_provider';
+import { useRouter } from 'next/navigation';
 // Extend the geometry to resolve the R3F warning
 extend({ IcosahedronGeometry });
 const vertexShader = `
@@ -204,8 +205,12 @@ const Home: React.FC = () => {
   const [showPimplifyRandom, setShowPimplifyRandom] = useState(false);
   const [showPimplifyTyping, setShowPimplifyTyping] = useState(false);
   const { startTransition } = useTransition();
+  const router = useRouter();
 
   useEffect(() => {
+    // Prefetch portfolio page for instant navigation
+    router.prefetch('/portfolio');
+
     // Start "Welkom bij:" after 3 seconds
     const welcomeTimer = setTimeout(() => {
       setShowWelcome(true);
@@ -227,7 +232,7 @@ const Home: React.FC = () => {
       clearTimeout(pimplifyRandomTimer);
       clearTimeout(pimplifyTypingTimer);
     };
-  }, []);
+  }, [router]);
 
   const handleTextClick = () => {
     // Trigger transition to portfolio page

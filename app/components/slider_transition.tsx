@@ -164,8 +164,8 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
           duration,
           ease,
           onUpdate: function() {
-            // Call onCover when the last block is halfway through (screen fully covered)
-            if (this.progress() >= 0.5 && onCover) {
+            // Call onCover earlier (at 40%) to give page more time to render
+            if (this.progress() >= 0.4 && onCover) {
               onCover();
               // Set to null to prevent multiple calls
               onCover = null as any;
