@@ -1,82 +1,135 @@
 "use client"
 
-import { useRef } from "react"
+import { useState, useRef } from "react"
 import Lottie, { LottieRefCurrentProps } from "lottie-react"
 import emailAnimation from "@/public/animations/email.json"
 import instagramAnimation from "@/public/animations/instagram.json"
 import linkedinAnimation from "@/public/animations/linkedin.json"
+
+interface TextSegment {
+  id: string
+  text: string
+  stage: number
+  clickable: boolean
+  trigger?: string
+}
 
 export default function AboutMe() {
   const emailRef = useRef<LottieRefCurrentProps>(null)
   const instagramRef = useRef<LottieRefCurrentProps>(null)
   const linkedinRef = useRef<LottieRefCurrentProps>(null)
 
+  const [currentStage, setCurrentStage] = useState(0)
+  const [revealedStages, setRevealedStages] = useState<Set<number>>(new Set([0]))
+
+  const textSegments: TextSegment[] = [
+    // Stage 0: Initial visible
+    { id: 'greeting', text: 'Hola! ik ben', stage: 0, clickable: false },
+    { id: 'pim', text: 'Pim', stage: 0, clickable: true, trigger: 'stage1' },
+
+    // Stage 1: After clicking "Pim"
+    { id: 'intro1', text: 'van Lieshout. Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging.', stage: 1, clickable: false },
+    { id: 'work-intro', text: 'In mijn werk ben ik altijd gefascineerd geweest door', stage: 1, clickable: false },
+    { id: 'optimization', text: 'procesoptimalisatie.', stage: 1, clickable: true, trigger: 'stage2' },
+
+    // Stage 2: After clicking "procesoptimalisatie"
+    { id: 'creative', text: 'Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken!', stage: 2, clickable: false },
+    { id: 'ai-intro', text: 'Sinds een jaar ben ik volledig gegrepen door het', stage: 2, clickable: false },
+    { id: 'ai', text: 'AI-virus.', stage: 2, clickable: true, trigger: 'stage3' },
+
+    // Stage 3: After clicking "AI-virus"
+    { id: 'passion', text: 'Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen.', stage: 3, clickable: false },
+    { id: 'founder', text: 'Daarom ben ik oprichter van', stage: 3, clickable: false },
+    { id: 'pimplify', text: 'Pimplify.', stage: 3, clickable: true, trigger: 'stage4' },
+
+    // Stage 4: After clicking "Pimplify"
+    { id: 'mission', text: 'Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier.', stage: 4, clickable: false },
+    { id: 'value-prop', text: 'Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van', stage: 4, clickable: false },
+    { id: 'ai-agents', text: 'AI en agents', stage: 4, clickable: true, trigger: 'stage5' },
+
+    // Stage 5: Final reveal
+    { id: 'price', text: 'te implementeren — tegen een fractie van de prijs die traditionele consultants vragen.', stage: 5, clickable: false },
+    { id: 'closing', text: 'Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!', stage: 5, clickable: false },
+  ]
+
+  const handleClick = (trigger?: string) => {
+    if (!trigger) return
+    const nextStage = parseInt(trigger.replace('stage', ''))
+    setRevealedStages(prev => new Set([...prev, nextStage]))
+    setCurrentStage(nextStage)
+  }
+
+  const getSegmentClasses = (segment: TextSegment) => {
+    const isRevealed = revealedStages.has(segment.stage)
+    const isClickable = segment.clickable && segment.stage === currentStage
+
+    let classes = 'inline transition-all duration-500 ease-in-out '
+
+    // All text is visible (opacity 100%), but non-revealed text is blurred
+    classes += 'opacity-100 '
+
+    if (!isRevealed) {
+      classes += 'blur-md pointer-events-none '
+    } else {
+      classes += 'blur-0 '
+    }
+
+    if (isClickable) {
+      classes += 'text-[#22ff7e] underline decoration-2 underline-offset-4 cursor-pointer hover:scale-105 hover:text-[#2cb978] hover:shadow-[0_0_20px_rgba(34,255,126,0.5)] transition-transform '
+    } else {
+      classes += 'text-white '
+    }
+
+    return classes
+  }
+
   return (
     <div className="relative min-h-screen">
-      {/* Main Content */}
-      <section className='w-full h-screen'>
-        <figure className='relative w-full h-full bg-black overflow-hidden'>
-            <video autoPlay muted loop className='absolute top-0 left-0 w-full h-full object-cover'>
-              <source
-                src='https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4'
-                type='video/mp4'
-              />
-            </video>
-            <svg
-              viewBox='0 0 1400 1000'
-              preserveAspectRatio='xMidYMid slice'
-              className='w-full absolute top-0 left-0 h-full'
-            >
-              <defs>
-                <filter id='blur'>
-                  <feGaussianBlur stdDeviation='3' />
-                </filter>
-                <mask id='mask' x='0' y='0' width='100%' height='100%'>
-                  <rect
-                    x='0'
-                    y='0'
-                    width='100%'
-                    height='100%'
-                    fill='white'
-                  />
-                  <text
-                    x='700'
-                    y='150'
-                    fill='black'
-                    textAnchor='middle'
-                    filter='url(#blur)'
-                    style={{ fontSize: '24px', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}
-                  >
-                    <tspan x='700' dy='0'>Hola! Ik ben Pim van Lieshout. Voorstellen blijft altijd een uitdaging,</tspan>
-                    <tspan x='700' dy='35'>maar ik waag toch een poging.</tspan>
-                    <tspan x='700' dy='50'>In mijn werk ben ik altijd gefascineerd geweest door procesoptimalisatie.</tspan>
-                    <tspan x='700' dy='50'>Buiten het werk om ben ik het liefst creatief bezig in de breedste zin</tspan>
-                    <tspan x='700' dy='35'>van het woord — van niets iets maken!</tspan>
-                    <tspan x='700' dy='50'>Sinds een jaar ben ik volledig gegrepen door het AI-virus.</tspan>
-                    <tspan x='700' dy='50'>Voor mij is dit de perfecte combinatie waarin mijn passie voor</tspan>
-                    <tspan x='700' dy='35'>procesverbetering en mijn creativiteit eindelijk volledig samenkomen.</tspan>
-                    <tspan x='700' dy='50'>Daarom ben ik oprichter van Pimplify.</tspan>
-                    <tspan x='700' dy='50'>Met Pimplify wil ik bedrijven helpen op een persoonlijke</tspan>
-                    <tspan x='700' dy='35'>en pragmatische manier.</tspan>
-                    <tspan x='700' dy='50'>Omdat ik recent ben gestart, kan ik met trots zeggen dat ik</tspan>
-                    <tspan x='700' dy='35'>innovatief en flexibel genoeg ben om de modernste technieken</tspan>
-                    <tspan x='700' dy='35'>op het gebied van AI en agents te implementeren — tegen een fractie</tspan>
-                    <tspan x='700' dy='35'>van de prijs die traditionele consultants vragen.</tspan>
-                    <tspan x='700' dy='50'>Functioneel ontwerp dat jij en ik allebei begrijpen.</tspan>
-                    <tspan x='700' dy='35'>Een persoonlijke aanpak, vanuit jouw wens!</tspan>
-                  </text>
-                </mask>
-              </defs>
-              <rect
-                x='0'
-                y='0'
-                width='100%'
-                height='100%'
-                fill='#000105'
-                mask='url(#mask)'
-              />
-            </svg>
-          </figure>
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover -z-20"
+      >
+        <source
+          src="https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      {/* Dark overlay for better contrast */}
+      <div className="fixed inset-0 bg-black/60 -z-10" />
+
+      {/* Text content with mix-blend-mode screen */}
+      <section className="relative z-10 flex items-center justify-center min-h-screen p-8 pb-32">
+        <div className="max-w-4xl text-center">
+          <div
+            className="text-2xl md:text-4xl font-bold leading-relaxed italic"
+            style={{ mixBlendMode: 'screen' }}
+          >
+            {textSegments.map((segment, index) => (
+              <span
+                key={segment.id}
+                className={getSegmentClasses(segment)}
+                onClick={() => segment.clickable && handleClick(segment.trigger)}
+                role={segment.clickable ? 'button' : undefined}
+                tabIndex={segment.clickable && segment.stage === currentStage ? 0 : undefined}
+                aria-label={segment.clickable ? `Click to reveal more about ${segment.text}` : undefined}
+                onKeyDown={(e) => {
+                  if (segment.clickable && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault()
+                    handleClick(segment.trigger)
+                  }
+                }}
+              >
+                {segment.text}
+                {index < textSegments.length - 1 && ' '}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Sticky Footer */}
