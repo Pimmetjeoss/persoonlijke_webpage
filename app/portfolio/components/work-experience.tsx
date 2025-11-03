@@ -12,7 +12,7 @@ export function WorkExperience() {
 
   // Hover colors from kleuren.txt - each item gets a unique color
   const hoverColors = [
-    "hsl(138.5 76.5% 96.7%)", // #11 - AMAZON (lichtste groen)
+    "hsl(138.5 76.5% 96.7%)", // #11 - ABOUT ME (lichtste groen)
     "hsl(141 78.9% 85.1%)",   // #9 - APPLE (zeer licht groen)
     "hsl(141.9 69.2% 58%)",   // #7 - CRUISE (medium groen)
     "hsl(142.1 76.2% 36.3%)", // #5 - UBER (medium donker groen)

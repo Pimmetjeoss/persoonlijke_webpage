@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   Geist,
   Geist_Mono,
@@ -92,6 +93,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {process.env.NODE_ENV === 'development' && (
+          <Script
+            src="//unpkg.com/react-grab/dist/index.global.js"
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+            data-enabled="true"
+          />
+        )}
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fjallaOne.variable} ${quicksand.variable} ${bebasNeue.variable} ${playfairDisplay.variable} ${righteous.variable} ${archivoBlack.variable} ${orbitron.variable} ${anton.variable} ${permanentMarker.variable} antialiased`}
       >
