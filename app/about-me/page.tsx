@@ -21,6 +21,7 @@ export default function AboutMe() {
 
   const [currentStage, setCurrentStage] = useState(0)
   const [revealedStages, setRevealedStages] = useState<Set<number>>(new Set([0]))
+  const [clickedItems, setClickedItems] = useState<Set<string>>(new Set())
 
   const textSegments: TextSegment[] = [
     // Stage 0: Initial visible
@@ -39,8 +40,9 @@ export default function AboutMe() {
 
     // Stage 3: After clicking "AI-virus"
     { id: 'passion', text: 'Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen.', stage: 3, clickable: false },
-    { id: 'founder', text: 'Daarom ben ik oprichter van', stage: 3, clickable: false },
-    { id: 'pimplify', text: 'Pimplify.', stage: 3, clickable: true, trigger: 'stage4' },
+    { id: 'founder', text: 'Daarom ben ik', stage: 3, clickable: false },
+    { id: 'founder-visible', text: 'oprichter van', stage: 0, clickable: false },
+    { id: 'pimplify', text: 'Pimplify.', stage: 0, clickable: true, trigger: 'stage4' },
 
     // Stage 4: After clicking "Pimplify"
     { id: 'mission', text: 'Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier.', stage: 4, clickable: false },
@@ -52,16 +54,21 @@ export default function AboutMe() {
     { id: 'closing', text: 'Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!', stage: 5, clickable: false },
   ]
 
-  const handleClick = (trigger?: string) => {
+  const handleClick = (trigger?: string, segmentId?: string) => {
     if (!trigger) return
     const nextStage = parseInt(trigger.replace('stage', ''))
     setRevealedStages(prev => new Set([...prev, nextStage]))
     setCurrentStage(nextStage)
+    if (segmentId) {
+      setClickedItems(prev => new Set([...prev, segmentId]))
+    }
   }
 
   const getSegmentClasses = (segment: TextSegment) => {
     const isRevealed = revealedStages.has(segment.stage)
-    const isClickable = segment.clickable && segment.stage === currentStage
+    const isClickable = segment.clickable &&
+      (segment.stage === currentStage ||
+       (revealedStages.has(segment.stage) && !clickedItems.has(segment.id)))
 
     let classes = 'inline transition-all duration-500 ease-in-out '
 
@@ -113,14 +120,14 @@ export default function AboutMe() {
               <span
                 key={segment.id}
                 className={getSegmentClasses(segment)}
-                onClick={() => segment.clickable && handleClick(segment.trigger)}
+                onClick={() => segment.clickable && handleClick(segment.trigger, segment.id)}
                 role={segment.clickable ? 'button' : undefined}
                 tabIndex={segment.clickable && segment.stage === currentStage ? 0 : undefined}
                 aria-label={segment.clickable ? `Click to reveal more about ${segment.text}` : undefined}
                 onKeyDown={(e) => {
                   if (segment.clickable && (e.key === 'Enter' || e.key === ' ')) {
                     e.preventDefault()
-                    handleClick(segment.trigger)
+                    handleClick(segment.trigger, segment.id)
                   }
                 }}
               >
