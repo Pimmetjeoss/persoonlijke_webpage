@@ -120,14 +120,14 @@ export default function AboutMe() {
               <span
                 key={segment.id}
                 className={getSegmentClasses(segment)}
-                onClick={() => segment.clickable && handleClick(segment.trigger, segment.id)}
+                onClick={() => segment.clickable && handleClick(segment.trigger)}
                 role={segment.clickable ? 'button' : undefined}
                 tabIndex={segment.clickable && segment.stage === currentStage ? 0 : undefined}
                 aria-label={segment.clickable ? `Click to reveal more about ${segment.text}` : undefined}
                 onKeyDown={(e) => {
                   if (segment.clickable && (e.key === 'Enter' || e.key === ' ')) {
                     e.preventDefault()
-                    handleClick(segment.trigger, segment.id)
+                    handleClick(segment.trigger)
                   }
                 }}
               >
