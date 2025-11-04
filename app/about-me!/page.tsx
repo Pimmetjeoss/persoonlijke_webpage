@@ -29,71 +29,57 @@ function index() {
         {/* Text content */}
         <div className='relative z-10 flex items-center justify-center min-h-screen px-8 py-20'>
           <div className='max-w-4xl'>
-            {/* All content in one continuous flow */}
-            <div className='text-2xl md:text-4xl leading-relaxed'>
-              {/* Section 0 - Always visible */}
-              <span className='text-white transition-all duration-500'>
-                Hola! ik ben{' '}
-                <button
-                  onClick={() => revealSection(1)}
-                  className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors'
-                >
-                  Pim
-                </button>
-                {visibleSections.has(1) && <span className='text-white/60'> van Lieshout. Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging. In mijn werk ben ik altijd gefascineerd geweest door{' '}
-                  <button
-                    onClick={() => revealSection(2)}
-                    disabled={!visibleSections.has(1)}
-                    className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors text-white'
-                  >
-                    procesoptimalisatie
-                  </button>.</span>}
+            {/* All content in one continuous flow - render everything, blur what's not revealed */}
+            <div className='text-2xl md:text-4xl leading-relaxed' style={{ willChange: 'filter' }}>
+              <span className='text-white'>Hola! ik ben </span>
+              <button
+                onClick={() => revealSection(1)}
+                className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors text-white'
+              >
+                Pim
+              </button>
+              <span className={`transition-all duration-500 ${visibleSections.has(1) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+                {' '}van Lieshout. Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging. In mijn werk ben ik altijd gefascineerd geweest door{' '}
               </span>
-
-              {/* Section 2 */}
+              <button
+                onClick={() => revealSection(2)}
+                disabled={!visibleSections.has(1)}
+                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors ${visibleSections.has(1) ? 'text-white' : 'pointer-events-none'}`}
+              >
+                procesoptimalisatie
+              </button>
               <span className={`transition-all duration-500 ${visibleSections.has(2) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken! Sinds een jaar ben ik volledig gegrepen door het{' '}
-                <button
-                  onClick={() => revealSection(3)}
-                  disabled={!visibleSections.has(2)}
-                  className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors text-white'
-                >
-                  AI-virus
-                </button>.
+                . Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken! Sinds een jaar ben ik volledig gegrepen door het{' '}
               </span>
-
-              {/* Section 3 */}
+              <button
+                onClick={() => revealSection(3)}
+                disabled={!visibleSections.has(2)}
+                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors ${visibleSections.has(2) ? 'text-white' : 'pointer-events-none'}`}
+              >
+                AI-virus
+              </button>
               <span className={`transition-all duration-500 ${visibleSections.has(3) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen. Daarom ben ik{' '}
+                . Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen. Daarom ben ik{' '}
               </span>
-
-              {/* Section 0b - Always visible, inline */}
-              <span className='text-white transition-all duration-500'>
-                oprichter van{' '}
-                <button
-                  onClick={() => revealSection(4)}
-                  className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors'
-                >
-                  Pimplify
-                </button>.
-              </span>
-
-              {/* Section 4 */}
+              <span className='text-white'>oprichter van </span>
+              <button
+                onClick={() => revealSection(4)}
+                className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors text-white'
+              >
+                Pimplify
+              </button>
               <span className={`transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
-                <button
-                  onClick={() => revealSection(5)}
-                  disabled={!visibleSections.has(4)}
-                  className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors text-white'
-                >
-                  AI en agents
-                </button>{' '}
-                te implementeren — tegen een fractie van de prijs die traditionele consultants vragen.
+                . Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
               </span>
-
-              {/* Section 5 */}
+              <button
+                onClick={() => revealSection(5)}
+                disabled={!visibleSections.has(4)}
+                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors ${visibleSections.has(4) ? 'text-white' : 'pointer-events-none'}`}
+              >
+                AI en agents
+              </button>
               <span className={`transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!
+                {' '}te implementeren — tegen een fractie van de prijs die traditionele consultants vragen. Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!
               </span>
             </div>
           </div>
