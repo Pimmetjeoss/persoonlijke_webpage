@@ -48,12 +48,15 @@ export function WorkExperience() {
                 }}
               >
               <div
-                onClick={() => experience.id === "ai-agents" && startTransition("/ai-agents")}
+                onClick={() => {
+                  if (experience.id === "ai-agents") startTransition("/ai-agents");
+                  if (experience.id === "about-me") startTransition("/about-me!");
+                }}
                 className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full"
                 style={{
                   zIndex: hoveredIndex === index ? 50 : 1,
                   backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
-                  cursor: experience.id === "ai-agents" ? 'pointer' : 'default',
+                  cursor: (experience.id === "ai-agents" || experience.id === "about-me") ? 'pointer' : 'default',
                 }}
               >
                 <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">

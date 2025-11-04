@@ -9,7 +9,7 @@ export interface WorkExperience {
 
 export const workExperiences: WorkExperience[] = [
   {
-    id: "amazon",
+    id: "about-me",
     company: "ABOUT ME",
     role: "A. DESIGN DIRECTOR",
     period: "(2020-2021)",
