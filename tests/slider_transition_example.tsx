@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { SliderTransition } from './slider_transition';
+import { SliderTransition } from '../app/components/slider_transition';
 
 /**
  * Example component demonstrating different uses of SliderTransition

@@ -335,15 +335,20 @@ export function DitheringShader({
   style = {},
 }: DitheringShaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | undefined>(undefined)
   const programRef = useRef<WebGLProgram | null>(null)
   const glRef = useRef<WebGL2RenderingContext | null>(null)
   const uniformLocationsRef = useRef<Record<string, WebGLUniformLocation | null>>({})
-  const startTimeRef = useRef<number>(Date.now())
+  const startTimeRef = useRef<number | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+
+    // Initialize start time on first mount
+    if (startTimeRef.current === null) {
+      startTimeRef.current = Date.now()
+    }
 
     const gl = canvas.getContext("webgl2")
     if (!gl) {
@@ -399,7 +404,8 @@ export function DitheringShader({
 
     // Animation loop
     const render = () => {
-      const currentTime = (Date.now() - startTimeRef.current) * 0.001 * speed
+      const startTime = startTimeRef.current ?? Date.now()
+      const currentTime = (Date.now() - startTime) * 0.001 * speed
 
       const context = glRef.current
       const shaderProgram = programRef.current
