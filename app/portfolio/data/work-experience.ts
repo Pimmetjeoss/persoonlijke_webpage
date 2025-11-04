@@ -23,8 +23,8 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
-    id: "apple",
-    company: "APPLE*",
+    id: "ai-agents",
+    company: "AI & AGENTS",
     role: "SENIOR DESIGNER",
     period: "(2019-2020)",
     description:

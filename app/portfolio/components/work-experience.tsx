@@ -3,12 +3,14 @@
 import React, { useRef, useState } from "react"
 import { Plus } from "lucide-react"
 import { motion } from "motion/react"
+import { useTransition } from "@/app/components/transition_provider"
 import { workExperiences } from "../data/work-experience"
 import { TimelineContent } from "./timeline-animation"
 
 export function WorkExperience() {
   const timelineRef = useRef<HTMLDivElement>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const { startTransition } = useTransition()
 
   // Hover colors from kleuren.txt - each item gets a unique color
   const hoverColors = [
@@ -46,10 +48,12 @@ export function WorkExperience() {
                 }}
               >
               <div
+                onClick={() => experience.id === "ai-agents" && startTransition("/ai-agents")}
                 className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full"
                 style={{
                   zIndex: hoveredIndex === index ? 50 : 1,
                   backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
+                  cursor: experience.id === "ai-agents" ? 'pointer' : 'default',
                 }}
               >
                 <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">
