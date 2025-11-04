@@ -42,7 +42,7 @@ function index() {
             </p>
 
             {/* Section 1 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(1) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(1) ? 'text-white/60 blur-0 bg-black/30 rounded-lg px-4 py-2' : 'text-white/20 blur-md pointer-events-none'}`}>
               <p>
                 Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging. In mijn werk ben ik altijd gefascineerd geweest door{' '}
                 <button
@@ -56,7 +56,7 @@ function index() {
             </div>
 
             {/* Section 2 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(2) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(2) ? 'text-white/60 blur-0 bg-black/30 rounded-lg px-4 py-2' : 'text-white/20 blur-md pointer-events-none'}`}>
               <p>
                 {' '}Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken! Sinds een jaar ben ik volledig gegrepen door het{' '}
                 <button
@@ -70,7 +70,7 @@ function index() {
             </div>
 
             {/* Section 3 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(3) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(3) ? 'text-white/60 blur-0 bg-black/30 rounded-lg px-4 py-2' : 'text-white/20 blur-md pointer-events-none'}`}>
               <p>
                 {' '}Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen. Daarom ben ik oprichter van{' '}
                 <button
@@ -84,7 +84,7 @@ function index() {
             </div>
 
             {/* Section 4 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0 bg-black/30 rounded-lg px-4 py-2' : 'text-white/20 blur-md pointer-events-none'}`}>
               <p>
                 {' '}Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
                 <button
@@ -99,7 +99,7 @@ function index() {
             </div>
 
             {/* Section 5 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0 bg-black/30 rounded-lg px-4 py-2' : 'text-white/20 blur-md pointer-events-none'}`}>
               <p>
                 {' '}Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!
               </p>
