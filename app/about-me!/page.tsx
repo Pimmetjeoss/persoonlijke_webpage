@@ -36,15 +36,15 @@ function index() {
                 onClick={() => revealSection(1)}
                 className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors'
               >
-                Pim van Lieshout
-              </button>.
+                Pim
+              </button>
+              {visibleSections.has(1) && <span className='text-white/60'> van Lieshout.</span>}
             </p>
 
             {/* Section 1 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed space-y-4 transition-all duration-500 ${visibleSections.has(1) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-              <p>Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging.</p>
-
-              <p>In mijn werk ben ik altijd gefascineerd geweest door{' '}
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(1) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+              <p>
+                Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging. In mijn werk ben ik altijd gefascineerd geweest door{' '}
                 <button
                   onClick={() => revealSection(2)}
                   disabled={!visibleSections.has(1)}
@@ -56,10 +56,9 @@ function index() {
             </div>
 
             {/* Section 2 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed space-y-4 mt-4 transition-all duration-500 ${visibleSections.has(2) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-              <p>Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken!</p>
-
-              <p>Sinds een jaar ben ik volledig gegrepen door het{' '}
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(2) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+              <p>
+                {' '}Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken! Sinds een jaar ben ik volledig gegrepen door het{' '}
                 <button
                   onClick={() => revealSection(3)}
                   disabled={!visibleSections.has(2)}
@@ -71,10 +70,9 @@ function index() {
             </div>
 
             {/* Section 3 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed space-y-4 mt-4 transition-all duration-500 ${visibleSections.has(3) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-              <p>Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen.</p>
-
-              <p>Daarom ben ik oprichter van{' '}
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(3) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+              <p>
+                {' '}Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen. Daarom ben ik oprichter van{' '}
                 <button
                   onClick={() => revealSection(4)}
                   disabled={!visibleSections.has(3)}
@@ -86,10 +84,9 @@ function index() {
             </div>
 
             {/* Section 4 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed space-y-4 mt-4 transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-              <p>Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier.</p>
-
-              <p>Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+              <p>
+                {' '}Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
                 <button
                   onClick={() => revealSection(5)}
                   disabled={!visibleSections.has(4)}
@@ -102,10 +99,10 @@ function index() {
             </div>
 
             {/* Section 5 */}
-            <div className={`text-2xl md:text-4xl leading-relaxed space-y-4 mt-4 transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
-              <p>Functioneel ontwerp dat jij en ik allebei begrijpen.</p>
-
-              <p>Een persoonlijke aanpak, vanuit jouw wens!</p>
+            <div className={`text-2xl md:text-4xl leading-relaxed transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0' : 'text-white/20 blur-md pointer-events-none'}`}>
+              <p>
+                {' '}Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!
+              </p>
             </div>
           </div>
         </div>
