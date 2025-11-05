@@ -208,8 +208,10 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Prefetch portfolio page for instant navigation
+    // Prefetch pages for instant navigation
     router.prefetch('/portfolio');
+    router.prefetch('/ai-agents');
+    router.prefetch('/about-me!');
 
     // Start "Welkom bij:" after 3 seconds
     const welcomeTimer = setTimeout(() => {

@@ -1,16 +1,24 @@
 "use client"
 
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Plus } from "lucide-react"
 import { motion } from "motion/react"
 import { useTransition } from "@/app/components/transition_provider"
 import { workExperiences } from "../data/work-experience"
 import { TimelineContent } from "./timeline-animation"
+import { useRouter } from "next/navigation"
 
 export function WorkExperience() {
   const timelineRef = useRef<HTMLDivElement>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const { startTransition } = useTransition()
+  const router = useRouter()
+
+  // Prefetch routes for faster transitions
+  useEffect(() => {
+    router.prefetch('/ai-agents')
+    router.prefetch('/about-me!')
+  }, [router])
 
   // Hover colors from kleuren.txt - each item gets a unique color
   const hoverColors = [

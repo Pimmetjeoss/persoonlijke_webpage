@@ -103,8 +103,14 @@ export const TransitionProvider: React.FC<TransitionProviderProps> = ({
         direction={direction}
         initialDelay={0}
       >
-        {/* Page content */}
-        {children}
+        {/* Page content - keep visible during transitions */}
+        <div
+          style={{
+            pointerEvents: isTransitioning ? 'none' : 'auto',
+          }}
+        >
+          {children}
+        </div>
       </SliderTransition>
     </TransitionContext.Provider>
   );

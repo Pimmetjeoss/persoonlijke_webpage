@@ -175,29 +175,10 @@ export default function AboutUsSection() {
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <motion.div className="flex flex-col items-center mb-6" variants={itemVariants}>
-          <motion.span
-            className="text-[#88734C] font-medium mb-2 flex items-center gap-2"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Zap className="w-4 h-4" />
-            DISCOVER AGENTIC AI
-          </motion.span>
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-[rgb(5,46,22)]">AI & agents</h2>
-          <motion.div
-            className="w-24 h-1 bg-[rgb(5,46,22)]"
-            initial={{ width: 0 }}
-            animate={{ width: 96 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          ></motion.div>
-        </motion.div>
-
         <div className="relative">
-          <motion.p className="text-center max-w-2xl mx-auto mb-16 text-[#202e44]/80" variants={itemVariants}>
-            99% van de mensen gebruikt AI nog reactief: je typt een vraag, krijgt een antwoord, en klaar. Maar wat als AI proactief wordt? Wat als het zelf problemen oppikt, taken plant en uitvoert zonder dat jij constant hoeft in te grijpen? Dát is de kracht van agentic AI: slimme systemen die niet alleen reageren, maar ook zelf actie ondernemen.
-          </motion.p>
+          <p className="text-center max-w-2xl mx-auto mb-16" style={{ color: "hsl(144.9 80.4% 10%)", opacity: 0.8 }}>
+            99% van de mensen gebruikt AI nog reactief: je typt een vraag, krijgt een antwoord, en klaar. Maar wat als AI proactief wordt? Wat als het zelf problemen oppikt, taken plant en uitvoert zonder dat jij constant hoeft in te grijgen? Dát is de kracht van agentic AI: slimme systemen die niet alleen reageren, maar ook zelf actie ondernemen.
+          </p>
           <motion.div
             className="absolute top-1/2 right-0 md:right-20 w-4 h-4 rounded-full bg-[#A9BBC8]/30"
             animate={{
@@ -290,9 +271,9 @@ export default function AboutUsSection() {
           ></motion.div>
         </motion.div>
 
-        <motion.p className="text-center max-w-2xl mx-auto mb-16 text-[#202e44]/80" variants={itemVariants}>
+        <p className="text-center max-w-2xl mx-auto mb-16" style={{ color: "hsl(144.9 80.4% 10%)", opacity: 0.8 }}>
           Is een flow waar een werknemer vrijwel niet aan te pas komt. Het systeem draait namelijk op de achtergrond, 24/7. Het maakt de planning, zet hem automatisch in het systeem, stuurt notificaties, en lost ziekmeldingen direct op zonder dat jij er aan te pas komt. Ik maak gebruik van een Multi-Agent System; een algemene term voor systemen met meerdere samenwerkende agents. Deze bestaat uit een 6-tal vaste onderdelen;
-        </motion.p>
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Left Column */}
@@ -440,11 +421,12 @@ export default function AboutUsSection() {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-2 text-[#202e44]">Zie de volledige flow in actie</h3>
-            <p className="text-[#202e44]/80">Bekijk hoe het systeem van begin tot eind werkt in onze demo video.</p>
+            <h3 className="text-2xl font-medium mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>Zie de volledige flow in actie</h3>
+            <p style={{ color: "hsl(144.9 80.4% 10%)", opacity: 0.8 }}>Bekijk hoe het systeem van begin tot eind werkt in onze demo video.</p>
           </div>
           <motion.button
-            className="bg-[rgb(187,247,208)] hover:bg-[rgb(187,247,208)]/90 text-[#202e44] px-6 py-3 rounded-lg flex items-center gap-2 font-medium transition-colors"
+            className="bg-[rgb(187,247,208)] hover:bg-[rgb(187,247,208)]/90 px-6 py-3 rounded-lg flex items-center gap-2 font-medium transition-colors"
+            style={{ color: "hsl(144.9 80.4% 10%)" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -485,14 +467,15 @@ function ServiceItem({ icon, secondaryIcon, title, description, delay, direction
           {icon}
           {secondaryIcon}
         </motion.div>
-        <h3 className="text-xl font-medium text-[#202e44] group-hover:text-[#88734C] transition-colors duration-300">
+        <h3 className="text-xl font-medium group-hover:text-[#88734C] transition-colors duration-300" style={{ color: "hsl(144.9 80.4% 10%)", opacity: 0.8 }}>
           {title}
         </h3>
       </motion.div>
       <motion.p
-        className="text-sm text-[#202e44]/80 leading-relaxed pl-12"
+        className="text-sm leading-relaxed pl-12"
+        style={{ color: "hsl(144.9 80.4% 10%)" }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: 0.8 }}
         transition={{ duration: 0.6, delay: delay + 0.4 }}
       >
         {description}
@@ -559,11 +542,11 @@ function StatCounter({ icon, value, label, suffix, delay }: StatCounterProps) {
       >
         {icon}
       </motion.div>
-      <motion.div ref={countRef} className="text-3xl font-bold text-[#202e44] flex items-center">
+      <motion.div ref={countRef} className="text-3xl font-bold flex items-center" style={{ color: "hsl(144.9 80.4% 10%)" }}>
         <motion.span>{typeof value === 'string' ? value : displayValue}</motion.span>
         <span>{suffix}</span>
       </motion.div>
-      <p className="text-[#202e44]/70 text-sm mt-1">{label}</p>
+      <p className="text-sm mt-1" style={{ color: "hsl(144.9 80.4% 10%)", opacity: 0.8 }}>{label}</p>
       <motion.div className="w-10 h-0.5 bg-[rgb(20,83,45)] mt-3 group-hover:w-16 transition-all duration-300" />
     </motion.div>
   )

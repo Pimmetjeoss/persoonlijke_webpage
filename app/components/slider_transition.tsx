@@ -58,7 +58,7 @@ export interface SliderTransitionProps {
 
   /**
    * z-index for the overlay blocks
-   * @default 9999
+   * @default 99999
    */
   zIndex?: number;
 
@@ -94,7 +94,7 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
   initialDelay = 0,
   direction = 'up',
   ease = 'power2.inOut',
-  zIndex = 9999,
+  zIndex = 99999,
   children,
 }) => {
   const slider1Ref = useRef<HTMLDivElement>(null);
@@ -164,7 +164,7 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
           duration,
           ease,
           onUpdate: function() {
-            // Call onCover earlier (at 40%) to give page more time to render
+            // Call onCover at 40% to give new page more time to load
             if (this.progress() >= 0.4 && onCover) {
               onCover();
               // Set to null to prevent multiple calls
@@ -214,6 +214,7 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
           ...getPositionStyle(),
           backgroundColor: colors[0],
           zIndex: zIndex + 3,
+          opacity: 1,
         }}
       />
       <div
@@ -223,6 +224,7 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
           ...getPositionStyle(),
           backgroundColor: colors[1],
           zIndex: zIndex + 2,
+          opacity: 1,
         }}
       />
       <div
@@ -232,6 +234,7 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
           ...getPositionStyle(),
           backgroundColor: colors[2],
           zIndex: zIndex + 1,
+          opacity: 1,
         }}
       />
 
