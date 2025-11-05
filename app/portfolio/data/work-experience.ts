@@ -37,8 +37,8 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
-    id: "cruise",
-    company: "CRUISE",
+    id: "mcp-server",
+    company: "MCP-SERVER",
     role: "PRODUCT DESIGNER",
     period: "(2018-2019)",
     description:
@@ -51,8 +51,8 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
-    id: "uber",
-    company: "UBER",
+    id: "website",
+    company: "WEBSITE",
     role: "DESIGN LEAD",
     period: "(2017-2018)",
     description:
@@ -65,8 +65,8 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
-    id: "tesla",
-    company: "TESLA",
+    id: "contact",
+    company: "CONTACT",
     role: "UX DESIGNER",
     period: "(2016-2017)",
     description:

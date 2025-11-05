@@ -7,6 +7,7 @@ interface StickyHeaderProps {
   title: string
   backgroundColor?: string
   hoverColor?: string
+  wrapperBackgroundColor?: string
   className?: string
 }
 
@@ -14,6 +15,7 @@ export default function StickyHeader({
   title,
   backgroundColor = "hsl(140.6 84.2% 92.5%)",
   hoverColor = "hsl(141 78.9% 85.1%)",
+  wrapperBackgroundColor,
   className = ""
 }: StickyHeaderProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -34,7 +36,7 @@ export default function StickyHeader({
       <div
         className={className}
         style={{
-          backgroundColor: backgroundColor,
+          backgroundColor: wrapperBackgroundColor || backgroundColor,
           marginTop: '-3px', // Pull up to sit behind the sticky line
         }}
       >

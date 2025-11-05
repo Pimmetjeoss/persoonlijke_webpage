@@ -18,6 +18,9 @@ export function WorkExperience() {
   useEffect(() => {
     router.prefetch('/ai-agents')
     router.prefetch('/about-me!')
+    router.prefetch('/MCP-server')
+    router.prefetch('/website')
+    router.prefetch('/contact')
   }, [router])
 
   // Hover colors from kleuren.txt - each item gets a unique color
@@ -59,12 +62,15 @@ export function WorkExperience() {
                 onClick={() => {
                   if (experience.id === "ai-agents") startTransition("/ai-agents");
                   if (experience.id === "about-me") startTransition("/about-me!");
+                  if (experience.id === "mcp-server") startTransition("/MCP-server");
+                  if (experience.id === "website") startTransition("/website");
+                  if (experience.id === "contact") startTransition("/contact");
                 }}
                 className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full"
                 style={{
                   zIndex: hoveredIndex === index ? 50 : 1,
                   backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
-                  cursor: (experience.id === "ai-agents" || experience.id === "about-me") ? 'pointer' : 'default',
+                  cursor: (experience.id === "ai-agents" || experience.id === "about-me" || experience.id === "mcp-server" || experience.id === "website" || experience.id === "contact") ? 'pointer' : 'default',
                 }}
               >
                 <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">
