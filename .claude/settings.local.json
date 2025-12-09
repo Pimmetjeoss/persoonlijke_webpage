@@ -34,7 +34,14 @@
       "mcp__serena__find_file",
       "mcp__serena__activate_project",
       "mcp__serena__search_for_pattern",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd test page with BentoGrid layout and improve sticky header\n\n- Add startExpanded prop to StickyHeader for initial expanded state\n- Create BentoGrid components for test page with Dutch content\n- Add StickyFooter to test page\n- Clean up unused MCP-server and website pages\n- Add Playwright screenshots for testing\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "WebSearch",
+      "WebFetch(domain:www.radix-ui.com)",
+      "WebFetch(domain:ui-layouts.com)",
+      "Bash(npx uilayouts@latest add:*)",
+      "Bash(npm run build:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd FAQ accordion and section cards to test page\n\n- Add UI Layouts accordion component with motion animations\n- Create SectionCard component with children prop support\n- Add 5 section cards (Simpel uitgelegd, FAQ, Visueel materiaal, Stack met, In detail)\n- Update icons: PersonIcon, VideoIcon, LayersIcon, MagnifyingGlassIcon\n- FAQ section now has interactive accordion with placeholder questions\n- BentoGrid cards link to corresponding sections\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []

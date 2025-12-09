@@ -1,23 +1,30 @@
 "use client"
 
 import {
-  BellIcon,
-  CalendarIcon,
   FileTextIcon,
-  GlobeIcon,
-  InputIcon,
+  LayersIcon,
+  MagnifyingGlassIcon,
+  PersonIcon,
+  VideoIcon,
 } from "@radix-ui/react-icons";
 
 import { BentoCard, BentoGrid } from "./components/bento-grid";
+import { SectionCard } from "./components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+} from "@/components/ui/accordion";
 
 const features = [
   {
-    Icon: InputIcon,
+    Icon: PersonIcon,
     name: "Simpel uitgelegd",
     description: "Complexe concepten begrijpelijk gemaakt voor iedereen.",
-    href: "/",
+    href: "#simpel-uitgelegd",
     cta: "Lees meer",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
@@ -27,37 +34,37 @@ const features = [
     Icon: FileTextIcon,
     name: "FAQ",
     description: "Antwoord op de meeste vragen omtrent dit onderwerp.",
-    href: "/",
+    href: "#faq",
     cta: "Bekijk FAQ",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
     hoverColor: "hsl(141.7 76.6% 73.1%)",
   },
   {
-    Icon: GlobeIcon,
+    Icon: VideoIcon,
     name: "Visueel materiaal",
     description: "Om het nog simpeler te maken!",
-    href: "/",
+    href: "#visueel",
     cta: "Bekijk",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
     hoverColor: "hsl(141.9 69.2% 58%)",
   },
   {
-    Icon: BellIcon,
+    Icon: LayersIcon,
     name: "Stack met",
     description: "Werkt goed samen met deze andere mogelijkheden.",
-    href: "/",
+    href: "#stack",
     cta: "Bekijk stack",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
     hoverColor: "hsl(142.1 76.2% 36.3%)",
   },
   {
-    Icon: CalendarIcon,
+    Icon: MagnifyingGlassIcon,
     name: "In detail",
     description: "Technische uitleg voor wie meer wil weten en wat te vertellen wil hebben bij het koffieautomaat.",
-    href: "/",
+    href: "#in-detail",
     cta: "Verdiep je",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
@@ -83,16 +90,61 @@ function BentoDemo() {
             <BentoCard key={feature.name} {...feature} />
           ))}
         </BentoGrid>
-        <BentoGrid className="lg:grid-rows-3 mt-10">
-          {features.map((feature) => (
-            <BentoCard key={feature.name + "-2"} {...feature} />
-          ))}
-        </BentoGrid>
-        <BentoGrid className="lg:grid-rows-3 mt-10">
-          {features.map((feature) => (
-            <BentoCard key={feature.name + "-3"} {...feature} />
-          ))}
-        </BentoGrid>
+
+        {/* Sectie Cards */}
+        <div className="mt-16 space-y-8">
+          <SectionCard
+            id="simpel-uitgelegd"
+            title="Simpel uitgelegd"
+            description="Complexe concepten begrijpelijk gemaakt voor iedereen."
+            Icon={PersonIcon}
+          />
+          <SectionCard
+            id="faq"
+            title="FAQ"
+            description="Antwoord op de meeste vragen omtrent dit onderwerp."
+            Icon={FileTextIcon}
+          >
+            <Accordion defaultValue={['item-1']}>
+              <AccordionItem value="item-1">
+                <AccordionHeader>Vraag 1: Placeholder vraag?</AccordionHeader>
+                <AccordionPanel>
+                  Dit is een placeholder antwoord. Vul hier later de echte content in.
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionHeader>Vraag 2: Nog een vraag?</AccordionHeader>
+                <AccordionPanel>
+                  Dit is een placeholder antwoord. Vul hier later de echte content in.
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionHeader>Vraag 3: En nog een vraag?</AccordionHeader>
+                <AccordionPanel>
+                  Dit is een placeholder antwoord. Vul hier later de echte content in.
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </SectionCard>
+          <SectionCard
+            id="visueel"
+            title="Visueel materiaal"
+            description="Om het nog simpeler te maken!"
+            Icon={VideoIcon}
+          />
+          <SectionCard
+            id="stack"
+            title="Stack met"
+            description="Werkt goed samen met deze andere mogelijkheden."
+            Icon={LayersIcon}
+          />
+          <SectionCard
+            id="in-detail"
+            title="In detail"
+            description="Technische uitleg voor wie meer wil weten en wat te vertellen wil hebben bij het koffieautomaat."
+            Icon={MagnifyingGlassIcon}
+          />
+        </div>
       </div>
       <StickyFooter />
     </div>
