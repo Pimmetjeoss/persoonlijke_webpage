@@ -14,7 +14,7 @@ export function Navigation({ onPlayClick }: NavigationProps) {
           {/* Left - Logo/Name */}
           <Link
             href="/"
-            className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-2 rounded-full transition-all"
+            className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-[3px] rounded-full transition-all"
             style={{
               backgroundColor: 'transparent',
               color: 'hsl(144.9 80.4% 10%)',
@@ -29,14 +29,14 @@ export function Navigation({ onPlayClick }: NavigationProps) {
               e.currentTarget.style.color = 'hsl(144.9 80.4% 10%)'
             }}
           >
-            PIMPLIFY
+            CODE LIESHOUT
           </Link>
 
           {/* Right - Navigation buttons */}
           <div className="flex items-center gap-4">
             <button
               onClick={onPlayClick}
-              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-2 rounded-full transition-all cursor-pointer"
+              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-[3px] rounded-full transition-all cursor-pointer"
               style={{
                 backgroundColor: 'transparent',
                 color: 'hsl(144.9 80.4% 10%)',

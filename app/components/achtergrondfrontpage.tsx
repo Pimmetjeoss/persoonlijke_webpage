@@ -29,7 +29,10 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className='relative w-screen h-screen overflow-hidden bg-black'>
+    <div
+      className='relative w-screen h-screen overflow-hidden bg-black cursor-pointer'
+      onClick={handleSkipVideo}
+    >
       <video
         ref={videoRef}
         className='w-full h-full object-cover z-0'
@@ -40,13 +43,6 @@ const Home: React.FC = () => {
       >
         <source src='/CodeLieshout-intro!720p.mp4' type='video/mp4' />
       </video>
-
-      <button
-        onClick={handleSkipVideo}
-        className='absolute bottom-8 right-8 px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:bg-white/30 transition-all duration-300 font-medium z-[999999]'
-      >
-        Skip Intro
-      </button>
     </div>
   );
 };

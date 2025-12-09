@@ -19,7 +19,7 @@ export function StickyFooter() {
         {/* Lottie Icons - Before Copyright */}
         <div className="flex gap-3 items-center">
           <a
-            href="/"
+            href="/portfolio"
             className="w-6 h-6 md:w-8 md:h-8 cursor-pointer"
             onMouseEnter={() => {
               if (homeRef.current) {
