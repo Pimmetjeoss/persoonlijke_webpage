@@ -100,7 +100,13 @@ const BentoCard = ({
           size="sm"
           className="pointer-events-auto p-0"
         >
-          <a href={href}>
+          <a
+            href={href}
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+            }}
+          >
             {cta}
             <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
           </a>
@@ -119,7 +125,13 @@ const BentoCard = ({
         size="sm"
         className="pointer-events-auto p-0"
       >
-        <a href={href}>
+        <a
+          href={href}
+          onClick={(e) => {
+            e.preventDefault()
+            document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+          }}
+        >
           {cta}
           <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
         </a>

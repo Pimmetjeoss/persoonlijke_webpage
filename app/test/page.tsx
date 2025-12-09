@@ -25,7 +25,7 @@ const features = [
     name: "Simpel uitgelegd",
     description: "Complexe concepten begrijpelijk gemaakt voor iedereen.",
     href: "#simpel-uitgelegd",
-    cta: "Lees meer",
+    cta: "",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
     hoverColor: "hsl(141 78.9% 85.1%)",
@@ -35,7 +35,7 @@ const features = [
     name: "FAQ",
     description: "Antwoord op de meeste vragen omtrent dit onderwerp.",
     href: "#faq",
-    cta: "Bekijk FAQ",
+    cta: "Stel je vraag!",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
     hoverColor: "hsl(141.7 76.6% 73.1%)",
@@ -45,7 +45,7 @@ const features = [
     name: "Visueel materiaal",
     description: "Om het nog simpeler te maken!",
     href: "#visueel",
-    cta: "Bekijk",
+    cta: "Veel kijkplezier!",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
     hoverColor: "hsl(141.9 69.2% 58%)",
@@ -55,7 +55,7 @@ const features = [
     name: "Stack met",
     description: "Werkt goed samen met deze andere mogelijkheden.",
     href: "#stack",
-    cta: "Bekijk stack",
+    cta: "Pak die combideal!",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
     hoverColor: "hsl(142.1 76.2% 36.3%)",
@@ -145,6 +145,9 @@ function BentoDemo() {
             Icon={MagnifyingGlassIcon}
           />
         </div>
+
+        {/* Extra ruimte voor scroll testen */}
+        <div className="h-[200vh]" />
       </div>
       <StickyFooter />
     </div>

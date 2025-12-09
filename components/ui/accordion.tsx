@@ -84,9 +84,13 @@ export function AccordionItem({
   return (
     <div
       className={cn(
-        'rounded-md mb-2 overflow-hidden border dark:border-zinc-800 border-zinc-200 dark:bg-black/60 bg-gray-50',
+        'rounded-md mb-2 overflow-hidden border-2',
         className
       )}
+      style={{
+        borderColor: 'hsl(144.9 80.4% 10%)',
+        backgroundColor: 'hsl(144.9 80.4% 10%)'
+      }}
       data-active={isActive ? 'true' : undefined}
     >
       {React.Children.map(children, (child) =>
@@ -118,9 +122,13 @@ export function AccordionHeader({
   return (
     <button
       className={cn(
-        'flex w-full items-center justify-between p-4 text-left font-medium transition-colors hover:bg-gray-100 dark:hover:bg-zinc-800 group',
+        'flex w-full items-center justify-between p-4 text-left font-medium transition-colors group',
         className
       )}
+      style={{
+        color: 'white',
+        backgroundColor: 'hsl(144.9 80.4% 10%)'
+      }}
       onClick={() => value && context.toggleItem(value)}
       data-active={isActive ? 'true' : undefined}
     >
@@ -128,7 +136,7 @@ export function AccordionHeader({
       {!customIcon && (
         <ChevronDown
           className={cn(
-            'h-5 w-5 transition-transform duration-200',
+            'h-5 w-5 transition-transform duration-200 text-white',
             isActive && 'rotate-180'
           )}
         />
@@ -174,7 +182,10 @@ export function AccordionPanel({
           }}
           className="overflow-hidden"
         >
-          <div className={cn('p-4 pt-0 text-gray-600 dark:text-gray-300', className)}>
+          <div
+            className={cn('p-4 pt-0', className)}
+            style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+          >
             {children}
           </div>
         </motion.div>
