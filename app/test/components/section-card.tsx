@@ -31,11 +31,8 @@ export function SectionCard({
       style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
     >
       <div className="flex items-start gap-6">
-        <div className="flex-shrink-0">
-          <Icon
-            className="w-10 h-10 md:w-12 md:h-12"
-            style={{ color: "hsl(144.9 80.4% 10%)" }}
-          />
+        <div className="flex-shrink-0" style={{ color: "hsl(144.9 80.4% 10%)" }}>
+          <Icon className="w-10 h-10 md:w-12 md:h-12" />
         </div>
         <div className="flex-1">
           <h2

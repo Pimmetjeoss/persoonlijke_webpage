@@ -21,6 +21,7 @@ export function WorkExperience() {
     router.prefetch('/MCP-server')
     router.prefetch('/website')
     router.prefetch('/contact')
+    router.prefetch('/test')
   }, [router])
 
   // Hover colors from kleuren.txt - each item gets a unique color
@@ -65,12 +66,13 @@ export function WorkExperience() {
                   if (experience.id === "mcp-server") startTransition("/MCP-server");
                   if (experience.id === "website") startTransition("/website");
                   if (experience.id === "contact") startTransition("/contact");
+                  if (experience.id === "lyft") startTransition("/test");
                 }}
                 className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full"
                 style={{
                   zIndex: hoveredIndex === index ? 50 : 1,
                   backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
-                  cursor: (experience.id === "ai-agents" || experience.id === "about-me" || experience.id === "mcp-server" || experience.id === "website" || experience.id === "contact") ? 'pointer' : 'default',
+                  cursor: (experience.id === "ai-agents" || experience.id === "about-me" || experience.id === "mcp-server" || experience.id === "website" || experience.id === "contact" || experience.id === "lyft") ? 'pointer' : 'default',
                 }}
               >
                 <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">
