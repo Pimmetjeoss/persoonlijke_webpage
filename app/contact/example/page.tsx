@@ -1,12 +1,15 @@
-"use client"
-
-import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
+import StickyHeader from "@/app/components/sticky-header"
 
 export default function ContactExample() {
   return (
-    <div className="relative min-h-screen">
-      <StickyHeader title="CONTACT" />
+    <div className="relative min-h-screen" style={{ backgroundColor: "rgb(240,253,244)" }}>
+      <StickyHeader
+        title="CONTACT"
+        backgroundColor="rgb(240,253,244)"
+        hoverColor="hsl(141 78.9% 85.1%)"
+        wrapperBackgroundColor="rgb(240,253,244)"
+      />
 
       <div className="p-4 md:p-8 lg:p-16 pb-32">
         {/* Content placeholder */}

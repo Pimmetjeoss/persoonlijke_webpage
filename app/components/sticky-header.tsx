@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Plus } from "lucide-react"
 
 interface StickyHeaderProps {
@@ -9,6 +9,7 @@ interface StickyHeaderProps {
   hoverColor?: string
   wrapperBackgroundColor?: string
   className?: string
+  startExpanded?: boolean
 }
 
 export default function StickyHeader({
@@ -16,9 +17,22 @@ export default function StickyHeader({
   backgroundColor = "hsl(140.6 84.2% 92.5%)",
   hoverColor = "hsl(141 78.9% 85.1%)",
   wrapperBackgroundColor,
-  className = ""
+  className = "",
+  startExpanded = false
 }: StickyHeaderProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
+
+  useEffect(() => {
+    if (!startExpanded) return
+
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [startExpanded])
 
   return (
     <>
@@ -32,12 +46,13 @@ export default function StickyHeader({
         }}
       />
 
-      {/* Header content that scrolls behind the line */}
+      {/* Header content that stays sticky at top */}
       <div
-        className={className}
+        className={`sticky top-0 ${className}`}
         style={{
-          backgroundColor: wrapperBackgroundColor || backgroundColor,
           marginTop: '-3px', // Pull up to sit behind the sticky line
+          zIndex: 99999,
+          overflow: 'hidden', // Hide the background when header translates up
         }}
       >
         <header
@@ -45,7 +60,9 @@ export default function StickyHeader({
           onMouseLeave={() => setIsHovered(false)}
           className="border-t-[3px] border-b-[3px] border-black"
           style={{
-            transform: isHovered ? "translateY(0)" : "translateY(-30%)",
+            transform: startExpanded
+              ? (hasScrolled && !isHovered ? "translateY(-30%)" : "translateY(0)")
+              : (isHovered ? "translateY(0)" : "translateY(-30%)"),
             backgroundColor: isHovered ? hoverColor : backgroundColor,
             color: "hsl(144.9 80.4% 10%)",
             zIndex: isHovered ? 50 : 1,
