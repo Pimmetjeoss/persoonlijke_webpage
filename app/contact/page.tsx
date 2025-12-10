@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { animate, scroll, spring } from 'motion';
 import { ReactLenis } from 'lenis/react';
 import { Plus } from 'lucide-react';
+import { StickyFooter } from '@/app/components/sticky-footer';
+import Image from 'next/image';
 
 function ContactHeader() {
   const [isHovered, setIsHovered] = useState(false);
@@ -155,38 +157,54 @@ export default function HorizontalScroll() {
                   pim@code-lieshout.nl
                 </h1>
               </li>
-              <li className='h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}>
-                <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] relative bottom-5 inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
+              <li className='h-screen w-[100vw] min-w-[100vw] flex flex-row justify-center overflow-hidden items-center gap-8' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}>
+                <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                   0612419980
                 </h1>
+                <Image
+                  src="/cactus_mobile.png"
+                  alt="Cactus met telefoon"
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                />
               </li>
               <li className='h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.8, 64.2%, 24.1%)' }}>
                 <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] relative bottom-5 inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                   Instagram
                 </h1>
               </li>
-              <li className='h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(143.8, 61.2%, 20.2%)' }}>
-                <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] relative bottom-5 inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
+              <li className='h-screen w-[100vw] min-w-[100vw] flex flex-row justify-center overflow-hidden items-center gap-8' style={{ backgroundColor: 'hsl(143.8, 61.2%, 20.2%)' }}>
+                <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                   Youtube
                 </h1>
+                <Image
+                  src="/cactus_youtube.png"
+                  alt="Cactus met YouTube"
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                />
               </li>
-              <li className='h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(144.9, 80.4%, 10%)' }}>
-                <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] relative bottom-5 inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
+              <li className='h-screen w-[100vw] min-w-[100vw] flex flex-row justify-center overflow-hidden items-center gap-8' style={{ backgroundColor: 'hsl(144.9, 80.4%, 10%)' }}>
+                <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                   LinkedIn
                 </h1>
+                <Image
+                  src="/cactus_linkedin.png"
+                  alt="Cactus met LinkedIn"
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                />
               </li>
             </ul>
           </section>
-          <footer className='bg-[hsl(141,78.9%,85.1%)] font-medium text-[hsl(144.9,80.4%,10%)] grid place-content-center h-[80vh]'>
-            <p>
-              Inspired By{' '}
-              <a target='_blank' href='https://twitter.com/mattgperry'>
-                Matt Perry
-              </a>
-            </p>
+          <footer className='h-[80vh]' style={{ backgroundColor: 'hsl(144.9, 80.4%, 10%)' }}>
           </footer>
         </article>
       </main>
+      <StickyFooter />
     </ReactLenis>
   );
 }
