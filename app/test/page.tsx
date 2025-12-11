@@ -28,7 +28,7 @@ const features = [
     cta: "",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-    hoverColor: "hsl(141 78.9% 85.1%)",
+    hoverColor: "hsl(143.8 61.2% 20.2%)",
   },
   {
     Icon: FileTextIcon,
