@@ -12,12 +12,50 @@ import { BentoCard, BentoGrid } from "./components/bento-grid";
 import { SectionCard } from "./components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-} from "@/components/ui/accordion";
+import { Accordion05, FAQItem } from "./components/accordion-05";
+
+const faqItems: FAQItem[] = [
+  {
+    id: "1",
+    title: "Placeholder vraag 1?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "2",
+    title: "Placeholder vraag 2?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "3",
+    title: "Placeholder vraag 3?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "4",
+    title: "Placeholder vraag 4?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "5",
+    title: "Placeholder vraag 5?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "6",
+    title: "Placeholder vraag 6?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "7",
+    title: "Placeholder vraag 7?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+  {
+    id: "8",
+    title: "Placeholder vraag 8?",
+    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+  },
+];
 
 const features = [
   {
@@ -105,26 +143,7 @@ function BentoDemo() {
             description="Antwoord op de meeste vragen omtrent dit onderwerp."
             Icon={FileTextIcon}
           >
-            <Accordion defaultValue={['item-1']}>
-              <AccordionItem value="item-1">
-                <AccordionHeader>Vraag 1: Placeholder vraag?</AccordionHeader>
-                <AccordionPanel>
-                  Dit is een placeholder antwoord. Vul hier later de echte content in.
-                </AccordionPanel>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionHeader>Vraag 2: Nog een vraag?</AccordionHeader>
-                <AccordionPanel>
-                  Dit is een placeholder antwoord. Vul hier later de echte content in.
-                </AccordionPanel>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionHeader>Vraag 3: En nog een vraag?</AccordionHeader>
-                <AccordionPanel>
-                  Dit is een placeholder antwoord. Vul hier later de echte content in.
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
+            <Accordion05 items={faqItems} />
           </SectionCard>
           <SectionCard
             id="visueel"

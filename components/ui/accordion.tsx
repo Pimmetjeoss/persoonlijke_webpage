@@ -71,10 +71,12 @@ export function AccordionItem({
   children,
   value,
   className,
+  unstyled = false,
 }: {
   children: ReactNode;
   value: string;
   className?: string;
+  unstyled?: boolean;
 }) {
   const context = useContext(AccordionContext);
   if (!context) throw new Error('AccordionItem must be used within Accordion');
@@ -84,13 +86,13 @@ export function AccordionItem({
   return (
     <div
       className={cn(
-        'rounded-md mb-2 overflow-hidden border-2',
+        !unstyled && 'rounded-md mb-2 overflow-hidden border-2',
         className
       )}
-      style={{
+      style={!unstyled ? {
         borderColor: 'hsl(144.9 80.4% 10%)',
         backgroundColor: 'hsl(144.9 80.4% 10%)'
-      }}
+      } : undefined}
       data-active={isActive ? 'true' : undefined}
     >
       {React.Children.map(children, (child) =>
@@ -107,11 +109,13 @@ export function AccordionHeader({
   value,
   className,
   customIcon,
+  unstyled = false,
 }: {
   children: ReactNode;
   value?: string;
   className?: string;
   customIcon?: boolean;
+  unstyled?: boolean;
 }) {
   const context = useContext(AccordionContext);
   if (!context)
@@ -125,10 +129,10 @@ export function AccordionHeader({
         'flex w-full items-center justify-between p-4 text-left font-medium transition-colors group',
         className
       )}
-      style={{
+      style={!unstyled ? {
         color: 'white',
         backgroundColor: 'hsl(144.9 80.4% 10%)'
-      }}
+      } : undefined}
       onClick={() => value && context.toggleItem(value)}
       data-active={isActive ? 'true' : undefined}
     >
