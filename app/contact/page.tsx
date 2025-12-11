@@ -6,6 +6,7 @@ import { Plus } from 'lucide-react';
 import { StickyFooter } from '@/app/components/sticky-footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import { TextScramble } from '@/components/ui/text-scramble';
 
 function ContactHeader() {
   const [isHovered, setIsHovered] = useState(false);
@@ -248,7 +249,7 @@ export default function HorizontalScroll() {
                     WebkitTextStroke: '3px hsl(141, 78.9%, 85.1%)'
                   }}
                 >
-                  Instagram
+                  <TextScramble text="Instagram" />
                 </h1>
                 <Image
                   src="/cactus_instagram.png"
