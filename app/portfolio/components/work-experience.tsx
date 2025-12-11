@@ -8,6 +8,7 @@ import { workExperiences } from "../data/work-experience"
 import { TimelineContent } from "./timeline-animation"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
+import { TextScramble } from "@/components/ui/text-scramble"
 
 export function WorkExperience() {
   const timelineRef = useRef<HTMLDivElement>(null)
@@ -111,7 +112,10 @@ export function WorkExperience() {
                           marginBottom: "-0.3em"
                         }}
                       >
-                        {experience.company}
+                        <TextScramble
+                          text={experience.company}
+                          trigger={hoveredIndex === index}
+                        />
                       </h2>
                     </div>
 
