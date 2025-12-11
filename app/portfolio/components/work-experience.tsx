@@ -7,6 +7,7 @@ import { useTransition } from "@/app/components/transition_provider"
 import { workExperiences } from "../data/work-experience"
 import { TimelineContent } from "./timeline-animation"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export function WorkExperience() {
   const timelineRef = useRef<HTMLDivElement>(null)
@@ -40,10 +41,19 @@ export function WorkExperience() {
       className="min-h-screen"
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
-      {/* Spacer to push accordion halfway down */}
-      <div className="h-[50vh]" />
+      {/* Spacer to push accordion halfway down - with cactus */}
+      <div className="h-[50vh] relative overflow-visible">
+        {/* Cactus mascotte - positioned to overlap accordion line */}
+        <Image
+          src="/cactus_laptop_transparent.png"
+          alt="Cactus mascotte"
+          width={250}
+          height={250}
+          className="absolute -bottom-[130px] right-[5%] md:right-[10%] lg:right-[15%] w-[150px] md:w-[200px] lg:w-[250px] z-0 pointer-events-none"
+        />
+      </div>
 
-      <div>
+      <div className="relative z-10">
           {workExperiences.map((experience, index) => (
             <React.Fragment key={experience.id}>
             <TimelineContent
