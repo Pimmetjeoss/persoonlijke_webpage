@@ -25,15 +25,30 @@ export function WorkExperience() {
     router.prefetch('/test')
   }, [router])
 
-  // Hover colors from kleuren.txt - each item gets a unique color
+  // Hover colors from kleuren.txt - speels door elkaar gemixed
   const hoverColors = [
-    "hsl(138.5 76.5% 96.7%)", // #11 - ABOUT ME (lichtste groen)
-    "hsl(141 78.9% 85.1%)",   // #9 - APPLE (zeer licht groen)
-    "hsl(141.9 69.2% 58%)",   // #7 - CRUISE (medium groen)
-    "hsl(142.1 76.2% 36.3%)", // #5 - UBER (medium donker groen)
-    "hsl(142.4 71.8% 29.2%)", // #4 - TESLA (tussen UBER en LYFT)
-    "hsl(142.8 64.2% 24.1%)", // #3 - LYFT (donker groen)
+    "hsl(141.9 69.2% 58%)",   // #7 - medium
+    "hsl(138.5 76.5% 96.7%)", // #11 - lichtste
+    "hsl(142.4 71.8% 29.2%)", // #4 - donker
+    "hsl(141.7 76.6% 73.1%)", // #8 - licht
+    "hsl(144.9 80.4% 10%)",   // #1 - donkerste (CONTACT)
+    "hsl(141 78.9% 85.1%)",   // #9 - zeer licht
+    "hsl(142.8 64.2% 24.1%)", // #3 - donker
+    "hsl(140.6 84.2% 92.5%)", // #10 - bijna lichtste
+    "hsl(142.1 76.2% 36.3%)", // #5 - medium donker
+    "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker (ITEM 10)
+    "hsl(142.1 70.6% 45.3%)", // #6 - medium
+    "hsl(141.7 76.6% 73.1%)", // #8 - licht (herhaald)
   ]
+
+  // Donkere kleuren (lightness < 30%) krijgen lichte tekst bij hover
+  const darkIndices = [2, 4, 6, 9] // indices met donkere achtergrond
+  const getTextColor = (index: number, isHovered: boolean) => {
+    if (isHovered && darkIndices.includes(index)) {
+      return "hsl(138.5 76.5% 96.7%)" // lichtste groen voor contrast
+    }
+    return "hsl(144.9 80.4% 10%)" // donkerste groen (standaard)
+  }
 
   return (
     <div
@@ -90,9 +105,9 @@ export function WorkExperience() {
                     {/* Company Name */}
                     <div>
                       <h2
-                        className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] group-hover:translate-x-2 transition-transform duration-300"
+                        className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] group-hover:translate-x-2 transition-all duration-300"
                         style={{
-                          color: "hsl(144.9 80.4% 10%)",
+                          color: getTextColor(index, hoveredIndex === index),
                           marginBottom: "-0.3em"
                         }}
                       >

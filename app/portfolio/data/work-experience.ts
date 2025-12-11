@@ -92,4 +92,76 @@ export const workExperiences: WorkExperience[] = [
       "Led creative direction for product launches and seasonal campaigns",
     ],
   },
+  {
+    id: "item-7",
+    company: "ITEM 7",
+    role: "PLACEHOLDER",
+    period: "(2014-2015)",
+    description:
+      "Placeholder description for item 7.",
+    highlights: [
+      "Placeholder highlight 1",
+      "Placeholder highlight 2",
+    ],
+  },
+  {
+    id: "item-8",
+    company: "ITEM 8",
+    role: "PLACEHOLDER",
+    period: "(2013-2014)",
+    description:
+      "Placeholder description for item 8.",
+    highlights: [
+      "Placeholder highlight 1",
+      "Placeholder highlight 2",
+    ],
+  },
+  {
+    id: "item-9",
+    company: "ITEM 9",
+    role: "PLACEHOLDER",
+    period: "(2012-2013)",
+    description:
+      "Placeholder description for item 9.",
+    highlights: [
+      "Placeholder highlight 1",
+      "Placeholder highlight 2",
+    ],
+  },
+  {
+    id: "item-10",
+    company: "ITEM 10",
+    role: "PLACEHOLDER",
+    period: "(2011-2012)",
+    description:
+      "Placeholder description for item 10.",
+    highlights: [
+      "Placeholder highlight 1",
+      "Placeholder highlight 2",
+    ],
+  },
+  {
+    id: "item-11",
+    company: "ITEM 11",
+    role: "PLACEHOLDER",
+    period: "(2010-2011)",
+    description:
+      "Placeholder description for item 11.",
+    highlights: [
+      "Placeholder highlight 1",
+      "Placeholder highlight 2",
+    ],
+  },
+  {
+    id: "item-12",
+    company: "ITEM 12",
+    role: "PLACEHOLDER",
+    period: "(2009-2010)",
+    description:
+      "Placeholder description for item 12.",
+    highlights: [
+      "Placeholder highlight 1",
+      "Placeholder highlight 2",
+    ],
+  },
 ]
