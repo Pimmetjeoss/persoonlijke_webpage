@@ -1,12 +1,31 @@
 "use client"
 
 import Link from "next/link"
+import { useState, useEffect } from "react"
 
 interface NavigationProps {
   onPlayClick?: () => void
 }
 
 export function Navigation({ onPlayClick }: NavigationProps) {
+  const [isScrolledHalfway, setIsScrolledHalfway] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Halverwege de h-[50vh] spacer = 25vh
+      const halfway = window.innerHeight * 0.25
+      setIsScrolledHalfway(window.scrollY >= halfway)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial position
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const activeColor = 'hsl(142.4 71.8% 29.2%)'
+  const defaultBg = 'transparent'
+  const defaultText = 'hsl(144.9 80.4% 10%)'
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="px-4 md:px-8 lg:px-16 py-4">
@@ -16,17 +35,17 @@ export function Navigation({ onPlayClick }: NavigationProps) {
             href="/"
             className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-[3px] rounded-full transition-all"
             style={{
-              backgroundColor: 'transparent',
-              color: 'hsl(144.9 80.4% 10%)',
-              borderColor: 'hsl(144.9 80.4% 10%)',
+              backgroundColor: isScrolledHalfway ? activeColor : defaultBg,
+              color: isScrolledHalfway ? 'white' : defaultText,
+              borderColor: defaultText,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'hsl(142.4 71.8% 29.2%)'
+              e.currentTarget.style.backgroundColor = activeColor
               e.currentTarget.style.color = 'white'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent'
-              e.currentTarget.style.color = 'hsl(144.9 80.4% 10%)'
+              e.currentTarget.style.backgroundColor = isScrolledHalfway ? activeColor : defaultBg
+              e.currentTarget.style.color = isScrolledHalfway ? 'white' : defaultText
             }}
           >
             CODE LIESHOUT
@@ -38,17 +57,17 @@ export function Navigation({ onPlayClick }: NavigationProps) {
               onClick={onPlayClick}
               className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-[3px] rounded-full transition-all cursor-pointer"
               style={{
-                backgroundColor: 'transparent',
-                color: 'hsl(144.9 80.4% 10%)',
-                borderColor: 'hsl(144.9 80.4% 10%)',
+                backgroundColor: isScrolledHalfway ? activeColor : defaultBg,
+                color: isScrolledHalfway ? 'white' : defaultText,
+                borderColor: defaultText,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'hsl(142.4 71.8% 29.2%)'
+                e.currentTarget.style.backgroundColor = activeColor
                 e.currentTarget.style.color = 'white'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent'
-                e.currentTarget.style.color = 'hsl(144.9 80.4% 10%)'
+                e.currentTarget.style.backgroundColor = isScrolledHalfway ? activeColor : defaultBg
+                e.currentTarget.style.color = isScrolledHalfway ? 'white' : defaultText
               }}
             >
               PLAY
