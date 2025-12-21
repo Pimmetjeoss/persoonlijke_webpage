@@ -1,70 +1,114 @@
-"use client"
+"use client";
 
 import { useRef } from "react";
-import {
-  FileTextIcon,
-  LayersIcon,
-  MagnifyingGlassIcon,
-  PersonIcon,
-  VideoIcon,
-} from "@radix-ui/react-icons";
-
-import { SectionCard } from "./components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
-import { Accordion05, FAQItem } from "./components/accordion-05";
-import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
+import { BlogPostCard } from "./components/blog-post-card";
+import { MasonryGrid } from "./components/masonry-grid";
 
-const faqItems: FAQItem[] = [
+// Sample blog post data - replace with real data later
+const blogPosts = [
   {
-    id: "1",
-    title: "Placeholder vraag 1?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "ai-in-healthcare",
+    title: "De toekomst van AI in de gezondheidszorg",
+    excerpt: "Ontdek hoe kunstmatige intelligentie de medische sector transformeert en wat dit betekent voor patiënten en zorgverleners.",
+    date: "2025-03-15",
+    category: "AI & Technologie",
+    featuredImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
   },
   {
-    id: "2",
-    title: "Placeholder vraag 2?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "sustainable-web-design",
+    title: "Duurzaam webdesign: Waarom het belangrijk is",
+    excerpt: "Leer hoe je websites kunt bouwen die niet alleen mooi zijn, maar ook vriendelijk voor het milieu.",
+    date: "2025-03-10",
+    category: "Webdesign",
+    featuredImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
   },
   {
-    id: "3",
-    title: "Placeholder vraag 3?",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    slug: "react-19-features",
+    title: "React 19: De belangrijkste nieuwe features",
+    excerpt: "Een diepgaande analyse van de nieuwste React versie en wat dit betekent voor developers.",
+    date: "2025-03-05",
+    category: "Development",
   },
   {
-    id: "4",
-    title: "Placeholder vraag 4?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "minimalist-portfolio",
+    title: "Minimalisme in portfolio design",
+    excerpt: "Waarom minder vaak meer is als het gaat om het presenteren van je werk online.",
+    date: "2025-02-28",
+    category: "Design",
+    featuredImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop",
   },
   {
-    id: "5",
-    title: "Placeholder vraag 5?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "typescript-tips",
+    title: "10 TypeScript tips voor betere code",
+    excerpt: "Praktische tips om je TypeScript code robuuster en onderhoudbaarder te maken.",
+    date: "2025-02-20",
+    category: "Development",
+    featuredImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop",
   },
   {
-    id: "6",
-    title: "Placeholder vraag 6?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "ui-animation-principles",
+    title: "Animaties die je UX verbeteren",
+    excerpt: "Leer de principes van goede UI animaties en wanneer je ze wel (en niet) moet gebruiken.",
+    date: "2025-02-15",
+    category: "Design",
   },
   {
-    id: "7",
-    title: "Placeholder vraag 7?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "nextjs-performance",
+    title: "Next.js performance optimalisatie",
+    excerpt: "Concrete stappen om je Next.js applicatie sneller te maken voor betere gebruikerservaring.",
+    date: "2025-02-10",
+    category: "Development",
+    featuredImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
   },
   {
-    id: "8",
-    title: "Placeholder vraag 8?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte content in.",
+    slug: "color-theory-web",
+    title: "Kleurtheorie voor webdesigners",
+    excerpt: "Ontdek hoe je kleur effectief inzet om emotie en hiërarchie te creëren in je designs.",
+    date: "2025-02-05",
+    category: "Design",
+    featuredImage: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop",
+  },
+  {
+    slug: "accessibility-matters",
+    title: "Toegankelijkheid is geen optie",
+    excerpt: "Waarom elke website toegankelijk moet zijn en hoe je dit bereikt zonder concessies te doen aan design.",
+    date: "2025-01-30",
+    category: "Webdesign",
+  },
+  {
+    slug: "framer-motion-guide",
+    title: "Motion design met Framer Motion",
+    excerpt: "Een complete gids voor het bouwen van soepele, professionele animaties in React applicaties.",
+    date: "2025-01-25",
+    category: "Development",
+    featuredImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop",
+  },
+  {
+    slug: "three-js-beginners",
+    title: "3D op het web: Three.js voor beginners",
+    excerpt: "Stap voor stap leren hoe je interactieve 3D experiences bouwt met Three.js en React.",
+    date: "2025-01-20",
+    category: "Development",
+  },
+  {
+    slug: "design-systems",
+    title: "Design systems die echt werken",
+    excerpt: "Hoe je een design system opzet dat teams helpt consistente producten te bouwen.",
+    date: "2025-01-15",
+    category: "Design",
+    featuredImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
   },
 ];
 
-function BentoDemo() {
+function BlogPage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
       ref={pageRef}
-      className="min-h-screen"
+      className="min-h-screen pb-32"
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
       <StickyHeader
@@ -73,55 +117,18 @@ function BentoDemo() {
         hoverColor="hsl(141 78.9% 85.1%)"
         startExpanded={true}
       />
-      <div className="mx-auto max-w-5xl p-6 lg:p-10">
-        {/* Sectie Cards */}
-        <TimelineContent
-          animationNum={1}
-          timelineRef={pageRef}
-          once={true}
-        >
-          <div className="mt-16 space-y-8">
-            <SectionCard
-              id="simpel-uitgelegd"
-              title="Simpel uitgelegd"
-              description="Complexe concepten begrijpelijk gemaakt voor iedereen."
-              Icon={PersonIcon}
-            />
-            <SectionCard
-              id="faq"
-              title="FAQ"
-              description="Antwoord op de meeste vragen omtrent dit onderwerp."
-              Icon={FileTextIcon}
-            >
-              <Accordion05 items={faqItems} />
-            </SectionCard>
-            <SectionCard
-              id="visueel"
-              title="Visueel materiaal"
-              description="Om het nog simpeler te maken!"
-              Icon={VideoIcon}
-            />
-            <SectionCard
-              id="stack"
-              title="Stack met"
-              description="Werkt goed samen met deze andere mogelijkheden."
-              Icon={LayersIcon}
-            />
-            <SectionCard
-              id="in-detail"
-              title="In detail"
-              description="Technische uitleg voor wie meer wil weten en wat te vertellen wil hebben bij het koffieautomaat."
-              Icon={MagnifyingGlassIcon}
-            />
-          </div>
-        </TimelineContent>
 
-        {/* Extra ruimte voor scroll testen */}
-        <div className="h-[200vh]" />
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-32">
+        <MasonryGrid>
+          {blogPosts.map((post, index) => (
+            <BlogPostCard key={post.slug} {...post} index={index} />
+          ))}
+        </MasonryGrid>
       </div>
+
       <StickyFooter />
     </div>
   );
 }
 
-export default BentoDemo;
+export default BlogPage;
