@@ -51,7 +51,14 @@
       "WebFetch(domain:21st.dev)",
       "Skill(youtube-transcript)",
       "Bash(python -m yt_dlp:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(npm i:*)",
+      "Skill(superpowers:brainstorming)",
+      "Skill(superpowers:brainstorming:*)",
+      "Bash(npx playwright screenshot:*)",
+      "Bash(npx playwright install webkit)",
+      "Bash(test:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []
