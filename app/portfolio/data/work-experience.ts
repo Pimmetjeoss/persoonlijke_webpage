@@ -33,6 +33,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
   },
   {
+    id: "blog",
+    company: "BLOG",
+    role: "ARTIKELEN & INSIGHTS",
+    period: "",
+    description: "Lees mijn laatste blogartikelen over AI en automatisering.",
+    highlights: [],
+  },
+  {
     id: "social-media-sales",
     company: "SOCIAL MEDIA - SALES",
     role: "SOCIAL MEDIA AUTOMATISERING",

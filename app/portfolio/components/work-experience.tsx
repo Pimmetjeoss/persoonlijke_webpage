@@ -20,6 +20,7 @@ export function WorkExperience() {
     router.prefetch('/about-me!')
     router.prefetch('/contact')
     router.prefetch('/faq')
+    router.prefetch('/blog')
     router.prefetch('/social-media-sales')
     router.prefetch('/managementrapportage-excel')
     router.prefetch('/crm')
@@ -35,7 +36,7 @@ export function WorkExperience() {
     router.prefetch('/website')
   }, [router])
 
-  // Hover colors from kleuren.txt - speels door elkaar gemixed voor 16 items
+  // Hover colors from kleuren.txt - speels door elkaar gemixed voor 17 items
   const hoverColors = [
     "hsl(141.9 69.2% 58%)",   // #7 - medium groen
     "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker
@@ -53,11 +54,12 @@ export function WorkExperience() {
     "hsl(142.1 70.6% 45.3%)", // #6 - medium
     "hsl(144.9 80.4% 10%)",   // #1 - donkerste (herhaald)
     "hsl(141.7 76.6% 73.1%)", // #8 - licht (herhaald)
+    "hsl(142.4 71.8% 29.2%)", // #4 - donker (herhaald voor 17e item)
   ]
 
   // Donkere kleuren (lightness < 30%) krijgen lichte tekst bij hover
-  // Indices: 1, 3, 5, 7, 9, 11, 14 hebben donkere achtergronden
-  const darkIndices = [1, 3, 5, 7, 9, 11, 14]
+  // Indices: 1, 3, 5, 7, 9, 11, 14, 16 hebben donkere achtergronden
+  const darkIndices = [1, 3, 5, 7, 9, 11, 14, 16]
   const getTextColor = (index: number, isHovered: boolean) => {
     if (isHovered && darkIndices.includes(index)) {
       return "hsl(138.5 76.5% 96.7%)" // lichtste groen voor contrast
@@ -71,6 +73,7 @@ export function WorkExperience() {
       "about-me": "/about-me!",
       "contact": "/contact",
       "faq": "/faq",
+      "blog": "/blog",
       "social-media-sales": "/social-media-sales",
       "managementrapportage-excel": "/managementrapportage-excel",
       "crm": "/crm",
