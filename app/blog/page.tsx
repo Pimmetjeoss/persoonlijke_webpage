@@ -9,7 +9,6 @@ import {
   VideoIcon,
 } from "@radix-ui/react-icons";
 
-import { BentoCard, BentoGrid } from "./components/bento-grid";
 import { SectionCard } from "./components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
@@ -59,59 +58,6 @@ const faqItems: FAQItem[] = [
   },
 ];
 
-const features = [
-  {
-    Icon: PersonIcon,
-    name: "Simpel uitgelegd",
-    description: "Complexe concepten begrijpelijk gemaakt voor iedereen.",
-    href: "#simpel-uitgelegd",
-    cta: "",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-    hoverColor: "hsl(143.8 61.2% 20.2%)",
-  },
-  {
-    Icon: FileTextIcon,
-    name: "FAQ",
-    description: "Antwoord op de meeste vragen omtrent dit onderwerp.",
-    href: "#faq",
-    cta: "Stel je vraag!",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
-    hoverColor: "hsl(141.7 76.6% 73.1%)",
-  },
-  {
-    Icon: VideoIcon,
-    name: "Visueel materiaal",
-    description: "Om het nog simpeler te maken!",
-    href: "#visueel",
-    cta: "Veel kijkplezier!",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
-    hoverColor: "hsl(141.9 69.2% 58%)",
-  },
-  {
-    Icon: LayersIcon,
-    name: "Stack met",
-    description: "Werkt goed samen met deze andere mogelijkheden.",
-    href: "#stack",
-    cta: "Pak die combideal!",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-    hoverColor: "hsl(142.1 76.2% 36.3%)",
-  },
-  {
-    Icon: MagnifyingGlassIcon,
-    name: "In detail",
-    description: "Technische uitleg voor wie meer wil weten en wat te vertellen wil hebben bij het koffieautomaat.",
-    href: "#in-detail",
-    cta: "Verdiep je",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
-    hoverColor: "hsl(142.1 70.6% 45.3%)",
-  },
-];
-
 function BentoDemo() {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -122,27 +68,15 @@ function BentoDemo() {
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
       <StickyHeader
-        title="TEST"
+        title="BLOG"
         backgroundColor="hsl(140.6 84.2% 92.5%)"
         hoverColor="hsl(141 78.9% 85.1%)"
         startExpanded={true}
       />
       <div className="mx-auto max-w-5xl p-6 lg:p-10">
-        <TimelineContent
-          animationNum={1}
-          timelineRef={pageRef}
-          once={true}
-        >
-          <BentoGrid className="lg:grid-rows-3">
-            {features.map((feature) => (
-              <BentoCard key={feature.name} {...feature} />
-            ))}
-          </BentoGrid>
-        </TimelineContent>
-
         {/* Sectie Cards */}
         <TimelineContent
-          animationNum={2}
+          animationNum={1}
           timelineRef={pageRef}
           once={true}
         >
