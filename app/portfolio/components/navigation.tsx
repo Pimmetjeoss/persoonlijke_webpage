@@ -33,7 +33,7 @@ export function Navigation({ onPlayClick }: NavigationProps) {
           {/* Left - Logo/Name */}
           <Link
             href="/"
-            className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-[3px] rounded-full transition-all"
+            className="flex flex-col items-center px-8 py-3 border-[3px] rounded-full transition-all"
             style={{
               backgroundColor: isScrolledHalfway ? activeColor : defaultBg,
               color: isScrolledHalfway ? 'white' : defaultText,
@@ -48,14 +48,15 @@ export function Navigation({ onPlayClick }: NavigationProps) {
               e.currentTarget.style.color = isScrolledHalfway ? 'white' : defaultText
             }}
           >
-            CODE LIESHOUT
+            <span className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight">CODE LIESHOUT</span>
+            <span className="text-lg md:text-xl -mt-1 text-black" style={{ fontFamily: "var(--font-homemade-apple)" }}>ai oplossingen</span>
           </Link>
 
           {/* Right - Navigation buttons */}
           <div className="flex items-center gap-4">
             <button
               onClick={onPlayClick}
-              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 border-[3px] rounded-full transition-all cursor-pointer"
+              className="text-xl md:text-2xl lg:text-3xl font-bold px-16 py-6 border-[3px] rounded-full transition-all cursor-pointer"
               style={{
                 backgroundColor: isScrolledHalfway ? activeColor : defaultBg,
                 color: isScrolledHalfway ? 'white' : defaultText,

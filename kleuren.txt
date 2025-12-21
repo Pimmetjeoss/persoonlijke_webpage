@@ -9,3 +9,10 @@
 141 78.9% 85.1%
 140.6 84.2% 92.5%
 138.5 76.5% 96.7%
+
+141, 78.9%, 85.1% = achtergrondkleur
+
+
+Fjalla One = lettertype website
+
+Homemade Apple = ai oplossingen 

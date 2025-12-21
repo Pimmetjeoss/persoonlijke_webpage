@@ -17,37 +17,75 @@ export function WorkExperience() {
 
   // Prefetch routes for faster transitions
   useEffect(() => {
-    router.prefetch('/ai-agents')
     router.prefetch('/about-me!')
-    router.prefetch('/MCP-server')
-    router.prefetch('/website')
     router.prefetch('/contact')
-    router.prefetch('/test')
+    router.prefetch('/faq')
+    router.prefetch('/social-media-sales')
+    router.prefetch('/managementrapportage-excel')
+    router.prefetch('/crm')
+    router.prefetch('/vergaderen-notulen')
+    router.prefetch('/personeelsplanning')
+    router.prefetch('/your-own-chatgpt')
+    router.prefetch('/power-bi-agent')
+    router.prefetch('/database')
+    router.prefetch('/managementrapportage-powerpoint')
+    router.prefetch('/marketing-1')
+    router.prefetch('/marketing-2')
+    router.prefetch('/ai-agents')
+    router.prefetch('/website')
   }, [router])
 
-  // Hover colors from kleuren.txt - speels door elkaar gemixed
+  // Hover colors from kleuren.txt - speels door elkaar gemixed voor 16 items
   const hoverColors = [
-    "hsl(141.9 69.2% 58%)",   // #7 - medium
-    "hsl(138.5 76.5% 96.7%)", // #11 - lichtste
-    "hsl(142.4 71.8% 29.2%)", // #4 - donker
-    "hsl(141.7 76.6% 73.1%)", // #8 - licht
-    "hsl(144.9 80.4% 10%)",   // #1 - donkerste (CONTACT)
+    "hsl(141.9 69.2% 58%)",   // #7 - medium groen
+    "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker
     "hsl(141 78.9% 85.1%)",   // #9 - zeer licht
+    "hsl(142.4 71.8% 29.2%)", // #4 - donker
+    "hsl(138.5 76.5% 96.7%)", // #11 - lichtste
+    "hsl(144.9 80.4% 10%)",   // #1 - donkerste
+    "hsl(141.7 76.6% 73.1%)", // #8 - licht
     "hsl(142.8 64.2% 24.1%)", // #3 - donker
     "hsl(140.6 84.2% 92.5%)", // #10 - bijna lichtste
     "hsl(142.1 76.2% 36.3%)", // #5 - medium donker
-    "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker (ITEM 10)
+    "hsl(141.9 69.2% 58%)",   // #7 - medium groen (herhaald)
+    "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker (herhaald)
+    "hsl(141 78.9% 85.1%)",   // #9 - zeer licht (herhaald)
     "hsl(142.1 70.6% 45.3%)", // #6 - medium
+    "hsl(144.9 80.4% 10%)",   // #1 - donkerste (herhaald)
     "hsl(141.7 76.6% 73.1%)", // #8 - licht (herhaald)
   ]
 
   // Donkere kleuren (lightness < 30%) krijgen lichte tekst bij hover
-  const darkIndices = [2, 4, 6, 9] // indices met donkere achtergrond
+  // Indices: 1, 3, 5, 7, 9, 11, 14 hebben donkere achtergronden
+  const darkIndices = [1, 3, 5, 7, 9, 11, 14]
   const getTextColor = (index: number, isHovered: boolean) => {
     if (isHovered && darkIndices.includes(index)) {
       return "hsl(138.5 76.5% 96.7%)" // lichtste groen voor contrast
     }
     return "hsl(144.9 80.4% 10%)" // donkerste groen (standaard)
+  }
+
+  // Route mapping voor alle items
+  const getRoute = (id: string): string | null => {
+    const routes: Record<string, string> = {
+      "about-me": "/about-me!",
+      "contact": "/contact",
+      "faq": "/faq",
+      "social-media-sales": "/social-media-sales",
+      "managementrapportage-excel": "/managementrapportage-excel",
+      "crm": "/crm",
+      "vergaderen-notulen": "/vergaderen-notulen",
+      "personeelsplanning": "/personeelsplanning",
+      "your-own-chatgpt": "/your-own-chatgpt",
+      "power-bi-agent": "/power-bi-agent",
+      "database": "/database",
+      "managementrapportage-powerpoint": "/managementrapportage-powerpoint",
+      "marketing-1": "/marketing-1",
+      "marketing-2": "/marketing-2",
+      "agents": "/ai-agents",
+      "website": "/website",
+    }
+    return routes[id] || null
   }
 
   return (
@@ -86,18 +124,13 @@ export function WorkExperience() {
               >
               <div
                 onClick={() => {
-                  if (experience.id === "ai-agents") startTransition("/ai-agents");
-                  if (experience.id === "about-me") startTransition("/about-me!");
-                  if (experience.id === "mcp-server") startTransition("/MCP-server");
-                  if (experience.id === "website") startTransition("/website");
-                  if (experience.id === "contact") startTransition("/contact");
-                  if (experience.id === "lyft") startTransition("/test");
+                  const route = getRoute(experience.id)
+                  if (route) startTransition(route)
                 }}
-                className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full"
+                className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full cursor-pointer"
                 style={{
                   zIndex: hoveredIndex === index ? 50 : 1,
                   backgroundColor: hoveredIndex === index ? hoverColors[index] : 'hsl(140.6 84.2% 92.5%)',
-                  cursor: (experience.id === "ai-agents" || experience.id === "about-me" || experience.id === "mcp-server" || experience.id === "website" || experience.id === "contact" || experience.id === "lyft") ? 'pointer' : 'default',
                 }}
               >
                 <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">
