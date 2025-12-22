@@ -1,10 +1,12 @@
 "use client"
 
+import { useRef } from "react";
 import { FileTextIcon } from "@radix-ui/react-icons";
 import { SectionCard } from "./components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
 import { Accordion05, FAQItem } from "./components/accordion-05";
+import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
 
 const faqItems: FAQItem[] = [
   {
@@ -50,8 +52,11 @@ const faqItems: FAQItem[] = [
 ];
 
 function FAQPage() {
+  const pageRef = useRef<HTMLDivElement>(null);
+
   return (
     <div
+      ref={pageRef}
       className="min-h-screen"
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
@@ -62,34 +67,40 @@ function FAQPage() {
         startExpanded={true}
       />
       <div className="mx-auto max-w-5xl p-6 lg:p-10">
-        <div className="space-y-8">
-          <SectionCard
-            id="faq"
-            title="FAQ"
-            description="Antwoord op de meeste vragen omtrent dit onderwerp."
-            Icon={FileTextIcon}
-          >
-            <Accordion05 items={faqItems} />
-          </SectionCard>
+        <TimelineContent
+          animationNum={1}
+          timelineRef={pageRef}
+          once={true}
+        >
+          <div className="space-y-8">
+            <SectionCard
+              id="faq"
+              title="FAQ"
+              description="Antwoord op de meeste vragen omtrent dit onderwerp."
+              Icon={FileTextIcon}
+            >
+              <Accordion05 items={faqItems} />
+            </SectionCard>
 
-          <SectionCard
-            id="faq-2"
-            title="FAQ"
-            description="Antwoord op de meeste vragen omtrent dit onderwerp."
-            Icon={FileTextIcon}
-          >
-            <Accordion05 items={faqItems} />
-          </SectionCard>
+            <SectionCard
+              id="faq-2"
+              title="FAQ"
+              description="Antwoord op de meeste vragen omtrent dit onderwerp."
+              Icon={FileTextIcon}
+            >
+              <Accordion05 items={faqItems} />
+            </SectionCard>
 
-          <SectionCard
-            id="faq-3"
-            title="FAQ"
-            description="Antwoord op de meeste vragen omtrent dit onderwerp."
-            Icon={FileTextIcon}
-          >
-            <Accordion05 items={faqItems} />
-          </SectionCard>
-        </div>
+            <SectionCard
+              id="faq-3"
+              title="FAQ"
+              description="Antwoord op de meeste vragen omtrent dit onderwerp."
+              Icon={FileTextIcon}
+            >
+              <Accordion05 items={faqItems} />
+            </SectionCard>
+          </div>
+        </TimelineContent>
 
         {/* Extra ruimte voor scroll testen */}
         <div className="h-[200vh]" />
