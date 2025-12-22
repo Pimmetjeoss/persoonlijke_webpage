@@ -6,12 +6,14 @@ import homeAnimation from "@/public/animations/home.json"
 import emailAnimation from "@/public/animations/email.json"
 import instagramAnimation from "@/public/animations/instagram.json"
 import linkedinAnimation from "@/public/animations/linkedin.json"
+import whatsappAnimation from "@/public/animations/Whatsapp.json"
 
 export function StickyFooter() {
   const homeRef = useRef<LottieRefCurrentProps>(null)
   const emailRef = useRef<LottieRefCurrentProps>(null)
   const instagramRef = useRef<LottieRefCurrentProps>(null)
   const linkedinRef = useRef<LottieRefCurrentProps>(null)
+  const whatsappRef = useRef<LottieRefCurrentProps>(null)
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white w-full py-2 px-4 md:px-8 lg:px-16 border-t-2 border-black z-50">
@@ -88,6 +90,26 @@ export function StickyFooter() {
               loop={true}
               autoplay={false}
             />
+          </a>
+          <a
+            href="#"
+            className="w-6 h-6 md:w-8 md:h-8 cursor-pointer flex items-center justify-center"
+            onMouseEnter={() => {
+              if (whatsappRef.current) {
+                whatsappRef.current.setSpeed(0.5)
+                whatsappRef.current.play()
+              }
+            }}
+            onMouseLeave={() => whatsappRef.current?.stop()}
+          >
+            <div className="w-5 h-5 md:w-7 md:h-7">
+              <Lottie
+                lottieRef={whatsappRef}
+                animationData={whatsappAnimation}
+                loop={true}
+                autoplay={false}
+              />
+            </div>
           </a>
         </div>
 
