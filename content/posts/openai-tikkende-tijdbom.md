@@ -3,7 +3,6 @@ title: "Waarom OpenAI's Nieuwste Model Een Tikkende Tijdbom Onthult"
 date: "2025-12-21"
 category: "AI & Technologie"
 excerpt: "De recente release van GPT-5.2 onthult meer dan een model update - het legt OpenAI's precaire financiële positie bloot in een race tegen de klok."
-featuredImage: "/blog/images/Waarom OpenAI's Nieuwste Model Een Tikkende Tijdbom Onthult.png"
 ---
 
 # Waarom OpenAI's Nieuwste Model Een Tikkende Tijdbom Onthult

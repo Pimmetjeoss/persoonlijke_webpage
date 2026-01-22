@@ -260,26 +260,28 @@ export default function HorizontalScroll() {
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center youtube-section' style={{ backgroundColor: 'hsl(143.8, 61.2%, 20.2%)' }}>
-                <span className='relative inline-block'>
-                  <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
-                    Youtube
-                  </h1>
+                <a href="https://www.youtube.com/channel/UCY58wz5iIWjZkbHxiQmCSXA" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer">
+                  <span className='relative inline-block'>
+                    <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
+                      Youtube
+                    </h1>
+                    <span
+                      className='youtube-underline absolute left-0 bottom-0 w-full h-3 md:h-4'
+                      style={{
+                        backgroundColor: 'hsl(141, 78.9%, 85.1%)',
+                        transform: 'scaleX(0)',
+                        transformOrigin: 'left',
+                        transition: 'transform 0.6s ease-out'
+                      }}
+                    />
+                  </span>
                   <span
-                    className='youtube-underline absolute left-0 bottom-0 w-full h-3 md:h-4'
-                    style={{
-                      backgroundColor: 'hsl(141, 78.9%, 85.1%)',
-                      transform: 'scaleX(0)',
-                      transformOrigin: 'left',
-                      transition: 'transform 0.6s ease-out'
-                    }}
-                  />
-                </span>
-                <span
-                  className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2'
-                  style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
-                >
-                  Alle filmpjes.
-                </span>
+                    className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2'
+                    style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
+                  >
+                    Alle filmpjes.
+                  </span>
+                </a>
                 <Image
                   src="/cactus_youtube.png"
                   alt="Cactus met YouTube"
@@ -289,21 +291,23 @@ export default function HorizontalScroll() {
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(144.9, 80.4%, 10%)' }}>
-                <span
-                  className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2'
-                  style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
-                >
-                  Social 2
-                </span>
-                <h1
-                  className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block border-4 rounded-2xl px-8 py-4'
-                  style={{
-                    color: 'hsl(141, 78.9%, 85.1%)',
-                    borderColor: 'hsl(141, 78.9%, 85.1%)'
-                  }}
-                >
-                  LinkedIn
-                </h1>
+                <a href="https://www.linkedin.com/company/code-lieshout/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer">
+                  <span
+                    className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2'
+                    style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
+                  >
+                    Social 2
+                  </span>
+                  <h1
+                    className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block border-4 rounded-2xl px-8 py-4'
+                    style={{
+                      color: 'hsl(141, 78.9%, 85.1%)',
+                      borderColor: 'hsl(141, 78.9%, 85.1%)'
+                    }}
+                  >
+                    LinkedIn
+                  </h1>
+                </a>
                 <Image
                   src="/cactus_linkedin.png"
                   alt="Cactus met LinkedIn"

@@ -3,7 +3,6 @@ title: "DeepSeek-OCR: Van Tekst naar Beeld"
 date: "2025-10-20"
 category: "AI & Technologie"
 excerpt: "De bewering van 10x compressie klinkt onmogelijk. De waarheid is subtieler - en revolutionair: AI die visueel denkt in plaats van in woorden."
-featuredImage: "/blog/images/DeepSeek Van Tekst naar Beeld.png"
 ---
 
 # DeepSeek-OCR: Van Tekst naar Beeld

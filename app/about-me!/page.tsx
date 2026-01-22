@@ -71,10 +71,10 @@ function index() {
                 className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors'
                 style={{ color: 'hsl(141.7, 76.6%, 73.1%)' }}
               >
-                Pimplify
+                Code Lieshout
               </button>
               <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                . Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
+                . Met Code Lieshout wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
               </span>
               <button
                 onClick={() => revealSection(5)}

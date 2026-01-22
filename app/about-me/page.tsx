@@ -42,10 +42,10 @@ export default function AboutMe() {
     { id: 'passion', text: 'Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen.', stage: 3, clickable: false },
     { id: 'founder', text: 'Daarom ben ik', stage: 3, clickable: false },
     { id: 'founder-visible', text: 'oprichter van', stage: 0, clickable: false },
-    { id: 'pimplify', text: 'Pimplify.', stage: 0, clickable: true, trigger: 'stage4' },
+    { id: 'pimplify', text: 'Code Lieshout.', stage: 0, clickable: true, trigger: 'stage4' },
 
-    // Stage 4: After clicking "Pimplify"
-    { id: 'mission', text: 'Met Pimplify wil ik bedrijven helpen op een persoonlijke en pragmatische manier.', stage: 4, clickable: false },
+    // Stage 4: After clicking "Code Lieshout"
+    { id: 'mission', text: 'Met Code Lieshout wil ik bedrijven helpen op een persoonlijke en pragmatische manier.', stage: 4, clickable: false },
     { id: 'value-prop', text: 'Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van', stage: 4, clickable: false },
     { id: 'ai-agents', text: 'AI en agents', stage: 4, clickable: true, trigger: 'stage5' },
 

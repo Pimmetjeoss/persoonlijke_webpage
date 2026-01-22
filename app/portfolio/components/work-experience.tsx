@@ -19,21 +19,8 @@ export function WorkExperience() {
   useEffect(() => {
     router.prefetch('/about-me!')
     router.prefetch('/contact')
-    router.prefetch('/FAQ')
     router.prefetch('/blog')
-    router.prefetch('/social-media-sales')
-    router.prefetch('/managementrapportage-excel')
-    router.prefetch('/crm')
-    router.prefetch('/vergaderen-notulen')
-    router.prefetch('/personeelsplanning')
-    router.prefetch('/your-own-chatgpt')
-    router.prefetch('/power-bi-agent')
-    router.prefetch('/database')
-    router.prefetch('/managementrapportage-powerpoint')
-    router.prefetch('/marketing-1')
-    router.prefetch('/marketing-2')
-    router.prefetch('/ai-agents')
-    router.prefetch('/website')
+    router.prefetch('/under-construction')
   }, [router])
 
   // Hover colors from kleuren.txt - speels door elkaar gemixed voor 17 items
@@ -68,27 +55,13 @@ export function WorkExperience() {
   }
 
   // Route mapping voor alle items
-  const getRoute = (id: string): string | null => {
+  const getRoute = (id: string): string => {
     const routes: Record<string, string> = {
       "about-me": "/about-me!",
       "contact": "/contact",
-      "faq": "/FAQ",
       "blog": "/blog",
-      "social-media-sales": "/social-media-sales",
-      "managementrapportage-excel": "/managementrapportage-excel",
-      "crm": "/crm",
-      "vergaderen-notulen": "/vergaderen-notulen",
-      "personeelsplanning": "/personeelsplanning",
-      "your-own-chatgpt": "/your-own-chatgpt",
-      "power-bi-agent": "/power-bi-agent",
-      "database": "/database",
-      "managementrapportage-powerpoint": "/managementrapportage-powerpoint",
-      "marketing-1": "/marketing-1",
-      "marketing-2": "/marketing-2",
-      "agents": "/ai-agents",
-      "website": "/website",
     }
-    return routes[id] || null
+    return routes[id] || "/under-construction"
   }
 
   return (

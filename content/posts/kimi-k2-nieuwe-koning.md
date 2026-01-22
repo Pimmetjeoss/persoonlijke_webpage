@@ -3,7 +3,6 @@ title: "Kimi K2 Thinking: De Nieuwe Koning van AI"
 date: "2025-11-08"
 category: "AI & Technologie"
 excerpt: "Een Chinees model verscheurt het script: topprestaties, open-source én radicale efficiëntie. De gevestigde orde is van de troon gestoten."
-featuredImage: "/blog/images/Kimi K2 Thinking - De nieuwe koning van AI.png"
 ---
 
 # Kimi K2 Thinking: De Nieuwe Koning van AI
