@@ -42,11 +42,11 @@ export default function UnderConstruction() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
               style={{ color: "hsl(144.9 80.4% 10%)" }}
             >
-              Dit project is al gerealiseerd, maar deze pagina is nog in de maak.
-              Door de vele andere projecten ben ik er nog niet aan toegekomen om
-              hier een mooie showcase van te maken.
+              Deze pagina is nog in de maak, maar het project zelf is ontwikkeld
+              en klaar voor implementatie. Ik ben nog op zoek naar een bedrijf
+              waar ik het kan inzetten.
               <br /><br />
-              Wil je meer weten over dit project?{" "}
+              Geïnteresseerd of wil je meer weten?{" "}
               <span
                 onClick={() => startTransition("/contact")}
                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
