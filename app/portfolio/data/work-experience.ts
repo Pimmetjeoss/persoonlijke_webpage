@@ -57,6 +57,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
   },
   {
+    id: "database",
+    company: "DATABASE",
+    role: "DATABASE BEHEER",
+    period: "",
+    description: "Intelligente database oplossingen.",
+    highlights: [],
+  },
+  {
     id: "social-media-sales",
     company: "SOCIAL MEDIA - SALES",
     role: "SOCIAL MEDIA AUTOMATISERING",
@@ -110,14 +118,6 @@ export const workExperiences: WorkExperience[] = [
     role: "DATA VISUALISATIE",
     period: "",
     description: "AI-gestuurde Power BI dashboards.",
-    highlights: [],
-  },
-  {
-    id: "database",
-    company: "DATABASE",
-    role: "DATABASE BEHEER",
-    period: "",
-    description: "Intelligente database oplossingen.",
     highlights: [],
   },
   {
