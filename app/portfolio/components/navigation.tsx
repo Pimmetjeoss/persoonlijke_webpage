@@ -49,7 +49,7 @@ export function Navigation({ onPlayClick }: NavigationProps) {
             }}
           >
             <span className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight">CODE LIESHOUT</span>
-            <span className="text-lg md:text-xl -mt-1 text-black" style={{ fontFamily: "var(--font-homemade-apple)" }}>ai oplossingen</span>
+            <span className="text-xs md:text-xl -mt-1 text-black" style={{ fontFamily: "var(--font-homemade-apple)" }}>ai oplossingen</span>
           </Link>
 
           {/* Right - Navigation buttons */}
