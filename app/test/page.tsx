@@ -67,7 +67,7 @@ const features = [
     href: "#simpel-uitgelegd",
     cta: "",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    className: "col-span-2 lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
     hoverColor: "hsl(143.8 61.2% 20.2%)",
   },
   {
@@ -77,7 +77,7 @@ const features = [
     href: "#faq",
     cta: "Stel je vraag!",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+    className: "col-span-1 lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
     hoverColor: "hsl(141.7 76.6% 73.1%)",
   },
   {
@@ -87,7 +87,7 @@ const features = [
     href: "#visueel",
     cta: "Veel kijkplezier!",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+    className: "col-span-1 lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
     hoverColor: "hsl(141.9 69.2% 58%)",
   },
   {
@@ -97,7 +97,7 @@ const features = [
     href: "#stack",
     cta: "Pak die combideal!",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+    className: "col-span-1 lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
     hoverColor: "hsl(142.1 76.2% 36.3%)",
   },
   {
@@ -107,7 +107,7 @@ const features = [
     href: "#in-detail",
     cta: "Verdiep je",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+    className: "col-span-1 lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
     hoverColor: "hsl(142.1 70.6% 45.3%)",
   },
 ];

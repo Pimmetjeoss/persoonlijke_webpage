@@ -26,7 +26,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[8rem] grid-cols-3 gap-4",
+        "grid w-full auto-rows-[8rem] grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4",
         className
       )}
       {...props}
@@ -49,11 +49,15 @@ const BentoCard = ({
 }: BentoCardProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
+  const handleCardClick = () => {
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
+      "group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-xl cursor-pointer",
       "border-[3px]",
       "[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
       "dark:[box-shadow:0_0_0_1px_rgba(255,255,255,.05),0_2px_4px_rgba(0,0,0,.2),0_12px_24px_rgba(0,0,0,.2)]",
@@ -66,6 +70,7 @@ const BentoCard = ({
     }}
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
+    onClick={handleCardClick}
     {...props}
   >
     <div>{background}</div>
@@ -82,7 +87,7 @@ const BentoCard = ({
           {name}
         </h3>
         <p
-          className="max-w-lg transition-colors duration-300"
+          className="hidden lg:block max-w-lg transition-colors duration-300"
           style={{ color: isHovered ? "rgba(255,255,255,0.8)" : "rgb(163 163 163)" }}
         >
           {description}
