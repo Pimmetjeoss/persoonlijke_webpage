@@ -56,7 +56,7 @@ export function Navigation({ onPlayClick }: NavigationProps) {
           <div className="flex items-center gap-4">
             <button
               onClick={onPlayClick}
-              className="text-xl md:text-2xl lg:text-3xl font-bold px-16 py-6 border-[3px] rounded-full transition-all cursor-pointer"
+              className="text-xl md:text-2xl lg:text-3xl font-bold px-8 py-3 md:px-16 md:py-6 border-[3px] rounded-full transition-all cursor-pointer"
               style={{
                 backgroundColor: isScrolledHalfway ? activeColor : defaultBg,
                 color: isScrolledHalfway ? 'white' : defaultText,
