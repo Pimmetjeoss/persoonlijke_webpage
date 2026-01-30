@@ -67,7 +67,7 @@ const features = [
     href: "#simpel-uitgelegd",
     cta: "",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "col-span-2 row-span-2 lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    className: "col-span-2 lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
     hoverColor: "hsl(143.8 61.2% 20.2%)",
   },
   {
