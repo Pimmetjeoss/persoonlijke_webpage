@@ -214,11 +214,53 @@ export default function DatabasePage() {
               description="Zie hoe het werkt in de praktijk."
               Icon={VideoIcon}
             >
-              <div className="space-y-4 text-neutral-700">
-                <p>Binnenkort beschikbaar: een live demo waarin je ziet hoe een AI-agent vragen beantwoordt uit een echte database.</p>
-                <div className="p-4 bg-neutral-100 rounded-lg">
-                  <p className="italic">"Hoeveel nieuwe klanten hadden we deze maand vergeleken met vorige maand?"</p>
-                  <p className="mt-2 text-sm">→ De AI doorzoekt de database, vergelijkt de periodes, en geeft een helder antwoord met context.</p>
+              <div className="space-y-6 text-neutral-700">
+                <p>Bekijk hoe een AI-agent in actie werkt met een echte database:</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/KR92VAS8r18"
+                      title="Interactief dashboard"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/FSadQhfawrE"
+                      title="Diepere analyse"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/p7s_amHn91o"
+                      title="Diepe analyse"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/lkpMPynYnP8"
+                      title="Database opzoeken"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-sm">
+                  <div className="p-2 bg-neutral-100 rounded-lg font-medium">📊 Interactief dashboard</div>
+                  <div className="p-2 bg-neutral-100 rounded-lg font-medium">🔍 Diepere analyse</div>
+                  <div className="p-2 bg-neutral-100 rounded-lg font-medium">📈 Diepe analyse</div>
+                  <div className="p-2 bg-neutral-100 rounded-lg font-medium">🗄️ Database opzoeken</div>
                 </div>
               </div>
             </SectionCard>
