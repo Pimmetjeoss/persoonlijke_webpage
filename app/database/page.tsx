@@ -191,6 +191,11 @@ export default function DatabasePage() {
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>📖 Data storytelling</h4>
                   <p>Cijfers zijn saai. Verhalen niet. De AI vertaalt je data naar begrijpelijke inzichten: "De omzet steeg 15% doordat klanten in de leeftijd 25-34 vaker terugkwamen na onze zomercampagne." Context die iedereen snapt.</p>
                 </div>
+
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>✏️ Interactie: ook data invoeren</h4>
+                  <p>Niet alleen lezen, ook schrijven. Zeg tegen de AI: "Voeg een nieuwe klant toe: Bedrijf X, contact Jan, telefoon 06-12345678." Of: "Update de status van order #1234 naar verzonden." De AI voert het uit in je database — met jouw goedkeuring. Twee-richtingsverkeer, volledig gecontroleerd.</p>
+                </div>
               </div>
             </SectionCard>
 
