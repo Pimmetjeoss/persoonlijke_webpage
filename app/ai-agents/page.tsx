@@ -230,9 +230,68 @@ export default function AIAgentsPage() {
             <SectionCard
               id="integraties"
               title="Integraties"
-              description="AI Agents werken naadloos samen met je bestaande tools: Google Workspace, Microsoft 365, Slack, Notion, CRM-systemen, databases, en meer. Geen complete systeemvervanging nodig — agents passen zich aan jouw workflow aan."
+              description="AI Agents passen zich aan jouw workflow aan — geen complete systeemvervanging nodig."
               Icon={LayersIcon}
-            />
+            >
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>📊 Productiviteit & Documenten</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    {["Google Workspace", "Microsoft 365", "Notion", "Airtable", "Google Drive", "Dropbox", "OneDrive", "Confluence"].map((tool) => (
+                      <div key={tool} className="p-2 text-center text-sm rounded-lg bg-neutral-100">{tool}</div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>💬 Communicatie</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    {["Slack", "Microsoft Teams", "Discord", "WhatsApp", "Gmail", "Outlook", "Telegram", "Intercom"].map((tool) => (
+                      <div key={tool} className="p-2 text-center text-sm rounded-lg bg-neutral-100">{tool}</div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>🤝 CRM & Sales</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    {["HubSpot", "Salesforce", "Pipedrive", "Zoho CRM", "Monday.com", "Freshsales", "Close", "Copper"].map((tool) => (
+                      <div key={tool} className="p-2 text-center text-sm rounded-lg bg-neutral-100">{tool}</div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>🗄️ Data & Databases</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    {["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Firebase", "Google Sheets", "Excel", "BigQuery"].map((tool) => (
+                      <div key={tool} className="p-2 text-center text-sm rounded-lg bg-neutral-100">{tool}</div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>💻 Development & DevOps</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    {["GitHub", "GitLab", "Jira", "Linear", "Vercel", "AWS", "Azure", "Kubernetes"].map((tool) => (
+                      <div key={tool} className="p-2 text-center text-sm rounded-lg bg-neutral-100">{tool}</div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔌 Custom & API's</h4>
+                  <p>Naast standaard integraties kunnen AI Agents ook:</p>
+                  <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
+                    <li>Verbinden met elke REST of GraphQL API</li>
+                    <li>Webhooks ontvangen en versturen</li>
+                    <li>Scrapen en interacteren met websites</li>
+                    <li>Custom scripts en automations uitvoeren</li>
+                    <li>Legacy systemen koppelen via adapters</li>
+                  </ul>
+                </div>
+              </div>
+            </SectionCard>
             <SectionCard
               id="technisch"
               title="Technisch"
