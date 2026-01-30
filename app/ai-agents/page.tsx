@@ -176,9 +176,58 @@ export default function AIAgentsPage() {
             <SectionCard
               id="technisch"
               title="Technisch"
-              description="Onder de motorkap gebruiken AI Agents Large Language Models (LLMs) gecombineerd met tool-gebruik, planning-algoritmes, en memory-systemen. Ze kunnen redeneren over problemen, tools aanroepen (API's, databases, bestanden), en hun aanpak aanpassen op basis van feedback. Modern agent-frameworks zoals LangChain, AutoGPT, en custom oplossingen maken dit mogelijk."
+              description="Een diepere blik op de architectuur en werking van AI Agents."
               Icon={LightningBoltIcon}
-            />
+            >
+              <div className="space-y-6 text-neutral-700">
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🧠 Large Language Models (LLMs)</h4>
+                  <p>De kern van elke AI Agent is een Large Language Model — zoals GPT-4, Claude, of Gemini. Deze modellen begrijpen natuurlijke taal, kunnen redeneren over complexe problemen, en genereren menselijke output. Ze vormen het "brein" van de agent.</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔧 Tool Use & Function Calling</h4>
+                  <p>AI Agents kunnen externe tools aanroepen: API's, databases, bestandssystemen, browsers, en meer. Via "function calling" beschrijft het model welke actie het wil uitvoeren, en een orchestrator voert deze daadwerkelijk uit. Zo kan een agent e-mails versturen, agenda's beheren, of data opvragen.</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>📋 Planning & Reasoning</h4>
+                  <p>Complexe taken vereisen planning. Agents gebruiken technieken zoals Chain-of-Thought (stap-voor-stap redeneren), ReAct (Reasoning + Acting), en Tree-of-Thoughts voor besluitvorming. Ze kunnen taken opdelen in subtaken, prioriteren, en hun aanpak aanpassen als iets niet werkt.</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>💾 Memory Systems</h4>
+                  <p>Agents hebben verschillende vormen van geheugen:</p>
+                  <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
+                    <li><strong>Short-term:</strong> Context binnen een conversatie</li>
+                    <li><strong>Long-term:</strong> Opgeslagen kennis over gebruikers, voorkeuren, en eerdere interacties</li>
+                    <li><strong>Episodic:</strong> Herinneringen aan specifieke gebeurtenissen</li>
+                    <li><strong>Semantic:</strong> Gestructureerde kennis en feiten</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔄 Agent Loops</h4>
+                  <p>De typische agent-loop: <strong>Observe → Think → Act → Observe</strong>. De agent observeert de huidige situatie, redeneert over de volgende stap, voert een actie uit, en evalueert het resultaat. Deze cyclus herhaalt tot het doel bereikt is of een limiet bereikt wordt.</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🏗️ Frameworks & Architecturen</h4>
+                  <p>Populaire frameworks voor het bouwen van agents:</p>
+                  <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
+                    <li><strong>LangChain / LangGraph:</strong> Modulaire chains en graph-based workflows</li>
+                    <li><strong>AutoGPT / BabyAGI:</strong> Autonome task-decomposition agents</li>
+                    <li><strong>CrewAI:</strong> Multi-agent systemen met rollen en samenwerking</li>
+                    <li><strong>Custom:</strong> Op maat gemaakte oplossingen voor specifieke use-cases</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🛡️ Safety & Guardrails</h4>
+                  <p>Productie-agents hebben veiligheidslagen: input validation, output filtering, rate limiting, human-in-the-loop voor kritieke acties, audit logging, en sandboxing. Dit voorkomt ongewenst gedrag en beschermt gevoelige data.</p>
+                </div>
+              </div>
+            </SectionCard>
           </div>
         </TimelineContent>
 
