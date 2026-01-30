@@ -163,19 +163,19 @@ export default function DatabasePage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">💬 Praten met je data</h4>
+                    <h4 className="font-semibold mb-2">Praten met je data</h4>
                     <p className="text-sm">Stel vragen zoals je ze aan een collega zou stellen. De AI snapt wat je bedoelt.</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">📊 Dashboards op verzoek</h4>
+                    <h4 className="font-semibold mb-2">Dashboards op verzoek</h4>
                     <p className="text-sm">Vraag om een grafiek of overzicht en de AI maakt het voor je.</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">🚨 Slimme alerts</h4>
+                    <h4 className="font-semibold mb-2">Slimme alerts</h4>
                     <p className="text-sm">De AI ziet patronen en waarschuwt als er iets afwijkt.</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">✏️ Data aanpassen</h4>
+                    <h4 className="font-semibold mb-2">Data aanpassen</h4>
                     <p className="text-sm">Ook invoeren en wijzigen kan — met jouw goedkeuring.</p>
                   </div>
                 </div>
@@ -244,7 +244,7 @@ export default function DatabasePage() {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-sm">
-                  <div className="p-2 bg-neutral-100 rounded-lg font-medium">📊 Interactief dashboard</div>
+                  <div className="p-2 bg-neutral-100 rounded-lg font-medium">Interactief dashboard</div>
                   <div className="p-2 bg-neutral-100 rounded-lg font-medium">🔍 Diepere analyse</div>
                   <div className="p-2 bg-neutral-100 rounded-lg font-medium">📈 Diepe analyse</div>
                   <div className="p-2 bg-neutral-100 rounded-lg font-medium">🗄️ Database opzoeken</div>
@@ -261,19 +261,19 @@ export default function DatabasePage() {
               <div className="space-y-4 text-neutral-700">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">📧 CRM</h4>
+                    <h4 className="font-semibold mb-2">CRM</h4>
                     <p className="text-sm">Koppel je CRM-database en vraag: "Welke leads moeten we deze week opvolgen?"</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">📊 Power BI</h4>
+                    <h4 className="font-semibold mb-2">Power BI</h4>
                     <p className="text-sm">Laat de AI Power BI dashboards aansturen en verklaren.</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">📑 Excel</h4>
+                    <h4 className="font-semibold mb-2">Excel</h4>
                     <p className="text-sm">Importeer Excel-data en stel vragen alsof het een database is.</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
-                    <h4 className="font-semibold mb-2">🤖 Sir Prikkel</h4>
+                    <h4 className="font-semibold mb-2">Sir Prikkel</h4>
                     <p className="text-sm">Laat je persoonlijke AI-assistent direct antwoorden uit je bedrijfsdata halen.</p>
                   </div>
                 </div>
@@ -288,12 +288,12 @@ export default function DatabasePage() {
             >
               <div className="space-y-6 text-neutral-700">
                 <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔧 MCP Server</h4>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>MCP Server</h4>
                   <p>MCP (Model Context Protocol) is een open standaard van Anthropic. Een MCP server draait binnen jouw netwerk en biedt een veilige interface waarmee AI-modellen gecontroleerd toegang krijgen tot je database. De AI stuurt een vraag, de MCP server vertaalt dit naar een query, voert uit, en stuurt het resultaat terug.</p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔒 Beveiliging</h4>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>Beveiliging</h4>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li>Data blijft binnen je eigen infrastructuur</li>
                     <li>Read-only toegang standaard</li>
@@ -304,12 +304,12 @@ export default function DatabasePage() {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>⚡ Architectuur</h4>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>Architectuur</h4>
                   <p>De flow: Gebruiker → AI Model → MCP Server → Database → MCP Server → AI Model → Antwoord. De AI ziet alleen wat de MCP server toestaat. Je kunt specifieke tabellen, kolommen, of zelfs rijen filteren.</p>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>📦 Ondersteunde databases</h4>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>Ondersteunde databases</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
                     {["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "SQLite", "Oracle", "BigQuery", "Snowflake"].map((db) => (
                       <div
