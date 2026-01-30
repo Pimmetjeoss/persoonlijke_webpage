@@ -65,8 +65,8 @@ const faqItems: FAQItem[] = [
 const features = [
   {
     Icon: ChatBubbleIcon,
-    name: "Praat met je data",
-    description: "Stel vragen in gewoon Nederlands en krijg direct antwoorden uit je database.",
+    name: "Simpel uitgelegd",
+    description: "AI die je database begrijpt — zonder technische kennis.",
     href: "#simpel-uitgelegd",
     cta: "",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
@@ -152,50 +152,37 @@ export default function DatabasePage() {
           <div className="mt-16 space-y-8">
             <SectionCard
               id="simpel-uitgelegd"
-              title="Praat met je data"
-              description="Geen SQL kennis nodig. Geen Excel formules. Gewoon vragen stellen."
+              title="Simpel uitgelegd"
+              description="AI die je database begrijpt — zonder technische kennis."
               Icon={ChatBubbleIcon}
             >
-              <div className="space-y-6 text-neutral-700">
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔌 AI + Database via MCP</h4>
-                  <p>Met een MCP (Model Context Protocol) server koppel je AI direct aan je database. De AI kan je data lezen, analyseren, en antwoorden geven — allemaal binnen jouw eigen infrastructuur. Veilig, snel, en zonder technische kennis.</p>
-                </div>
+              <div className="space-y-4 text-neutral-700">
+                <p>
+                  Stel je voor: je vraagt in gewoon Nederlands <em>"Hoeveel hebben we vorige maand verkocht?"</em> en krijgt direct antwoord. Geen Excel, geen IT-afdeling, geen wachten. Gewoon vragen en weten.
+                </p>
                 
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>💡 Inzichten die je nooit voor mogelijk hield</h4>
-                  <p>Stel je voor: je vraagt "Welke producten verkopen slecht in regio Noord maar goed in Zuid?" en krijgt binnen seconden antwoord. Of: "Voorspel onze omzet voor Q2 op basis van de trends." De AI graaft door je data en vindt patronen die je handmatig nooit zou ontdekken.</p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>👤 Ook zonder technische achtergrond</h4>
-                  <p>Je hoeft geen engineer te zijn. Geen SQL te kennen. Geen Excel-formules te schrijven. Je stelt gewoon vragen in normale taal. De AI vertaalt, voert uit, en legt uit. Data-analyse wordt een gesprek.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>📊 Interactieve dashboards</h4>
-                  <p>Vraag de AI om een dashboard te maken en hij bouwt het. "Maak een overzicht van onze top 10 klanten met omzettrend." Binnen minuten heb je een visueel rapport dat je kunt delen met je team.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>📋 Automatische rapportages</h4>
-                  <p>Laat de AI elke maandag een weekrapport genereren. Of elke ochtend een overzicht van gisteren. Geen handwerk meer — de AI haalt de data, analyseert, en stuurt je een leesbaar rapport.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🚨 Anomalie detectie</h4>
-                  <p>De AI houdt je data in de gaten en signaleert afwijkingen. Onverwachte daling in verkoop? Verdachte transactie? Klant die ineens veel meer bestelt? Je krijgt een seintje voordat het een probleem wordt.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div className="p-4 bg-neutral-100 rounded-lg">
+                    <h4 className="font-semibold mb-2">💬 Praten met je data</h4>
+                    <p className="text-sm">Stel vragen zoals je ze aan een collega zou stellen. De AI snapt wat je bedoelt.</p>
+                  </div>
+                  <div className="p-4 bg-neutral-100 rounded-lg">
+                    <h4 className="font-semibold mb-2">📊 Dashboards op verzoek</h4>
+                    <p className="text-sm">Vraag om een grafiek of overzicht en de AI maakt het voor je.</p>
+                  </div>
+                  <div className="p-4 bg-neutral-100 rounded-lg">
+                    <h4 className="font-semibold mb-2">🚨 Slimme alerts</h4>
+                    <p className="text-sm">De AI ziet patronen en waarschuwt als er iets afwijkt.</p>
+                  </div>
+                  <div className="p-4 bg-neutral-100 rounded-lg">
+                    <h4 className="font-semibold mb-2">✏️ Data aanpassen</h4>
+                    <p className="text-sm">Ook invoeren en wijzigen kan — met jouw goedkeuring.</p>
+                  </div>
                 </div>
 
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>📖 Data storytelling</h4>
-                  <p>Cijfers zijn saai. Verhalen niet. De AI vertaalt je data naar begrijpelijke inzichten: "De omzet steeg 15% doordat klanten in de leeftijd 25-34 vaker terugkwamen na onze zomercampagne." Context die iedereen snapt.</p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>✏️ Interactie: ook data invoeren</h4>
-                  <p>Niet alleen lezen, ook schrijven. Zeg tegen de AI: "Voeg een nieuwe klant toe: Bedrijf X, contact Jan, telefoon 06-12345678." Of: "Update de status van order #1234 naar verzonden." De AI voert het uit in je database — met jouw goedkeuring. Twee-richtingsverkeer, volledig gecontroleerd.</p>
-                </div>
+                <p className="mt-4 text-sm italic">
+                  Alles veilig binnen je eigen systemen. Je data gaat nergens naartoe.
+                </p>
               </div>
             </SectionCard>
 
