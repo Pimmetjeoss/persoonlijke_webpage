@@ -30,7 +30,7 @@ export function WorkExperience() {
     "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker
     "hsl(141 78.9% 85.1%)",   // #9 - zeer licht
     "hsl(142.4 71.8% 29.2%)", // #4 - donker
-    "hsl(138.5 76.5% 96.7%)", // #11 - lichtste
+    "hsl(141.9 69.2% 58%)",   // #7 - medium groen (AI-AGENTS)
     "hsl(144.9 80.4% 10%)",   // #1 - donkerste
     "hsl(141.7 76.6% 73.1%)", // #8 - licht
     "hsl(142.8 64.2% 24.1%)", // #3 - donker
