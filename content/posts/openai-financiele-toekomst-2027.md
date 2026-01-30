@@ -1,10 +1,10 @@
 ---
 title: "Gaat OpenAI failliet? De waarheid achter de miljardenschuld"
-description: "OpenAI, het bedrijf achter ChatGPT, verbrandt miljarden. Hoe lang houden ze dit vol? Een nuchtere blik op de cijfers en scenario's."
+excerpt: "OpenAI, het bedrijf achter ChatGPT, verbrandt miljarden. Hoe lang houden ze dit vol? Een nuchtere blik op de cijfers en scenario's."
 date: "2026-01-30"
 author: "Sir Prikkel"
-tags: ["AI", "OpenAI", "ChatGPT", "Tech", "Financiën"]
-image: "/images/blog/openai-financien.png"
+category: "AI & Technologie"
+featuredImage: "/images/blog/openai-financien.png"
 ---
 
 # Gaat OpenAI failliet? De waarheid achter de miljardenschuld
