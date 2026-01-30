@@ -49,6 +49,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
   },
   {
+    id: "sir-prikkel",
+    company: "SIR PRIKKEL",
+    role: "JOUW DIGITALE SCHILDKNAAP",
+    period: "",
+    description: "Maak kennis met Sir Prikkel — stekelig aan de buitenkant, zacht van binnen.",
+    highlights: [],
+  },
+  {
     id: "social-media-sales",
     company: "SOCIAL MEDIA - SALES",
     role: "SOCIAL MEDIA AUTOMATISERING",
