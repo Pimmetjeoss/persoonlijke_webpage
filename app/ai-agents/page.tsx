@@ -153,7 +153,7 @@ export default function AIAgentsPage() {
               description="Wat is een AI Agent en waarom is het een gamechanger voor je bedrijf?"
               Icon={PersonIcon}
             >
-              <div className="space-y-6 text-neutral-700">
+              <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🤖 Wat is een AI Agent?</h4>
                   <p>Stel je voor: een digitale medewerker die 24/7 beschikbaar is, nooit moe wordt, en zelfstandig taken uitvoert. Dat is een AI Agent. Anders dan een simpele chatbot die alleen antwoord geeft op vragen, kan een agent <strong>denken, plannen, en handelen</strong>.</p>
@@ -239,7 +239,7 @@ export default function AIAgentsPage() {
               description="Een diepere blik op de architectuur en werking van AI Agents."
               Icon={LightningBoltIcon}
             >
-              <div className="space-y-6 text-neutral-700">
+              <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🧠 Large Language Models (LLMs)</h4>
                   <p>De kern van elke AI Agent is een Large Language Model — zoals GPT-4, Claude, of Gemini. Deze modellen begrijpen natuurlijke taal, kunnen redeneren over complexe problemen, en genereren menselijke output. Ze vormen het "brein" van de agent.</p>

@@ -45,7 +45,7 @@ export function SectionCard({
             {description}
           </p>
           {children ? (
-            <div>{children}</div>
+            <div className="text-gray-500">{children}</div>
           ) : (
             <div className="text-gray-500">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
