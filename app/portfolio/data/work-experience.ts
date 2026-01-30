@@ -41,6 +41,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
   },
   {
+    id: "ai-agents",
+    company: "AI-AGENTS",
+    role: "AUTONOME AI ASSISTENTEN",
+    period: "",
+    description: "Ontdek de kracht van AI agents die zelfstandig taken uitvoeren.",
+    highlights: [],
+  },
+  {
     id: "social-media-sales",
     company: "SOCIAL MEDIA - SALES",
     role: "SOCIAL MEDIA AUTOMATISERING",
@@ -126,14 +134,6 @@ export const workExperiences: WorkExperience[] = [
     role: "MARKETING CAMPAGNES",
     period: "",
     description: "Geavanceerde marketing campagnes.",
-    highlights: [],
-  },
-  {
-    id: "agents",
-    company: "AGENTS",
-    role: "AI AGENTS",
-    period: "",
-    description: "Autonome AI agents voor je bedrijf.",
     highlights: [],
   },
   {
