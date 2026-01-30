@@ -150,9 +150,69 @@ export default function AIAgentsPage() {
             <SectionCard
               id="simpel-uitgelegd"
               title="Simpel uitgelegd"
-              description="Een AI Agent is als een digitale medewerker die zelfstandig taken uitvoert. Stel je voor: je geeft een opdracht en de agent plant, onderzoekt, en voert uit — zonder dat jij elke stap hoeft te begeleiden. Van e-mails beantwoorden tot complexe data-analyses, AI Agents nemen het werk uit handen."
+              description="Wat is een AI Agent en waarom is het een gamechanger voor je bedrijf?"
               Icon={PersonIcon}
-            />
+            >
+              <div className="space-y-6 text-neutral-700">
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🤖 Wat is een AI Agent?</h4>
+                  <p>Stel je voor: een digitale medewerker die 24/7 beschikbaar is, nooit moe wordt, en zelfstandig taken uitvoert. Dat is een AI Agent. Anders dan een simpele chatbot die alleen antwoord geeft op vragen, kan een agent <strong>denken, plannen, en handelen</strong>.</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>💡 Een voorbeeld uit de praktijk</h4>
+                  <p>Je zegt: <em>"Plan een meeting met het salesteam volgende week, stuur een agenda, en bereid een presentatie voor over Q4 resultaten."</em></p>
+                  <p className="mt-2">Een gewone assistent zou vragen: "Welke dag? Welk tijdstip? Wie precies?" Een AI Agent:</p>
+                  <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
+                    <li>Checkt automatisch ieders agenda voor beschikbaarheid</li>
+                    <li>Kiest het beste moment en stuurt uitnodigingen</li>
+                    <li>Haalt Q4 data op uit je systemen</li>
+                    <li>Maakt een concept-presentatie</li>
+                    <li>Stuurt je een samenvatting ter goedkeuring</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>⚡ Chatbot vs. AI Agent</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div className="p-4 bg-neutral-100 rounded-lg">
+                      <p className="font-semibold mb-2">Chatbot</p>
+                      <ul className="text-sm space-y-1">
+                        <li>• Beantwoordt vragen</li>
+                        <li>• Eén stap tegelijk</li>
+                        <li>• Wacht op instructies</li>
+                        <li>• Beperkte context</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 rounded-lg" style={{ backgroundColor: "hsl(141 78.9% 85.1%)" }}>
+                      <p className="font-semibold mb-2">AI Agent</p>
+                      <ul className="text-sm space-y-1">
+                        <li>• Voert taken uit</li>
+                        <li>• Plant meerdere stappen</li>
+                        <li>• Neemt initiatief</li>
+                        <li>• Onthoudt en leert</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🎯 Wat kunnen AI Agents voor jou doen?</h4>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>E-mail & Communicatie:</strong> Inbox beheren, belangrijke mails flaggen, concept-antwoorden schrijven</li>
+                    <li><strong>Agenda & Planning:</strong> Meetings inplannen, conflicten oplossen, herinneringen sturen</li>
+                    <li><strong>Data & Rapportages:</strong> Gegevens verzamelen, analyseren, en rapporten genereren</li>
+                    <li><strong>Klantcontact:</strong> Vragen beantwoorden, tickets afhandelen, follow-ups sturen</li>
+                    <li><strong>Onderzoek:</strong> Informatie verzamelen, samenvatten, en presenteren</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🚀 Waarom nu?</h4>
+                  <p>AI Agents zijn geen toekomstmuziek meer. Door recente doorbraken in AI-technologie zijn ze nu betrouwbaar, betaalbaar, en praktisch inzetbaar. Bedrijven die nu instappen, bouwen een voorsprong op die moeilijk in te halen is.</p>
+                </div>
+              </div>
+            </SectionCard>
             <SectionCard
               id="faq"
               title="Veelgestelde vragen"
