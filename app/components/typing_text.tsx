@@ -74,7 +74,7 @@ const TypingText = ({
   }, [currentTextIndex, textFonts]);
 
   const currentFontWeight = useMemo(() => {
-    // First word (Pimplify at index 0) should be bold like "Welkom bij:"
+    // First word (Code-Lieshout at index 0) should be bold like "Welkom bij:"
     return currentTextIndex === 0 ? '700' : 'normal';
   }, [currentTextIndex]);
   useEffect(() => {

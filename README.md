@@ -1,4 +1,4 @@
-# Pimplify - Advanced Interactive Portfolio
+# Code-Lieshout - Advanced Interactive Portfolio
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.0-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/React-19.2.3-blue?style=for-the-badge&logo=react&logoColor=white)
@@ -6,7 +6,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![GSAP](https://img.shields.io/badge/GSAP-Animation-green?style=for-the-badge&logo=greensock&logoColor=white)
 
-**Pimplify** is een state-of-the-art persoonlijke website en portfolio applicatie die de grenzen van moderne webontwikkeling verlegt. Het project combineert high-performance React Server Components met complexe WebGL visualisaties en "native-app-like" pagina transities.
+**Code-Lieshout** is een state-of-the-art persoonlijke website en portfolio applicatie die de grenzen van moderne webontwikkeling verlegt. Het project combineert high-performance React Server Components met complexe WebGL visualisaties en "native-app-like" pagina transities.
 
 Dit project fungeert als een showcase voor geavanceerde frontend technieken, waaronder custom shaders, procedurele animaties en complexe state-management patronen voor naadloze gebruikerservaringen.
 
@@ -46,7 +46,7 @@ Een zelfgeschreven tekst-engine die meer doet dan alleen typen:
 Een gedetailleerd overzicht van de codebase structuur:
 
 ```text
-pimplify/
+code-lieshout/
 ├── app/                              # Next.js 16 App Router
 │   ├── ai-agents/                    # [Showcase] AI & Shaders demo
 │   │   ├── components/               #   - DitheringShader & visualisaties

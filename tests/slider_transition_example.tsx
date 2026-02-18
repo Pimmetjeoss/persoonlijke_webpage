@@ -27,7 +27,7 @@ export const SliderTransitionExample: React.FC = () => {
       >
         <div className="flex items-center justify-center w-full h-full bg-gray-900">
           <div className="text-center text-white">
-            <h1 className="text-6xl font-bold mb-8">Welcome to Pimplify</h1>
+            <h1 className="text-6xl font-bold mb-8">Welcome to Code-Lieshout</h1>
             <button
               onClick={() => setTriggerAnimation(!triggerAnimation)}
               className="px-8 py-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
