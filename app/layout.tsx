@@ -1,26 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import {
-  Geist,
   Geist_Mono,
   Fjalla_One,
-  Quicksand,
-  Bebas_Neue,
-  Playfair_Display,
-  Righteous,
-  Archivo_Black,
-  Orbitron,
-  Anton,
-  Permanent_Marker,
   Homemade_Apple
 } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "./components/transition_provider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -29,55 +15,6 @@ const geistMono = Geist_Mono({
 
 const fjallaOne = Fjalla_One({
   variable: "--font-fjalla-one",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-// Fonts voor cyclische woorden
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["700"],
-});
-
-const righteous = Righteous({
-  variable: "--font-righteous",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const archivoBlack = Archivo_Black({
-  variable: "--font-archivo-black",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-  weight: ["700"],
-});
-
-const anton = Anton({
-  variable: "--font-anton",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const permanentMarker = Permanent_Marker({
-  variable: "--font-permanent-marker",
   subsets: ["latin"],
   weight: "400",
 });
@@ -111,7 +48,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${fjallaOne.variable} ${quicksand.variable} ${bebasNeue.variable} ${playfairDisplay.variable} ${righteous.variable} ${archivoBlack.variable} ${orbitron.variable} ${anton.variable} ${permanentMarker.variable} ${homemadeApple.variable} antialiased`}
+        className={`${geistMono.variable} ${fjallaOne.variable} ${homemadeApple.variable} antialiased`}
       >
         <TransitionProvider
           colors={[
