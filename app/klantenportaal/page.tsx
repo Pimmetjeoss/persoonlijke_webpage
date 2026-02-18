@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react"
 import { Plus } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
+import { useTransition } from "@/app/components/transition_provider"
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation"
 import { StickyFooter } from "@/app/components/sticky-footer"
 import Image from "next/image"
@@ -101,6 +102,7 @@ export default function Klantenportaal() {
   const timelineRef = useRef<HTMLDivElement>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  const { startTransition } = useTransition()
 
   const getTextColor = (index: number, isHovered: boolean) => {
     if (isHovered && darkIndices.includes(index)) {
@@ -280,6 +282,10 @@ export default function Klantenportaal() {
                                   </button>
                                 )}
                                 <button
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    startTransition(`/klantenportaal/${doc.id}`)
+                                  }}
                                   className="px-6 py-3 rounded-full border-[3px] font-bold uppercase tracking-wider text-sm transition-all duration-300 hover:scale-105"
                                   style={{
                                     backgroundColor: "transparent",
