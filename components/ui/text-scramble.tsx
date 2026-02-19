@@ -56,7 +56,7 @@ export function TextScramble({ text, className = "", trigger, style }: TextScram
   useEffect(() => {
     if (trigger && !hasTriggeredRef.current) {
       hasTriggeredRef.current = true
-      scramble()
+      scramble() // eslint-disable-line react-hooks/set-state-in-effect
     }
     if (!trigger) {
       hasTriggeredRef.current = false

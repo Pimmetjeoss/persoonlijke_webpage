@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 'use strict';
 /*!
  * Pacman - HTML5 Game

@@ -158,7 +158,7 @@ export default function DatabasePage() {
             >
               <div className="space-y-4 text-neutral-700">
                 <p>
-                  Stel je voor: je vraagt in gewoon Nederlands <em>"Hoeveel hebben we vorige maand verkocht?"</em> en krijgt direct antwoord. Geen Excel, geen IT-afdeling, geen wachten. Gewoon vragen en weten.
+                  Stel je voor: je vraagt in gewoon Nederlands <em>&quot;Hoeveel hebben we vorige maand verkocht?&quot;</em> en krijgt direct antwoord. Geen Excel, geen IT-afdeling, geen wachten. Gewoon vragen en weten.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -262,7 +262,7 @@ export default function DatabasePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-neutral-100 rounded-lg">
                     <h4 className="font-semibold mb-2">CRM</h4>
-                    <p className="text-sm">Koppel je CRM-database en vraag: "Welke leads moeten we deze week opvolgen?"</p>
+                    <p className="text-sm">Koppel je CRM-database en vraag: &quot;Welke leads moeten we deze week opvolgen?&quot;</p>
                   </div>
                   <div className="p-4 bg-neutral-100 rounded-lg">
                     <h4 className="font-semibold mb-2">Power BI</h4>

@@ -101,8 +101,8 @@ export default function HorizontalScroll() {
         ulRef.current,
         {
           transform: ['none', `translateX(-${items.length - 1}00vw)`],
-        } as any,
-        { easing: spring() } as any
+        } as Record<string, unknown>,
+        { easing: spring() } as Record<string, unknown>
       );
       const section = document.querySelector('section');
       if (section) {
@@ -117,7 +117,7 @@ export default function HorizontalScroll() {
       if (header) {
         const section = document.querySelector('section');
         if (section) {
-          scroll(animate([header] as any, { x: [800, -800] } as any), {
+          scroll(animate([header] as unknown[], { x: [800, -800] } as Record<string, unknown>), {
             target: section,
             offset: [
               [i * segmentLength, 1],

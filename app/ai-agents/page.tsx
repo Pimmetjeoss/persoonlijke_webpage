@@ -161,8 +161,8 @@ export default function AIAgentsPage() {
                 
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>💡 Een voorbeeld uit de praktijk</h4>
-                  <p>Je zegt: <em>"Plan een meeting met het salesteam volgende week, stuur een agenda, en bereid een presentatie voor over Q4 resultaten."</em></p>
-                  <p className="mt-2">Een gewone assistent zou vragen: "Welke dag? Welk tijdstip? Wie precies?" Een AI Agent:</p>
+                  <p>Je zegt: <em>&quot;Plan een meeting met het salesteam volgende week, stuur een agenda, en bereid een presentatie voor over Q4 resultaten.&quot;</em></p>
+                  <p className="mt-2">Een gewone assistent zou vragen: &quot;Welke dag? Welk tijdstip? Wie precies?&quot; Een AI Agent:</p>
                   <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
                     <li>Checkt automatisch ieders agenda voor beschikbaarheid</li>
                     <li>Kiest het beste moment en stuurt uitnodigingen</li>
@@ -280,7 +280,7 @@ export default function AIAgentsPage() {
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔌 Custom & API's</h4>
+                  <h4 className="font-semibold text-lg mb-3" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔌 Custom &amp; API&apos;s</h4>
                   <p>Naast standaard integraties kunnen AI Agents ook:</p>
                   <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
                     <li>Verbinden met elke REST of GraphQL API</li>
@@ -301,12 +301,12 @@ export default function AIAgentsPage() {
               <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🧠 Large Language Models (LLMs)</h4>
-                  <p>De kern van elke AI Agent is een Large Language Model — zoals GPT-4, Claude, of Gemini. Deze modellen begrijpen natuurlijke taal, kunnen redeneren over complexe problemen, en genereren menselijke output. Ze vormen het "brein" van de agent.</p>
+                  <p>De kern van elke AI Agent is een Large Language Model — zoals GPT-4, Claude, of Gemini. Deze modellen begrijpen natuurlijke taal, kunnen redeneren over complexe problemen, en genereren menselijke output. Ze vormen het &quot;brein&quot; van de agent.</p>
                 </div>
                 
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🔧 Tool Use & Function Calling</h4>
-                  <p>AI Agents kunnen externe tools aanroepen: API's, databases, bestandssystemen, browsers, en meer. Via "function calling" beschrijft het model welke actie het wil uitvoeren, en een orchestrator voert deze daadwerkelijk uit. Zo kan een agent e-mails versturen, agenda's beheren, of data opvragen.</p>
+                  <p>AI Agents kunnen externe tools aanroepen: API&apos;s, databases, bestandssystemen, browsers, en meer. Via &quot;function calling&quot; beschrijft het model welke actie het wil uitvoeren, en een orchestrator voert deze daadwerkelijk uit. Zo kan een agent e-mails versturen, agenda&apos;s beheren, of data opvragen.</p>
                 </div>
                 
                 <div>

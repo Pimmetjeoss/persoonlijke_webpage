@@ -46,8 +46,8 @@ export default function AboutUsSection() {
   const rotate2 = useTransform(scrollYProgress, [0, 1], [0, -20])
 
   useEffect(() => {
-    setIsVisible(true)
-    setIsMounted(true)
+    setIsVisible(true) // eslint-disable-line react-hooks/set-state-in-effect
+    setIsMounted(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
 
   const containerVariants = {
@@ -514,10 +514,10 @@ function StatCounter({ icon, value, label, suffix, delay }: StatCounterProps) {
   useEffect(() => {
     if (isInView && !hasAnimated) {
       springValue.set(typeof value === 'number' ? value : 0)
-      setHasAnimated(true)
+      setHasAnimated(true) // eslint-disable-line react-hooks/set-state-in-effect
     } else if (!isInView && hasAnimated) {
       springValue.set(0)
-      setHasAnimated(false)
+      setHasAnimated(false) // eslint-disable-line react-hooks/set-state-in-effect
     }
   }, [isInView, value, springValue, hasAnimated])
 

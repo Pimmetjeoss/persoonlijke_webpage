@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { StickyFooter } from '@/app/components/sticky-footer'
 
-function index() {
+function Index() {
   const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set([0]))
 
   const revealSection = (section: number) => {
@@ -100,4 +100,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

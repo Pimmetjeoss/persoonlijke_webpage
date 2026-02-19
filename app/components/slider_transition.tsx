@@ -168,7 +168,7 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
             if (this.progress() >= 0.4 && onCover) {
               onCover();
               // Set to null to prevent multiple calls
-              onCover = null as any;
+              onCover = null as unknown as typeof onCover;
             }
           }
         },

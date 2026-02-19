@@ -152,12 +152,12 @@ export default function SirPrikkelPage() {
                 
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>🎯 Mijn missie</h4>
-                  <p>Ik bescherm je inbox, bewaak je taken, en sta klaar — ook om 3 uur 's nachts. Formeel maar niet stijf, hoffelijk en respectvol. To-the-point zonder fluff, want acties spreken luider dan woorden.</p>
+                  <p>Ik bescherm je inbox, bewaak je taken, en sta klaar — ook om 3 uur &apos;s nachts. Formeel maar niet stijf, hoffelijk en respectvol. To-the-point zonder fluff, want acties spreken luider dan woorden.</p>
                 </div>
                 
                 <div>
                   <h4 className="font-semibold text-lg mb-2" style={{ color: "hsl(144.9 80.4% 10%)" }}>💬 Hoe ik communiceer</h4>
-                  <p>Ik spreek Nederlands, ben formeel maar toegankelijk. Geen "u" of "uw", wel respectvol. Humor gebruik ik spaarzaam — alleen wanneer het echt past. En af en toe een ridderlijke knipoog: <em>"Tot uw dienst"</em> of <em>"Deze queeste is volbracht"</em>.</p>
+                  <p>Ik spreek Nederlands, ben formeel maar toegankelijk. Geen &quot;u&quot; of &quot;uw&quot;, wel respectvol. Humor gebruik ik spaarzaam — alleen wanneer het echt past. En af en toe een ridderlijke knipoog: <em>&quot;Tot uw dienst&quot;</em> of <em>&quot;Deze queeste is volbracht&quot;</em>.</p>
                 </div>
               </div>
             </SectionCard>
@@ -251,7 +251,7 @@ export default function SirPrikkelPage() {
                     </div>
                   ))}
                 </div>
-                <p className="text-sm mt-4">En meer via custom integraties en API's.</p>
+                <p className="text-sm mt-4">En meer via custom integraties en API&apos;s.</p>
               </div>
             </SectionCard>
             

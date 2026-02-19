@@ -97,7 +97,7 @@ export function AccordionItem({
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement<any>, { value })
+          ? React.cloneElement(child as React.ReactElement<Record<string, unknown>>, { value })
           : child
       )}
     </div>

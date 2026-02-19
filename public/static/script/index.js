@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 /*!
  * Pacman - HTML5 Game
  * https://passer-by.com/pacman/
