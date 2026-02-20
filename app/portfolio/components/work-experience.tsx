@@ -24,6 +24,7 @@ export function WorkExperience() {
     router.prefetch('/sir-prikkel')
     router.prefetch('/database')
     router.prefetch('/under-construction')
+    router.prefetch('/rauw-collectief')
   }, [router])
 
   // Hover colors from kleuren.txt - speels door elkaar gemixed voor 17 items
@@ -66,6 +67,7 @@ export function WorkExperience() {
       "ai-agents": "/ai-agents",
       "sir-prikkel": "/sir-prikkel",
       "database": "/database",
+      "rauw-collectief": "/rauw-collectief",
     }
     return routes[id] || "/under-construction"
   }

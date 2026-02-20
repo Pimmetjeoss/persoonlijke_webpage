@@ -152,4 +152,16 @@ export const workExperiences: WorkExperience[] = [
     description: "Moderne websites en webapplicaties.",
     highlights: [],
   },
+  {
+    id: "rauw-collectief",
+    company: "RAUW COLLECTIEF",
+    role: "MAATWERK MEUBELS — OSS",
+    period: "2026",
+    description: "Vakmanschap ontmoet AI — automatisering voor de meubelmakerij.",
+    highlights: [
+      "Offerte & facturatie automatisering",
+      "AI klantcommunicatie",
+      "Spoorlaan 64A, Oss",
+    ],
+  },
 ]
