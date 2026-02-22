@@ -151,5 +151,5 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Moderne websites en webapplicaties.",
     highlights: [],
-  }
-]]
+  },
+]
