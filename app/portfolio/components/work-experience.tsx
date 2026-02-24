@@ -23,10 +23,11 @@ export function WorkExperience() {
     router.prefetch('/ai-agents')
     router.prefetch('/sir-prikkel')
     router.prefetch('/database')
+    router.prefetch('/cases/univast')
     router.prefetch('/under-construction')
   }, [router])
 
-  // Hover colors from kleuren.txt - speels door elkaar gemixed voor 17 items
+  // Hover colors from kleuren.txt - speels door elkaar gemixed voor 18 items
   const hoverColors = [
     "hsl(141.9 69.2% 58%)",   // #7 - medium groen
     "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker
@@ -45,6 +46,7 @@ export function WorkExperience() {
     "hsl(144.9 80.4% 10%)",   // #1 - donkerste (herhaald)
     "hsl(141.7 76.6% 73.1%)", // #8 - licht (herhaald)
     "hsl(142.4 71.8% 29.2%)", // #4 - donker (herhaald voor 17e item)
+    "hsl(142.1 76.2% 36.3%)", // #5 - medium donker (Univast - 18e item)
   ]
 
   // Donkere kleuren (lightness < 30%) krijgen lichte tekst bij hover
@@ -66,6 +68,7 @@ export function WorkExperience() {
       "ai-agents": "/ai-agents",
       "sir-prikkel": "/sir-prikkel",
       "database": "/database",
+      "univast": "/cases/univast",
     }
     return routes[id] || "/under-construction"
   }
