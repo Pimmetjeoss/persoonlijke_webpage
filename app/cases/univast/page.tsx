@@ -7,6 +7,7 @@ import {
   PhoneIcon,
   VideoIcon,
   ExternalLinkIcon,
+  BarChart2Icon,
 } from "lucide-react";
 import { SectionCard } from "@/app/test/components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
@@ -29,6 +30,9 @@ function VideoIconWrapped({ className }: { className?: string }) {
 }
 function ExternalLinkIconWrapped({ className }: { className?: string }) {
   return <ExternalLinkIcon className={className} />;
+}
+function BarChart2IconWrapped({ className }: { className?: string }) {
+  return <BarChart2Icon className={className} />;
 }
 
 export default function UnivasPage() {
@@ -282,8 +286,142 @@ export default function UnivasPage() {
           </SectionCard>
         </TimelineContent>
 
-        {/* Video sectie */}
+        {/* Locatieanalyse: Helftheuvelpassage 98 */}
         <TimelineContent animationNum={5} timelineRef={pageRef} once={true}>
+          <SectionCard
+            id="locatieanalyse"
+            title="Locatieanalyse: Helftheuvelpassage 98"
+            description="Data-gedreven analyse van passanten, locatiefactoren en verhuurkansen voor Den Bosch."
+            Icon={BarChart2IconWrapped}
+            className="mt-8"
+          >
+            {/* Locatiefactoren */}
+            <div className="space-y-3 mt-2 mb-8">
+              <h3 className="text-xl font-bold" style={{ color: "hsl(144.9 80.4% 10%)" }}>📊 Locatiefactoren</h3>
+              <div className="space-y-3">
+                {[
+                  {
+                    title: "80+ winkels onder één dak",
+                    desc: "De Helftheuvelpassage is het grootste overdekte winkelcentrum van 's-Hertogenbosch en de omliggende regio. Volledig weerbestendig — 365 dagen per jaar bereikbaar.",
+                  },
+                  {
+                    title: "Sterke huurbasis & bewezen formules",
+                    desc: "Ankers als supermarkten, mode- en sportretail zorgen voor vaste publieksstromen. Huurprijzen in het centrum liggen rond €280–€415/m²/jaar, afhankelijk van unit en zichtbaarheid.",
+                  },
+                  {
+                    title: "Verzorgingsgebied: >150.000 inwoners",
+                    desc: "Den Bosch fungeert als regionaal koopcentrum voor de Bommelerwaard, Maasland en Meierij. Primair verzorgingsgebied omvat ruim 150.000 inwoners met goede OV- en auto-ontsluiting.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-4 border-2"
+                    style={{
+                      borderColor: "hsl(142.1 76.2% 36.3%)",
+                      backgroundColor: "hsl(140.6 84.2% 92.5%)",
+                    }}
+                  >
+                    <div className="font-bold text-base mb-1" style={{ color: "hsl(144.9 80.4% 10%)" }}>{item.title}</div>
+                    <div className="text-gray-700 text-sm">{item.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Passantendata */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold mb-4" style={{ color: "hsl(144.9 80.4% 10%)" }}>🚶 Passantendata</h3>
+              <div className="grid grid-cols-3 gap-3 mb-4">
+                {[
+                  { value: "~18.000", label: "BEZOEKERS / WEEK\n(schoolweken)" },
+                  { value: "vr/za", label: "PIEKMOMENTEN\n(koopavond & zaterdag)" },
+                  { value: "B+", label: "LOCATIEKLASSE\n(inpandig / overdekt)" },
+                ].map((stat, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-4 text-center"
+                    style={{ backgroundColor: "hsl(144.9 80.4% 10%)" }}
+                  >
+                    <div
+                      className="text-2xl font-bold mb-2"
+                      style={{ color: "hsl(141.9 69.2% 58%)" }}
+                    >
+                      {stat.value}
+                    </div>
+                    <div
+                      className="text-xs font-mono uppercase"
+                      style={{ color: "hsl(141.7 76.6% 73.1%)", whiteSpace: "pre-line" }}
+                    >
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-gray-700 text-sm">
+                <strong>Profiel bezoeker:</strong> Breed publiek — gezinnen, jongeren en senioren — met een sterke mix van boodschappen en recreatief winkelen. Gemiddelde verblijfsduur in overdekte passages ligt 20–35% hoger dan in open winkelstraten. Unit 98 profiteert van centraal gelegen routing binnen het complex.
+              </p>
+              <p className="text-gray-400 text-xs mt-2 italic">
+                * Indicatieve data op basis van publiek beschikbare CBS- en retailbenchmarkgegevens.
+              </p>
+            </div>
+
+            {/* Verhuurkansen */}
+            <div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: "hsl(144.9 80.4% 10%)" }}>💼 Kansen nieuwe huurder</h3>
+              <div className="space-y-3">
+                {[
+                  {
+                    category: "Food & Beleving",
+                    badge: "HOGE KANS",
+                    badgeColor: "hsl(142.1 70.6% 45.3%)",
+                    desc: "Snacks, smoothies, coffee-to-go of een kleine lunchbar passen perfect bij de bezoekersfrequentie en verblijfsduur. Bestaande horecahuurders trekken door kruisverkoop extra conversie.",
+                  },
+                  {
+                    category: "Lifestyle & Personal Care",
+                    badge: "HOGE KANS",
+                    badgeColor: "hsl(142.1 70.6% 45.3%)",
+                    desc: "Beautyretail, parfumerie, accessoires en wellness-concepten groeien in binnenstedelijke passages. Passanten besteden meer impulsief aan personal care dan aan mode.",
+                  },
+                  {
+                    category: "Conceptstore / Pop-up",
+                    badge: "GROEIEND",
+                    badgeColor: "hsl(142.4 71.8% 29.2%)",
+                    desc: "Kortlopende verhuur aan digitale merken die offline willen testen (D2C) of seizoensconcepten. Lagere drempel, snel gevuld — en levert waardevolle data op over klantgedrag.",
+                  },
+                  {
+                    category: "Dienstverlening / Zorg",
+                    badge: "STABIEL",
+                    badgeColor: "hsl(143.8 61.2% 20.2%)",
+                    desc: "Fysiotherapie, optiek, hoortoestelzaak of andere paramedische dienstverlening zorgt voor vaste klantenstroom onafhankelijk van consumentensentiment. Bewezen ankerfunctie binnen passages.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-4 border-2"
+                    style={{
+                      borderColor: "hsl(142.1 76.2% 36.3%)",
+                      backgroundColor: "hsl(140.6 84.2% 92.5%)",
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="font-bold text-base" style={{ color: "hsl(144.9 80.4% 10%)" }}>{item.category}</div>
+                      <span
+                        className="text-xs font-mono px-2 py-1 rounded text-white"
+                        style={{ backgroundColor: item.badgeColor }}
+                      >
+                        {item.badge}
+                      </span>
+                    </div>
+                    <div className="text-gray-700 text-sm">{item.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </SectionCard>
+        </TimelineContent>
+
+        {/* Video sectie */}
+        <TimelineContent animationNum={6} timelineRef={pageRef} once={true}>
           <SectionCard
             id="video"
             title="Helftheuvelpassage 98"
@@ -308,7 +446,7 @@ export default function UnivasPage() {
         </TimelineContent>
 
         {/* Afsluiting */}
-        <TimelineContent animationNum={6} timelineRef={pageRef} once={true}>
+        <TimelineContent animationNum={7} timelineRef={pageRef} once={true}>
           <div
             className="w-full rounded-xl border-[3px] p-10 md:p-14 mt-8 mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
             style={{
