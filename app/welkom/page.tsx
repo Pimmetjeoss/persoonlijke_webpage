@@ -217,28 +217,16 @@ export default function WelkomPage() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9]"
                 style={{ color: "hsl(144.9 80.4% 10%)" }}
               >
-                EVEN VOORSTELLEN
+                JOUW NIEUWE WEBSITE IS KLAAR
               </h1>
-              <div
-                className="text-base lg:text-lg max-w-xl space-y-4"
+              <p
+                className="text-lg lg:text-xl max-w-xl"
                 style={{ color: "hsl(143.8 61.2% 20.2%)" }}
               >
-                <p>
-                  Hoi, ik ben Pim. Ik hou van design en code — en het liefst de
-                  combinatie van die twee. Recent ben ik voor mezelf begonnen en
-                  ik probeer om van elke website iets moois te maken.
-                </p>
-                <p>
-                  Ik heb een nieuwe versie van jouw website gemaakt. Niet omdat
-                  de huidige niet goed is, maar omdat ik altijd iets wil
-                  overtreffen. Geen verplichting, puur om te laten zien wat er
-                  mogelijk is.
-                </p>
-                <p>
-                  Op deze pagina lees je wat erin zit, wat het kost en hoe het
-                  werkt. Vragen? Stuur gerust een berichtje.
-                </p>
-              </div>
+                Gefeliciteerd! Je nieuwe website is gebouwd en klaar om live te
+                gaan. Op deze pagina lees je precies wat je hebt gekregen, wat de
+                mogelijkheden zijn en hoe we verder gaan.
+              </p>
               <a
                 href="#pakketten"
                 className="inline-block px-6 py-3 text-white font-sans text-base rounded-xl transition-all hover:scale-105"
