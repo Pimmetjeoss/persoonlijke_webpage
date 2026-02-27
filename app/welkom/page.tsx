@@ -214,7 +214,7 @@ export default function WelkomPage() {
           <section className="flex flex-col lg:flex-row items-center gap-8 py-12 lg:py-20">
             <div className="flex-1 space-y-6">
               <h1
-                className="text-4xl lg:text-6xl font-sans leading-tight"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9]"
                 style={{ color: "hsl(144.9 80.4% 10%)" }}
               >
                 EVEN VOORSTELLEN
@@ -266,7 +266,7 @@ export default function WelkomPage() {
         <TimelineContent animationNum={1} timelineRef={pageRef} once={true}>
           <section id="wat-je-krijgt" className="py-12">
             <h2
-              className="text-4xl lg:text-5xl font-sans mb-8"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
               style={{ color: "hsl(144.9 80.4% 10%)" }}
             >
               WAT ZIT ERIN?
@@ -283,7 +283,7 @@ export default function WelkomPage() {
         <TimelineContent animationNum={2} timelineRef={pageRef} once={true}>
           <section id="pakketten" className="py-12">
             <h2
-              className="text-4xl lg:text-5xl font-sans mb-4"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4"
               style={{ color: "hsl(144.9 80.4% 10%)" }}
             >
               PAKKETTEN & PRIJZEN
@@ -434,7 +434,7 @@ export default function WelkomPage() {
                 border: "3px solid black",
               }}
             >
-              <h2 className="text-4xl lg:text-5xl font-sans text-white">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
                 KLAAR OM TE STARTEN?
               </h2>
               <p className="text-lg text-white/90 max-w-xl mx-auto">
