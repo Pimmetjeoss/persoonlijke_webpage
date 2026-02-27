@@ -89,13 +89,13 @@ const faqItems: FAQItem[] = [
     id: "1",
     title: "Hoe lang duurt het voordat mijn website klaar is?",
     content:
-      "In de meeste gevallen is je nieuwe website binnen 1-3 werkdagen live. Bij het pakket met aanpassingen kan dit iets langer duren, afhankelijk van de complexiteit.",
+      "In de meeste gevallen is je nieuwe website binnen 1-3 werkdagen live. Bij het pakket met aanpassingen kan dit iets langer duren, afhankelijk van je wensen.",
   },
   {
     id: "2",
     title: "Moet ik zelf iets aanleveren?",
     content:
-      "Nee, wij halen alle informatie op uit je huidige website, Google en openbare bronnen. Heb je specifieke wensen of materiaal? Dan verwerken we dat uiteraard graag.",
+      "Nee, ik haal alle informatie op uit je huidige website, Google en openbare bronnen. Heb je specifieke wensen of materiaal? Dan verwerk ik dat uiteraard graag.",
   },
   {
     id: "3",
@@ -111,27 +111,27 @@ const faqItems: FAQItem[] = [
   },
   {
     id: "5",
-    title: "Wat als ik niet tevreden ben?",
+    title: "Ik heb hier niet om gevraagd — wat nu?",
     content:
-      "We werken pas aan de live-gang als jij tevreden bent. Je krijgt eerst een preview te zien en kunt feedback geven voordat de site online gaat.",
+      "Helemaal geen probleem. Dit is puur een vrijblijvend voorstel. Niet geïnteresseerd? Dan hoef je niks te doen. De preview-website wordt niet gepubliceerd en er zijn geen verplichtingen. Wil je dat ik de bestanden verwijder? Stuur even een mailtje naar info@code-lieshout.nl.",
   },
   {
     id: "6",
     title: "Waar wordt mijn website gehost?",
     content:
-      "We hosten op Vercel — een van de snelste en betrouwbaarste platformen ter wereld. Je site laadt razendsnel en is altijd bereikbaar.",
+      "Ik host op Vercel — een van de snelste en betrouwbaarste platformen ter wereld. Je site laadt razendsnel en is altijd bereikbaar.",
   },
   {
     id: "7",
     title: "Kan ik mijn eigen domeinnaam gebruiken?",
     content:
-      "Absoluut. We koppelen je bestaande domeinnaam aan de nieuwe website. Heb je nog geen domein? Dan helpen we je er eentje te registreren.",
+      "Absoluut. Ik koppel je bestaande domeinnaam aan de nieuwe website. Heb je nog geen domein? Dan help ik je er eentje te registreren.",
   },
   {
     id: "8",
     title: "Hoe werkt het onderhoudspakket?",
     content:
-      "Voor €10 per maand zorgen wij dat je site online blijft, beveiligd is en up-to-date. Kleine tekstwijzigingen en updates zijn inbegrepen. Je hoeft nergens naar om te kijken.",
+      "Voor €10 per maand zorg ik dat je site online blijft, beveiligd is en up-to-date. Kleine tekstwijzigingen en updates zijn inbegrepen. Je hoeft nergens naar om te kijken.",
   },
 ];
 
@@ -214,22 +214,34 @@ export default function WelkomPage() {
           <section className="flex flex-col lg:flex-row items-center gap-8 py-12 lg:py-20">
             <div className="flex-1 space-y-6">
               <h1
-                className="text-5xl lg:text-7xl font-sans leading-tight"
+                className="text-4xl lg:text-6xl font-sans leading-tight"
                 style={{ color: "hsl(144.9 80.4% 10%)" }}
               >
-                JOUW NIEUWE WEBSITE IS KLAAR
+                EVEN VOORSTELLEN
               </h1>
-              <p
-                className="text-lg lg:text-xl max-w-xl"
+              <div
+                className="text-base lg:text-lg max-w-xl space-y-4"
                 style={{ color: "hsl(143.8 61.2% 20.2%)" }}
               >
-                Gefeliciteerd! Je nieuwe website is gebouwd en klaar om live te
-                gaan. Op deze pagina lees je precies wat je hebt gekregen, wat de
-                mogelijkheden zijn en hoe we verder gaan.
-              </p>
+                <p>
+                  Hoi, ik ben Pim. Ik hou van design en code — en het liefst de
+                  combinatie van die twee. Recent ben ik voor mezelf begonnen en
+                  ik probeer om van elke website iets moois te maken.
+                </p>
+                <p>
+                  Ik heb een nieuwe versie van jouw website gemaakt. Niet omdat
+                  de huidige niet goed is, maar omdat ik altijd iets wil
+                  overtreffen. Geen verplichting, puur om te laten zien wat er
+                  mogelijk is.
+                </p>
+                <p>
+                  Op deze pagina lees je wat erin zit, wat het kost en hoe het
+                  werkt. Vragen? Stuur gerust een berichtje.
+                </p>
+              </div>
               <a
                 href="#pakketten"
-                className="inline-block px-8 py-4 text-white font-sans text-lg rounded-xl transition-all hover:scale-105"
+                className="inline-block px-6 py-3 text-white font-sans text-base rounded-xl transition-all hover:scale-105"
                 style={{
                   backgroundColor: "hsl(142.1 76.2% 36.3%)",
                   border: "3px solid black",
@@ -359,7 +371,7 @@ export default function WelkomPage() {
                   {
                     stap: "01",
                     titel: "Kies je pakket",
-                    tekst: "Laat ons weten welk pakket bij je past. We bespreken eventuele wensen en gaan direct aan de slag.",
+                    tekst: "Laat me weten welk pakket bij je past. We bespreken eventuele wensen en ik ga direct aan de slag.",
                   },
                   {
                     stap: "02",
@@ -369,7 +381,7 @@ export default function WelkomPage() {
                   {
                     stap: "03",
                     titel: "Live!",
-                    tekst: "Je website gaat online. Wij koppelen je domein en zorgen dat alles perfect draait. Klaar om klanten te ontvangen.",
+                    tekst: "Je website gaat online. Ik koppel je domein en zorg dat alles perfect draait. Klaar om klanten te ontvangen.",
                   },
                 ].map((item) => (
                   <div key={item.stap} className="text-center space-y-3">
