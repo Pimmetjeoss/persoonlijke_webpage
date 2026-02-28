@@ -39,7 +39,7 @@ export function StickyFooter() {
             />
           </a>
           <a
-            href="mailto:your@email.com"
+            href="mailto:pim@code-lieshout.nl"
             className="w-6 h-6 md:w-8 md:h-8 cursor-pointer"
             onMouseEnter={() => {
               if (emailRef.current) {
@@ -77,7 +77,7 @@ export function StickyFooter() {
             />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://nl.linkedin.com/in/pim-van-lieshout"
             target="_blank"
             rel="noopener noreferrer"
             className="w-6 h-6 md:w-8 md:h-8 cursor-pointer"
@@ -92,7 +92,9 @@ export function StickyFooter() {
             />
           </a>
           <a
-            href="#"
+            href="https://wa.me/31612419980"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-6 h-6 md:w-8 md:h-8 cursor-pointer flex items-center justify-center"
             onMouseEnter={() => {
               if (whatsappRef.current) {
