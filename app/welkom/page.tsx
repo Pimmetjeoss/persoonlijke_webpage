@@ -141,6 +141,24 @@ const faqItems: FAQItem[] = [
     content:
       "Nee, we kunnen de website koppelen aan jouw bestaande webadres als je dit domein in eigen beheer hebt.",
   },
+  {
+    id: "10",
+    title: "Hoe zit het met privacy en de AVG?",
+    content:
+      "Je website voldoet aan de AVG-richtlijnen. Ik plaats geen tracking cookies zonder toestemming en help je desgewenst met een privacyverklaring.",
+  },
+  {
+    id: "11",
+    title: "Wat gebeurt er als ik het onderhoudspakket opzeg?",
+    content:
+      "Dan blijft je website gewoon online, maar ben je zelf verantwoordelijk voor updates en hosting. Ik help je desgewenst met de overdracht.",
+  },
+  {
+    id: "12",
+    title: "Ben ik eigenaar van mijn website?",
+    content:
+      "Ja, de website is van jou. Na betaling krijg je volledige eigendom over het ontwerp en de code.",
+  },
 ];
 
 /* ── BentoGrid features ────────────────────────────── */
