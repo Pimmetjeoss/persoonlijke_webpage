@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import {
   CheckCircledIcon,
@@ -31,10 +31,10 @@ const pakketten = [
     features: [
       "Volledig nieuw design",
       "Mobiel-vriendelijk (responsive)",
-      "Basis SEO-optimalisatie",
+      <>Basis <a href="https://nl.wikipedia.org/wiki/Zoekmachineoptimalisatie" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">SEO-optimalisatie</a></>,
       "Snelle laadtijd",
-      "1 jaar hosting inbegrepen",
-    ],
+      "1 uur aanpassing (hierin kan veel)",
+    ] as React.ReactNode[],
     accent: "hsl(142.1 76.2% 36.3%)",
   },
   {
@@ -44,6 +44,8 @@ const pakketten = [
     beschrijving: "Alles van het basispakket, plus maatwerk naar jouw wensen.",
     features: [
       "Alles uit het Website pakket",
+      "1 jaar hosting inbegrepen",
+      "3 uur aan aanpassingen",
       "Extra pagina's of secties",
       "Aangepaste functionaliteit",
       "Eigen kleurenschema & stijl",
@@ -95,13 +97,13 @@ const faqItems: FAQItem[] = [
     id: "2",
     title: "Moet ik zelf iets aanleveren?",
     content:
-      "Nee, ik haal alle informatie op uit je huidige website, Google en openbare bronnen. Heb je specifieke wensen of materiaal? Dan verwerk ik dat uiteraard graag.",
+      "Dat mag, maar het is niet verplicht. Heb je eigen foto's, teksten of logo's? Dan verwerk ik die graag. Het belangrijkste is dat jij tevreden bent met het eindresultaat.",
   },
   {
     id: "3",
     title: "Wat houdt de basis SEO-optimalisatie in?",
     content:
-      "Je website wordt gebouwd met schone code, snelle laadtijden, correcte meta-tags en een mobiel-vriendelijk design. Dit zorgt ervoor dat Google je site goed kan indexeren. Voor uitgebreide SEO (keyword strategie, content optimalisatie, linkbuilding) bieden we aparte pakketten aan.",
+      "Je website wordt gebouwd met schone code, snelle laadtijden, correcte meta-tags en een mobiel-vriendelijk design. Dit zorgt ervoor dat je sneller door Google wordt gevonden.",
   },
   {
     id: "4",
@@ -113,7 +115,7 @@ const faqItems: FAQItem[] = [
     id: "5",
     title: "Ik heb hier niet om gevraagd — wat nu?",
     content:
-      "Helemaal geen probleem. Dit is puur een vrijblijvend voorstel. Niet geïnteresseerd? Dan hoef je niks te doen. De preview-website wordt niet gepubliceerd en er zijn geen verplichtingen. Wil je dat ik de bestanden verwijder? Stuur even een mailtje naar info@code-lieshout.nl.",
+      "Helemaal geen probleem. Dit is puur een vrijblijvend voorstel. Niet geïnteresseerd? Dan hoef je niks te doen. De preview-website wordt niet gepubliceerd en er zijn geen verplichtingen. De preview wordt na 7 werkdagen zonder wederhoor automatisch verwijderd.",
   },
   {
     id: "6",
@@ -132,6 +134,12 @@ const faqItems: FAQItem[] = [
     title: "Hoe werkt het onderhoudspakket?",
     content:
       "Voor €10 per maand zorg ik dat je site online blijft, beveiligd is en up-to-date. Kleine tekstwijzigingen en updates zijn inbegrepen. Je hoeft nergens naar om te kijken.",
+  },
+  {
+    id: "9",
+    title: "Mijn link heeft een raar adres, blijft dit zo?",
+    content:
+      "Nee, we kunnen de website koppelen aan jouw bestaande webadres als je dit domein in eigen beheer hebt.",
   },
 ];
 
@@ -325,9 +333,9 @@ export default function WelkomPage() {
                     {pkg.beschrijving}
                   </p>
                   <ul className="space-y-3">
-                    {pkg.features.map((f) => (
+                    {pkg.features.map((f, i) => (
                       <li
-                        key={f}
+                        key={i}
                         className="flex items-start gap-3 text-sm"
                         style={{ color: "hsl(143.8 61.2% 20.2%)" }}
                       >
