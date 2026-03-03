@@ -112,6 +112,30 @@ const features = [
   },
 ];
 
+const aiAgentsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://code-lieshout.nl" },
+        { "@type": "ListItem", "position": 2, "name": "AI Agents", "item": "https://code-lieshout.nl/ai-agents" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(item => ({
+        "@type": "Question",
+        "name": item.title,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.content
+        }
+      }))
+    }
+  ]
+};
+
 export default function AIAgentsPage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
@@ -121,6 +145,10 @@ export default function AIAgentsPage() {
       className="min-h-screen"
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aiAgentsSchema) }}
+      />
       <StickyHeader
         title="AI-AGENTS"
         backgroundColor="hsl(140.6 84.2% 92.5%)"

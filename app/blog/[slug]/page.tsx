@@ -54,11 +54,54 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "url": `https://code-lieshout.nl/blog/${slug}`,
+    "image": post.featuredImage ? `https://code-lieshout.nl${post.featuredImage}` : "https://code-lieshout.nl/cactus_laptop_transparent.png",
+    "author": {
+      "@type": "Person",
+      "@id": "https://code-lieshout.nl/#pim",
+      "name": "Pim van Lieshout",
+      "url": "https://code-lieshout.nl/about-me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://code-lieshout.nl/#business",
+      "name": "Code Lieshout",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://code-lieshout.nl/cactus_laptop_transparent.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://code-lieshout.nl/blog/${slug}`
+    },
+    "inLanguage": "nl-NL",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://code-lieshout.nl" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://code-lieshout.nl/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://code-lieshout.nl/blog/${slug}` }
+      ]
+    }
+  };
+
   return (
     <div
       className="min-h-screen pb-32"
       style={{ backgroundColor: 'hsl(140.6 84.2% 92.5%)' }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
       <StickyHeader
         title="BLOG"
         backgroundColor="hsl(140.6 84.2% 92.5%)"

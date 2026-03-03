@@ -86,6 +86,78 @@ export const metadata: Metadata = {
   ],
 };
 
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://code-lieshout.nl/#business",
+      "name": "Code Lieshout",
+      "url": "https://code-lieshout.nl",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://code-lieshout.nl/cactus_laptop_transparent.png",
+        "caption": "Code Lieshout — Cactus Knight logo"
+      },
+      "image": "https://code-lieshout.nl/cactus_laptop_transparent.png",
+      "description": "Code Lieshout biedt AI-automatiseringsoplossingen voor Nederlandse bedrijven. Van chatbots en AI agents tot workflow-optimalisatie en AI consultancy.",
+      "founder": { "@id": "https://code-lieshout.nl/#pim" },
+      "email": "pim@code-lieshout.nl",
+      "telephone": "+31612419980",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NL"
+      },
+      "areaServed": { "@type": "Country", "name": "Nederland" },
+      "sameAs": [
+        "https://www.linkedin.com/in/pim-van-lieshout",
+        "https://www.youtube.com/@PimvanLieshout"
+      ],
+      "knowsAbout": ["Kunstmatige intelligentie", "AI automatisering", "Chatbot ontwikkeling", "Workflow optimalisatie", "Machine learning"],
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "inLanguage": "nl-NL",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI Diensten",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@id": "https://code-lieshout.nl/#service-chatbot"}},
+          {"@type": "Offer", "itemOffered": {"@id": "https://code-lieshout.nl/#service-automatisering"}},
+          {"@type": "Offer", "itemOffered": {"@id": "https://code-lieshout.nl/#service-agents"}},
+          {"@type": "Offer", "itemOffered": {"@id": "https://code-lieshout.nl/#service-consultancy"}}
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://code-lieshout.nl/#pim",
+      "name": "Pim van Lieshout",
+      "url": "https://code-lieshout.nl/about-me",
+      "email": "pim@code-lieshout.nl",
+      "telephone": "+31612419980",
+      "jobTitle": "AI Automatisering Specialist",
+      "worksFor": { "@id": "https://code-lieshout.nl/#business" },
+      "knowsAbout": ["AI automatisering", "Chatbot oplossingen", "Next.js", "AI agents", "Workflow optimalisatie", "Machine learning"],
+      "sameAs": [
+        "https://www.linkedin.com/in/pim-van-lieshout",
+        "https://www.youtube.com/@PimvanLieshout",
+        "https://github.com/Pimmetjeoss"
+      ],
+      "nationality": { "@type": "Country", "name": "Nederland" },
+      "inLanguage": "nl-NL"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://code-lieshout.nl/#website",
+      "url": "https://code-lieshout.nl",
+      "name": "Code Lieshout",
+      "description": "Portfolio en dienstenaanbod van Pim van Lieshout — AI automatisering voor Nederlandse bedrijven.",
+      "publisher": { "@id": "https://code-lieshout.nl/#business" },
+      "inLanguage": "nl-NL"
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -94,6 +166,10 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        />
         {process.env.NODE_ENV === 'development' && (
           <Script
             src="//unpkg.com/react-grab/dist/index.global.js"
