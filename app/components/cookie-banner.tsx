@@ -9,7 +9,7 @@ export function CookieBanner() {
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent")
-    if (!consent && pathname === "/") {
+    if (!consent && pathname === "/portfolio") {
       setVisible(true)
     }
   }, [pathname])
