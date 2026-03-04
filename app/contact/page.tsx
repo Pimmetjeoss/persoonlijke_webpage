@@ -7,6 +7,7 @@ import { StickyFooter } from '@/app/components/sticky-footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TextScramble } from '@/components/ui/text-scramble';
+import { trackEmailClick, trackPhoneClick, trackOutboundClick } from '@/app/lib/analytics';
 
 function ContactHeader() {
   const [isHovered, setIsHovered] = useState(false);
@@ -182,7 +183,8 @@ export default function HorizontalScroll() {
         <article className='mt-[300px]'>
           <section className='h-[500vh] relative'>
             <ul ref={ulRef} className='flex sticky top-0 h-screen'>
-              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-visible items-center' style={{ backgroundColor: 'hsl(142.1, 76.2%, 36.3%)' }}>
+              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-visible items-center' style={{ backgroundColor: 'hsl(142.1, 76.2%, 36.3%)' }}
+                onClick={() => trackEmailClick('pim@code-lieshout.nl')}>
                 <h1
                   className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight inline-block'
                   style={{
@@ -211,7 +213,8 @@ export default function HorizontalScroll() {
                   className="absolute left-1/2 -translate-x-1/2 -top-[200px] object-contain opacity-90 z-10"
                 />
               </li>
-              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}>
+              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}
+                onClick={() => trackPhoneClick('+31612419980')}>
                 <span
                   className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2'
                   style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
@@ -260,7 +263,8 @@ export default function HorizontalScroll() {
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center youtube-section' style={{ backgroundColor: 'hsl(143.8, 61.2%, 20.2%)' }}>
-                <a href="https://www.youtube.com/channel/UCY58wz5iIWjZkbHxiQmCSXA" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer">
+                <a href="https://www.youtube.com/channel/UCY58wz5iIWjZkbHxiQmCSXA" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer"
+                  onClick={() => trackOutboundClick('https://www.youtube.com/@PimvanLieshout', 'YouTube')}>
                   <span className='relative inline-block'>
                     <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                       Youtube
@@ -291,7 +295,8 @@ export default function HorizontalScroll() {
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(144.9, 80.4%, 10%)' }}>
-                <a href="https://www.linkedin.com/company/code-lieshout/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer">
+                <a href="https://www.linkedin.com/company/code-lieshout/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer"
+                  onClick={() => trackOutboundClick('https://www.linkedin.com/in/pim-van-lieshout', 'LinkedIn')}>
                   <span
                     className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2'
                     style={{ color: 'hsl(141, 78.9%, 85.1%)' }}

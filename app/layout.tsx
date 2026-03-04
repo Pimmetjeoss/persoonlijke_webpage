@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { CookieBanner } from "@/app/components/cookie-banner";
+import { ScrollTracker } from "@/app/components/scroll-tracker";
 import {
   Geist_Mono,
   Fjalla_One,
@@ -220,6 +221,7 @@ export default function RootLayout({
           {children}
         </TransitionProvider>
         <CookieBanner />
+        <ScrollTracker />
       </body>
     </html>
   );
