@@ -179,6 +179,17 @@ export default function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            // Consent Mode v2: standaard alles uit tot toestemming
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              wait_for_update: 500
+            });
+            // Herstel consent als al eerder gegeven
+            const consent = localStorage.getItem('cookie-consent');
+            if (consent === 'granted') {
+              gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied' });
+            }
             gtag('js', new Date());
             gtag('config', 'G-3L0DZPDJY7');
           `}

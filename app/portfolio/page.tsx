@@ -6,6 +6,7 @@ import { Footer } from "./components/footer"
 import { Navigation } from "./components/navigation"
 import { PacmanPopup } from "./components/pacman-popup"
 import { StickyFooter } from "@/app/components/sticky-footer"
+import { CookieBanner } from "./components/cookie-banner"
 
 const portfolioBreadcrumbSchema = {
   "@context": "https://schema.org",
@@ -29,6 +30,7 @@ export default function Portfolio() {
       <WorkExperience />
       <PacmanPopup isOpen={isPacmanOpen} onClose={() => setIsPacmanOpen(false)} />
       <StickyFooter />
+      <CookieBanner />
     </div>
   )
 }
