@@ -55,6 +55,20 @@ const pakketten = [
     popular: true,
   },
   {
+    naam: "Complete Redesign",
+    prijs: "€499",
+    periode: "eenmalig",
+    beschrijving: "Volledige herstart van je online aanwezigheid — alles op maat.",
+    features: [
+      "Alles uit Website + Aanpassingen",
+      "Volledig nieuw concept & branding",
+      "Tot 10 pagina's inbegrepen",
+      "1 jaar hosting inbegrepen",
+      "5 uur aan aanpassingen",
+    ],
+    accent: "hsl(143.8 61.2% 20.2%)",
+  },
+  {
     naam: "Onderhoud",
     prijs: "€10",
     periode: "per maand",
