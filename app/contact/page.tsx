@@ -183,8 +183,8 @@ export default function HorizontalScroll() {
         <article className='mt-[300px]'>
           <section className='h-[500vh] relative'>
             <ul ref={ulRef} className='flex sticky top-0 h-screen'>
-              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-visible items-center' style={{ backgroundColor: 'hsl(142.1, 76.2%, 36.3%)' }}
-                onClick={() => trackEmailClick('pim@code-lieshout.nl')}>
+              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-visible items-center' style={{ backgroundColor: 'hsl(142.1, 76.2%, 36.3%)' }}>
+                <a href="mailto:pim@code-lieshout.nl" onClick={() => trackEmailClick('pim@code-lieshout.nl')} className="flex flex-col items-center cursor-pointer">
                 <h1
                   className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight inline-block'
                   style={{
@@ -205,6 +205,7 @@ export default function HorizontalScroll() {
                 >
                   Mail adres
                 </span>
+                </a>
                 <Image
                   src="/cactus_mail.png"
                   alt="Cactus met email"
@@ -213,8 +214,8 @@ export default function HorizontalScroll() {
                   className="absolute left-1/2 -translate-x-1/2 -top-[200px] object-contain opacity-90 z-10"
                 />
               </li>
-              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}
-                onClick={() => trackPhoneClick('+31612419980')}>
+              <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}>
+                <a href="tel:+31612419980" onClick={() => trackPhoneClick('+31612419980')} className="flex flex-col items-center cursor-pointer">
                 <span
                   className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2'
                   style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
@@ -230,6 +231,7 @@ export default function HorizontalScroll() {
                 >
                   0612419980
                 </h1>
+                </a>
                 <Image
                   src="/cactus_mobile.png"
                   alt="Cactus met telefoon"
