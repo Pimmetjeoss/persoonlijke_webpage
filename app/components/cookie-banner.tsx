@@ -1,16 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent")
-    if (!consent) {
+    if (!consent && pathname === "/") {
       setVisible(true)
     }
-  }, [])
+  }, [pathname])
 
   const handleAccept = () => {
     localStorage.setItem("cookie-consent", "granted")
