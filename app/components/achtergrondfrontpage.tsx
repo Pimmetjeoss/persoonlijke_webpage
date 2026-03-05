@@ -44,6 +44,9 @@ const Home: React.FC = () => {
       >
         <source src='/CodeLieshout-intro!720p.mp4' type='video/mp4' />
       </video>
+      <div className='absolute bottom-8 right-8 z-10 text-white/50 text-sm pointer-events-none select-none'>
+        Klik om te skippen →
+      </div>
     </div>
   );
 };
