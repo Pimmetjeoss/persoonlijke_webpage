@@ -117,7 +117,7 @@ export function StickyFooter() {
 
         {/* Copyright - Far Right */}
         <p className="text-black text-sm md:text-base font-medium">
-          © 2025
+          © 2026
         </p>
       </div>
     </div>
