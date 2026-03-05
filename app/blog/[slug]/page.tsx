@@ -67,7 +67,7 @@ export default async function BlogPostPage({
       "@type": "Person",
       "@id": "https://code-lieshout.nl/#pim",
       "name": "Pim van Lieshout",
-      "url": "https://code-lieshout.nl/about-me"
+      "url": "https://code-lieshout.nl/about"
     },
     "publisher": {
       "@type": "Organization",

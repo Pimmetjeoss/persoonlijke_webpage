@@ -17,7 +17,7 @@ export function WorkExperience() {
 
   // Prefetch routes for faster transitions
   useEffect(() => {
-    router.prefetch('/about-me!')
+    router.prefetch('/about')
     router.prefetch('/contact')
     router.prefetch('/blog')
     router.prefetch('/ai-agents')
@@ -62,7 +62,7 @@ export function WorkExperience() {
   // Route mapping voor alle items
   const getRoute = (id: string): string => {
     const routes: Record<string, string> = {
-      "about-me": "/about-me!",
+      "about-me": "/about",
       "contact": "/contact",
       "blog": "/blog",
       "ai-agents": "/ai-agents",
