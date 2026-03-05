@@ -30,11 +30,11 @@ const homemadeApple = Homemade_Apple({
 export const metadata: Metadata = {
   metadataBase: new URL("https://code-lieshout.nl"),
   title: {
-    default: "Code Lieshout — Portfolio van Pim",
+    default: "Code Lieshout — AI-gedreven webontwikkeling",
     template: "%s | Code Lieshout",
   },
   description:
-    "Persoonlijk portfolio van Pim Lieshout. Developer, AI-enthousiasteling en bouwer van digitale producten. Ontdek projecten, AI-agents en blogposts over de nieuwste tech-ontwikkelingen.",
+    "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Van chatbots en AI agents tot workflow-automatisering en moderne websites.",
   alternates: {
     canonical: "https://code-lieshout.nl",
   },
@@ -43,23 +43,23 @@ export const metadata: Metadata = {
     locale: "nl_NL",
     url: "https://code-lieshout.nl",
     siteName: "Code Lieshout",
-    title: "Code Lieshout — Portfolio van Pim",
+    title: "Code Lieshout — AI-gedreven webontwikkeling",
     description:
-      "Persoonlijk portfolio van Pim Lieshout. Developer, AI-enthousiasteling en bouwer van digitale producten.",
+      "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Van chatbots tot workflow-automatisering.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Code Lieshout — Portfolio van Pim",
+        alt: "Code Lieshout — AI-gedreven webontwikkeling",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Code Lieshout — Portfolio van Pim",
+    title: "Code Lieshout — AI-gedreven webontwikkeling",
     description:
-      "Persoonlijk portfolio van Pim Lieshout. Developer, AI-enthousiasteling en bouwer van digitale producten.",
+      "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Van chatbots tot workflow-automatisering.",
     images: ["/og-image.png"],
   },
   robots: {
