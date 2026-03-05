@@ -85,8 +85,15 @@ function Index() {
                 AI en agents
               </button>
               <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}te implementeren — tegen een fractie van de prijs die traditionele consultants vragen. Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!
+                {' '}te implementeren — tegen een fractie van de prijs die traditionele consultants vragen. Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!{' '}
               </span>
+              <a
+                href='/contact'
+                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-all duration-500 inline-block ${visibleSections.has(5) ? 'blur-0' : 'blur-md pointer-events-none'}`}
+                style={{ color: visibleSections.has(5) ? 'hsl(141.7, 76.6%, 73.1%)' : 'rgba(255, 255, 255, 0.2)' }}
+              >
+                Neem contact op →
+              </a>
             </div>
           </div>
         </div>
