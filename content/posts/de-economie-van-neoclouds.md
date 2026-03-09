@@ -59,6 +59,3 @@ De neocloud-sector is een product van de AI-boom. Zolang de vraag naar GPU-reken
 
 De neoclouds die overleven, zijn die welke slim contracten afsluiten, hun bezettingsgraad maximaliseren, en tijdig diversifiëren naar aanvullende diensten — voordat de markt ze inhaalt.
 
----
-
-*Bron: [Bekijk de originele video op YouTube](https://www.youtube.com/watch?v=9u2hCf8FlW0)*
