@@ -59,4 +59,3 @@ Originele video: [Anthropic BANNED explained..](https://www.youtube.com/watch?v=
 
 ---
 
-*Bron: [Bekijk de originele video op YouTube](https://www.youtube.com/watch?v=ajZsefVNkQE)*

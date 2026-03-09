@@ -108,6 +108,8 @@ const schemaMarkup = {
       "telephone": "+31612419980",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Nederland",
+        "addressLocality": "Nederland",
         "addressCountry": "NL"
       },
       "areaServed": { "@type": "Country", "name": "Nederland" },

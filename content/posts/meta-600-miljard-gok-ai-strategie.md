@@ -63,8 +63,6 @@ Meta zet alles op alles om de AI-toekomst te domineren. Van een vroegere leider 
 
 Denk jij dat Meta's enorme AI-investering een briljante zet is, of een herhaling van het Metaverse-debacle?
 
-Bron: Kilobytes Code, "Does Meta even AI..?" (YouTube)
 
 ---
 
-*Bron: [Bekijk de originele video op YouTube](https://www.youtube.com/watch?v=cGcfjKq1q0M)*
