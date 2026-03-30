@@ -3,7 +3,7 @@ title: "De Evolutie van AI-Infrastructuur: Van DGX-1 tot Vera Rubin"
 date: "2026-03-30"
 category: "AI & Technologie"
 excerpt: "Ontdek hoe de vraag naar rekenkracht voor AI is geëvolueerd, van de eerste Transformer-modellen tot de nieuwste agentische systemen met NVIDIA's Vera Rubin-architectuur en Groq 3 LPX."
-featuredImage: "/images/blog/evolutie-ai-infrastructuur-dgx1-tot-vera-rubin.png"
+featuredImage: "/images/blog/evolutie-ai-infrastructuur-dgx1-tot-vera-rubin.jpg"
 ---
 
 De wereld van kunstmatige intelligentie (AI) ontwikkelt zich in een ongekend tempo, en de drijvende kracht achter deze revolutie is vaak onzichtbaar voor de eindgebruiker: de fysieke hardware en infrastructuur. In een recente en uiterst boeiende video van het YouTube-kanaal "Caleb Writes Code", getiteld "How GPU is scaling with AI..", neemt de presentator ons mee op een diepgaande reis door de geschiedenis en de toekomst van AI-infrastructuur. Aan de hand van een exclusief interview tijdens de GTC-conferentie met Nvidia-experts Joe Deair en Stuart Pittz, ontrafelt de video de complexe wisselwerking tussen steeds slimmer wordende AI-modellen en de gigantische rekenkracht die nodig is om ze te ondersteunen.
