@@ -103,33 +103,33 @@ const pakketten = [
 const faqItems: FAQItem[] = [
   {
     id: "1",
-    title: "Hoe lang duurt het voordat mijn website klaar is?",
+    title: "Wat kan ik verwachten bij het eerste gesprek?",
     content:
-      "In de meeste gevallen is je nieuwe website binnen 1-3 werkdagen live. Bij het pakket met aanpassingen kan dit iets langer duren, afhankelijk van je wensen.",
+      "In een kort online gesprek bespreken we wat je van de preview vindt, welke aanpassingen je wilt en wat jouw ideale website nodig heeft. Vrijblijvend en zonder verplichtingen.",
   },
   {
     id: "2",
     title: "Moet ik zelf iets aanleveren?",
     content:
-      "Dat mag, maar het is niet verplicht. Heb je eigen foto's, teksten of logo's? Dan verwerk ik die graag. Het belangrijkste is dat jij tevreden bent met het eindresultaat.",
+      "Dat mag, maar het is niet verplicht. Heb je eigen foto's, teksten of logo's? Dan verwerk ik die graag. Hoe meer je aanlevert — schetsen, ideeën, voorbeelden van andere websites — hoe sneller ik kan werken. Dan staat jouw droompagina er binnen een paar uur. Het belangrijkste is dat jij tevreden bent met het eindresultaat.",
   },
   {
     id: "3",
+    title: "Hoe lang duurt het voordat mijn website klaar is?",
+    content:
+      "In de meeste gevallen is je nieuwe website binnen 1-3 werkdagen live. Bij het pakket met aanpassingen kan dit iets langer duren, afhankelijk van je wensen.",
+  },
+  {
+    id: "4",
     title: "Wat houdt de basis SEO-optimalisatie in?",
     content:
       "Je website wordt gebouwd met schone code, snelle laadtijden, correcte meta-tags en een mobiel-vriendelijk design. Dit zorgt ervoor dat je sneller door Google wordt gevonden.",
   },
   {
-    id: "4",
+    id: "5",
     title: "Kan ik later nog aanpassingen laten doen?",
     content:
       "Zeker. Met het onderhoudspakket (€10/maand) kun je kleine aanpassingen laten doorvoeren. Voor grotere wijzigingen maken we een maatwerkofferte.",
-  },
-  {
-    id: "5",
-    title: "Ik heb hier niet om gevraagd — wat nu?",
-    content:
-      "Helemaal geen probleem. Dit is puur een vrijblijvend voorstel. Niet geïnteresseerd? Dan hoef je niks te doen. De preview-website wordt niet gepubliceerd en er zijn geen verplichtingen. De preview wordt na 7 werkdagen zonder wederhoor automatisch verwijderd.",
   },
   {
     id: "6",
@@ -201,7 +201,7 @@ const features = [
   {
     Icon: GearIcon,
     name: "Onderhoud geregeld",
-    description: "Hosting, updates en kleine aanpassingen — wij regelen het.",
+    description: "Hosting, updates en kleine aanpassingen — ik regel het.",
     href: "#pakketten",
     cta: "Meer info",
     background: <div />,
@@ -257,25 +257,25 @@ export default function WelkomPage() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9]"
                 style={{ color: "hsl(144.9 80.4% 10%)" }}
               >
-                JOUW NIEUWE WEBSITE IS KLAAR
+                WAT ALS JOUW WEBSITE ER ZO UITZAG?
               </h1>
               <p
                 className="text-lg lg:text-xl max-w-xl"
                 style={{ color: "hsl(143.8 61.2% 20.2%)" }}
               >
-                Gefeliciteerd! Je nieuwe website is gebouwd en klaar om live te
-                gaan. Op deze pagina lees je precies wat je hebt gekregen, wat de
-                mogelijkheden zijn en hoe we verder gaan.
+                Ik heb jouw huidige website onder de loep genomen en een
+                verbeterde versie gebouwd — sneller, moderner en beter vindbaar.
+                Benieuwd wat er mogelijk is? Scroll verder.
               </p>
               <a
-                href="#pakketten"
+                href="#wat-je-krijgt"
                 className="inline-block px-6 py-3 text-white font-sans text-base rounded-xl transition-all hover:scale-105"
                 style={{
                   backgroundColor: "hsl(142.1 76.2% 36.3%)",
                   border: "3px solid black",
                 }}
               >
-                BEKIJK DE PAKKETTEN
+                BEKIJK WAT IK KAN
               </a>
             </div>
             <div className="flex-shrink-0">
@@ -290,14 +290,14 @@ export default function WelkomPage() {
           </section>
         </TimelineContent>
 
-        {/* ── BentoGrid: Wat je krijgt ─────────────── */}
+        {/* ── BentoGrid: Wat levert het je op ──────── */}
         <TimelineContent animationNum={1} timelineRef={pageRef} once={true}>
           <section id="wat-je-krijgt" className="py-12">
             <h2
               className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
               style={{ color: "hsl(144.9 80.4% 10%)" }}
             >
-              WAT ZIT ERIN?
+              WAT LEVERT HET JE OP?
             </h2>
             <BentoGrid className="lg:grid-rows-3">
               {features.map((feature) => (
@@ -307,8 +307,61 @@ export default function WelkomPage() {
           </section>
         </TimelineContent>
 
-        {/* ── Pakketten & Prijzen ──────────────────── */}
+        {/* ── Hoe werkt het? ──────────────────────── */}
         <TimelineContent animationNum={2} timelineRef={pageRef} once={true}>
+          <section className="py-12">
+            <SectionCard
+              id="proces"
+              title="Hoe werkt het?"
+              description="Van eerste contact tot live website in 3 simpele stappen."
+              Icon={StarIcon}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                {[
+                  {
+                    stap: "01",
+                    titel: "Bekijk je preview",
+                    tekst: "Je hebt de verbeterde versie van je website al gezien. Bevalt wat je ziet? Noteer wat je wilt behouden, aanpassen of toevoegen.",
+                  },
+                  {
+                    stap: "02",
+                    titel: "Plan een gesprek",
+                    tekst: "We plannen een kort online gesprek in. Daarin bespreken we jouw wensen en ideeën, en kijken we samen wat er mogelijk is.",
+                  },
+                  {
+                    stap: "03",
+                    titel: "Live!",
+                    tekst: "Na akkoord ga ik aan de slag met de laatste aanpassingen. Zodra alles klopt, gaat je nieuwe website live.",
+                  },
+                ].map((item) => (
+                  <div key={item.stap} className="text-center space-y-3">
+                    <span
+                      className="text-5xl font-sans"
+                      style={{ color: "hsl(142.1 76.2% 36.3%)" }}
+                    >
+                      {item.stap}
+                    </span>
+                    <h4
+                      className="text-xl font-sans"
+                      style={{ color: "hsl(144.9 80.4% 10%)" }}
+                    >
+                      {item.titel}
+                    </h4>
+                    <p
+                      className="text-sm"
+                      style={{ color: "hsl(143.8 61.2% 20.2%)" }}
+                    >
+                      {item.tekst}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
+          </section>
+        </TimelineContent>
+
+        {/* ── Pakketten & Prijzen ──────────────────── */}
+        <TimelineContent animationNum={3} timelineRef={pageRef} once={true}>
           <section id="pakketten" className="py-12">
             <h2
               className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4"
@@ -385,66 +438,13 @@ export default function WelkomPage() {
           </section>
         </TimelineContent>
 
-        {/* ── Hoe werkt het? ──────────────────────── */}
-        <TimelineContent animationNum={3} timelineRef={pageRef} once={true}>
-          <section className="py-12">
-            <SectionCard
-              id="proces"
-              title="Hoe werkt het?"
-              description="Van eerste contact tot live website in 3 simpele stappen."
-              Icon={StarIcon}
-            >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                {[
-                  {
-                    stap: "01",
-                    titel: "Kies je pakket",
-                    tekst: "Laat me weten welk pakket bij je past. We bespreken eventuele wensen en ik ga direct aan de slag.",
-                  },
-                  {
-                    stap: "02",
-                    titel: "Preview & feedback",
-                    tekst: "Je ontvangt een preview van je nieuwe website. Tevreden? Dan gaan we live. Aanpassingen nodig? Geen probleem.",
-                  },
-                  {
-                    stap: "03",
-                    titel: "Live!",
-                    tekst: "Je website gaat online. Ik koppel je domein en zorg dat alles perfect draait. Klaar om klanten te ontvangen.",
-                  },
-                ].map((item) => (
-                  <div key={item.stap} className="text-center space-y-3">
-                    <span
-                      className="text-5xl font-sans"
-                      style={{ color: "hsl(142.1 76.2% 36.3%)" }}
-                    >
-                      {item.stap}
-                    </span>
-                    <h4
-                      className="text-xl font-sans"
-                      style={{ color: "hsl(144.9 80.4% 10%)" }}
-                    >
-                      {item.titel}
-                    </h4>
-                    <p
-                      className="text-sm"
-                      style={{ color: "hsl(143.8 61.2% 20.2%)" }}
-                    >
-                      {item.tekst}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-          </section>
-        </TimelineContent>
-
         {/* ── FAQ ─────────────────────────────────── */}
         <TimelineContent animationNum={4} timelineRef={pageRef} once={true}>
           <section id="faq" className="py-12">
             <SectionCard
               id="veelgestelde-vragen"
               title="Veelgestelde vragen"
-              description="Alles wat je wilt weten over onze diensten."
+              description="Alles wat je wilt weten over mijn diensten."
               Icon={FileTextIcon}
             >
               <Accordion05 items={faqItems} />

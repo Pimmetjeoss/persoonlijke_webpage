@@ -64,12 +64,4 @@ export const workExperiences: WorkExperience[] = [
     description: "Intelligente database oplossingen.",
     highlights: [],
   },
-  {
-    id: "univast",
-    company: "UNIVAST RETAIL",
-    role: "RETAIL VASTGOEDMAKELAAR DEN BOSCH",
-    period: "",
-    description: "Vestigingsplaatsanalyse, AI bel-agent en Remotion video voor Univast Retail.",
-    highlights: [],
-  },
 ]

@@ -23,7 +23,6 @@ export function WorkExperience() {
     router.prefetch('/ai-agents')
     router.prefetch('/sir-prikkel')
     router.prefetch('/database')
-    router.prefetch('/cases/univast')
     router.prefetch('/under-construction')
   }, [router])
 
@@ -68,7 +67,6 @@ export function WorkExperience() {
       "ai-agents": "/ai-agents",
       "sir-prikkel": "/sir-prikkel",
       "database": "/database",
-      "univast": "/cases/univast",
     }
     return routes[id] || "/under-construction"
   }
