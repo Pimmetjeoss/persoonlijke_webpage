@@ -1,5 +1,7 @@
 import Home from '@/app/components/achtergrondfrontpage';
 
+export const dynamic = 'force-dynamic';
+
 export default function Page() {
   return (
     <>
