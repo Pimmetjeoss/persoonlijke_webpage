@@ -1,0 +1,7 @@
+{
+  "resource": "https://code-lieshout.nl/agent-ready/api",
+  "authorization_servers": ["https://code-lieshout.nl"],
+  "scopes_supported": ["agent:read", "agent:scan"],
+  "bearer_methods_supported": ["header"],
+  "resource_documentation": "https://code-lieshout.nl/agent-ready/docs"
+}

@@ -1,0 +1,97 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Agent-Ready Scanner API",
+    "description": "Public API for scanning websites against 19 agent-readiness standards. Part of Code Lieshout's free Agent-Ready Scanner tool.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Code Lieshout",
+      "url": "https://code-lieshout.nl/contact"
+    },
+    "license": {
+      "name": "Free public API",
+      "identifier": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://code-lieshout.nl",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/agent-ready/api/scan": {
+      "post": {
+        "summary": "Scan a website for agent-readiness",
+        "description": "Submits a URL for scanning. Results are cached 24h per domain. Rate-limited to 10 requests/hour/IP.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Full https URL to scan",
+                    "example": "https://example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Scan result (success or cached)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "domain": { "type": "string" },
+                        "cached": { "type": "boolean" }
+                      }
+                    },
+                    "error": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Invalid URL" },
+          "429": { "description": "Rate limit exceeded (10/hour)" },
+          "502": { "description": "Upstream scan service unavailable" }
+        }
+      }
+    },
+    "/agent-ready/api/health": {
+      "get": {
+        "summary": "Health check",
+        "description": "Returns 200 OK if the API is reachable.",
+        "responses": {
+          "200": {
+            "description": "Healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" },
+                    "service": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

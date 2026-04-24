@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://code-lieshout.nl/agent-ready/api/scan",
+      "service-desc": [
+        {
+          "href": "https://code-lieshout.nl/agent-ready/docs/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://code-lieshout.nl/agent-ready/docs",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://code-lieshout.nl/agent-ready/api/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

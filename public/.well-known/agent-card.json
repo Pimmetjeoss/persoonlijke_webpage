@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "humanReadableId": "pimvanlieshout/ai-consultant",
+  "agentVersion": "1.0.0",
+  "name": "Pim van Lieshout — Code Lieshout",
+  "description": "Nederlandse AI-consultant en webontwikkelaar. Bouwt agent-ready websites, AI-automatiseringen en maatwerk web-applicaties voor het MKB.",
+  "url": "https://code-lieshout.nl",
+  "provider": {
+    "name": "Code Lieshout",
+    "url": "https://code-lieshout.nl"
+  },
+  "capabilities": {
+    "a2aVersion": "1.0",
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "authSchemes": [
+    {
+      "scheme": "none",
+      "description": "Publieke discovery. Voor inhoudelijke samenwerking: contact via https://code-lieshout.nl/contact"
+    }
+  ],
+  "skills": [
+    {
+      "id": "scan_agent_readiness",
+      "name": "Agent-readiness scan",
+      "description": "Scan een publieke URL tegen 19 agent-readiness standaarden en krijg score + failing checks terug."
+    },
+    {
+      "id": "get_page_markdown",
+      "name": "Markdown versie ophalen",
+      "description": "Haal een gecureerde markdown-versie op van code-lieshout.nl pagina's voor agent-consumptie."
+    }
+  ]
+}

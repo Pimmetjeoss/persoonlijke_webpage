@@ -1,0 +1,32 @@
+{
+  "serverInfo": {
+    "name": "Code Lieshout",
+    "version": "1.0.0",
+    "description": "WebMCP-enabled consultancy site. Tools are registered via navigator.modelContext in the browser on every page-load. An HTTP/SSE MCP transport at /mcp is planned for future agent-to-server use."
+  },
+  "endpoint": "https://code-lieshout.nl/mcp",
+  "transport": "webmcp",
+  "capabilities": {
+    "tools": [
+      {
+        "name": "scan_agent_readiness",
+        "description": "Scan a public URL against 19 agent-readiness standards and return score + failing checks."
+      },
+      {
+        "name": "get_page_markdown",
+        "description": "Fetch a curated markdown version of a code-lieshout.nl page (/, /about, /portfolio, /ai-agents, /contact, /blog)."
+      },
+      {
+        "name": "list_site_sections",
+        "description": "Return the main navigable sections of code-lieshout.nl with URLs and descriptions."
+      },
+      {
+        "name": "get_contact_info",
+        "description": "Return public contact information for Code Lieshout."
+      }
+    ],
+    "resources": false,
+    "prompts": false
+  },
+  "protocolVersion": "2024-11-05"
+}

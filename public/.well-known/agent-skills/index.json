@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agentskills.io/schemas/v0.2.0/index.json",
+  "version": "0.2.0",
+  "skills": [
+    {
+      "name": "scan-website",
+      "type": "api-action",
+      "description": "Scan any public website against 19 agent-readiness standards and receive score + failing checks.",
+      "url": "https://code-lieshout.nl/.well-known/agent-skills/scan-website/SKILL.md",
+      "digest": "sha256:4857b0973c334b3a0b3919efe6ff098ecc55f517faa4308488c6ef044f8d0bbb"
+    },
+    {
+      "name": "get-page-markdown",
+      "type": "content-negotiation",
+      "description": "Retrieve a curated markdown version of a code-lieshout.nl page for agent consumption.",
+      "url": "https://code-lieshout.nl/.well-known/agent-skills/get-page-markdown/SKILL.md",
+      "digest": "sha256:5c4d29baf206721ce9cfba6385dcfb5ece18d576f76b6202487526c933099774"
+    }
+  ]
+}
