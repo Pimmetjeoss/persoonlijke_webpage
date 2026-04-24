@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "./components/transition_provider";
+import { WebMcpRegistrar } from "./components/web-mcp-registrar";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -224,6 +225,7 @@ export default function RootLayout({
         </TransitionProvider>
         <CookieBanner />
         <ScrollTracker />
+        <WebMcpRegistrar />
       </body>
     </html>
   );
