@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+const AGENT_LINK_HEADER = [
+  '</sitemap.xml>; rel="sitemap"',
+  '</robots.txt>; rel="describedby"; type="text/plain"',
+].join(", ");
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -15,6 +20,14 @@ const nextConfig: NextConfig = {
         source: '/about-me!',
         destination: '/about',
         permanent: true,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/",
+        headers: [{ key: "Link", value: AGENT_LINK_HEADER }],
       },
     ];
   },
