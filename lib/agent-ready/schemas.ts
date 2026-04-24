@@ -1,6 +1,11 @@
 import { z } from "zod"
 
-export const CheckStatusSchema = z.enum(["pass", "fail", "neutral"])
+export const CheckStatusSchema = z.enum([
+  "pass",
+  "fail",
+  "neutral",
+  "unableToCheck",
+])
 export type CheckStatus = z.infer<typeof CheckStatusSchema>
 
 export const EvidenceSchema = z

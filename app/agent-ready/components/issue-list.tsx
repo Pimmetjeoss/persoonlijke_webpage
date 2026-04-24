@@ -8,6 +8,7 @@ const BADGE: Record<IssueEntry["status"], { label: string; bg: string; fg: strin
   fail: { label: "ACTIE NODIG", bg: "#b91c1c", fg: "white" },
   pass: { label: "OK", bg: "hsl(142.1 76.2% 36.3%)", fg: "white" },
   neutral: { label: "N.V.T.", bg: "hsl(141 78.9% 85.1%)", fg: "hsl(144.9 80.4% 10%)" },
+  unableToCheck: { label: "NIET TE CHECKEN", bg: "#a16207", fg: "white" },
 }
 
 export function IssueList({ issues }: IssueListProps) {

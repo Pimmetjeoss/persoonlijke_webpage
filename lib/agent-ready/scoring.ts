@@ -26,7 +26,7 @@ export type IssueEntry = {
   categoryLabel: string
   checkKey: string
   title: string
-  status: "pass" | "fail" | "neutral"
+  status: "pass" | "fail" | "neutral" | "unableToCheck"
   message: string
 }
 
@@ -143,7 +143,7 @@ export function summarize(response: IsItAgentReadyResponse): ScanSummary {
     totalScored === 0 ? 0 : Math.round((passCount / totalScored) * 100)
 
   issues.sort((a, b) => {
-    const order = { fail: 0, pass: 2, neutral: 1 } as const
+    const order = { fail: 0, unableToCheck: 1, neutral: 2, pass: 3 } as const
     return order[a.status] - order[b.status]
   })
 
