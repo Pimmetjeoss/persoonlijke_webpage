@@ -1,35 +1,58 @@
 {
-  "schemaVersion": "1.0",
-  "humanReadableId": "pimvanlieshout/ai-consultant",
-  "agentVersion": "1.0.0",
-  "name": "Pim van Lieshout — Code Lieshout",
-  "description": "Nederlandse AI-consultant en webontwikkelaar. Bouwt agent-ready websites, AI-automatiseringen en maatwerk web-applicaties voor het MKB.",
+  "name": "Code Lieshout Agent",
+  "version": "1.0.0",
+  "description": "Agent-to-agent interface voor Code Lieshout (Pim van Lieshout). Exposeert de Agent-Ready Scanner en gecureerde markdown-content voor AI-agents die namens hun gebruikers met deze site willen werken.",
   "url": "https://code-lieshout.nl",
   "provider": {
     "name": "Code Lieshout",
     "url": "https://code-lieshout.nl"
   },
+  "supportedInterfaces": [
+    {
+      "url": "https://code-lieshout.nl/agent-ready/api/scan",
+      "transport": "https",
+      "protocol": "json-rpc-like",
+      "description": "POST JSON {url} to trigger an agent-readiness scan"
+    },
+    {
+      "url": "https://code-lieshout.nl/",
+      "transport": "https",
+      "protocol": "markdown-negotiation",
+      "description": "GET with Accept: text/markdown to receive curated markdown content"
+    }
+  ],
   "capabilities": {
-    "a2aVersion": "1.0",
     "streaming": false,
-    "pushNotifications": false
+    "pushNotifications": false,
+    "multiTurn": false,
+    "contentTypes": ["application/json", "text/markdown"]
   },
   "authSchemes": [
     {
       "scheme": "none",
-      "description": "Publieke discovery. Voor inhoudelijke samenwerking: contact via https://code-lieshout.nl/contact"
+      "description": "Public discovery. No authentication required for agent-ready scans or markdown retrieval."
     }
   ],
   "skills": [
     {
       "id": "scan_agent_readiness",
       "name": "Agent-readiness scan",
-      "description": "Scan een publieke URL tegen 19 agent-readiness standaarden en krijg score + failing checks terug."
+      "description": "Scan any public URL against 19 agent-readiness standards and return a score with failing checks."
     },
     {
       "id": "get_page_markdown",
-      "name": "Markdown versie ophalen",
-      "description": "Haal een gecureerde markdown-versie op van code-lieshout.nl pagina's voor agent-consumptie."
+      "name": "Get page markdown",
+      "description": "Retrieve a curated markdown version of a code-lieshout.nl page (/, /about, /portfolio, /ai-agents, /contact, /blog)."
+    },
+    {
+      "id": "list_site_sections",
+      "name": "List site sections",
+      "description": "Return the main navigable sections of code-lieshout.nl with URLs and descriptions."
+    },
+    {
+      "id": "get_contact_info",
+      "name": "Get contact info",
+      "description": "Return public contact information for Code Lieshout."
     }
   ]
 }
