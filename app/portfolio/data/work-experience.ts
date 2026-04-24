@@ -64,4 +64,12 @@ export const workExperiences: WorkExperience[] = [
     description: "Intelligente database oplossingen.",
     highlights: [],
   },
+  {
+    id: "agent-ready",
+    company: "AGENT-READY",
+    role: "SCAN JOUW SITE",
+    period: "",
+    description: "Gratis scan: hoe klaar is jouw site voor AI-agents?",
+    highlights: [],
+  },
 ]

@@ -23,6 +23,7 @@ export function WorkExperience() {
     router.prefetch('/ai-agents')
     router.prefetch('/sir-prikkel')
     router.prefetch('/database')
+    router.prefetch('/agent-ready')
     router.prefetch('/under-construction')
   }, [router])
 
@@ -46,6 +47,7 @@ export function WorkExperience() {
     "hsl(141.7 76.6% 73.1%)", // #8 - licht (herhaald)
     "hsl(142.4 71.8% 29.2%)", // #4 - donker (herhaald voor 17e item)
     "hsl(142.1 76.2% 36.3%)", // #5 - medium donker (Univast - 18e item)
+    "hsl(141.9 69.2% 58%)",   // #7 - medium groen (AGENT-READY - 19e item)
   ]
 
   // Donkere kleuren (lightness < 30%) krijgen lichte tekst bij hover
@@ -67,6 +69,7 @@ export function WorkExperience() {
       "ai-agents": "/ai-agents",
       "sir-prikkel": "/sir-prikkel",
       "database": "/database",
+      "agent-ready": "/agent-ready",
     }
     return routes[id] || "/under-construction"
   }

@@ -44,3 +44,7 @@ next-env.d.ts
 # skill packages
 *.skill
 *.zip
+
+# claude code workspace
+.claude/
+dev-server.log
