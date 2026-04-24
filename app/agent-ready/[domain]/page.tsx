@@ -5,6 +5,7 @@ import {
   BarChartIcon,
   ExclamationTriangleIcon,
   RocketIcon,
+  CardStackIcon,
 } from "@radix-ui/react-icons"
 import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
@@ -53,6 +54,8 @@ export default async function ScanResultPage({ params }: PageProps) {
   const summary = summarize(parsed.data)
   const categories: CategorySummary[] = summary.categories
   const issues: IssueEntry[] = summary.issues
+  const coreIssues = issues.filter((i) => i.category !== "commerce")
+  const commerceIssues = issues.filter((i) => i.category === "commerce")
 
   return (
     <div
@@ -105,12 +108,23 @@ export default async function ScanResultPage({ params }: PageProps) {
 
         <ResultSection
           id="checks"
-          title="Alle checks"
-          description="Hier zie je exact welke standaarden jouw site wel of niet ondersteunt. De fixes vind je in het rapport."
+          title="Kern-standaarden"
+          description="De 14 standaarden die AI-agents gebruiken om jouw site te vinden, begrijpen en te benaderen. Deze bepalen je score."
           icon={<ExclamationTriangleIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
-          <IssueList issues={issues} />
+          <IssueList issues={coreIssues} groupByCategory />
         </ResultSection>
+
+        {commerceIssues.length > 0 && (
+          <ResultSection
+            id="commerce"
+            title="Commerce-protocollen (optioneel)"
+            description="Deze 5 protocollen zijn relevant als je via je site betalingen of transacties aanbiedt aan AI-agents. Ze tellen niet mee voor je score."
+            icon={<CardStackIcon className="w-10 h-10 md:w-12 md:h-12" />}
+          >
+            <IssueList issues={commerceIssues} />
+          </ResultSection>
+        )}
 
         <ResultSection
           id="pakketten"

@@ -66,8 +66,8 @@ export function ScoreDisplay({ score, level, levelName }: ScoreDisplayProps) {
           {levelName}
         </h2>
         <p className="text-gray-700 mt-2 max-w-md">
-          Jouw website&apos;s agent-readiness score, gebaseerd op 14 checks over
-          4 categorieën.
+          Jouw website&apos;s agent-readiness score, gebaseerd op 14 kern-checks
+          over 4 categorieën. 5 optionele commerce-checks tellen niet mee.
         </p>
       </div>
     </div>
