@@ -2,9 +2,6 @@ import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 type Tier = {
   name: string
-  price: string
-  pitch: string
-  bullets: string[]
   cta: string
   accent: string
 }
@@ -12,37 +9,16 @@ type Tier = {
 const TIERS: Tier[] = [
   {
     name: "Rapport",
-    price: "vanaf €97",
-    pitch: "Alle fixes uitgelegd in het Nederlands, copy-paste klaar.",
-    bullets: [
-      "Volledige uitleg per check",
-      "Code-voorbeelden voor WordPress, Shopify en custom",
-      "PDF + web-versie",
-    ],
     cta: "Bestel rapport",
     accent: "hsl(141.7 76.6% 73.1%)",
   },
   {
     name: "Implementatie-dossier",
-    price: "€1.500 – 2.500",
-    pitch: "Developer-ready dossier, zodat jouw team het kan uitvoeren.",
-    bullets: [
-      "Stack-specifieke instructies",
-      "1 strategie-call",
-      "2 her-scans + badge",
-    ],
     cta: "Plan een gesprek",
     accent: "hsl(141.9 69.2% 58%)",
   },
   {
     name: "Subscription",
-    price: "€149 / maand",
-    pitch: "Je site blijft up-to-date met nieuwe standaarden en her-scans.",
-    bullets: [
-      "Maandelijkse her-scan",
-      "Updates op nieuwe specs",
-      "Kwartaal-call",
-    ],
     cta: "Neem contact op",
     accent: "hsl(142.1 76.2% 36.3%)",
   },
@@ -62,7 +38,7 @@ export function TierTeasers() {
             style={{ backgroundColor: tier.accent }}
           />
           <h3
-            className="text-2xl font-bold"
+            className="text-2xl font-bold mb-4"
             style={{
               color: "hsl(144.9 80.4% 10%)",
               fontFamily: "var(--font-fjalla-one)",
@@ -70,24 +46,7 @@ export function TierTeasers() {
           >
             {tier.name}
           </h3>
-          <p
-            className="uppercase text-xs tracking-widest mt-1 mb-3"
-            style={{ color: "hsl(142.1 76.2% 36.3%)" }}
-          >
-            {tier.price}
-          </p>
-          <p className="text-sm text-gray-700 mb-4">{tier.pitch}</p>
-          <ul className="space-y-2 text-sm text-gray-700 mb-6 flex-1">
-            {tier.bullets.map((b) => (
-              <li key={b} className="flex gap-2 items-start">
-                <span
-                  className="shrink-0 mt-1 w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: "hsl(142.1 76.2% 36.3%)" }}
-                />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="flex-1" />
           <a
             href="/contact"
             className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:underline"
