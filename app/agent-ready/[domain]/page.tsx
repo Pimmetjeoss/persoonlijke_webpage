@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import {
   BarChartIcon,
   ExclamationTriangleIcon,
+  RocketIcon,
   CardStackIcon,
 } from "@radix-ui/react-icons"
 import StickyHeader from "@/app/components/sticky-header"
@@ -124,7 +125,14 @@ export default async function ScanResultPage({ params }: PageProps) {
           </ResultSection>
         )}
 
-        <TierTeasers />
+        <ResultSection
+          id="pakketten"
+          title="Aan de slag"
+          description="Van rapport tot volledig implementatie-dossier — zo kom je naar 100/100."
+          icon={<RocketIcon className="w-10 h-10 md:w-12 md:h-12" />}
+        >
+          <TierTeasers />
+        </ResultSection>
       </div>
       <StickyFooter />
     </div>
