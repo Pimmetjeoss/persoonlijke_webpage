@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation"
-import Link from "next/link"
 import type { Metadata } from "next"
 import {
   BarChartIcon,
@@ -134,22 +133,6 @@ export default async function ScanResultPage({ params }: PageProps) {
         >
           <TierTeasers />
         </ResultSection>
-
-        <div className="text-center">
-          <Link
-            href="/agent-ready"
-            className="inline-block px-6 py-3 rounded-lg border-[3px] bg-white font-semibold uppercase tracking-wide text-sm"
-            style={{
-              color: "hsl(144.9 80.4% 10%)",
-              borderColor: "hsl(144.9 80.4% 10%)",
-              fontFamily: "var(--font-fjalla-one)",
-            }}
-          >
-            Scan nog een site
-          </Link>
-        </div>
-
-        <div className="h-8" />
       </div>
       <StickyFooter />
     </div>
