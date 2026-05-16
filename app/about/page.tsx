@@ -12,6 +12,34 @@ function Index() {
 
   return (
     <>
+      {/* SEO content — server-side rendered, visueel verborgen */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          overflow: 'hidden',
+          clip: 'rect(0,0,0,0)',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <h1>Pim van Lieshout — AI & Webontwikkelaar in Lieshout</h1>
+        <p>
+          Pim van Lieshout is oprichter van Code Lieshout, een webdesign bureau in Lieshout
+          (Noord-Brabant). Hij combineert procesoptimalisatie met moderne AI-technologie en bouwt
+          AI-agents, web-applicaties en automatiseringen voor Nederlandse MKB-bedrijven.
+          Gespecialiseerd in Next.js, React en agentic AI — pragmatisch, persoonlijk en
+          op maat. Pim is bereikbaar via pim@code-lieshout.nl of 06-12419980.
+        </p>
+        <ul>
+          <li>Pim Lieshout — oprichter Code Lieshout</li>
+          <li>AI specialist en developer in Lieshout</li>
+          <li>Procesoptimalisatie met AI-agents</li>
+          <li>Webdesign bureau Noord-Brabant</li>
+          <li>Full-stack developer (Next.js, React, TypeScript)</li>
+        </ul>
+      </div>
       <section className='relative w-full min-h-screen bg-black'>
         {/* Video background */}
         <video
