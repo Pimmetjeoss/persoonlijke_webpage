@@ -17,17 +17,20 @@ export default function Page() {
           whiteSpace: 'nowrap',
         }}
       >
-        <h1>Pim Lieshout — Webontwikkelaar & AI Specialist | Code Lieshout</h1>
+        <h1>Code Lieshout — Webdesign Bureau & AI Specialist in Lieshout</h1>
         <p>
-          Code Lieshout bouwt moderne websites, slimme web-applicaties en AI-gedreven oplossingen 
-          voor bedrijven in Nederland. Gespecialiseerd in Next.js, React en AI-agents.
+          Code Lieshout is een webdesign bureau in Lieshout (Noord-Brabant). Pim van Lieshout bouwt
+          moderne websites, slimme web-applicaties en AI-gedreven oplossingen voor MKB-bedrijven in
+          Nederland. Gespecialiseerd in Next.js, React en AI-agents — een websitebouwer en
+          webdesigner uit Lieshout die ook landelijk werkt.
         </p>
         <ul>
-          <li>Webontwikkeling op maat</li>
-          <li>AI-agents en automatisering</li>
-          <li>Next.js en React applicaties</li>
-          <li>SEO-geoptimaliseerde websites</li>
-          <li>Maatwerk software voor MKB</li>
+          <li>Webdesign bureau Lieshout — websites op maat</li>
+          <li>Websitebouwer voor MKB in Lieshout, Eindhoven en Helmond</li>
+          <li>AI-agents en workflow automatisering</li>
+          <li>Next.js en React web-applicaties</li>
+          <li>SEO-geoptimaliseerde websites en agent-ready content</li>
+          <li>Webdesigner Lieshout met focus op procesoptimalisatie</li>
         </ul>
       </div>
       <Home />

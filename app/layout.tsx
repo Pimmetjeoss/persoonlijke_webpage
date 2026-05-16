@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Code Lieshout",
   },
   description:
-    "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Van chatbots en AI agents tot workflow-automatisering en moderne websites.",
+    "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Webdesign bureau in Lieshout (Noord-Brabant) — van chatbots en AI agents tot workflow-automatisering en moderne websites.",
   alternates: {
     canonical: "https://code-lieshout.nl",
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Code Lieshout",
     title: "Code Lieshout — AI-gedreven webontwikkeling",
     description:
-      "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Van chatbots tot workflow-automatisering.",
+      "Webdesign bureau in Lieshout. AI-agents, slimme web-apps en automatisering voor Nederlandse MKB-bedrijven.",
     images: [
       {
         url: "/og-image.png",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Code Lieshout — AI-gedreven webontwikkeling",
     description:
-      "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Van chatbots tot workflow-automatisering.",
+      "Webdesign bureau in Lieshout. AI-agents, web-apps en automatisering voor Nederlandse MKB-bedrijven.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -80,12 +80,18 @@ export const metadata: Metadata = {
   keywords: [
     "Pim Lieshout",
     "Code Lieshout",
-    "developer portfolio",
-    "AI agents",
-    "Next.js",
+    "webdesign bureau Lieshout",
+    "webdesign Lieshout",
+    "websitebouwer Lieshout",
+    "webdesigner Lieshout",
+    "website maken Lieshout",
+    "AI agents Nederland",
+    "AI agent ontwikkelaar",
+    "developer Noord-Brabant",
+    "Next.js developer",
     "full-stack developer",
     "AI nieuws",
-    "tech blog",
+    "tech blog Nederland",
   ],
 };
 
@@ -103,17 +109,23 @@ const schemaMarkup = {
         "caption": "Code Lieshout — Cactus Knight logo"
       },
       "image": "https://code-lieshout.nl/cactus_laptop_transparent.png",
-      "description": "Code Lieshout biedt AI-automatiseringsoplossingen voor Nederlandse bedrijven. Van chatbots en AI agents tot workflow-optimalisatie en AI consultancy.",
+      "description": "Webdesign bureau in Lieshout (Noord-Brabant). AI-automatiseringsoplossingen, AI-agents, chatbots, websites en workflow-optimalisatie voor Nederlandse MKB-bedrijven.",
       "founder": { "@id": "https://code-lieshout.nl/#pim" },
       "email": "pim@code-lieshout.nl",
       "telephone": "+31612419980",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Nederland",
-        "addressLocality": "Nederland",
+        "addressLocality": "Lieshout",
+        "addressRegion": "Noord-Brabant",
         "addressCountry": "NL"
       },
-      "areaServed": { "@type": "Country", "name": "Nederland" },
+      "areaServed": [
+        { "@type": "Country", "name": "Nederland" },
+        { "@type": "City", "name": "Lieshout" },
+        { "@type": "City", "name": "Eindhoven" },
+        { "@type": "City", "name": "Helmond" },
+        { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+      ],
       "sameAs": [
         "https://www.linkedin.com/in/pim-van-lieshout",
         "https://www.youtube.com/@PimvanLieshout"
