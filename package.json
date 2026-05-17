@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/seo-dashboard.test.mjs",
+    "seo:fetch:gsc": "node scripts/seo/fetch-gsc.mjs",
+    "seo:fetch:ga4": "node scripts/seo/fetch-ga4.mjs",
+    "seo:generate": "node scripts/seo/generate-dashboard-data.mjs",
+    "seo:update": "node scripts/seo/update-seo-dashboard.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",

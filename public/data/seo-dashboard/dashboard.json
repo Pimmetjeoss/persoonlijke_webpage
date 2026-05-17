@@ -1,0 +1,286 @@
+{
+  "generatedAt": "2026-05-17T13:39:44.812Z",
+  "site": "sc-domain:code-lieshout.nl",
+  "dateRange": {
+    "start": "2025-11-17",
+    "end": "2026-05-16",
+    "label": "Laatste 180 dagen"
+  },
+  "sources": [
+    {
+      "source": "gsc",
+      "status": "ok",
+      "generatedAt": "2026-05-17T13:27:29.700Z",
+      "rows": 17
+    },
+    {
+      "source": "ga4",
+      "status": "unavailable",
+      "generatedAt": "2026-05-17T13:39:44.649Z",
+      "detail": "Could not build GA4 client. Ensure the service account has Viewer access in GA4 Admin > Property Access Management.",
+      "rows": 0
+    }
+  ],
+  "executive": {
+    "cards": [
+      {
+        "label": "GSC workflow rows",
+        "value": "17",
+        "tone": "positive"
+      },
+      {
+        "label": "Quick wins",
+        "value": "6",
+        "tone": "positive"
+      },
+      {
+        "label": "Organic sessions",
+        "value": "0",
+        "tone": "warning"
+      },
+      {
+        "label": "Engagement",
+        "value": "0%",
+        "tone": "neutral"
+      },
+      {
+        "label": "Conversions/events",
+        "value": "0",
+        "tone": "neutral"
+      }
+    ],
+    "opportunities": [
+      "webdesign lieshout: positie 10.7, 11 impressies",
+      "webdesignbureau lieshout: positie 19, 7 impressies",
+      "pim van lieshout: positie 9, 3 impressies",
+      "webdesigner lieshout: positie 8.5, 2 impressies",
+      "webdesign bureau lieshout: positie 9, 1 impressies",
+      "Nieuwe query: website maken lieshout",
+      "Nieuwe query: webdesign bureau lieshout"
+    ],
+    "warnings": [
+      "GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports."
+    ]
+  },
+  "gsc": {
+    "quickWins": [
+      {
+        "id": "quickWins-0",
+        "query": "webdesign lieshout",
+        "metric": "quickWins",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 10.7,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.88
+      },
+      {
+        "id": "quickWins-1",
+        "query": "webdesignbureau lieshout",
+        "metric": "quickWins",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 19,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.56
+      },
+      {
+        "id": "quickWins-2",
+        "query": "pim van lieshout",
+        "metric": "quickWins",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 9,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.24
+      },
+      {
+        "id": "quickWins-3",
+        "query": "webdesigner lieshout",
+        "metric": "quickWins",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.16
+      },
+      {
+        "id": "quickWins-4",
+        "query": "webdesign bureau lieshout",
+        "metric": "quickWins",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.08
+      },
+      {
+        "id": "quickWins-5",
+        "query": "website lieshout",
+        "metric": "quickWins",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 20,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.08
+      }
+    ],
+    "cannibalization": [],
+    "compare": [
+      {
+        "id": "compare-0",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 8,
+        "opportunity": 0.64
+      },
+      {
+        "id": "compare-1",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 1,
+        "opportunity": 0.08
+      },
+      {
+        "id": "compare-2",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 4,
+        "opportunity": 0.72
+      },
+      {
+        "id": "compare-3",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.4
+      },
+      {
+        "id": "compare-4",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": -2,
+        "opportunity": 0.08
+      },
+      {
+        "id": "compare-5",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 1,
+        "opportunity": 0.08
+      },
+      {
+        "id": "compare-6",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": -1,
+        "opportunity": 0.24
+      },
+      {
+        "id": "compare-7",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": -3,
+        "opportunity": 0
+      },
+      {
+        "id": "compare-8",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": -2,
+        "opportunity": 0
+      }
+    ],
+    "decaying": [],
+    "newQueries": [
+      {
+        "id": "newQueries-0",
+        "query": "website maken lieshout",
+        "metric": "newQueries",
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0
+      },
+      {
+        "id": "newQueries-1",
+        "query": "webdesign bureau lieshout",
+        "metric": "newQueries",
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0
+      }
+    ],
+    "cliff": [],
+    "outliers": [],
+    "sitemapWatch": [],
+    "coverageDrift": []
+  },
+  "ga4": {
+    "totals": {
+      "sessions": 0,
+      "users": 0,
+      "pageviews": 0,
+      "conversions": 0,
+      "engagementRate": 0
+    },
+    "trend": [],
+    "landingPages": [],
+    "events": []
+  }
+}

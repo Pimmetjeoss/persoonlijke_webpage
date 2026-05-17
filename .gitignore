@@ -48,3 +48,10 @@ next-env.d.ts
 # claude code workspace
 .claude/
 dev-server.log
+
+# local SEO/analytics raw data and logs
+/data/seo/raw/
+/data/seo/snapshots/
+/data/seo/processed/
+/data/seo/*.log
+/data/seo/*cron*.log

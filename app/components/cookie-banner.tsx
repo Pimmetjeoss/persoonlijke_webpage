@@ -3,22 +3,31 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 
+type GtagFunction = (...args: unknown[]) => void;
+
+declare global {
+  interface Window {
+    gtag?: GtagFunction;
+  }
+}
+
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent")
-    if (!consent && pathname === "/portfolio") {
-      setVisible(true)
-    }
+    const frame = requestAnimationFrame(() => {
+      const consent = localStorage.getItem("cookie-consent")
+      setVisible(!consent && pathname === "/portfolio")
+    })
+    return () => cancelAnimationFrame(frame)
   }, [pathname])
 
   const handleAccept = () => {
     localStorage.setItem("cookie-consent", "granted")
     // Consent Mode v2: analytics aan
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      ;(window as any).gtag("consent", "update", {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("consent", "update", {
         analytics_storage: "granted",
         ad_storage: "denied",
       })
@@ -29,8 +38,8 @@ export function CookieBanner() {
   const handleDecline = () => {
     localStorage.setItem("cookie-consent", "denied")
     // Consent Mode v2: analytics uit
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      ;(window as any).gtag("consent", "update", {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("consent", "update", {
         analytics_storage: "denied",
         ad_storage: "denied",
       })
