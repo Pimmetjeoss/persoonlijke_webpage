@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T19:39:31.642Z",
+  "generatedAt": "2026-05-18T19:48:56.053Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
     "start": "2026-03-05",
@@ -88,7 +88,7 @@
       "Nieuwe query: webdesign bureau lieshout"
     ],
     "warnings": [
-      "CrUX field data ontbreekt; configureer SEO_CRUX_API_KEY of gebruik PageSpeed field data.",
+      "CrUX field data is nog niet beschikbaar voor dit domein; PageSpeed/Lighthouse labdata wordt wel gebruikt.",
       "Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports."
     ]
   },
@@ -736,6 +736,18 @@
     },
     {
       "generatedAt": "2026-05-18T19:39:31.642Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 11,
+      "techScore": 95,
+      "mobilePerformance": 96,
+      "desktopPerformance": 95,
+      "gbpWebsiteClicks": 0,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-18T19:48:56.053Z",
       "date": "2026-05-18",
       "gscRows": 17,
       "quickWins": 6,

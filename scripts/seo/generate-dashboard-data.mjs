@@ -292,7 +292,13 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
   if (!gscSnapshot || gscSnapshot.status !== "ok") warnings.push("GSC-data ontbreekt of is gedeeltelijk beschikbaar.");
   if (!ga4Snapshot || ga4Snapshot.status !== "ok") warnings.push("GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports.");
   if (!pagespeedSnapshot || pagespeedSnapshot.status !== "ok") warnings.push("PageSpeed/Lighthouse data ontbreekt of is gedeeltelijk beschikbaar.");
-  if (!cruxSnapshot || cruxSnapshot.status !== "ok") warnings.push("CrUX field data ontbreekt; configureer SEO_CRUX_API_KEY of gebruik PageSpeed field data.");
+  if (!cruxSnapshot || cruxSnapshot.status !== "ok") {
+    const cruxDetail = cruxSnapshot?.detail || cruxSnapshot?.message || "Nog geen CrUX snapshot gevonden.";
+    const cruxMessage = /no usable field data|not found|geen usable field data/i.test(cruxDetail)
+      ? "CrUX field data is nog niet beschikbaar voor dit domein; PageSpeed/Lighthouse labdata wordt wel gebruikt."
+      : "CrUX field data ontbreekt; controleer SEO_CRUX_API_KEY of gebruik PageSpeed field data.";
+    warnings.push(cruxMessage);
+  }
   if (!gbpSnapshot || gbpSnapshot.status !== "ok") warnings.push("Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports.");
   if (poorVitals.length) warnings.push(`Core Web Vitals met poor-status: ${poorVitals.slice(0, 3).map((metric) => metric.id).join(", ")}.`);
 
