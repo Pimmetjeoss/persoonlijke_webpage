@@ -1,6 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { BarChartIcon, DashboardIcon, LightningBoltIcon, MagnifyingGlassIcon, ReaderIcon } from "@radix-ui/react-icons";
+import StickyHeader from "@/app/components/sticky-header";
+import { StickyFooter } from "@/app/components/sticky-footer";
+import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
+import { BentoCard, BentoGrid } from "@/app/test/components/bento-grid";
 import type { DataSourceInfo, EventMetric, GscWorkflowRow, LandingPageMetric, SeoDashboardData, TimeSeriesPoint } from "@/lib/seo-dashboard-types";
 
 type SortKey = "query" | "page" | "clicks" | "impressions" | "position" | "opportunity" | "sessions" | "users" | "engagementRate" | "conversions";
@@ -16,6 +21,59 @@ const workflowLabels: Array<[keyof SeoDashboardData["gsc"], string, string]> = [
   ["outliers", "Outliers", "Afwijkende CTR/prestatiepunten"],
   ["sitemapWatch", "Sitemap watch", "Sitemap-state veranderingen"],
   ["coverageDrift", "Coverage drift", "Index coverage wijzigingen"],
+];
+
+const dashboardFeatures = [
+  {
+    Icon: DashboardIcon,
+    name: "Overzicht",
+    description: "De belangrijkste SEO-metrics meteen in beeld.",
+    href: "#overzicht",
+    cta: "Bekijk overzicht",
+    background: <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-200 opacity-60" />,
+    className: "col-span-2 lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    hoverColor: "hsl(143.8 61.2% 20.2%)",
+  },
+  {
+    Icon: LightningBoltIcon,
+    name: "Kansen",
+    description: "Quick wins en waarschuwingen voor de komende acties.",
+    href: "#kansen",
+    cta: "Pak de kansen",
+    background: <div className="absolute -right-12 -top-12 h-24 w-24 rotate-12 bg-yellow-200 opacity-70" />,
+    className: "col-span-1 lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+    hoverColor: "hsl(141.7 76.6% 73.1%)",
+  },
+  {
+    Icon: BarChartIcon,
+    name: "Traffic trend",
+    description: "GA4 sessies en GSC clicks als visuele trend.",
+    href: "#traffic-trend",
+    cta: "Bekijk grafiek",
+    background: <div className="absolute -bottom-8 -right-8 h-20 w-32 rounded-full bg-emerald-300 opacity-50" />,
+    className: "col-span-1 lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+    hoverColor: "hsl(141.9 69.2% 58%)",
+  },
+  {
+    Icon: ReaderIcon,
+    name: "Pagina's",
+    description: "Welke landingspagina's organisch het meeste dragen.",
+    href: "#landing-pages",
+    cta: "Open pagina's",
+    background: <div className="absolute -right-8 top-6 h-16 w-16 rounded-xl bg-white/70" />,
+    className: "col-span-1 lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+    hoverColor: "hsl(142.1 76.2% 36.3%)",
+  },
+  {
+    Icon: MagnifyingGlassIcon,
+    name: "Query intelligence",
+    description: "GSC workflows voor queries, issues en URL's.",
+    href: "#query-intelligence",
+    cta: "Duik erin",
+    background: <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full border-[16px] border-emerald-200 opacity-60" />,
+    className: "col-span-1 lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+    hoverColor: "hsl(142.1 70.6% 45.3%)",
+  },
 ];
 
 function toneClass(tone: string) {
@@ -261,6 +319,7 @@ function EventList({ events }: { events: EventMetric[] }) {
 }
 
 export default function SeoDashboardClient({ initialData }: { initialData: SeoDashboardData }) {
+  const pageRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState(initialData);
   const [activeWorkflow, setActiveWorkflow] = useState<keyof SeoDashboardData["gsc"]>("quickWins");
 
@@ -274,43 +333,57 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
   const activeRows = data.gsc[activeWorkflow];
 
   return (
-    <main className="min-h-screen bg-[hsl(140.6_84.2%_92.5%)] text-black">
-      <div className="sticky top-0 z-40 border-y-[3px] border-black bg-[hsl(141_78.9%_85.1%)] px-4 py-3 shadow-[0_5px_0_#000] md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
-          <span className="font-mono text-xs uppercase tracking-[0.3em]">Code Lieshout SEO intelligence</span>
-          <span className="rounded-full border-2 border-black bg-white px-4 py-1 font-mono text-xs">{data.dateRange.label}</span>
-        </div>
-      </div>
+    <div
+      ref={pageRef}
+      className="min-h-screen pb-20 text-black"
+      style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
+    >
+      <StickyHeader
+        title="SEO DASHBOARD"
+        backgroundColor="hsl(140.6 84.2% 92.5%)"
+        hoverColor="hsl(141 78.9% 85.1%)"
+        startExpanded={true}
+      />
 
-      <section className="mx-auto max-w-7xl px-4 py-10 md:px-8 lg:py-14">
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-          <div>
-            <p className="font-mono text-sm uppercase tracking-[0.35em]">sc-domain:code-lieshout.nl</p>
-            <h1 className="mt-4 text-6xl font-black leading-[0.85] tracking-tight md:text-8xl lg:text-9xl">SEO / ANALYTICS DASHBOARD</h1>
-          </div>
-          <div className="rounded-[2rem] border-[3px] border-black bg-white p-6 font-mono text-sm leading-7 shadow-[8px_8px_0_#000]">
-            <p>Laatste dashboard build: {new Date(data.generatedAt).toLocaleString("nl-NL")}</p>
-            <p>Route: /seo-dashboard</p>
-            <p>Data: /data/seo-dashboard/dashboard.json</p>
-          </div>
-        </div>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-          {data.executive.cards.map((card) => (
-            <div key={card.label} className={`rounded-[2rem] border-[3px] p-5 shadow-[6px_6px_0_#000] ${toneClass(card.tone)}`}>
-              <p className="font-mono text-xs uppercase tracking-widest">{card.label}</p>
-              <p className="mt-4 text-4xl md:text-5xl">{card.value}</p>
-              {card.delta ? <p className="mt-2 font-mono text-sm">{card.delta}</p> : null}
+      <main>
+        <section id="overzicht" className="mx-auto max-w-5xl px-6 py-8 lg:px-10 lg:py-10">
+          <TimelineContent animationNum={1} timelineRef={pageRef} once={true}>
+            <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-end">
+              <div>
+                <p className="font-mono text-sm uppercase tracking-[0.35em]">sc-domain:code-lieshout.nl</p>
+                <h1 className="mt-4 text-5xl font-black leading-[0.85] tracking-tight md:text-7xl lg:text-8xl">SEO / ANALYTICS</h1>
+              </div>
+              <div className="rounded-xl border-[3px] border-black bg-white p-5 font-mono text-xs leading-6 shadow-xl">
+                <p>Laatste dashboard build: {new Date(data.generatedAt).toLocaleString("nl-NL")}</p>
+                <p>Periode: {data.dateRange.label}</p>
+                <p>Route: /seo-dashboard</p>
+              </div>
             </div>
-          ))}
-        </div>
+            <BentoGrid className="lg:grid-rows-3">
+              {dashboardFeatures.map((feature) => (
+                <BentoCard key={feature.name} {...feature} />
+              ))}
+            </BentoGrid>
+          </TimelineContent>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-2">
-          {data.sources.map((source) => <SourcePill key={source.source} source={source} />)}
-        </div>
-      </section>
+          <TimelineContent animationNum={2} timelineRef={pageRef} once={true}>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              {data.executive.cards.map((card) => (
+                <div key={card.label} className={`rounded-xl border-[3px] p-5 shadow-xl ${toneClass(card.tone)}`}>
+                  <p className="font-mono text-xs uppercase tracking-widest">{card.label}</p>
+                  <p className="mt-4 text-4xl md:text-5xl">{card.value}</p>
+                  {card.delta ? <p className="mt-2 font-mono text-sm">{card.delta}</p> : null}
+                </div>
+              ))}
+            </div>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-12 md:px-8 lg:grid-cols-2">
+            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+              {data.sources.map((source) => <SourcePill key={source.source} source={source} />)}
+            </div>
+          </TimelineContent>
+        </section>
+
+        <section id="kansen" className="mx-auto grid max-w-5xl gap-6 px-6 pb-12 lg:grid-cols-2 lg:px-10">
         <div className="rounded-[2rem] border-[3px] border-black bg-white p-6 shadow-[8px_8px_0_#000]">
           <h2 className="text-4xl">Belangrijkste kansen</h2>
           <ul className="mt-5 space-y-3 font-mono text-sm leading-6">
@@ -325,7 +398,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-12 md:px-8">
+        <section id="traffic-trend" className="mx-auto max-w-5xl px-6 pb-12 lg:px-10">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="font-mono text-sm uppercase tracking-[0.3em]">GA4 Organic</p>
@@ -338,7 +411,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
         <LineChart data={data.ga4.trend} />
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 pb-12 md:px-8 lg:grid-cols-[.8fr_1.2fr]">
+        <section id="landing-pages" className="mx-auto grid max-w-5xl gap-8 px-6 pb-12 lg:grid-cols-[.8fr_1.2fr] lg:px-10">
         <div>
           <p className="font-mono text-sm uppercase tracking-[0.3em]">Landing pages</p>
           <h2 className="mb-5 text-5xl md:text-6xl">Organic top pages</h2>
@@ -347,7 +420,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
         <LandingPageTable pages={data.ga4.landingPages} />
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-12 md:px-8">
+        <section id="query-intelligence" className="mx-auto max-w-5xl px-6 pb-12 lg:px-10">
         <div className="mb-5">
           <p className="font-mono text-sm uppercase tracking-[0.3em]">GSC Advanced workflows</p>
           <h2 className="text-5xl md:text-7xl">Query & URL intelligence</h2>
@@ -362,13 +435,15 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
         <WorkflowTable rows={activeRows} />
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-8">
+        <section id="engagement" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
         <div className="mb-5">
           <p className="font-mono text-sm uppercase tracking-[0.3em]">GA4 events & conversions</p>
           <h2 className="text-5xl md:text-7xl">Engagement signals</h2>
         </div>
         <EventList events={data.ga4.events} />
       </section>
-    </main>
+      </main>
+      <StickyFooter />
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import fs from "node:fs";
 import { buildDashboardData, normalizeGscRows } from "../scripts/seo/generate-dashboard-data.mjs";
 
 test("normalizeGscRows maps common GSC fields into stable dashboard rows", () => {
@@ -53,4 +54,14 @@ test("buildDashboardData aggregates GA4 daily sessions and GSC opportunities", (
   assert.equal(dashboard.ga4.landingPages[0].page, "/");
   assert.equal(dashboard.dateRange.start, "2026-05-15");
   assert.equal(dashboard.dateRange.end, "2026-05-16");
+});
+
+test("SEO dashboard reuses the test page visual shell", () => {
+  const source = fs.readFileSync(new URL("../app/seo-dashboard/seo-dashboard-client.tsx", import.meta.url), "utf8");
+
+  assert.match(source, /import StickyHeader from "@\/app\/components\/sticky-header"/);
+  assert.match(source, /import \{ StickyFooter \} from "@\/app\/components\/sticky-footer"/);
+  assert.match(source, /import \{ BentoCard, BentoGrid \} from "@\/app\/test\/components\/bento-grid"/);
+  assert.match(source, /<StickyHeader[\s\S]*title="SEO DASHBOARD"[\s\S]*startExpanded=\{true\}/);
+  assert.match(source, /<BentoGrid className="lg:grid-rows-3"/);
 });
