@@ -1,6 +1,27 @@
+import fs from "node:fs";
 import path from "node:path";
 
 export const REPO_ROOT = process.cwd();
+
+function loadLocalEnv() {
+  const envPath = path.join(REPO_ROOT, ".env.local");
+  if (!fs.existsSync(envPath)) return;
+  const text = fs.readFileSync(envPath, "utf8");
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#") || !line.includes("=")) continue;
+    const index = line.indexOf("=");
+    const key = line.slice(0, index).trim();
+    let value = line.slice(index + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    if (key && process.env[key] === undefined) process.env[key] = value;
+  }
+}
+
+loadLocalEnv();
+
 export const SEO_DATA_DIR = process.env.SEO_DATA_DIR || path.join(REPO_ROOT, "data", "seo");
 export const PUBLIC_DASHBOARD_DIR = path.join(REPO_ROOT, "public", "data", "seo-dashboard");
 

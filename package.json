@@ -11,6 +11,7 @@
     "test": "node --test tests/seo-dashboard.test.mjs",
     "seo:fetch:gsc": "node scripts/seo/fetch-gsc.mjs",
     "seo:fetch:ga4": "node scripts/seo/fetch-ga4.mjs",
+    "seo:export:ga4-mcp": "python scripts/seo/export-ga4-mcp.py --json",
     "seo:fetch:pagespeed": "node scripts/seo/fetch-pagespeed.mjs",
     "seo:fetch:crux": "node scripts/seo/fetch-crux.mjs",
     "seo:fetch:gbp": "node scripts/seo/fetch-gbp.mjs",

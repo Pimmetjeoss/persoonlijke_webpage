@@ -1,42 +1,41 @@
 {
-  "generatedAt": "2026-05-18T19:27:24.279Z",
+  "generatedAt": "2026-05-18T19:39:31.642Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
-    "start": "2025-11-18",
+    "start": "2026-03-05",
     "end": "2026-05-17",
-    "label": "Laatste 180 dagen"
+    "label": "2026-03-05 t/m 2026-05-17"
   },
   "sources": [
     {
       "source": "gsc",
       "status": "ok",
-      "generatedAt": "2026-05-18T19:02:38.136Z",
+      "generatedAt": "2026-05-18T19:38:39.620Z",
       "rows": 17
     },
     {
       "source": "ga4",
-      "status": "unavailable",
-      "generatedAt": "2026-05-18T19:02:38.174Z",
-      "detail": "SEO_GA4_COMMAND is not configured. Point it to the existing Analytics MCP/GA4 read-only export command; placeholders: {property}, {days}, {limit}.",
-      "rows": 0
+      "status": "ok",
+      "generatedAt": "2026-05-18T19:38:45.045Z",
+      "rows": 20
     },
     {
       "source": "pagespeed",
       "status": "ok",
-      "generatedAt": "2026-05-18T19:19:50.463Z",
+      "generatedAt": "2026-05-18T19:39:31.168Z",
       "rows": 2
     },
     {
       "source": "crux",
       "status": "unavailable",
-      "generatedAt": "2026-05-18T19:19:50.958Z",
+      "generatedAt": "2026-05-18T19:39:31.537Z",
       "detail": "CrUX API returned no usable field data for this origin.",
       "rows": 0
     },
     {
       "source": "gbp",
       "status": "unavailable",
-      "generatedAt": "2026-05-18T19:02:38.565Z",
+      "generatedAt": "2026-05-18T19:39:31.579Z",
       "detail": "SEO_GBP_COMMAND is not configured. Point it to a read-only Google Business Profile export command; placeholders: {location}, {days}, {limit}.",
       "rows": 0
     }
@@ -55,13 +54,13 @@
       },
       {
         "label": "Organic sessions",
-        "value": "0",
-        "tone": "warning"
+        "value": "11",
+        "tone": "positive"
       },
       {
         "label": "Engagement",
-        "value": "0%",
-        "tone": "neutral"
+        "value": "72.9%",
+        "tone": "positive"
       },
       {
         "label": "Conversions/events",
@@ -70,7 +69,7 @@
       },
       {
         "label": "Tech score",
-        "value": "96",
+        "value": "95",
         "tone": "positive"
       },
       {
@@ -89,7 +88,6 @@
       "Nieuwe query: webdesign bureau lieshout"
     ],
     "warnings": [
-      "GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports.",
       "CrUX field data ontbreekt; configureer SEO_CRUX_API_KEY of gebruik PageSpeed field data.",
       "Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports."
     ]
@@ -175,50 +173,6 @@
         "id": "compare-0",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": 1,
-        "opportunity": 0.08
-      },
-      {
-        "id": "compare-1",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -2,
-        "opportunity": 0.24
-      },
-      {
-        "id": "compare-2",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": 8,
-        "opportunity": 0.64
-      },
-      {
-        "id": "compare-3",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": 0,
-        "opportunity": 0.08
-      },
-      {
-        "id": "compare-4",
-        "metric": "compare",
-        "clicks": 0,
         "impressions": 9,
         "ctr": 0,
         "position": 0,
@@ -227,7 +181,7 @@
         "opportunity": 0.72
       },
       {
-        "id": "compare-5",
+        "id": "compare-1",
         "metric": "compare",
         "clicks": 0,
         "impressions": 5,
@@ -238,7 +192,7 @@
         "opportunity": 0.4
       },
       {
-        "id": "compare-6",
+        "id": "compare-2",
         "metric": "compare",
         "clicks": 0,
         "impressions": 1,
@@ -249,6 +203,50 @@
         "opportunity": 0.08
       },
       {
+        "id": "compare-3",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 1,
+        "opportunity": 0.08
+      },
+      {
+        "id": "compare-4",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": -2,
+        "opportunity": 0.24
+      },
+      {
+        "id": "compare-5",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 8,
+        "opportunity": 0.64
+      },
+      {
+        "id": "compare-6",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.08
+      },
+      {
         "id": "compare-7",
         "metric": "compare",
         "clicks": 0,
@@ -256,7 +254,7 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -3,
+        "deltaImpressions": -2,
         "opportunity": 0
       },
       {
@@ -267,7 +265,7 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -2,
+        "deltaImpressions": -3,
         "opportunity": 0
       }
     ],
@@ -305,22 +303,147 @@
   },
   "ga4": {
     "totals": {
-      "sessions": 0,
-      "users": 0,
-      "pageviews": 0,
+      "sessions": 11,
+      "users": 9,
+      "pageviews": 65,
       "conversions": 0,
-      "engagementRate": 0
+      "engagementRate": 72.92
     },
-    "trend": [],
-    "landingPages": [],
-    "events": []
+    "trend": [
+      {
+        "date": "2026-03-05",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 100,
+        "conversions": 0
+      },
+      {
+        "date": "2026-03-17",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 100,
+        "conversions": 0
+      },
+      {
+        "date": "2026-03-23",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 0,
+        "conversions": 0
+      },
+      {
+        "date": "2026-03-25",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 100,
+        "conversions": 0
+      },
+      {
+        "date": "2026-03-26",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 100,
+        "conversions": 0
+      },
+      {
+        "date": "2026-04-03",
+        "sessions": 3,
+        "users": 2,
+        "engagementRate": 33.33,
+        "conversions": 0
+      },
+      {
+        "date": "2026-04-22",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 100,
+        "conversions": 0
+      },
+      {
+        "date": "2026-05-17",
+        "sessions": 2,
+        "users": 1,
+        "engagementRate": 50,
+        "conversions": 0
+      }
+    ],
+    "landingPages": [
+      {
+        "page": "/",
+        "sessions": 9,
+        "users": 7,
+        "engagementRate": 77.78,
+        "conversions": 0
+      },
+      {
+        "page": "(not set)",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 0,
+        "conversions": 0
+      },
+      {
+        "page": "/portfolio",
+        "sessions": 1,
+        "users": 1,
+        "engagementRate": 0,
+        "conversions": 0
+      }
+    ],
+    "events": [
+      {
+        "name": "scroll_depth",
+        "count": 121,
+        "conversions": 0
+      },
+      {
+        "name": "page_view",
+        "count": 65,
+        "conversions": 0
+      },
+      {
+        "name": "user_engagement",
+        "count": 21,
+        "conversions": 0
+      },
+      {
+        "name": "scroll",
+        "count": 11,
+        "conversions": 0
+      },
+      {
+        "name": "session_start",
+        "count": 11,
+        "conversions": 0
+      },
+      {
+        "name": "first_visit",
+        "count": 7,
+        "conversions": 0
+      },
+      {
+        "name": "click",
+        "count": 4,
+        "conversions": 0
+      },
+      {
+        "name": "email_link_clicked",
+        "count": 1,
+        "conversions": 0
+      },
+      {
+        "name": "outbound_click",
+        "count": 1,
+        "conversions": 0
+      }
+    ]
   },
   "technical": {
     "pagespeed": [
       {
         "page": "https://code-lieshout.nl/",
         "strategy": "mobile",
-        "performance": 94,
+        "performance": 96,
         "accessibility": 98,
         "bestPractices": 96,
         "seo": 92,
@@ -328,11 +451,11 @@
           {
             "id": "LCP",
             "label": "Largest Contentful Paint",
-            "value": 2084.1184191161265,
+            "value": 2599.249416876754,
             "unit": "ms",
-            "displayValue": "2.1s",
-            "status": "good",
-            "p75": 2084.1184191161265
+            "displayValue": "2.6s",
+            "status": "needs-improvement",
+            "p75": 2599.249416876754
           },
           {
             "id": "INP",
@@ -355,20 +478,20 @@
           {
             "id": "FCP",
             "label": "First Contentful Paint",
-            "value": 949.4066978604096,
+            "value": 913.8665111671344,
             "unit": "ms",
-            "displayValue": "949ms",
+            "displayValue": "914ms",
             "status": "good",
-            "p75": 949.4066978604096
+            "p75": 913.8665111671344
           },
           {
             "id": "TTFB",
             "label": "Time to First Byte",
-            "value": 2,
+            "value": 1,
             "unit": "ms",
-            "displayValue": "2ms",
+            "displayValue": "1ms",
             "status": "good",
-            "p75": 2
+            "p75": 1
           }
         ],
         "fieldStatus": "unavailable"
@@ -376,7 +499,7 @@
       {
         "page": "https://code-lieshout.nl/",
         "strategy": "desktop",
-        "performance": 99,
+        "performance": 95,
         "accessibility": 98,
         "bestPractices": 96,
         "seo": 92,
@@ -384,11 +507,11 @@
           {
             "id": "LCP",
             "label": "Largest Contentful Paint",
-            "value": 517.1749507646085,
+            "value": 559.9533091732796,
             "unit": "ms",
-            "displayValue": "517ms",
+            "displayValue": "560ms",
             "status": "good",
-            "p75": 517.1749507646085
+            "p75": 559.9533091732796
           },
           {
             "id": "INP",
@@ -411,20 +534,20 @@
           {
             "id": "FCP",
             "label": "First Contentful Paint",
-            "value": 255.46998030584345,
+            "value": 260.5348040770132,
             "unit": "ms",
-            "displayValue": "255ms",
+            "displayValue": "261ms",
             "status": "good",
-            "p75": 255.46998030584345
+            "p75": 260.5348040770132
           },
           {
             "id": "TTFB",
             "label": "Time to First Byte",
-            "value": 2,
+            "value": 1,
             "unit": "ms",
-            "displayValue": "2ms",
+            "displayValue": "1ms",
             "status": "good",
-            "p75": 2
+            "p75": 1
           }
         ],
         "fieldStatus": "unavailable"
@@ -586,6 +709,42 @@
       "desktopPerformance": 99,
       "gbpWebsiteClicks": 0,
       "okSources": 2
+    },
+    {
+      "generatedAt": "2026-05-18T19:37:32.704Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 11,
+      "techScore": 96,
+      "mobilePerformance": 94,
+      "desktopPerformance": 99,
+      "gbpWebsiteClicks": 0,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-18T19:38:12.387Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 11,
+      "techScore": 96,
+      "mobilePerformance": 94,
+      "desktopPerformance": 99,
+      "gbpWebsiteClicks": 0,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-18T19:39:31.642Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 11,
+      "techScore": 95,
+      "mobilePerformance": 96,
+      "desktopPerformance": 95,
+      "gbpWebsiteClicks": 0,
+      "okSources": 3
     }
   ]
 }
