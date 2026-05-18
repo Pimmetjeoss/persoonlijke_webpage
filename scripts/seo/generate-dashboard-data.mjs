@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import fs from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { DEFAULTS, PUBLIC_DASHBOARD_DIR, SEO_DATA_DIR } from "./config.mjs";
@@ -70,6 +71,119 @@ function normalizeEvents(ga4Snapshot) {
   }));
 }
 
+function scoreFromCategory(category) {
+  const score = Number(category?.score);
+  return Number.isFinite(score) ? Math.round(score * 100) : 0;
+}
+
+function vitalStatus(id, value) {
+  if (!Number.isFinite(value) || value <= 0) return "unknown";
+  const limits = {
+    LCP: [2500, 4000],
+    INP: [200, 500],
+    CLS: [0.1, 0.25],
+    FCP: [1800, 3000],
+    TTFB: [800, 1800],
+  }[id] || [0, 0];
+  if (!limits[0]) return "unknown";
+  if (value <= limits[0]) return "good";
+  if (value <= limits[1]) return "needs-improvement";
+  return "poor";
+}
+
+function vitalDisplay(id, value) {
+  if (!Number.isFinite(value) || value <= 0) return "—";
+  if (id === "CLS") return String(Math.round(value * 1000) / 1000);
+  if (value >= 1000) return `${Math.round(value / 100) / 10}s`;
+  return `${Math.round(value)}ms`;
+}
+
+function normalizeVital(id, label, value, unit = id === "CLS" ? "score" : "ms") {
+  const safe = numberFrom(value, 0);
+  return { id, label, value: safe, unit, displayValue: vitalDisplay(id, safe), status: vitalStatus(id, safe), p75: safe };
+}
+
+function percentileFromMetric(metric) {
+  return numberFrom(metric?.percentile ?? metric?.percentiles?.p75, 0);
+}
+
+function normalizePageSpeed(pagespeedSnapshot) {
+  return toArray(pagespeedSnapshot?.results).filter((item) => item?.ok && item?.data?.lighthouseResult).map((item) => {
+    const lighthouse = item.data.lighthouseResult;
+    const categories = lighthouse.categories || {};
+    const audits = lighthouse.audits || {};
+    const loadingExperience = item.data.loadingExperience || item.data.originLoadingExperience || {};
+    const metrics = loadingExperience.metrics || {};
+    const vitals = [
+      normalizeVital("LCP", "Largest Contentful Paint", percentileFromMetric(metrics.LARGEST_CONTENTFUL_PAINT_MS) || numberFrom(audits["largest-contentful-paint"]?.numericValue, 0)),
+      normalizeVital("INP", "Interaction to Next Paint", percentileFromMetric(metrics.INTERACTION_TO_NEXT_PAINT) || numberFrom(audits["interaction-to-next-paint"]?.numericValue, 0)),
+      normalizeVital("CLS", "Cumulative Layout Shift", percentileFromMetric(metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE) / 100 || numberFrom(audits["cumulative-layout-shift"]?.numericValue, 0), "score"),
+      normalizeVital("FCP", "First Contentful Paint", percentileFromMetric(metrics.FIRST_CONTENTFUL_PAINT_MS) || numberFrom(audits["first-contentful-paint"]?.numericValue, 0)),
+      normalizeVital("TTFB", "Time to First Byte", percentileFromMetric(metrics.EXPERIMENTAL_TIME_TO_FIRST_BYTE) || numberFrom(audits["server-response-time"]?.numericValue, 0)),
+    ];
+    return {
+      page: item.page,
+      strategy: item.strategy,
+      performance: scoreFromCategory(categories.performance),
+      accessibility: scoreFromCategory(categories.accessibility),
+      bestPractices: scoreFromCategory(categories["best-practices"]),
+      seo: scoreFromCategory(categories.seo),
+      coreWebVitals: vitals,
+      fieldStatus: loadingExperience.overall_category ? "ok" : "unavailable",
+    };
+  });
+}
+
+function normalizeCrux(cruxSnapshot) {
+  return toArray(cruxSnapshot?.results).filter((item) => item?.ok && item?.data?.record).map((item) => {
+    const record = item.data.record;
+    const metrics = record.metrics || {};
+    const period = record.collectionPeriod;
+    return {
+      formFactor: item.formFactor,
+      collectionPeriod: period ? `${period.firstDate?.year}-${period.firstDate?.month}-${period.firstDate?.day} t/m ${period.lastDate?.year}-${period.lastDate?.month}-${period.lastDate?.day}` : undefined,
+      metrics: [
+        normalizeVital("LCP", "Largest Contentful Paint", percentileFromMetric(metrics.largest_contentful_paint)),
+        normalizeVital("INP", "Interaction to Next Paint", percentileFromMetric(metrics.interaction_to_next_paint)),
+        normalizeVital("CLS", "Cumulative Layout Shift", percentileFromMetric(metrics.cumulative_layout_shift), "score"),
+        normalizeVital("FCP", "First Contentful Paint", percentileFromMetric(metrics.first_contentful_paint)),
+        normalizeVital("TTFB", "Time to First Byte", percentileFromMetric(metrics.experimental_time_to_first_byte)),
+      ],
+    };
+  });
+}
+
+function normalizeGbp(gbpSnapshot) {
+  const data = gbpSnapshot?.data || {};
+  const totals = data.totals || data.summary || data;
+  const profileViews = pickNumber(totals, ["profileViews", "profile_views", "views", "businessViews"], 0);
+  const searches = pickNumber(totals, ["searches", "searchViews", "businessImpressions"], 0);
+  const websiteClicks = pickNumber(totals, ["websiteClicks", "website_clicks", "websiteActions"], 0);
+  const calls = pickNumber(totals, ["calls", "callClicks", "phoneCalls"], 0);
+  const directionRequests = pickNumber(totals, ["directionRequests", "direction_requests", "directions"], 0);
+  const rating = pickNumber(totals, ["rating", "averageRating", "average_rating"], 0);
+  const reviewCount = pickNumber(totals, ["reviewCount", "reviews", "totalReviews"], 0);
+  const metricRows = toArray(data.metrics || data.performance || data.insights).map((row) => ({
+    label: pickString(row, ["label", "metric", "name"], "metric"),
+    value: pickNumber(row, ["value", "count", "total"], 0),
+    delta: pickNumber(row, ["delta", "change"], 0),
+  }));
+  const reviews = toArray(data.reviews).map((row) => ({
+    author: pickString(row, ["author", "reviewer", "displayName"], "") || undefined,
+    rating: pickNumber(row, ["rating", "starRating"], 0),
+    comment: pickString(row, ["comment", "text", "review"], "") || undefined,
+    date: pickString(row, ["date", "createTime", "updateTime"], "") || undefined,
+  }));
+  const metrics = metricRows.length ? metricRows : [
+    { label: "Profielweergaven", value: profileViews },
+    { label: "Zoekopdrachten", value: searches },
+    { label: "Websitekliks", value: websiteClicks },
+    { label: "Bellen", value: calls },
+    { label: "Route-aanvragen", value: directionRequests },
+  ];
+  return { totals: { profileViews, searches, websiteClicks, calls, directionRequests, rating, reviewCount }, metrics, reviews };
+}
+
 function buildDateRange(gscSnapshot, ga4Trend) {
   const dates = ga4Trend.map((row) => row.date).filter(Boolean).sort();
   if (dates.length) {
@@ -88,14 +202,56 @@ function sourceInfo(source, snapshot, rowCount) {
   if (!snapshot) return { source, status: "unavailable", detail: "Nog geen snapshot gevonden.", rows: 0 };
   return {
     source,
-    status: snapshot.status === "ok" ? "ok" : snapshot.status === "error" ? "error" : "unavailable",
+    status: ["ok", "partial", "error", "unavailable"].includes(snapshot.status) ? snapshot.status : "unavailable",
     generatedAt: snapshot.generatedAt,
     detail: snapshot.message || snapshot.error || undefined,
     rows: rowCount,
   };
 }
 
-export function buildDashboardData({ gscSnapshot, ga4Snapshot }) {
+function averageTechnicalScore(pagespeed) {
+  const scores = toArray(pagespeed).flatMap((row) => [row.performance, row.accessibility, row.bestPractices, row.seo]).filter(Boolean);
+  return scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : 0;
+}
+
+export function summarizeHistoryPoint(dashboard) {
+  const pagespeed = toArray(dashboard?.technical?.pagespeed);
+  const mobile = pagespeed.find((row) => row.strategy === "mobile");
+  const desktop = pagespeed.find((row) => row.strategy === "desktop");
+  return {
+    generatedAt: dashboard.generatedAt,
+    date: String(dashboard.generatedAt || "").slice(0, 10),
+    gscRows: Object.values(dashboard.gsc || {}).flat().length,
+    quickWins: toArray(dashboard.gsc?.quickWins).length,
+    organicSessions: numberFrom(dashboard.ga4?.totals?.sessions, 0),
+    techScore: averageTechnicalScore(pagespeed),
+    mobilePerformance: numberFrom(mobile?.performance, 0),
+    desktopPerformance: numberFrom(desktop?.performance, 0),
+    gbpWebsiteClicks: numberFrom(dashboard.gbp?.totals?.websiteClicks, 0),
+    okSources: toArray(dashboard.sources).filter((source) => source.status === "ok").length,
+  };
+}
+
+async function buildHistory(currentDashboard) {
+  const processedDir = path.join(SEO_DATA_DIR, "processed");
+  const points = new Map();
+  try {
+    const files = await fs.readdir(processedDir);
+    for (const file of files.filter((name) => /^dashboard\..+\.json$/.test(name)).sort().slice(-180)) {
+      const dashboard = await readJsonIfExists(path.join(processedDir, file));
+      if (!dashboard?.generatedAt) continue;
+      const point = summarizeHistoryPoint(dashboard);
+      points.set(point.generatedAt, point);
+    }
+  } catch {
+    // No processed history yet.
+  }
+  const currentPoint = summarizeHistoryPoint(currentDashboard);
+  points.set(currentPoint.generatedAt, currentPoint);
+  return [...points.values()].sort((a, b) => a.generatedAt.localeCompare(b.generatedAt)).slice(-180);
+}
+
+export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot, cruxSnapshot, gbpSnapshot }) {
   const gsc = {
     quickWins: workflowData(gscSnapshot, "quickWins"),
     cannibalization: workflowData(gscSnapshot, "cannibalization"),
@@ -111,6 +267,12 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot }) {
   const ga4Trend = latestByDate(normalizeGa4Trend(ga4Snapshot), (row) => row.date).reverse();
   const landingPages = normalizeLandingPages(ga4Snapshot);
   const events = normalizeEvents(ga4Snapshot);
+  const pagespeed = normalizePageSpeed(pagespeedSnapshot);
+  const crux = normalizeCrux(cruxSnapshot);
+  const gbp = normalizeGbp(gbpSnapshot);
+  const gbpRowCount = gbpSnapshot?.status === "ok" ? gbp.metrics.length + gbp.reviews.length : 0;
+  const avgTechnicalScore = averageTechnicalScore(pagespeed);
+  const poorVitals = [...pagespeed.flatMap((row) => row.coreWebVitals), ...crux.flatMap((row) => row.metrics)].filter((metric) => metric.status === "poor");
   const totals = ga4Snapshot?.data?.totals || {};
   const totalSessions = numberFrom(totals.sessions, ga4Trend.reduce((sum, row) => sum + (row.sessions || 0), 0));
   const totalUsers = numberFrom(totals.users, ga4Trend.reduce((sum, row) => sum + (row.users || 0), 0));
@@ -129,6 +291,10 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot }) {
 
   if (!gscSnapshot || gscSnapshot.status !== "ok") warnings.push("GSC-data ontbreekt of is gedeeltelijk beschikbaar.");
   if (!ga4Snapshot || ga4Snapshot.status !== "ok") warnings.push("GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports.");
+  if (!pagespeedSnapshot || pagespeedSnapshot.status !== "ok") warnings.push("PageSpeed/Lighthouse data ontbreekt of is gedeeltelijk beschikbaar.");
+  if (!cruxSnapshot || cruxSnapshot.status !== "ok") warnings.push("CrUX field data ontbreekt; configureer SEO_CRUX_API_KEY of gebruik PageSpeed field data.");
+  if (!gbpSnapshot || gbpSnapshot.status !== "ok") warnings.push("Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports.");
+  if (poorVitals.length) warnings.push(`Core Web Vitals met poor-status: ${poorVitals.slice(0, 3).map((metric) => metric.id).join(", ")}.`);
 
   const opportunities = [
     ...gsc.quickWins.slice(0, 5).map((row) => `${row.query || row.page || "Quick win"}: positie ${row.position || "—"}, ${row.impressions} impressies`),
@@ -142,6 +308,9 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot }) {
     sources: [
       sourceInfo("gsc", gscSnapshot, gscRows.length),
       sourceInfo("ga4", ga4Snapshot, ga4Trend.length + landingPages.length + events.length),
+      sourceInfo("pagespeed", pagespeedSnapshot, pagespeed.length),
+      sourceInfo("crux", cruxSnapshot, crux.length),
+      sourceInfo("gbp", gbpSnapshot, gbpRowCount),
     ],
     executive: {
       cards: [
@@ -150,6 +319,8 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot }) {
         { label: "Organic sessions", value: totalSessions.toLocaleString("nl-NL"), tone: totalSessions ? "positive" : "warning" },
         { label: "Engagement", value: `${Math.round(avgEngagement * 10) / 10}%`, tone: avgEngagement ? "positive" : "neutral" },
         { label: "Conversions/events", value: totalConversions.toLocaleString("nl-NL"), tone: totalConversions ? "positive" : "neutral" },
+        { label: "Tech score", value: avgTechnicalScore ? String(avgTechnicalScore) : "—", tone: avgTechnicalScore >= 90 ? "positive" : avgTechnicalScore ? "warning" : "neutral" },
+        { label: "GBP clicks", value: gbp.totals.websiteClicks.toLocaleString("nl-NL"), tone: gbp.totals.websiteClicks ? "positive" : "neutral" },
       ],
       opportunities: opportunities.length ? opportunities : ["Nog geen quick-win of nieuwe-query data beschikbaar."],
       warnings: warnings.length ? warnings : ["Geen traffic cliffs, decay of coverage-waarschuwingen gedetecteerd in de huidige snapshots."],
@@ -167,13 +338,23 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot }) {
       landingPages,
       events,
     },
+    technical: {
+      pagespeed,
+      crux,
+    },
+    gbp,
+    history: [],
   };
 }
 
 async function main() {
   const gscSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "gsc-latest.json"));
   const ga4Snapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "ga4-latest.json"));
-  const dashboard = buildDashboardData({ gscSnapshot, ga4Snapshot });
+  const pagespeedSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "pagespeed-latest.json"));
+  const cruxSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "crux-latest.json"));
+  const gbpSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "gbp-latest.json"));
+  const dashboard = buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot, cruxSnapshot, gbpSnapshot });
+  dashboard.history = await buildHistory(dashboard);
   const stamp = new Date().toISOString().replaceAll(":", "-").replace(/\.\d{3}Z$/, "Z");
   await writeJson(path.join(SEO_DATA_DIR, "processed", `dashboard.${stamp}.json`), dashboard);
   await writeJson(path.join(PUBLIC_DASHBOARD_DIR, "dashboard.json"), dashboard);

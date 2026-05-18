@@ -8,7 +8,7 @@ export interface MetricCard {
 }
 
 export interface DataSourceInfo {
-  source: "gsc" | "ga4";
+  source: "gsc" | "ga4" | "pagespeed" | "crux" | "gbp";
   status: SourceStatus;
   generatedAt?: string;
   detail?: string;
@@ -82,6 +82,78 @@ export interface Ga4Organic {
   events: EventMetric[];
 }
 
+export interface WebVitalMetric {
+  id: string;
+  label: string;
+  value: number;
+  unit: string;
+  displayValue: string;
+  status: "good" | "needs-improvement" | "poor" | "unknown";
+  p75?: number;
+}
+
+export interface PageSpeedResult {
+  page: string;
+  strategy: "mobile" | "desktop" | string;
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+  coreWebVitals: WebVitalMetric[];
+  fieldStatus: SourceStatus;
+}
+
+export interface CruxResult {
+  formFactor: string;
+  metrics: WebVitalMetric[];
+  collectionPeriod?: string;
+}
+
+export interface TechnicalSeo {
+  pagespeed: PageSpeedResult[];
+  crux: CruxResult[];
+}
+
+export interface GbpMetric {
+  label: string;
+  value: number;
+  delta?: number;
+}
+
+export interface GbpReview {
+  author?: string;
+  rating: number;
+  comment?: string;
+  date?: string;
+}
+
+export interface GbpLocalSeo {
+  totals: {
+    profileViews: number;
+    searches: number;
+    websiteClicks: number;
+    calls: number;
+    directionRequests: number;
+    rating: number;
+    reviewCount: number;
+  };
+  metrics: GbpMetric[];
+  reviews: GbpReview[];
+}
+
+export interface SeoHistoryPoint {
+  generatedAt: string;
+  date: string;
+  gscRows: number;
+  quickWins: number;
+  organicSessions: number;
+  techScore: number;
+  mobilePerformance: number;
+  desktopPerformance: number;
+  gbpWebsiteClicks: number;
+  okSources: number;
+}
+
 export interface SeoDashboardData {
   generatedAt: string;
   site: string;
@@ -94,4 +166,7 @@ export interface SeoDashboardData {
   };
   gsc: GscWorkflows;
   ga4: Ga4Organic;
+  technical: TechnicalSeo;
+  gbp: GbpLocalSeo;
+  history: SeoHistoryPoint[];
 }

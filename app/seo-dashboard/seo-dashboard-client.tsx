@@ -74,6 +74,36 @@ const dashboardFeatures = [
     className: "col-span-1 lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
     hoverColor: "hsl(142.1 70.6% 45.3%)",
   },
+  {
+    Icon: BarChartIcon,
+    name: "Core Web Vitals",
+    description: "CrUX, PageSpeed en Lighthouse scores per device.",
+    href: "#technical-seo",
+    cta: "Check techniek",
+    background: <div className="absolute -bottom-10 -left-10 h-24 w-24 rounded-full bg-yellow-200 opacity-70" />,
+    className: "col-span-1",
+    hoverColor: "hsl(143.8 61.2% 20.2%)",
+  },
+  {
+    Icon: DashboardIcon,
+    name: "Historie",
+    description: "Zie of scores per scan beter of slechter worden.",
+    href: "#historie",
+    cta: "Bekijk trend",
+    background: <div className="absolute -right-10 -bottom-10 h-24 w-24 rounded-full border-[14px] border-black/10" />,
+    className: "col-span-1",
+    hoverColor: "hsl(141.7 76.6% 73.1%)",
+  },
+  {
+    Icon: ReaderIcon,
+    name: "Local SEO",
+    description: "Google Business Profile views, acties en reviews.",
+    href: "#local-seo",
+    cta: "Bekijk GBP",
+    background: <div className="absolute -right-8 top-6 h-16 w-16 rounded-xl bg-emerald-200" />,
+    className: "col-span-1",
+    hoverColor: "hsl(141.9 69.2% 58%)",
+  },
 ];
 
 function toneClass(tone: string) {
@@ -318,6 +348,150 @@ function EventList({ events }: { events: EventMetric[] }) {
   );
 }
 
+function vitalClass(status: string) {
+  if (status === "good") return "bg-emerald-200 text-emerald-950";
+  if (status === "needs-improvement") return "bg-yellow-100 text-yellow-950";
+  if (status === "poor") return "bg-red-100 text-red-950";
+  return "bg-zinc-100 text-zinc-700";
+}
+
+function TechnicalSeoPanel({ technical }: { technical: SeoDashboardData["technical"] }) {
+  if (!technical.pagespeed.length && !technical.crux.length) {
+    return <EmptyState title="Nog geen CrUX/PageSpeed data" detail="Run npm run seo:fetch:pagespeed en configureer optioneel SEO_CRUX_API_KEY voor Chrome UX Report field data." />;
+  }
+  return (
+    <div className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-2">
+        {technical.pagespeed.map((row) => (
+          <div key={`${row.page}-${row.strategy}`} className="rounded-[2rem] border-[3px] border-black bg-white p-5 shadow-[7px_7px_0_#000]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest">{row.strategy} · Lighthouse</p>
+                <p className="max-w-[420px] truncate text-2xl" title={row.page}>{row.page}</p>
+              </div>
+              <div className="rounded-full border-[3px] border-black bg-emerald-200 px-4 py-2 text-3xl">{row.performance || "—"}</div>
+            </div>
+            <div className="mt-4 grid grid-cols-4 gap-2 font-mono text-xs">
+              <div className="rounded-2xl bg-emerald-50 p-3">Perf<br /><b>{row.performance}</b></div>
+              <div className="rounded-2xl bg-emerald-50 p-3">A11y<br /><b>{row.accessibility}</b></div>
+              <div className="rounded-2xl bg-emerald-50 p-3">BP<br /><b>{row.bestPractices}</b></div>
+              <div className="rounded-2xl bg-emerald-50 p-3">SEO<br /><b>{row.seo}</b></div>
+            </div>
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              {row.coreWebVitals.map((metric) => (
+                <div key={metric.id} className={`rounded-2xl p-3 font-mono text-sm ${vitalClass(metric.status)}`}>
+                  <span className="font-bold">{metric.id}</span> {metric.displayValue} <span className="text-xs uppercase opacity-70">{metric.status}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      {technical.crux.length ? (
+        <div className="rounded-[2rem] border-[3px] border-black bg-black p-5 text-white shadow-[8px_8px_0_#86efac]">
+          <h3 className="text-4xl">CrUX field data</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            {technical.crux.map((row) => (
+              <div key={row.formFactor} className="rounded-3xl bg-white/10 p-4">
+                <p className="font-mono text-sm uppercase text-emerald-200">{row.formFactor}</p>
+                {row.collectionPeriod ? <p className="font-mono text-xs text-white/60">{row.collectionPeriod}</p> : null}
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {row.metrics.map((metric) => <div key={metric.id} className="rounded-2xl bg-white/10 p-3 font-mono text-sm">{metric.id}: {metric.displayValue} · {metric.status}</div>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function GbpPanel({ gbp }: { gbp: SeoDashboardData["gbp"] }) {
+  const hasData = gbp.metrics.some((metric) => metric.value > 0) || gbp.reviews.length || gbp.totals.rating > 0;
+  if (!hasData) return <EmptyState title="Nog geen Google Business Profile data" detail="Configureer SEO_GBP_COMMAND met een read-only export voor views, zoekopdrachten, websitekliks, calls, route-aanvragen en reviews." />;
+  return (
+    <div className="grid gap-6 lg:grid-cols-[1fr_.8fr]">
+      <div className="grid gap-3 sm:grid-cols-2">
+        {gbp.metrics.map((metric) => (
+          <div key={metric.label} className="rounded-3xl border-[3px] border-black bg-white p-5 shadow-[5px_5px_0_#000]">
+            <p className="font-mono text-xs uppercase tracking-widest">{metric.label}</p>
+            <p className="mt-3 text-5xl">{formatNumber(metric.value)}</p>
+          </div>
+        ))}
+      </div>
+      <div className="rounded-[2rem] border-[3px] border-black bg-yellow-100 p-5 shadow-[8px_8px_0_#000]">
+        <h3 className="text-4xl">Reviews</h3>
+        <p className="mt-2 font-mono text-sm">Rating: {gbp.totals.rating || "—"} · {formatNumber(gbp.totals.reviewCount)} reviews</p>
+        <div className="mt-4 space-y-3">
+          {gbp.reviews.slice(0, 5).map((review, index) => (
+            <div key={`${review.author}-${index}`} className="rounded-2xl bg-white/70 p-3 font-mono text-sm">
+              <p>{"★".repeat(Math.max(0, Math.min(5, Math.round(review.rating))))} {review.author || "Review"}</p>
+              {review.comment ? <p className="mt-1 text-black/70">{review.comment}</p> : null}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HistoryTrendPanel({ history }: { history: SeoDashboardData["history"] }) {
+  const points = (history || []).filter((point) => point.generatedAt).slice(-30);
+  if (points.length < 2) return <EmptyState title="Nog te weinig historie" detail="Na twee of meer scans verschijnt hier automatisch een trendgrafiek met beter/slechter-signalen." />;
+
+  const width = 760;
+  const height = 260;
+  const pad = 30;
+  const max = Math.max(100, ...points.map((point) => Math.max(point.techScore, point.mobilePerformance, point.desktopPerformance, point.gscRows)));
+  const toPoint = (value: number, index: number) => {
+    const x = pad + (index / Math.max(1, points.length - 1)) * (width - pad * 2);
+    const y = height - pad - (value / max) * (height - pad * 2);
+    return `${x},${y}`;
+  };
+  const line = (key: keyof SeoDashboardData["history"][number]) => points.map((point, index) => toPoint(Number(point[key]) || 0, index)).join(" ");
+  const first = points[0];
+  const last = points.at(-1) || first;
+  const delta = (key: keyof SeoDashboardData["history"][number]) => (Number(last[key]) || 0) - (Number(first[key]) || 0);
+  const trendClass = (value: number) => value > 0 ? "text-emerald-700" : value < 0 ? "text-red-700" : "text-black/60";
+
+  return (
+    <div className="rounded-[2rem] border-[3px] border-black bg-white p-5 shadow-[8px_8px_0_#000]">
+      <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h3 className="text-4xl">Historische trend</h3>
+          <p className="font-mono text-sm text-black/60">Laatste {points.length} dashboard snapshots · {new Date(first.generatedAt).toLocaleDateString("nl-NL")} t/m {new Date(last.generatedAt).toLocaleDateString("nl-NL")}</p>
+        </div>
+        <div className="grid gap-2 font-mono text-xs sm:grid-cols-3">
+          <span className={trendClass(delta("techScore"))}>Tech score {delta("techScore") >= 0 ? "+" : ""}{delta("techScore")}</span>
+          <span className={trendClass(delta("mobilePerformance"))}>Mobile perf {delta("mobilePerformance") >= 0 ? "+" : ""}{delta("mobilePerformance")}</span>
+          <span className={trendClass(delta("quickWins"))}>Quick wins {delta("quickWins") >= 0 ? "+" : ""}{delta("quickWins")}</span>
+        </div>
+      </div>
+      <div className="overflow-x-auto rounded-[1.5rem] bg-black p-4 text-white">
+        <svg viewBox={`0 0 ${width} ${height}`} className="min-h-[260px] w-full min-w-[560px]" role="img" aria-label="SEO historische trendgrafiek">
+          <rect width={width} height={height} rx="24" fill="#020617" />
+          {[0, 1, 2, 3].map((tick) => <line key={tick} x1={pad} x2={width - pad} y1={pad + tick * 58} y2={pad + tick * 58} stroke="rgba(255,255,255,.12)" />)}
+          <polyline points={line("techScore")} fill="none" stroke="#86efac" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points={line("mobilePerformance")} fill="none" stroke="#fef08a" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points={line("desktopPerformance")} fill="none" stroke="#93c5fd" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points={line("quickWins")} fill="none" stroke="#fb7185" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          {points.map((point, index) => {
+            const [x, y] = toPoint(point.techScore, index).split(",").map(Number);
+            return <circle key={point.generatedAt} cx={x} cy={y} r="5" fill="#86efac"><title>{`${new Date(point.generatedAt).toLocaleString("nl-NL")}: tech ${point.techScore}, mobile ${point.mobilePerformance}, desktop ${point.desktopPerformance}, quick wins ${point.quickWins}`}</title></circle>;
+          })}
+        </svg>
+        <div className="mt-3 flex flex-wrap gap-4 font-mono text-xs">
+          <span className="text-emerald-200">● Tech score</span>
+          <span className="text-yellow-200">● Mobile performance</span>
+          <span className="text-blue-200">● Desktop performance</span>
+          <span className="text-rose-300">● Quick wins</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SeoDashboardClient({ initialData }: { initialData: SeoDashboardData }) {
   const pageRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState(initialData);
@@ -367,7 +541,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
           </TimelineContent>
 
           <TimelineContent animationNum={2} timelineRef={pageRef} once={true}>
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-7">
               {data.executive.cards.map((card) => (
                 <div key={card.label} className={`rounded-xl border-[3px] p-5 shadow-xl ${toneClass(card.tone)}`}>
                   <p className="font-mono text-xs uppercase tracking-widest">{card.label}</p>
@@ -441,6 +615,30 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
           <h2 className="text-5xl md:text-7xl">Engagement signals</h2>
         </div>
         <EventList events={data.ga4.events} />
+      </section>
+
+        <section id="technical-seo" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
+        <div className="mb-5">
+          <p className="font-mono text-sm uppercase tracking-[0.3em]">CrUX · PageSpeed · Lighthouse</p>
+          <h2 className="text-5xl md:text-7xl">Technical SEO</h2>
+        </div>
+        <TechnicalSeoPanel technical={data.technical} />
+      </section>
+
+        <section id="historie" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
+        <div className="mb-5">
+          <p className="font-mono text-sm uppercase tracking-[0.3em]">Snapshots door de tijd</p>
+          <h2 className="text-5xl md:text-7xl">Beter of slechter?</h2>
+        </div>
+        <HistoryTrendPanel history={data.history} />
+      </section>
+
+        <section id="local-seo" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
+        <div className="mb-5">
+          <p className="font-mono text-sm uppercase tracking-[0.3em]">Google Business Profile</p>
+          <h2 className="text-5xl md:text-7xl">Local SEO</h2>
+        </div>
+        <GbpPanel gbp={data.gbp} />
       </section>
       </main>
       <StickyFooter />

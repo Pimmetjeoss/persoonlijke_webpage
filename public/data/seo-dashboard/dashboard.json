@@ -1,23 +1,43 @@
 {
-  "generatedAt": "2026-05-17T13:39:44.812Z",
+  "generatedAt": "2026-05-18T19:27:24.279Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
-    "start": "2025-11-17",
-    "end": "2026-05-16",
+    "start": "2025-11-18",
+    "end": "2026-05-17",
     "label": "Laatste 180 dagen"
   },
   "sources": [
     {
       "source": "gsc",
       "status": "ok",
-      "generatedAt": "2026-05-17T13:27:29.700Z",
+      "generatedAt": "2026-05-18T19:02:38.136Z",
       "rows": 17
     },
     {
       "source": "ga4",
       "status": "unavailable",
-      "generatedAt": "2026-05-17T13:39:44.649Z",
-      "detail": "Could not build GA4 client. Ensure the service account has Viewer access in GA4 Admin > Property Access Management.",
+      "generatedAt": "2026-05-18T19:02:38.174Z",
+      "detail": "SEO_GA4_COMMAND is not configured. Point it to the existing Analytics MCP/GA4 read-only export command; placeholders: {property}, {days}, {limit}.",
+      "rows": 0
+    },
+    {
+      "source": "pagespeed",
+      "status": "ok",
+      "generatedAt": "2026-05-18T19:19:50.463Z",
+      "rows": 2
+    },
+    {
+      "source": "crux",
+      "status": "unavailable",
+      "generatedAt": "2026-05-18T19:19:50.958Z",
+      "detail": "CrUX API returned no usable field data for this origin.",
+      "rows": 0
+    },
+    {
+      "source": "gbp",
+      "status": "unavailable",
+      "generatedAt": "2026-05-18T19:02:38.565Z",
+      "detail": "SEO_GBP_COMMAND is not configured. Point it to a read-only Google Business Profile export command; placeholders: {location}, {days}, {limit}.",
       "rows": 0
     }
   ],
@@ -47,6 +67,16 @@
         "label": "Conversions/events",
         "value": "0",
         "tone": "neutral"
+      },
+      {
+        "label": "Tech score",
+        "value": "96",
+        "tone": "positive"
+      },
+      {
+        "label": "GBP clicks",
+        "value": "0",
+        "tone": "neutral"
       }
     ],
     "opportunities": [
@@ -59,7 +89,9 @@
       "Nieuwe query: webdesign bureau lieshout"
     ],
     "warnings": [
-      "GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports."
+      "GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports.",
+      "CrUX field data ontbreekt; configureer SEO_CRUX_API_KEY of gebruik PageSpeed field data.",
+      "Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports."
     ]
   },
   "gsc": {
@@ -143,17 +175,6 @@
         "id": "compare-0",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 8,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": 8,
-        "opportunity": 0.64
-      },
-      {
-        "id": "compare-1",
-        "metric": "compare",
-        "clicks": 0,
         "impressions": 1,
         "ctr": 0,
         "position": 0,
@@ -162,7 +183,40 @@
         "opportunity": 0.08
       },
       {
+        "id": "compare-1",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": -2,
+        "opportunity": 0.24
+      },
+      {
         "id": "compare-2",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 8,
+        "opportunity": 0.64
+      },
+      {
+        "id": "compare-3",
+        "metric": "compare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 0,
+        "deltaClicks": 0,
+        "deltaImpressions": 0,
+        "opportunity": 0.08
+      },
+      {
+        "id": "compare-4",
         "metric": "compare",
         "clicks": 0,
         "impressions": 9,
@@ -173,7 +227,7 @@
         "opportunity": 0.72
       },
       {
-        "id": "compare-3",
+        "id": "compare-5",
         "metric": "compare",
         "clicks": 0,
         "impressions": 5,
@@ -184,37 +238,15 @@
         "opportunity": 0.4
       },
       {
-        "id": "compare-4",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -2,
-        "opportunity": 0.08
-      },
-      {
-        "id": "compare-5",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": 1,
-        "opportunity": 0.08
-      },
-      {
         "id": "compare-6",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 3,
+        "impressions": 1,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -1,
-        "opportunity": 0.24
+        "deltaImpressions": -3,
+        "opportunity": 0.08
       },
       {
         "id": "compare-7",
@@ -282,5 +314,278 @@
     "trend": [],
     "landingPages": [],
     "events": []
-  }
+  },
+  "technical": {
+    "pagespeed": [
+      {
+        "page": "https://code-lieshout.nl/",
+        "strategy": "mobile",
+        "performance": 94,
+        "accessibility": 98,
+        "bestPractices": 96,
+        "seo": 92,
+        "coreWebVitals": [
+          {
+            "id": "LCP",
+            "label": "Largest Contentful Paint",
+            "value": 2084.1184191161265,
+            "unit": "ms",
+            "displayValue": "2.1s",
+            "status": "good",
+            "p75": 2084.1184191161265
+          },
+          {
+            "id": "INP",
+            "label": "Interaction to Next Paint",
+            "value": 0,
+            "unit": "ms",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "CLS",
+            "label": "Cumulative Layout Shift",
+            "value": 0,
+            "unit": "score",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "FCP",
+            "label": "First Contentful Paint",
+            "value": 949.4066978604096,
+            "unit": "ms",
+            "displayValue": "949ms",
+            "status": "good",
+            "p75": 949.4066978604096
+          },
+          {
+            "id": "TTFB",
+            "label": "Time to First Byte",
+            "value": 2,
+            "unit": "ms",
+            "displayValue": "2ms",
+            "status": "good",
+            "p75": 2
+          }
+        ],
+        "fieldStatus": "unavailable"
+      },
+      {
+        "page": "https://code-lieshout.nl/",
+        "strategy": "desktop",
+        "performance": 99,
+        "accessibility": 98,
+        "bestPractices": 96,
+        "seo": 92,
+        "coreWebVitals": [
+          {
+            "id": "LCP",
+            "label": "Largest Contentful Paint",
+            "value": 517.1749507646085,
+            "unit": "ms",
+            "displayValue": "517ms",
+            "status": "good",
+            "p75": 517.1749507646085
+          },
+          {
+            "id": "INP",
+            "label": "Interaction to Next Paint",
+            "value": 0,
+            "unit": "ms",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "CLS",
+            "label": "Cumulative Layout Shift",
+            "value": 0,
+            "unit": "score",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "FCP",
+            "label": "First Contentful Paint",
+            "value": 255.46998030584345,
+            "unit": "ms",
+            "displayValue": "255ms",
+            "status": "good",
+            "p75": 255.46998030584345
+          },
+          {
+            "id": "TTFB",
+            "label": "Time to First Byte",
+            "value": 2,
+            "unit": "ms",
+            "displayValue": "2ms",
+            "status": "good",
+            "p75": 2
+          }
+        ],
+        "fieldStatus": "unavailable"
+      }
+    ],
+    "crux": []
+  },
+  "gbp": {
+    "totals": {
+      "profileViews": 0,
+      "searches": 0,
+      "websiteClicks": 0,
+      "calls": 0,
+      "directionRequests": 0,
+      "rating": 0,
+      "reviewCount": 0
+    },
+    "metrics": [
+      {
+        "label": "Profielweergaven",
+        "value": 0
+      },
+      {
+        "label": "Zoekopdrachten",
+        "value": 0
+      },
+      {
+        "label": "Websitekliks",
+        "value": 0
+      },
+      {
+        "label": "Bellen",
+        "value": 0
+      },
+      {
+        "label": "Route-aanvragen",
+        "value": 0
+      }
+    ],
+    "reviews": []
+  },
+  "history": [
+    {
+      "generatedAt": "2026-05-17T13:25:47.954Z",
+      "date": "2026-05-17",
+      "gscRows": 0,
+      "quickWins": 0,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 0
+    },
+    {
+      "generatedAt": "2026-05-17T13:25:48.117Z",
+      "date": "2026-05-17",
+      "gscRows": 0,
+      "quickWins": 0,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 0
+    },
+    {
+      "generatedAt": "2026-05-17T13:26:14.762Z",
+      "date": "2026-05-17",
+      "gscRows": 0,
+      "quickWins": 0,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 1
+    },
+    {
+      "generatedAt": "2026-05-17T13:27:29.856Z",
+      "date": "2026-05-17",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 1
+    },
+    {
+      "generatedAt": "2026-05-17T13:39:07.730Z",
+      "date": "2026-05-17",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 2
+    },
+    {
+      "generatedAt": "2026-05-17T13:39:44.812Z",
+      "date": "2026-05-17",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 1
+    },
+    {
+      "generatedAt": "2026-05-18T19:02:38.603Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 1
+    },
+    {
+      "generatedAt": "2026-05-18T19:03:44.898Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "okSources": 1
+    },
+    {
+      "generatedAt": "2026-05-18T19:19:51.117Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 96,
+      "mobilePerformance": 94,
+      "desktopPerformance": 99,
+      "gbpWebsiteClicks": 0,
+      "okSources": 2
+    },
+    {
+      "generatedAt": "2026-05-18T19:27:24.279Z",
+      "date": "2026-05-18",
+      "gscRows": 17,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 96,
+      "mobilePerformance": 94,
+      "desktopPerformance": 99,
+      "gbpWebsiteClicks": 0,
+      "okSources": 2
+    }
+  ]
 }

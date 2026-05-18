@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
-import { buildDashboardData, normalizeGscRows } from "../scripts/seo/generate-dashboard-data.mjs";
+import { buildDashboardData, normalizeGscRows, summarizeHistoryPoint } from "../scripts/seo/generate-dashboard-data.mjs";
 
 test("normalizeGscRows maps common GSC fields into stable dashboard rows", () => {
   const rows = normalizeGscRows([
@@ -24,6 +24,10 @@ test("buildDashboardData degrades safely when source snapshots are missing", () 
   assert.equal(dashboard.sources[1].status, "unavailable");
   assert.deepEqual(dashboard.gsc.quickWins, []);
   assert.equal(dashboard.ga4.totals.sessions, 0);
+  assert.deepEqual(dashboard.technical.pagespeed, []);
+  assert.deepEqual(dashboard.technical.crux, []);
+  assert.equal(dashboard.gbp.totals.websiteClicks, 0);
+  assert.deepEqual(dashboard.history, []);
   assert.ok(dashboard.executive.warnings.length >= 1);
 });
 
@@ -47,11 +51,30 @@ test("buildDashboardData aggregates GA4 daily sessions and GSC opportunities", (
         top_pages: [{ landing_page: "/", sessions: 8, users: 6, engagement_rate: 70 }],
       },
     },
+    pagespeedSnapshot: {
+      status: "ok",
+      generatedAt: "2026-05-17T00:00:00Z",
+      results: [{
+        ok: true,
+        page: "https://code-lieshout.nl/",
+        strategy: "mobile",
+        data: { lighthouseResult: { categories: { performance: { score: 0.91 }, accessibility: { score: 1 }, "best-practices": { score: 0.96 }, seo: { score: 1 } }, audits: {} } },
+      }],
+    },
+    gbpSnapshot: {
+      status: "ok",
+      generatedAt: "2026-05-17T00:00:00Z",
+      data: { totals: { websiteClicks: 4, calls: 1, rating: 5, reviewCount: 2 } },
+    },
   });
 
   assert.equal(dashboard.gsc.quickWins.length, 1);
   assert.equal(dashboard.ga4.totals.sessions, 8);
   assert.equal(dashboard.ga4.landingPages[0].page, "/");
+  assert.equal(dashboard.technical.pagespeed[0].performance, 91);
+  assert.equal(dashboard.gbp.totals.websiteClicks, 4);
+  assert.equal(summarizeHistoryPoint(dashboard).techScore, 97);
+  assert.equal(summarizeHistoryPoint(dashboard).mobilePerformance, 91);
   assert.equal(dashboard.dateRange.start, "2026-05-15");
   assert.equal(dashboard.dateRange.end, "2026-05-16");
 });
@@ -64,4 +87,5 @@ test("SEO dashboard reuses the test page visual shell", () => {
   assert.match(source, /import \{ BentoCard, BentoGrid \} from "@\/app\/test\/components\/bento-grid"/);
   assert.match(source, /<StickyHeader[\s\S]*title="SEO DASHBOARD"[\s\S]*startExpanded=\{true\}/);
   assert.match(source, /<BentoGrid className="lg:grid-rows-3"/);
+  assert.match(source, /<HistoryTrendPanel history=\{data\.history\}/);
 });

@@ -11,6 +11,10 @@
     "test": "node --test tests/seo-dashboard.test.mjs",
     "seo:fetch:gsc": "node scripts/seo/fetch-gsc.mjs",
     "seo:fetch:ga4": "node scripts/seo/fetch-ga4.mjs",
+    "seo:fetch:pagespeed": "node scripts/seo/fetch-pagespeed.mjs",
+    "seo:fetch:crux": "node scripts/seo/fetch-crux.mjs",
+    "seo:fetch:gbp": "node scripts/seo/fetch-gbp.mjs",
+    "seo:config:google-key": "bash scripts/seo/configure-google-api-key.sh",
     "seo:generate": "node scripts/seo/generate-dashboard-data.mjs",
     "seo:update": "node scripts/seo/update-seo-dashboard.mjs"
   },
