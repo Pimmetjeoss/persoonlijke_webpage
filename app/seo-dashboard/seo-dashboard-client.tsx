@@ -117,7 +117,7 @@ const dashboardFeatures = [
     Icon: LightningBoltIcon,
     name: "Clarity",
     description: "Installatie, consent en Microsoft Clarity status op één plek.",
-    href: "#clarity",
+    href: "#clarity-discovery",
     cta: "Check Clarity",
     background: <div className="absolute -right-10 top-2 h-20 w-20 rounded-full bg-sky-200 opacity-80" />,
     className: "col-span-1",
@@ -548,7 +548,7 @@ function ClarityPanel({ clarity }: { clarity: SeoDashboardData["clarity"] }) {
         {clarity.discoveryCards.map((card) => (
           <a
             key={card.title}
-            href={card.href || "#clarity"}
+            href={card.href || "#clarity-discovery"}
             target={card.href?.startsWith("http") ? "_blank" : undefined}
             rel={card.href?.startsWith("http") ? "noreferrer" : undefined}
             onClick={() => trackClarityEvent(`clarity_discovery_${card.title.toLowerCase().replaceAll(" ", "_")}`)}
@@ -903,7 +903,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
         <TechnicalSeoPanel technical={data.technical} />
       </section>
 
-        <section id="clarity" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
+        <section id="clarity-discovery" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
         <div className="mb-5">
           <p className="font-mono text-sm uppercase tracking-[0.3em]">Heatmaps · Recordings · Insights</p>
           <h2 className="text-5xl md:text-7xl">Clarity Discovery Board</h2>

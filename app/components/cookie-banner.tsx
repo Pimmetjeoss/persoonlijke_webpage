@@ -20,7 +20,7 @@ export function CookieBanner() {
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       const consent = localStorage.getItem("cookie-consent")
-      setVisible(!consent && pathname === "/portfolio")
+      setVisible(!consent)
     })
     return () => cancelAnimationFrame(frame)
   }, [pathname])
