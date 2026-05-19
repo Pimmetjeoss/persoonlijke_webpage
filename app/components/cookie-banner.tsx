@@ -4,10 +4,12 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 
 type GtagFunction = (...args: unknown[]) => void;
+type ClarityFunction = (...args: unknown[]) => void;
 
 declare global {
   interface Window {
     gtag?: GtagFunction;
+    clarity?: ClarityFunction;
   }
 }
 
@@ -31,6 +33,11 @@ export function CookieBanner() {
         analytics_storage: "granted",
         ad_storage: "denied",
       })
+    }
+    // Microsoft Clarity pas laden nadat analytische cookies zijn geaccepteerd.
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("code-lieshout:analytics-consent-granted"))
+      window.clarity?.("consent")
     }
     setVisible(false)
   }

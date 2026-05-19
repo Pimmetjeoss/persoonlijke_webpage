@@ -180,6 +180,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+
   return (
     <html lang="nl">
       <head>
@@ -211,6 +213,34 @@ export default function RootLayout({
             gtag('config', 'G-3L0DZPDJY7');
           `}
         </Script>
+        {clarityProjectId && (
+          <Script id="microsoft-clarity" strategy="afterInteractive">
+            {`
+              (function() {
+                var projectId = ${JSON.stringify(clarityProjectId)};
+                function installClarity() {
+                  if (window.__codeLieshoutClarityInstalled) return;
+                  window.__codeLieshoutClarityInstalled = true;
+                  (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                  })(window, document, "clarity", "script", projectId);
+                  window.clarity("consent");
+                }
+
+                try {
+                  if (localStorage.getItem("cookie-consent") === "granted") {
+                    installClarity();
+                  }
+                  window.addEventListener("code-lieshout:analytics-consent-granted", installClarity);
+                } catch (error) {
+                  // localStorage can be blocked; without explicit consent we do not load Clarity.
+                }
+              })();
+            `}
+          </Script>
+        )}
         {process.env.NODE_ENV === 'development' && (
           <Script
             src="//unpkg.com/react-grab/dist/index.global.js"
