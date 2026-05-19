@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T15:23:31.072Z",
+  "generatedAt": "2026-05-19T15:35:26.345Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
     "start": "2025-11-19",
@@ -51,8 +51,8 @@
     {
       "source": "clarity",
       "status": "ok",
-      "generatedAt": "2026-05-19T15:23:31.072Z",
-      "detail": "Project wtkycths2o actief via consent-first loader.",
+      "generatedAt": "2026-05-19T15:35:26.346Z",
+      "detail": "Discovery board klaar voor project wtkycths2o.",
       "rows": 3
     }
   ],
@@ -434,11 +434,94 @@
     "status": "configured",
     "consentMode": "analytics-consent",
     "tagUrl": "https://www.clarity.ms/tag/wtkycths2o",
+    "dashboardUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/dashboard",
+    "heatmapsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/heatmaps",
+    "recordingsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/recordings",
+    "insightsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/insights",
+    "exportApiStatus": "token-missing",
+    "quickLinks": [
+      {
+        "label": "Open Clarity dashboard",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/dashboard",
+        "detail": "Startpunt voor live sessions, rage/dead clicks en quick backs."
+      },
+      {
+        "label": "Heatmaps bekijken",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/heatmaps",
+        "detail": "Klik-, scroll- en attention-heatmaps per belangrijke pagina."
+      },
+      {
+        "label": "Recordings triagen",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/recordings",
+        "detail": "Bekijk echte sessies met frictie, terugklikken of snelle exits."
+      },
+      {
+        "label": "Insights",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/insights",
+        "detail": "AI-samenvattingen en patronen zodra Clarity genoeg verkeer heeft."
+      }
+    ],
+    "discoveryCards": [
+      {
+        "title": "Heatmap focus",
+        "metric": "5 pagina's",
+        "detail": "/ · /portfolio · /contact · /ai-agents · /jouw-website",
+        "action": "Open Heatmaps en vergelijk click-depth met je belangrijkste CTA's.",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/heatmaps",
+        "tone": "positive"
+      },
+      {
+        "title": "Recording hunt",
+        "metric": "Frictie zoeken",
+        "detail": "Filter in Clarity op rage clicks, dead clicks, excessive scrolling en quick backs.",
+        "action": "Noteer per sessie: waar twijfelt de bezoeker, welke CTA mist, welke tekst blokkeert?",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/recordings",
+        "tone": "warning"
+      },
+      {
+        "title": "SEO → UX check",
+        "metric": "3 queries",
+        "detail": "webdesign lieshout · webdesignbureau lieshout · pim van lieshout",
+        "action": "Zoek of bezoekers op deze intenties landen en daarna de juiste sectie/CTA vinden.",
+        "href": "https://clarity.microsoft.com/projects/view/wtkycths2o/dashboard",
+        "tone": "neutral"
+      },
+      {
+        "title": "AI crawler context",
+        "metric": "2 bot hits",
+        "detail": "Sitemap crawler, Other crawler",
+        "action": "Combineer bot-crawls met heatmaps: pagina's die bots vinden moeten ook voor mensen duidelijk scannen.",
+        "href": "#ai-crawlers",
+        "tone": "positive"
+      }
+    ],
+    "eventIdeas": [
+      {
+        "event": "cta_contact_click",
+        "where": "Contact/portfolio CTA's",
+        "why": "Segment recordings waarin iemand koopintentie toont."
+      },
+      {
+        "event": "portfolio_case_open",
+        "where": "Portfolio cases",
+        "why": "Zie welke cases aandacht krijgen vóór contact."
+      },
+      {
+        "event": "seo_dashboard_filter_used",
+        "where": "SEO dashboard filters",
+        "why": "Meet of het dashboard zelf onderzoek uitlokt."
+      },
+      {
+        "event": "clarity_discovery_opened",
+        "where": "Clarity Discovery Board",
+        "why": "Laat in Clarity zien wanneer jij vanuit dit dashboard analyse start."
+      }
+    ],
     "checks": [
       {
-        "label": "Project ID",
-        "status": "ok",
-        "detail": "NEXT_PUBLIC_CLARITY_PROJECT_ID=wtkycths2o"
+        "label": "Data Export API",
+        "status": "warning",
+        "detail": "Geen Clarity Data Export API-token gevonden. Heatmaps/recordings open je in Clarity; live insight-metrics kunnen later via token."
       },
       {
         "label": "Consent gate",
@@ -446,29 +529,29 @@
         "detail": "Clarity wordt pas geladen na analytics/cookie toestemming."
       },
       {
-        "label": "Dashboard data",
+        "label": "Tracking events",
         "status": "warning",
-        "detail": "Live Clarity sessions/heatmaps blijven in Microsoft Clarity; dit dashboard toont installatie- en compliance-status zonder API-token."
+        "detail": "Volgende stap: custom Clarity events toevoegen aan CTA's zodat recordings beter te segmenteren zijn."
       }
     ],
     "signals": [
       {
-        "label": "Installatie",
-        "value": "Actief",
+        "label": "Heatmap targets",
+        "value": "5",
         "tone": "positive",
-        "detail": "Tag kan geladen worden na consent."
+        "detail": "/ · /portfolio · /contact"
       },
       {
-        "label": "Privacy",
-        "value": "Consent-first",
-        "tone": "positive",
-        "detail": "Geen Clarity-script voor weigeren of vóór toestemming."
+        "label": "Recordings",
+        "value": "Triageren",
+        "tone": "warning",
+        "detail": "Rage clicks, dead clicks, scroll depth en quick backs."
       },
       {
-        "label": "Project",
-        "value": "wtkycths2o",
-        "tone": "positive",
-        "detail": "Microsoft Clarity project-id."
+        "label": "pp-clarity",
+        "value": "Token nodig",
+        "tone": "warning",
+        "detail": "CLI kan insights ophalen, geen heatmapbeelden embedden."
       }
     ]
   },
@@ -644,6 +727,19 @@
     },
     {
       "generatedAt": "2026-05-19T15:23:31.072Z",
+      "date": "2026-05-19",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 2,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-19T15:35:26.345Z",
       "date": "2026-05-19",
       "gscRows": 16,
       "quickWins": 6,

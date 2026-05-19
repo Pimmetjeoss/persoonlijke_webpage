@@ -493,25 +493,101 @@ function clarityStatusClass(status: string) {
   return "bg-red-100 text-red-950";
 }
 
+function trackClarityEvent(eventName: string) {
+  if (typeof window === "undefined") return;
+  window.clarity?.("event", eventName);
+}
+
 function ClarityPanel({ clarity }: { clarity: SeoDashboardData["clarity"] }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
-      <div className="rounded-[2rem] border-[3px] border-black bg-black p-6 text-white shadow-[8px_8px_0_#86efac]">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-200">Microsoft Clarity</p>
-        <h3 className="mt-3 text-5xl">{clarity.status === "configured" ? "Actief" : "Nog niet actief"}</h3>
-        <p className="mt-4 font-mono text-sm leading-6 text-white/70">Project: {clarity.projectId || "—"}<br />Consent mode: {clarity.consentMode}<br />{clarity.tagUrl || "Geen tag-url zolang Project ID ontbreekt."}</p>
-        {clarity.tagUrl ? <a href={clarity.tagUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full border-2 border-white px-4 py-2 font-mono text-xs uppercase hover:bg-white hover:text-black">Open tag</a> : null}
-      </div>
-      <div className="space-y-4">
-        <div className="grid gap-3 sm:grid-cols-3">
-          {clarity.signals.map((signal) => (
-            <div key={signal.label} className={`rounded-3xl border-[3px] border-black p-4 shadow-[5px_5px_0_#000] ${signal.tone === "positive" ? "bg-emerald-100" : signal.tone === "warning" ? "bg-yellow-100" : "bg-white"}`}>
-              <p className="font-mono text-xs uppercase tracking-widest">{signal.label}</p>
-              <p className="mt-2 text-3xl">{signal.value}</p>
-              {signal.detail ? <p className="mt-2 font-mono text-xs leading-5 text-black/60">{signal.detail}</p> : null}
-            </div>
-          ))}
+    <div className="space-y-6">
+      <div className="grid gap-5 lg:grid-cols-[1.05fr_.95fr]">
+        <div className="rounded-[2.2rem] border-[3px] border-black bg-black p-6 text-white shadow-[8px_8px_0_#86efac]">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-200">Microsoft Clarity Discovery</p>
+          <h3 className="mt-3 text-5xl leading-none md:text-6xl">Wat valt bezoekers op?</h3>
+          <p className="mt-4 max-w-2xl font-mono text-sm leading-6 text-white/70">
+            Niet alleen “staat het aan?”, maar: welke pagina's verdienen heatmaps, welke recordings moet je terugkijken, en welke frictie-signalen zijn interessant voor Code Lieshout?
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            {clarity.signals.map((signal) => (
+              <div key={signal.label} className="rounded-3xl border-2 border-white/20 bg-white/10 p-4">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-emerald-200">{signal.label}</p>
+                <p className="mt-2 text-3xl">{signal.value}</p>
+                {signal.detail ? <p className="mt-2 font-mono text-xs leading-5 text-white/60">{signal.detail}</p> : null}
+              </div>
+            ))}
+          </div>
         </div>
+
+        <div className="rounded-[2.2rem] border-[3px] border-black bg-yellow-100 p-5 shadow-[8px_8px_0_#000]">
+          <h3 className="text-4xl">Open direct in Clarity</h3>
+          <p className="mt-2 font-mono text-xs leading-5 text-black/65">
+            Heatmaps en recordings zelf leven in Microsoft Clarity. Deze knoppen sturen je direct naar de onderdelen waar je ontdekkingen doet.
+          </p>
+          <div className="mt-4 grid gap-3">
+            {clarity.quickLinks.length ? clarity.quickLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackClarityEvent(`clarity_${link.label.toLowerCase().replaceAll(" ", "_")}`)}
+                className="group rounded-3xl border-[3px] border-black bg-white p-4 transition hover:-translate-y-1 hover:bg-emerald-100"
+              >
+                <span className="flex items-center justify-between gap-3 text-2xl">
+                  {link.label} <span className="font-mono text-sm transition group-hover:translate-x-1">↗</span>
+                </span>
+                <span className="mt-1 block font-mono text-xs leading-5 text-black/60">{link.detail}</span>
+              </a>
+            )) : <p className="rounded-2xl bg-white p-4 font-mono text-sm">Geen Clarity project-id gevonden.</p>}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {clarity.discoveryCards.map((card) => (
+          <a
+            key={card.title}
+            href={card.href || "#clarity"}
+            target={card.href?.startsWith("http") ? "_blank" : undefined}
+            rel={card.href?.startsWith("http") ? "noreferrer" : undefined}
+            onClick={() => trackClarityEvent(`clarity_discovery_${card.title.toLowerCase().replaceAll(" ", "_")}`)}
+            className={`rounded-[2rem] border-[3px] border-black p-5 shadow-[7px_7px_0_#000] transition hover:-translate-y-1 ${card.tone === "positive" ? "bg-emerald-100" : card.tone === "warning" ? "bg-yellow-100" : "bg-white"}`}
+          >
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <h3 className="text-4xl">{card.title}</h3>
+              <span className="rounded-full border-2 border-black bg-white px-3 py-1 font-mono text-xs uppercase">{card.metric}</span>
+            </div>
+            <p className="mt-3 font-mono text-sm leading-6 text-black/70">{card.detail}</p>
+            <p className="mt-4 rounded-2xl bg-black p-3 font-mono text-xs leading-5 text-white">→ {card.action}</p>
+          </a>
+        ))}
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-[1fr_.8fr]">
+        <div className="rounded-[2rem] border-[3px] border-black bg-white p-5 shadow-[8px_8px_0_#000]">
+          <h3 className="text-4xl">Events die Clarity nuttiger maken</h3>
+          <p className="mt-2 font-mono text-sm leading-6 text-black/60">
+            Hiermee kun je recordings later filteren op echte intentie in plaats van alleen pageviews.
+          </p>
+          <div className="mt-4 overflow-auto">
+            <table className="w-full min-w-[720px] font-mono text-sm">
+              <thead className="bg-black text-left text-white">
+                <tr><th className="px-4 py-3 uppercase">Event</th><th className="px-4 py-3 uppercase">Waar</th><th className="px-4 py-3 uppercase">Waarom</th></tr>
+              </thead>
+              <tbody>
+                {clarity.eventIdeas.map((idea) => (
+                  <tr key={idea.event} className="border-b border-black/10 hover:bg-emerald-50">
+                    <td className="px-4 py-3"><code>{idea.event}</code></td>
+                    <td className="px-4 py-3">{idea.where}</td>
+                    <td className="px-4 py-3">{idea.why}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div className="rounded-[2rem] border-[3px] border-black bg-white shadow-[8px_8px_0_#000]">
           {clarity.checks.map((check) => (
             <div key={check.label} className="flex flex-wrap items-start justify-between gap-3 border-b border-black/10 p-4 last:border-b-0">
@@ -829,8 +905,8 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
 
         <section id="clarity" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
         <div className="mb-5">
-          <p className="font-mono text-sm uppercase tracking-[0.3em]">Consent · Heatmaps · Recordings</p>
-          <h2 className="text-5xl md:text-7xl">Clarity status</h2>
+          <p className="font-mono text-sm uppercase tracking-[0.3em]">Heatmaps · Recordings · Insights</p>
+          <h2 className="text-5xl md:text-7xl">Clarity Discovery Board</h2>
         </div>
         <ClarityPanel clarity={data.clarity} />
       </section>

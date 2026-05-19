@@ -177,6 +177,14 @@ export interface ClarityAnalytics {
   status: "configured" | "missing";
   consentMode: "analytics-consent";
   tagUrl?: string;
+  dashboardUrl?: string;
+  heatmapsUrl?: string;
+  recordingsUrl?: string;
+  insightsUrl?: string;
+  exportApiStatus: "token-present" | "token-missing";
+  quickLinks: Array<{ label: string; href: string; detail: string }>;
+  discoveryCards: Array<{ title: string; metric: string; detail: string; action: string; href?: string; tone: "positive" | "warning" | "neutral" }>;
+  eventIdeas: Array<{ event: string; why: string; where: string }>;
   checks: Array<{ label: string; status: "ok" | "warning" | "missing"; detail: string }>;
   signals: Array<{ label: string; value: string; detail?: string; tone: "positive" | "warning" | "neutral" }>;
 }

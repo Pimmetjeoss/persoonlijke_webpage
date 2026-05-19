@@ -233,19 +233,91 @@ function normalizeBotAnalytics(botSnapshot) {
   };
 }
 
-function buildClarityAnalytics() {
+function buildClarityAnalytics({ gsc = {}, landingPages = [], botAnalytics = { totals: { visits: 0 }, bots: [], recent: [] } } = {}) {
   const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || process.env.CLARITY_PROJECT_ID || "";
   const configured = Boolean(projectId);
+  const hasExportToken = Boolean(
+    process.env.PP_CLARITY_API_TOKEN ||
+    process.env.MICROSOFT_CLARITY_API_TOKEN ||
+    process.env.CLARITY_API_TOKEN ||
+    process.env.PP_CLARITY_API_TOKEN_FILE,
+  );
+  const base = configured ? `https://clarity.microsoft.com/projects/view/${projectId}` : "https://clarity.microsoft.com/";
+  const fallbackPages = ["/", "/portfolio", "/contact", "/ai-agents", "/jouw-website"];
+  const heatmapPages = (landingPages.length ? landingPages.map((page) => page.page) : fallbackPages).slice(0, 5);
+  const quickQueries = toArray(gsc.quickWins).slice(0, 3).map((row) => row.query || row.page || row.metric).filter(Boolean);
+  const botNames = toArray(botAnalytics.bots).slice(0, 3).map((bot) => bot.botName).filter(Boolean);
+  const botDetail = botNames.length ? botNames.join(", ") : "nog weinig crawlerhits";
+
+  const quickLinks = configured ? [
+    { label: "Open Clarity dashboard", href: `${base}/dashboard`, detail: "Startpunt voor live sessions, rage/dead clicks en quick backs." },
+    { label: "Heatmaps bekijken", href: `${base}/heatmaps`, detail: "Klik-, scroll- en attention-heatmaps per belangrijke pagina." },
+    { label: "Recordings triagen", href: `${base}/recordings`, detail: "Bekijk echte sessies met frictie, terugklikken of snelle exits." },
+    { label: "Insights", href: `${base}/insights`, detail: "AI-samenvattingen en patronen zodra Clarity genoeg verkeer heeft." },
+  ] : [];
+
+  const discoveryCards = [
+    {
+      title: "Heatmap focus",
+      metric: `${heatmapPages.length} pagina's`,
+      detail: heatmapPages.join(" · "),
+      action: "Open Heatmaps en vergelijk click-depth met je belangrijkste CTA's.",
+      href: configured ? `${base}/heatmaps` : undefined,
+      tone: "positive",
+    },
+    {
+      title: "Recording hunt",
+      metric: "Frictie zoeken",
+      detail: "Filter in Clarity op rage clicks, dead clicks, excessive scrolling en quick backs.",
+      action: "Noteer per sessie: waar twijfelt de bezoeker, welke CTA mist, welke tekst blokkeert?",
+      href: configured ? `${base}/recordings` : undefined,
+      tone: "warning",
+    },
+    {
+      title: "SEO → UX check",
+      metric: quickQueries.length ? `${quickQueries.length} queries` : "Quick-win queries",
+      detail: quickQueries.length ? quickQueries.join(" · ") : "Gebruik GSC quick wins om pagina-intentie in recordings terug te kijken.",
+      action: "Zoek of bezoekers op deze intenties landen en daarna de juiste sectie/CTA vinden.",
+      href: configured ? `${base}/dashboard` : undefined,
+      tone: "neutral",
+    },
+    {
+      title: "AI crawler context",
+      metric: `${botAnalytics.totals?.visits || 0} bot hits`,
+      detail: botDetail,
+      action: "Combineer bot-crawls met heatmaps: pagina's die bots vinden moeten ook voor mensen duidelijk scannen.",
+      href: "#ai-crawlers",
+      tone: botAnalytics.totals?.visits ? "positive" : "neutral",
+    },
+  ];
+
+  const eventIdeas = [
+    { event: "cta_contact_click", where: "Contact/portfolio CTA's", why: "Segment recordings waarin iemand koopintentie toont." },
+    { event: "portfolio_case_open", where: "Portfolio cases", why: "Zie welke cases aandacht krijgen vóór contact." },
+    { event: "seo_dashboard_filter_used", where: "SEO dashboard filters", why: "Meet of het dashboard zelf onderzoek uitlokt." },
+    { event: "clarity_discovery_opened", where: "Clarity Discovery Board", why: "Laat in Clarity zien wanneer jij vanuit dit dashboard analyse start." },
+  ];
+
   return {
     projectId: configured ? projectId : undefined,
     status: configured ? "configured" : "missing",
     consentMode: "analytics-consent",
     tagUrl: configured ? `https://www.clarity.ms/tag/${projectId}` : undefined,
+    dashboardUrl: configured ? `${base}/dashboard` : undefined,
+    heatmapsUrl: configured ? `${base}/heatmaps` : undefined,
+    recordingsUrl: configured ? `${base}/recordings` : undefined,
+    insightsUrl: configured ? `${base}/insights` : undefined,
+    exportApiStatus: hasExportToken ? "token-present" : "token-missing",
+    quickLinks,
+    discoveryCards,
+    eventIdeas,
     checks: [
       {
-        label: "Project ID",
-        status: configured ? "ok" : "missing",
-        detail: configured ? `NEXT_PUBLIC_CLARITY_PROJECT_ID=${projectId}` : "NEXT_PUBLIC_CLARITY_PROJECT_ID ontbreekt.",
+        label: "Data Export API",
+        status: hasExportToken ? "ok" : "warning",
+        detail: hasExportToken
+          ? "Clarity API-token is aanwezig; pp-clarity kan live insights ophalen."
+          : "Geen Clarity Data Export API-token gevonden. Heatmaps/recordings open je in Clarity; live insight-metrics kunnen later via token.",
       },
       {
         label: "Consent gate",
@@ -253,15 +325,15 @@ function buildClarityAnalytics() {
         detail: "Clarity wordt pas geladen na analytics/cookie toestemming.",
       },
       {
-        label: "Dashboard data",
+        label: "Tracking events",
         status: "warning",
-        detail: "Live Clarity sessions/heatmaps blijven in Microsoft Clarity; dit dashboard toont installatie- en compliance-status zonder API-token.",
+        detail: "Volgende stap: custom Clarity events toevoegen aan CTA's zodat recordings beter te segmenteren zijn.",
       },
     ],
     signals: [
-      { label: "Installatie", value: configured ? "Actief" : "Niet gezet", tone: configured ? "positive" : "warning", detail: configured ? "Tag kan geladen worden na consent." : "Zet NEXT_PUBLIC_CLARITY_PROJECT_ID in Vercel." },
-      { label: "Privacy", value: "Consent-first", tone: "positive", detail: "Geen Clarity-script voor weigeren of vóór toestemming." },
-      { label: "Project", value: configured ? projectId : "—", tone: configured ? "positive" : "neutral", detail: configured ? "Microsoft Clarity project-id." : undefined },
+      { label: "Heatmap targets", value: String(heatmapPages.length), tone: "positive", detail: heatmapPages.slice(0, 3).join(" · ") },
+      { label: "Recordings", value: "Triageren", tone: "warning", detail: "Rage clicks, dead clicks, scroll depth en quick backs." },
+      { label: "pp-clarity", value: hasExportToken ? "Live insights" : "Token nodig", tone: hasExportToken ? "positive" : "warning", detail: "CLI kan insights ophalen, geen heatmapbeelden embedden." },
     ],
   };
 }
@@ -354,7 +426,7 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
   const crux = normalizeCrux(cruxSnapshot);
   const gbp = normalizeGbp(gbpSnapshot);
   const botAnalytics = normalizeBotAnalytics(botSnapshot);
-  const clarity = buildClarityAnalytics();
+  const clarity = buildClarityAnalytics({ gsc, landingPages, botAnalytics });
   const gbpRowCount = gbpSnapshot?.status === "ok" ? gbp.metrics.length + gbp.reviews.length : 0;
   const avgTechnicalScore = averageTechnicalScore(pagespeed);
   const poorVitals = [...pagespeed.flatMap((row) => row.coreWebVitals), ...crux.flatMap((row) => row.metrics)].filter((metric) => metric.status === "poor");
@@ -409,7 +481,7 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
         source: "clarity",
         status: clarity.status === "configured" ? "ok" : "unavailable",
         generatedAt: new Date().toISOString(),
-        detail: clarity.status === "configured" ? `Project ${clarity.projectId} actief via consent-first loader.` : "NEXT_PUBLIC_CLARITY_PROJECT_ID ontbreekt.",
+        detail: clarity.status === "configured" ? `Discovery board klaar voor project ${clarity.projectId}.` : "NEXT_PUBLIC_CLARITY_PROJECT_ID ontbreekt.",
         rows: clarity.checks.length,
       },
     ],
