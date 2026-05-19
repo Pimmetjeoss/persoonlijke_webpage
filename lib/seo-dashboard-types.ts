@@ -8,7 +8,7 @@ export interface MetricCard {
 }
 
 export interface DataSourceInfo {
-  source: "gsc" | "ga4" | "pagespeed" | "crux" | "gbp";
+  source: "gsc" | "ga4" | "pagespeed" | "crux" | "gbp" | "bots" | "clarity";
   status: SourceStatus;
   generatedAt?: string;
   detail?: string;
@@ -141,6 +141,46 @@ export interface GbpLocalSeo {
   reviews: GbpReview[];
 }
 
+export type BotFamily = "openai" | "anthropic" | "perplexity" | "google" | "apple" | "meta" | "common-crawl" | "other";
+
+export interface BotVisitRecent {
+  timestamp: string;
+  botName: string;
+  family: BotFamily;
+  path: string;
+  userAgent?: string;
+  country?: string;
+  count?: number;
+}
+
+export interface BotVisitSummary {
+  botName: string;
+  family: BotFamily;
+  total: number;
+  lastSeen?: string;
+  topPaths: Array<{ path: string; count: number }>;
+  daily: Array<{ date: string; count: number }>;
+}
+
+export interface BotAnalytics {
+  totals: {
+    visits: number;
+    uniqueBots: number;
+    lastSeen?: string;
+  };
+  bots: BotVisitSummary[];
+  recent: BotVisitRecent[];
+}
+
+export interface ClarityAnalytics {
+  projectId?: string;
+  status: "configured" | "missing";
+  consentMode: "analytics-consent";
+  tagUrl?: string;
+  checks: Array<{ label: string; status: "ok" | "warning" | "missing"; detail: string }>;
+  signals: Array<{ label: string; value: string; detail?: string; tone: "positive" | "warning" | "neutral" }>;
+}
+
 export interface SeoHistoryPoint {
   generatedAt: string;
   date: string;
@@ -151,6 +191,7 @@ export interface SeoHistoryPoint {
   mobilePerformance: number;
   desktopPerformance: number;
   gbpWebsiteClicks: number;
+  botVisits: number;
   okSources: number;
 }
 
@@ -168,5 +209,7 @@ export interface SeoDashboardData {
   ga4: Ga4Organic;
   technical: TechnicalSeo;
   gbp: GbpLocalSeo;
+  botAnalytics: BotAnalytics;
+  clarity: ClarityAnalytics;
   history: SeoHistoryPoint[];
 }

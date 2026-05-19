@@ -24,6 +24,7 @@ const steps = [
   ["PageSpeed fetch", ["scripts/seo/fetch-pagespeed.mjs"]],
   ["CrUX fetch", ["scripts/seo/fetch-crux.mjs"]],
   ["GBP fetch", ["scripts/seo/fetch-gbp.mjs"]],
+  ["Bot visits fetch", ["scripts/seo/fetch-bot-visits.mjs"]],
   ["Dashboard generation", ["scripts/seo/generate-dashboard-data.mjs"]],
 ];
 

@@ -4,11 +4,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BarChartIcon, DashboardIcon, LightningBoltIcon, MagnifyingGlassIcon, ReaderIcon } from "@radix-ui/react-icons";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
-import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
 import { BentoCard, BentoGrid } from "@/app/test/components/bento-grid";
-import type { DataSourceInfo, EventMetric, GscWorkflowRow, LandingPageMetric, SeoDashboardData, TimeSeriesPoint } from "@/lib/seo-dashboard-types";
+import type { BotVisitSummary, DataSourceInfo, EventMetric, GscWorkflowRow, LandingPageMetric, SeoDashboardData, TimeSeriesPoint } from "@/lib/seo-dashboard-types";
 
-type SortKey = "query" | "page" | "clicks" | "impressions" | "position" | "opportunity" | "sessions" | "users" | "engagementRate" | "conversions";
+type SortKey = "query" | "page" | "clicks" | "impressions" | "position" | "opportunity" | "sessions" | "users" | "engagementRate" | "conversions" | "botName" | "family" | "total" | "lastSeen";
 type SortDirection = "asc" | "desc";
 
 const workflowLabels: Array<[keyof SeoDashboardData["gsc"], string, string]> = [
@@ -104,6 +103,26 @@ const dashboardFeatures = [
     className: "col-span-1",
     hoverColor: "hsl(141.9 69.2% 58%)",
   },
+  {
+    Icon: MagnifyingGlassIcon,
+    name: "AI crawlers",
+    description: "Welke chatbots en crawlers jouw pagina's echt ophalen.",
+    href: "#ai-crawlers",
+    cta: "Bekijk bots",
+    background: <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-black/10" />,
+    className: "col-span-1",
+    hoverColor: "hsl(143.8 61.2% 20.2%)",
+  },
+  {
+    Icon: LightningBoltIcon,
+    name: "Clarity",
+    description: "Installatie, consent en Microsoft Clarity status op één plek.",
+    href: "#clarity",
+    cta: "Check Clarity",
+    background: <div className="absolute -right-10 top-2 h-20 w-20 rounded-full bg-sky-200 opacity-80" />,
+    className: "col-span-1",
+    hoverColor: "hsl(141.9 69.2% 58%)",
+  },
 ];
 
 function toneClass(tone: string) {
@@ -160,66 +179,98 @@ function SourcePill({ source }: { source: DataSourceInfo }) {
 }
 
 function LineChart({ data }: { data: TimeSeriesPoint[] }) {
+  const [metric, setMetric] = useState<"sessions" | "users" | "clicks">("sessions");
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const points = data.filter((item) => item.date);
-  const maxSessions = Math.max(1, ...points.map((item) => item.sessions ?? 0));
-  const maxClicks = Math.max(1, ...points.map((item) => item.clicks ?? 0));
   const width = 760;
   const height = 260;
   const pad = 28;
-  const toPoint = (value: number, index: number, max: number) => {
+  const maxValue = Math.max(1, ...points.map((item) => Number(item[metric]) || 0));
+  const toXY = (value: number, index: number) => {
     const x = pad + (index / Math.max(1, points.length - 1)) * (width - pad * 2);
-    const y = height - pad - (value / max) * (height - pad * 2);
-    return `${x},${y}`;
+    const y = height - pad - (value / maxValue) * (height - pad * 2);
+    return { x, y };
   };
-  const sessionPolyline = points.map((item, index) => toPoint(item.sessions ?? 0, index, maxSessions)).join(" ");
-  const clickPolyline = points.map((item, index) => toPoint(item.clicks ?? 0, index, maxClicks)).join(" ");
+  const polyline = points.map((item, index) => {
+    const { x, y } = toXY(Number(item[metric]) || 0, index);
+    return `${x},${y}`;
+  }).join(" ");
+  const activePoint = activeIndex === null ? points.at(-1) : points[activeIndex];
 
   if (!points.length) return <EmptyState title="Nog geen trenddata" detail="Run de GA4/GSC fetch scripts om tijdreeksen te vullen." />;
 
   return (
-    <div className="overflow-x-auto rounded-[2rem] border-[3px] border-black bg-black p-4 text-white shadow-[8px_8px_0_#86efac]">
-      <svg viewBox={`0 0 ${width} ${height}`} className="min-h-[260px] w-full min-w-[560px]" role="img" aria-label="Organic trend chart">
-        <rect width={width} height={height} rx="24" fill="#020617" />
-        {[0, 1, 2, 3].map((line) => (
-          <line key={line} x1={pad} x2={width - pad} y1={pad + line * 58} y2={pad + line * 58} stroke="rgba(255,255,255,.12)" />
-        ))}
-        <polyline points={sessionPolyline} fill="none" stroke="#86efac" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-        {clickPolyline ? <polyline points={clickPolyline} fill="none" stroke="#fef08a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /> : null}
-        {points.map((item, index) => {
-          const [x, y] = toPoint(item.sessions ?? 0, index, maxSessions).split(",").map(Number);
-          return (
-            <g key={`${item.date}-${index}`}>
-              <circle cx={x} cy={y} r="6" fill="#86efac">
-                <title>{`${item.date}: ${formatNumber(item.sessions)} sessies, ${formatNumber(item.users)} users`}</title>
-              </circle>
-            </g>
-          );
-        })}
-      </svg>
+    <div className="rounded-[2rem] border-[3px] border-black bg-black p-4 text-white shadow-[8px_8px_0_#86efac]">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-2">
+          {(["sessions", "users", "clicks"] as const).map((item) => (
+            <button key={item} type="button" onClick={() => setMetric(item)} className={`rounded-full border-2 border-white px-3 py-1 font-mono text-xs uppercase transition ${metric === item ? "bg-white text-black" : "bg-white/10 text-white hover:bg-white/20"}`}>
+              {item}
+            </button>
+          ))}
+        </div>
+        <div className="rounded-2xl bg-white/10 px-4 py-2 font-mono text-xs">
+          {activePoint ? `${activePoint.date}: ${formatNumber(Number(activePoint[metric]) || 0)} ${metric}` : "Hover of tik op een punt"}
+        </div>
+      </div>
+      <div className="overflow-x-auto">
+        <svg viewBox={`0 0 ${width} ${height}`} className="min-h-[260px] w-full min-w-[560px]" role="img" aria-label="Interactieve organic trend chart">
+          <rect width={width} height={height} rx="24" fill="#020617" />
+          {[0, 1, 2, 3].map((line) => (
+            <line key={line} x1={pad} x2={width - pad} y1={pad + line * 58} y2={pad + line * 58} stroke="rgba(255,255,255,.12)" />
+          ))}
+          <polyline points={polyline} fill="none" stroke={metric === "clicks" ? "#fef08a" : metric === "users" ? "#93c5fd" : "#86efac"} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+          {points.map((item, index) => {
+            const value = Number(item[metric]) || 0;
+            const { x, y } = toXY(value, index);
+            const active = activeIndex === index || (activeIndex === null && index === points.length - 1);
+            return (
+              <g key={`${item.date}-${index}`} onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} onClick={() => setActiveIndex(index)} tabIndex={0} className="cursor-pointer outline-none">
+                <circle cx={x} cy={y} r={active ? "9" : "6"} fill={active ? "#fff" : "#86efac"} stroke="#020617" strokeWidth="2">
+                  <title>{`${item.date}: ${formatNumber(value)} ${metric}`}</title>
+                </circle>
+                <circle cx={x} cy={y} r="18" fill="transparent" />
+              </g>
+            );
+          })}
+        </svg>
+      </div>
       <div className="mt-3 flex flex-wrap gap-4 font-mono text-xs">
-        <span className="text-emerald-200">● GA4 organic sessions</span>
-        <span className="text-yellow-200">● GSC clicks (indien aanwezig)</span>
-        <span className="text-white/60">Hover punten voor detail</span>
+        <span className="text-emerald-200">● Klik/hover punten voor detail</span>
+        <span className="text-yellow-200">● Metric-knoppen wisselen de grafiek</span>
       </div>
     </div>
   );
 }
 
 function BarChart({ pages }: { pages: LandingPageMetric[] }) {
+  const [metric, setMetric] = useState<"sessions" | "users" | "conversions">("sessions");
+  const [selectedPage, setSelectedPage] = useState<string | null>(null);
   const rows = pages.slice(0, 8);
-  const max = Math.max(1, ...rows.map((row) => row.sessions));
+  const max = Math.max(1, ...rows.map((row) => Number(row[metric]) || 0));
+  const selected = rows.find((row) => row.page === selectedPage) || rows[0];
   if (!rows.length) return <EmptyState title="Nog geen landing pages" detail="GA4 organic landing page data is nog niet beschikbaar." />;
   return (
-    <div className="space-y-3 rounded-[2rem] border-[3px] border-black bg-emerald-100 p-5 shadow-[8px_8px_0_#000]">
-      {rows.map((row) => (
-        <div key={row.page} className="grid gap-2 md:grid-cols-[minmax(120px,1fr)_2fr_90px] md:items-center">
-          <div className="truncate font-mono text-sm" title={row.page}>{row.page}</div>
-          <div className="h-8 overflow-hidden rounded-full border-2 border-black bg-white">
-            <div className="h-full rounded-full bg-emerald-500" style={{ width: `${Math.max(4, (row.sessions / max) * 100)}%` }} title={`${row.sessions} sessies`} />
-          </div>
-          <div className="font-mono text-sm md:text-right">{formatNumber(row.sessions)}</div>
-        </div>
-      ))}
+    <div className="space-y-4 rounded-[2rem] border-[3px] border-black bg-emerald-100 p-5 shadow-[8px_8px_0_#000]">
+      <div className="flex flex-wrap gap-2">
+        {(["sessions", "users", "conversions"] as const).map((item) => (
+          <button key={item} type="button" onClick={() => setMetric(item)} className={`rounded-full border-2 border-black px-3 py-1 font-mono text-xs uppercase ${metric === item ? "bg-black text-white" : "bg-white hover:bg-yellow-100"}`}>{item}</button>
+        ))}
+      </div>
+      {selected ? <p className="rounded-2xl bg-white/70 p-3 font-mono text-xs">Geselecteerd: <b>{selected.page}</b> · {formatNumber(Number(selected[metric]) || 0)} {metric}</p> : null}
+      {rows.map((row) => {
+        const value = Number(row[metric]) || 0;
+        const active = selected?.page === row.page;
+        return (
+          <button key={row.page} type="button" onClick={() => setSelectedPage(row.page)} onMouseEnter={() => setSelectedPage(row.page)} className={`grid w-full gap-2 rounded-2xl p-2 text-left transition md:grid-cols-[minmax(120px,1fr)_2fr_90px] md:items-center ${active ? "bg-white shadow-[4px_4px_0_#000]" : "hover:bg-white/70"}`}>
+            <div className="truncate font-mono text-sm" title={row.page}>{row.page}</div>
+            <div className="h-8 overflow-hidden rounded-full border-2 border-black bg-white">
+              <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${Math.max(4, (value / max) * 100)}%` }} title={`${value} ${metric}`} />
+            </div>
+            <div className="font-mono text-sm md:text-right">{formatNumber(value)}</div>
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -436,6 +487,157 @@ function GbpPanel({ gbp }: { gbp: SeoDashboardData["gbp"] }) {
   );
 }
 
+function clarityStatusClass(status: string) {
+  if (status === "ok") return "bg-emerald-200 text-emerald-950";
+  if (status === "warning") return "bg-yellow-100 text-yellow-950";
+  return "bg-red-100 text-red-950";
+}
+
+function ClarityPanel({ clarity }: { clarity: SeoDashboardData["clarity"] }) {
+  return (
+    <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
+      <div className="rounded-[2rem] border-[3px] border-black bg-black p-6 text-white shadow-[8px_8px_0_#86efac]">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-200">Microsoft Clarity</p>
+        <h3 className="mt-3 text-5xl">{clarity.status === "configured" ? "Actief" : "Nog niet actief"}</h3>
+        <p className="mt-4 font-mono text-sm leading-6 text-white/70">Project: {clarity.projectId || "—"}<br />Consent mode: {clarity.consentMode}<br />{clarity.tagUrl || "Geen tag-url zolang Project ID ontbreekt."}</p>
+        {clarity.tagUrl ? <a href={clarity.tagUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full border-2 border-white px-4 py-2 font-mono text-xs uppercase hover:bg-white hover:text-black">Open tag</a> : null}
+      </div>
+      <div className="space-y-4">
+        <div className="grid gap-3 sm:grid-cols-3">
+          {clarity.signals.map((signal) => (
+            <div key={signal.label} className={`rounded-3xl border-[3px] border-black p-4 shadow-[5px_5px_0_#000] ${signal.tone === "positive" ? "bg-emerald-100" : signal.tone === "warning" ? "bg-yellow-100" : "bg-white"}`}>
+              <p className="font-mono text-xs uppercase tracking-widest">{signal.label}</p>
+              <p className="mt-2 text-3xl">{signal.value}</p>
+              {signal.detail ? <p className="mt-2 font-mono text-xs leading-5 text-black/60">{signal.detail}</p> : null}
+            </div>
+          ))}
+        </div>
+        <div className="rounded-[2rem] border-[3px] border-black bg-white shadow-[8px_8px_0_#000]">
+          {clarity.checks.map((check) => (
+            <div key={check.label} className="flex flex-wrap items-start justify-between gap-3 border-b border-black/10 p-4 last:border-b-0">
+              <div>
+                <p className="text-2xl">{check.label}</p>
+                <p className="mt-1 font-mono text-xs leading-5 text-black/60">{check.detail}</p>
+              </div>
+              <span className={`rounded-full px-3 py-1 font-mono text-xs uppercase ${clarityStatusClass(check.status)}`}>{check.status}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function botFamilyClass(family: string) {
+  if (["openai", "anthropic", "perplexity"].includes(family)) return "bg-black text-white";
+  if (["google", "apple"].includes(family)) return "bg-emerald-200 text-emerald-950";
+  if (family === "common-crawl") return "bg-yellow-100 text-yellow-950";
+  return "bg-zinc-100 text-zinc-800";
+}
+
+function BotSparkline({ bot }: { bot: BotVisitSummary }) {
+  const points = bot.daily.slice(-14);
+  const max = Math.max(1, ...points.map((point) => point.count));
+  if (!points.length) return <span className="text-black/50">—</span>;
+  return (
+    <div className="flex h-9 items-end gap-1" aria-label={`${bot.botName} crawler trend`}>
+      {points.map((point) => (
+        <div key={point.date} title={`${point.date}: ${point.count}`} className="w-3 rounded-t bg-emerald-500" style={{ height: `${Math.max(18, (point.count / max) * 36)}px` }} />
+      ))}
+    </div>
+  );
+}
+
+function BotAnalyticsPanel({ botAnalytics }: { botAnalytics: SeoDashboardData["botAnalytics"] }) {
+  const [query, setQuery] = useState("");
+  const [family, setFamily] = useState("all");
+  const [sortKey, setSortKey] = useState<SortKey>("total");
+  const [direction, setDirection] = useState<SortDirection>("desc");
+  const families = useMemo(() => ["all", ...Array.from(new Set((botAnalytics?.bots || []).map((bot) => bot.family)))], [botAnalytics]);
+  const bots = useMemo(() => {
+    const needle = query.toLowerCase();
+    return [...(botAnalytics?.bots || [])]
+      .filter((bot) => family === "all" || bot.family === family)
+      .filter((bot) => `${bot.botName} ${bot.family} ${bot.topPaths.map((path) => path.path).join(" ")}`.toLowerCase().includes(needle))
+      .sort((a, b) => compareValues(a[sortKey as keyof BotVisitSummary] as string | number | undefined, b[sortKey as keyof BotVisitSummary] as string | number | undefined, direction));
+  }, [botAnalytics, direction, family, query, sortKey]);
+  const sort = (key: SortKey) => {
+    if (sortKey === key) setDirection(direction === "asc" ? "desc" : "asc");
+    else {
+      setSortKey(key);
+      setDirection("desc");
+    }
+  };
+
+  if (!botAnalytics?.totals?.visits) {
+    return <EmptyState title="Nog geen AI crawler data" detail="Vercel-log fallback staat klaar. Zodra middleware/logs bot user-agents zien, vult deze tabel met live crawlerhits." />;
+  }
+  return (
+    <div className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-[2rem] border-[3px] border-black bg-black p-6 text-white shadow-[8px_8px_0_#86efac]">
+          <p className="font-mono text-xs uppercase tracking-widest text-emerald-200">Botbezoeken</p>
+          <p className="mt-3 text-6xl">{formatNumber(botAnalytics.totals.visits)}</p>
+        </div>
+        <div className="rounded-[2rem] border-[3px] border-black bg-white p-6 shadow-[8px_8px_0_#000]">
+          <p className="font-mono text-xs uppercase tracking-widest">Unieke bots</p>
+          <p className="mt-3 text-6xl">{formatNumber(botAnalytics.totals.uniqueBots)}</p>
+        </div>
+        <div className="rounded-[2rem] border-[3px] border-black bg-yellow-100 p-6 shadow-[8px_8px_0_#000]">
+          <p className="font-mono text-xs uppercase tracking-widest">Laatst gezien</p>
+          <p className="mt-3 font-mono text-lg">{botAnalytics.totals.lastSeen ? new Date(botAnalytics.totals.lastSeen).toLocaleString("nl-NL") : "—"}</p>
+        </div>
+      </div>
+
+      <div className="rounded-[2rem] border-[3px] border-black bg-white shadow-[8px_8px_0_#000]">
+        <div className="grid gap-3 border-b-[3px] border-black p-4 md:grid-cols-[1fr_auto]">
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Filter bots, families of paden…" className="w-full rounded-full border-[3px] border-black bg-emerald-50 px-5 py-3 font-mono text-sm outline-none focus:bg-white" />
+          <div className="flex max-w-full gap-2 overflow-x-auto">
+            {families.map((item) => <button key={item} type="button" onClick={() => setFamily(item)} className={`shrink-0 rounded-full border-[3px] border-black px-4 py-2 font-mono text-xs uppercase ${family === item ? "bg-black text-white" : "bg-white hover:bg-emerald-100"}`}>{item}</button>)}
+          </div>
+        </div>
+        <div className="overflow-auto">
+          <table className="w-full min-w-[900px] font-mono text-sm">
+            <thead className="bg-black text-left text-white">
+              <tr>
+                {[["botName", "Bot"], ["family", "Family"], ["total", "Bezoeken"], ["lastSeen", "Laatst"]].map(([key, label]) => (
+                  <th key={key} onClick={() => sort(key as SortKey)} className="cursor-pointer px-4 py-3 uppercase">{label} {sortKey === key ? (direction === "asc" ? "↑" : "↓") : ""}</th>
+                ))}
+                <th className="px-4 py-3 uppercase">Toppaden</th>
+                <th className="px-4 py-3 uppercase">Trend</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bots.map((bot) => (
+                <tr key={bot.botName} className="border-b border-black/10 hover:bg-emerald-50">
+                  <td className="px-4 py-3"><span className={`rounded-full px-3 py-1 ${botFamilyClass(bot.family)}`}>{bot.botName}</span></td>
+                  <td className="px-4 py-3">{bot.family}</td>
+                  <td className="px-4 py-3 text-xl">{formatNumber(bot.total)}</td>
+                  <td className="px-4 py-3">{bot.lastSeen ? new Date(bot.lastSeen).toLocaleString("nl-NL") : "—"}</td>
+                  <td className="max-w-[320px] px-4 py-3">{bot.topPaths.map((path) => `${path.path} (${path.count})`).join(", ")}</td>
+                  <td className="px-4 py-3"><BotSparkline bot={bot} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="rounded-[2rem] border-[3px] border-black bg-emerald-100 p-5 shadow-[8px_8px_0_#000]">
+        <h3 className="text-4xl">Recente hits</h3>
+        <div className="mt-4 grid gap-3">
+          {botAnalytics.recent.slice(0, 8).map((visit, index) => (
+            <div key={`${visit.timestamp}-${visit.botName}-${index}`} className="rounded-2xl bg-white/80 p-3 font-mono text-sm">
+              <b>{visit.botName}</b> · {visit.path} · {visit.timestamp ? new Date(visit.timestamp).toLocaleString("nl-NL") : "tijd onbekend"}
+              {visit.country ? ` · ${visit.country}` : ""}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HistoryTrendPanel({ history }: { history: SeoDashboardData["history"] }) {
   const points = (history || []).filter((point) => point.generatedAt).slice(-30);
   if (points.length < 2) return <EmptyState title="Nog te weinig historie" detail="Na twee of meer scans verschijnt hier automatisch een trendgrafiek met beter/slechter-signalen." />;
@@ -521,7 +723,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
 
       <main>
         <section id="overzicht" className="mx-auto max-w-5xl px-6 py-8 lg:px-10 lg:py-10">
-          <TimelineContent animationNum={1} timelineRef={pageRef} once={true}>
+          <div>
             <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-end">
               <div>
                 <p className="font-mono text-sm uppercase tracking-[0.35em]">sc-domain:code-lieshout.nl</p>
@@ -538,10 +740,10 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
                 <BentoCard key={feature.name} {...feature} />
               ))}
             </BentoGrid>
-          </TimelineContent>
+          </div>
 
-          <TimelineContent animationNum={2} timelineRef={pageRef} once={true}>
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+          <div>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {data.executive.cards.map((card) => (
                 <div key={card.label} className={`rounded-xl border-[3px] p-5 shadow-xl ${toneClass(card.tone)}`}>
                   <p className="font-mono text-xs uppercase tracking-widest">{card.label}</p>
@@ -554,7 +756,7 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
             <div className="mt-8 grid gap-5 lg:grid-cols-2">
               {data.sources.map((source) => <SourcePill key={source.source} source={source} />)}
             </div>
-          </TimelineContent>
+          </div>
         </section>
 
         <section id="kansen" className="mx-auto grid max-w-5xl gap-6 px-6 pb-12 lg:grid-cols-2 lg:px-10">
@@ -623,6 +825,22 @@ export default function SeoDashboardClient({ initialData }: { initialData: SeoDa
           <h2 className="text-5xl md:text-7xl">Technical SEO</h2>
         </div>
         <TechnicalSeoPanel technical={data.technical} />
+      </section>
+
+        <section id="clarity" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
+        <div className="mb-5">
+          <p className="font-mono text-sm uppercase tracking-[0.3em]">Consent · Heatmaps · Recordings</p>
+          <h2 className="text-5xl md:text-7xl">Clarity status</h2>
+        </div>
+        <ClarityPanel clarity={data.clarity} />
+      </section>
+
+        <section id="ai-crawlers" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">
+        <div className="mb-5">
+          <p className="font-mono text-sm uppercase tracking-[0.3em]">Cloudflare edge logs</p>
+          <h2 className="text-5xl md:text-7xl">AI crawler bezoeken</h2>
+        </div>
+        <BotAnalyticsPanel botAnalytics={data.botAnalytics} />
       </section>
 
         <section id="historie" className="mx-auto max-w-5xl px-6 pb-16 lg:px-10">

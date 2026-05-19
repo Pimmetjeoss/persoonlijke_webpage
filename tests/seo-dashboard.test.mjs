@@ -27,6 +27,8 @@ test("buildDashboardData degrades safely when source snapshots are missing", () 
   assert.deepEqual(dashboard.technical.pagespeed, []);
   assert.deepEqual(dashboard.technical.crux, []);
   assert.equal(dashboard.gbp.totals.websiteClicks, 0);
+  assert.equal(dashboard.botAnalytics.totals.visits, 0);
+  assert.equal(dashboard.clarity.status, process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ? "configured" : "missing");
   assert.deepEqual(dashboard.history, []);
   assert.ok(dashboard.executive.warnings.length >= 1);
 });
@@ -66,6 +68,14 @@ test("buildDashboardData aggregates GA4 daily sessions and GSC opportunities", (
       generatedAt: "2026-05-17T00:00:00Z",
       data: { totals: { websiteClicks: 4, calls: 1, rating: 5, reviewCount: 2 } },
     },
+    botSnapshot: {
+      status: "ok",
+      generatedAt: "2026-05-17T00:00:00Z",
+      data: { recent: [
+        { timestamp: "2026-05-16T10:00:00Z", botName: "GPTBot", family: "openai", path: "/robots.txt", count: 2 },
+        { timestamp: "2026-05-16T11:00:00Z", botName: "ClaudeBot", family: "anthropic", path: "/ai-agents", count: 1 },
+      ] },
+    },
   });
 
   assert.equal(dashboard.gsc.quickWins.length, 1);
@@ -73,6 +83,10 @@ test("buildDashboardData aggregates GA4 daily sessions and GSC opportunities", (
   assert.equal(dashboard.ga4.landingPages[0].page, "/");
   assert.equal(dashboard.technical.pagespeed[0].performance, 91);
   assert.equal(dashboard.gbp.totals.websiteClicks, 4);
+  assert.equal(dashboard.botAnalytics.totals.visits, 3);
+  assert.equal(dashboard.botAnalytics.totals.uniqueBots, 2);
+  assert.ok(dashboard.clarity.checks.length >= 2);
+  assert.equal(summarizeHistoryPoint(dashboard).botVisits, 3);
   assert.equal(summarizeHistoryPoint(dashboard).techScore, 97);
   assert.equal(summarizeHistoryPoint(dashboard).mobilePerformance, 91);
   assert.equal(dashboard.dateRange.start, "2026-05-15");
@@ -88,4 +102,6 @@ test("SEO dashboard reuses the test page visual shell", () => {
   assert.match(source, /<StickyHeader[\s\S]*title="SEO DASHBOARD"[\s\S]*startExpanded=\{true\}/);
   assert.match(source, /<BentoGrid className="lg:grid-rows-3"/);
   assert.match(source, /<HistoryTrendPanel history=\{data\.history\}/);
+  assert.match(source, /<BotAnalyticsPanel botAnalytics=\{data\.botAnalytics\}/);
+  assert.match(source, /<ClarityPanel clarity=\{data\.clarity\}/);
 });

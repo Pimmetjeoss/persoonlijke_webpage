@@ -1,0 +1,19 @@
+name = "code-lieshout-bot-logger"
+main = "src/index.ts"
+compatibility_date = "2026-05-19"
+workers_dev = false
+
+# Route this Worker in Cloudflare after login/deploy.
+# Keep zone_name explicit so deploys are harder to mis-target.
+routes = [
+  { pattern = "code-lieshout.nl/*", zone_name = "code-lieshout.nl" },
+  { pattern = "www.code-lieshout.nl/*", zone_name = "code-lieshout.nl" }
+]
+
+# Optional: set to the Vercel production origin if Cloudflare origin routing is not already correct.
+# [vars]
+# UPSTREAM_ORIGIN = "https://persoonlijke-webpage.vercel.app"
+
+[[analytics_engine_datasets]]
+binding = "BOT_ANALYTICS"
+dataset = "code_lieshout_bot_visits"

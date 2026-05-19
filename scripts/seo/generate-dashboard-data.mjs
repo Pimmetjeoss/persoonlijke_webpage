@@ -184,6 +184,88 @@ function normalizeGbp(gbpSnapshot) {
   return { totals: { profileViews, searches, websiteClicks, calls, directionRequests, rating, reviewCount }, metrics, reviews };
 }
 
+function normalizeBotAnalytics(botSnapshot) {
+  const rows = toArray(botSnapshot?.data?.recent || botSnapshot?.recent || botSnapshot?.data?.rows || botSnapshot?.rows)
+    .map((row) => {
+      const timestamp = pickString(row, ["timestamp", "lastSeen", "created_at", "date"], "");
+      const botName = pickString(row, ["botName", "bot_name", "name", "blob1"], "Other crawler");
+      const family = pickString(row, ["family", "bot_family", "blob2"], "other");
+      const visitPath = pickString(row, ["path", "requestPath", "url_path", "blob3"], "/");
+      return {
+        timestamp,
+        botName,
+        family,
+        path: visitPath || "/",
+        userAgent: pickString(row, ["userAgent", "user_agent", "ua", "blob6"], "") || undefined,
+        country: pickString(row, ["country", "cfCountry", "blob5"], "") || undefined,
+        count: Math.max(1, pickNumber(row, ["count", "visits", "total"], 1)),
+      };
+    })
+    .filter((row) => row.botName);
+
+  const botMap = new Map();
+  for (const row of rows) {
+    const key = row.botName;
+    const current = botMap.get(key) || { botName: row.botName, family: row.family, total: 0, lastSeen: "", pathCounts: new Map(), dayCounts: new Map() };
+    current.total += row.count || 1;
+    if (row.timestamp && (!current.lastSeen || row.timestamp > current.lastSeen)) current.lastSeen = row.timestamp;
+    current.pathCounts.set(row.path, (current.pathCounts.get(row.path) || 0) + (row.count || 1));
+    const day = row.timestamp ? row.timestamp.slice(0, 10) : "unknown";
+    current.dayCounts.set(day, (current.dayCounts.get(day) || 0) + (row.count || 1));
+    botMap.set(key, current);
+  }
+
+  const bots = [...botMap.values()].map((bot) => ({
+    botName: bot.botName,
+    family: bot.family,
+    total: bot.total,
+    lastSeen: bot.lastSeen || undefined,
+    topPaths: [...bot.pathCounts.entries()].map(([pathValue, count]) => ({ path: pathValue, count })).sort((a, b) => b.count - a.count).slice(0, 5),
+    daily: [...bot.dayCounts.entries()].filter(([date]) => date !== "unknown").map(([date, count]) => ({ date, count })).sort((a, b) => a.date.localeCompare(b.date)),
+  })).sort((a, b) => b.total - a.total);
+
+  const visits = rows.reduce((sum, row) => sum + (row.count || 1), 0);
+  const lastSeen = rows.map((row) => row.timestamp).filter(Boolean).sort().at(-1);
+  return {
+    totals: { visits, uniqueBots: bots.length, lastSeen },
+    bots,
+    recent: rows.sort((a, b) => String(b.timestamp).localeCompare(String(a.timestamp))).slice(0, 50),
+  };
+}
+
+function buildClarityAnalytics() {
+  const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || process.env.CLARITY_PROJECT_ID || "";
+  const configured = Boolean(projectId);
+  return {
+    projectId: configured ? projectId : undefined,
+    status: configured ? "configured" : "missing",
+    consentMode: "analytics-consent",
+    tagUrl: configured ? `https://www.clarity.ms/tag/${projectId}` : undefined,
+    checks: [
+      {
+        label: "Project ID",
+        status: configured ? "ok" : "missing",
+        detail: configured ? `NEXT_PUBLIC_CLARITY_PROJECT_ID=${projectId}` : "NEXT_PUBLIC_CLARITY_PROJECT_ID ontbreekt.",
+      },
+      {
+        label: "Consent gate",
+        status: "ok",
+        detail: "Clarity wordt pas geladen na analytics/cookie toestemming.",
+      },
+      {
+        label: "Dashboard data",
+        status: "warning",
+        detail: "Live Clarity sessions/heatmaps blijven in Microsoft Clarity; dit dashboard toont installatie- en compliance-status zonder API-token.",
+      },
+    ],
+    signals: [
+      { label: "Installatie", value: configured ? "Actief" : "Niet gezet", tone: configured ? "positive" : "warning", detail: configured ? "Tag kan geladen worden na consent." : "Zet NEXT_PUBLIC_CLARITY_PROJECT_ID in Vercel." },
+      { label: "Privacy", value: "Consent-first", tone: "positive", detail: "Geen Clarity-script voor weigeren of vóór toestemming." },
+      { label: "Project", value: configured ? projectId : "—", tone: configured ? "positive" : "neutral", detail: configured ? "Microsoft Clarity project-id." : undefined },
+    ],
+  };
+}
+
 function buildDateRange(gscSnapshot, ga4Trend) {
   const dates = ga4Trend.map((row) => row.date).filter(Boolean).sort();
   if (dates.length) {
@@ -228,6 +310,7 @@ export function summarizeHistoryPoint(dashboard) {
     mobilePerformance: numberFrom(mobile?.performance, 0),
     desktopPerformance: numberFrom(desktop?.performance, 0),
     gbpWebsiteClicks: numberFrom(dashboard.gbp?.totals?.websiteClicks, 0),
+    botVisits: numberFrom(dashboard.botAnalytics?.totals?.visits, 0),
     okSources: toArray(dashboard.sources).filter((source) => source.status === "ok").length,
   };
 }
@@ -251,7 +334,7 @@ async function buildHistory(currentDashboard) {
   return [...points.values()].sort((a, b) => a.generatedAt.localeCompare(b.generatedAt)).slice(-180);
 }
 
-export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot, cruxSnapshot, gbpSnapshot }) {
+export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot, cruxSnapshot, gbpSnapshot, botSnapshot }) {
   const gsc = {
     quickWins: workflowData(gscSnapshot, "quickWins"),
     cannibalization: workflowData(gscSnapshot, "cannibalization"),
@@ -270,6 +353,8 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
   const pagespeed = normalizePageSpeed(pagespeedSnapshot);
   const crux = normalizeCrux(cruxSnapshot);
   const gbp = normalizeGbp(gbpSnapshot);
+  const botAnalytics = normalizeBotAnalytics(botSnapshot);
+  const clarity = buildClarityAnalytics();
   const gbpRowCount = gbpSnapshot?.status === "ok" ? gbp.metrics.length + gbp.reviews.length : 0;
   const avgTechnicalScore = averageTechnicalScore(pagespeed);
   const poorVitals = [...pagespeed.flatMap((row) => row.coreWebVitals), ...crux.flatMap((row) => row.metrics)].filter((metric) => metric.status === "poor");
@@ -300,6 +385,8 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
     warnings.push(cruxMessage);
   }
   if (!gbpSnapshot || gbpSnapshot.status !== "ok") warnings.push("Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports.");
+  if (!botSnapshot || botSnapshot.status !== "ok") warnings.push("AI crawler data ontbreekt; Vercel-log fallback of Cloudflare Analytics Engine moet nog data leveren.");
+  if (clarity.status !== "configured") warnings.push("Microsoft Clarity project-id ontbreekt; zet NEXT_PUBLIC_CLARITY_PROJECT_ID voor installatiecontrole.");
   if (poorVitals.length) warnings.push(`Core Web Vitals met poor-status: ${poorVitals.slice(0, 3).map((metric) => metric.id).join(", ")}.`);
 
   const opportunities = [
@@ -317,6 +404,14 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
       sourceInfo("pagespeed", pagespeedSnapshot, pagespeed.length),
       sourceInfo("crux", cruxSnapshot, crux.length),
       sourceInfo("gbp", gbpSnapshot, gbpRowCount),
+      sourceInfo("bots", botSnapshot, botAnalytics.recent.length),
+      {
+        source: "clarity",
+        status: clarity.status === "configured" ? "ok" : "unavailable",
+        generatedAt: new Date().toISOString(),
+        detail: clarity.status === "configured" ? `Project ${clarity.projectId} actief via consent-first loader.` : "NEXT_PUBLIC_CLARITY_PROJECT_ID ontbreekt.",
+        rows: clarity.checks.length,
+      },
     ],
     executive: {
       cards: [
@@ -327,6 +422,8 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
         { label: "Conversions/events", value: totalConversions.toLocaleString("nl-NL"), tone: totalConversions ? "positive" : "neutral" },
         { label: "Tech score", value: avgTechnicalScore ? String(avgTechnicalScore) : "—", tone: avgTechnicalScore >= 90 ? "positive" : avgTechnicalScore ? "warning" : "neutral" },
         { label: "GBP clicks", value: gbp.totals.websiteClicks.toLocaleString("nl-NL"), tone: gbp.totals.websiteClicks ? "positive" : "neutral" },
+        { label: "AI crawlers", value: botAnalytics.totals.visits.toLocaleString("nl-NL"), tone: botAnalytics.totals.visits ? "positive" : "neutral" },
+        { label: "Clarity", value: clarity.status === "configured" ? "Actief" : "—", tone: clarity.status === "configured" ? "positive" : "warning" },
       ],
       opportunities: opportunities.length ? opportunities : ["Nog geen quick-win of nieuwe-query data beschikbaar."],
       warnings: warnings.length ? warnings : ["Geen traffic cliffs, decay of coverage-waarschuwingen gedetecteerd in de huidige snapshots."],
@@ -349,6 +446,8 @@ export function buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot
       crux,
     },
     gbp,
+    botAnalytics,
+    clarity,
     history: [],
   };
 }
@@ -359,7 +458,8 @@ async function main() {
   const pagespeedSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "pagespeed-latest.json"));
   const cruxSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "crux-latest.json"));
   const gbpSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "gbp-latest.json"));
-  const dashboard = buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot, cruxSnapshot, gbpSnapshot });
+  const botSnapshot = await readJsonIfExists(path.join(SEO_DATA_DIR, "snapshots", "bot-visits-latest.json"));
+  const dashboard = buildDashboardData({ gscSnapshot, ga4Snapshot, pagespeedSnapshot, cruxSnapshot, gbpSnapshot, botSnapshot });
   dashboard.history = await buildHistory(dashboard);
   const stamp = new Date().toISOString().replaceAll(":", "-").replace(/\.\d{3}Z$/, "Z");
   await writeJson(path.join(SEO_DATA_DIR, "processed", `dashboard.${stamp}.json`), dashboard);

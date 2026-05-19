@@ -15,9 +15,13 @@
     "seo:fetch:pagespeed": "node scripts/seo/fetch-pagespeed.mjs",
     "seo:fetch:crux": "node scripts/seo/fetch-crux.mjs",
     "seo:fetch:gbp": "node scripts/seo/fetch-gbp.mjs",
+    "seo:fetch:bots": "node scripts/seo/fetch-bot-visits.mjs",
     "seo:config:google-key": "bash scripts/seo/configure-google-api-key.sh",
+    "seo:config:cloudflare": "bash scripts/seo/configure-cloudflare-bot-analytics.sh",
     "seo:generate": "node scripts/seo/generate-dashboard-data.mjs",
-    "seo:update": "node scripts/seo/update-seo-dashboard.mjs"
+    "seo:update": "node scripts/seo/update-seo-dashboard.mjs",
+    "seo:update:env": "bash scripts/seo/update-dashboard-with-env.sh",
+    "cf:bot-worker:deploy": "wrangler deploy --config workers/bot-logger/wrangler.toml"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
