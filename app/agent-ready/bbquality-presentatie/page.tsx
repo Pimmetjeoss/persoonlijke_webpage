@@ -23,6 +23,9 @@ import {
   McpServerCardRecommendation,
   ApiCatalogRecommendation,
   AgentSkillsRecommendation,
+  A2aAgentCardRecommendation,
+  OAuthDiscoveryRecommendation,
+  OAuthProtectedResourceRecommendation,
 } from "./recommendations"
 
 /*
@@ -153,16 +156,19 @@ const SCAN = {
           title: "A2A Agent Card",
           status: "fail",
           message: "A2A Agent Card not found",
+          recommendation: <A2aAgentCardRecommendation />,
         },
         {
           title: "OAuth discovery",
           status: "fail",
           message: "No OAuth/OIDC discovery metadata found",
+          recommendation: <OAuthDiscoveryRecommendation />,
         },
         {
           title: "OAuth Protected Resource",
           status: "fail",
           message: "No OAuth Protected Resource Metadata found",
+          recommendation: <OAuthProtectedResourceRecommendation />,
         },
       ],
     },

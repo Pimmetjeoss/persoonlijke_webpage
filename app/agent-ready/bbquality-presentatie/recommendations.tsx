@@ -420,6 +420,189 @@ export function AgentSkillsRecommendation() {
         uitvoeren — en de skill werkt in elke skills-compatibele agent (Claude,
         Cursor, Copilot, Goose, enz.).
       </p>
+
+      <p>
+        Voorbeeld van een echte skill om te bekijken of downloaden:{" "}
+        <a
+          href="https://github.com/Pimmetjeoss/persoonlijke_webpage/blob/main/.agents/skills/agent-ready-scan/SKILL.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold underline"
+          style={{ color: GREEN }}
+        >
+          agent-ready-scan SKILL.md (GitHub)
+        </a>
+      </p>
+    </div>
+  )
+}
+
+export function A2aAgentCardRecommendation() {
+  return (
+    <div className="space-y-3">
+      <p>
+        A2A (Agent2Agent) is een open standaard waarmee losse AI-agents{" "}
+        <strong>met elkaar</strong> communiceren — de ene agent kan een taak
+        delegeren aan de andere. De Agent Card op{" "}
+        <code>/.well-known/agent-card.json</code> is het visitekaartje van jouw
+        agent: andere agents lezen het en weten wat &apos;ie kan en hoe ze
+        &apos;m aanspreken.
+      </p>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Verschil met MCP / WebMCP
+        </p>
+        <p>
+          MCP en WebMCP gaan over een agent die <strong>tools</strong> gebruikt.
+          A2A gaat over agents die <strong>elkaar</strong> aanspreken
+          (taakdelegatie, ook langlopende async taken). Ze vullen elkaar aan.
+        </p>
+      </div>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Wat erop staat
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Naam, beschrijving en versie van je agent</li>
+          <li>Service-endpoint (waar de agent te bereiken is)</li>
+          <li>Capabilities (streaming, push-notificaties)</li>
+          <li>Skills (taken die de agent kan uitvoeren)</li>
+          <li>Security schemes (API-key, OAuth2, mTLS)</li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Minimaal voorbeeld
+        </p>
+        <pre
+          className="rounded-md border-[2px] p-3 text-xs overflow-x-auto whitespace-pre"
+          style={{ borderColor: "hsl(144.9 80.4% 10%)", backgroundColor: "white" }}
+        >
+          {`{
+  "name": "BBQuality Assistent",
+  "description": "Helpt met producten, bestellingen en bereiding.",
+  "url": "https://www.bbquality.nl/a2a",
+  "version": "1.0.0",
+  "capabilities": { "streaming": true },
+  "skills": [
+    { "id": "bestel-status",
+      "name": "Bestelstatus opvragen",
+      "description": "Geeft de status van een bestelling." }
+  ]
+}`}
+        </pre>
+      </div>
+    </div>
+  )
+}
+
+export function OAuthDiscoveryRecommendation() {
+  return (
+    <div className="space-y-3">
+      <p>
+        OAuth discovery laat een agent automatisch ontdekken{" "}
+        <strong>waar en hoe</strong> hij tokens ophaalt om beveiligde delen van je
+        site te benaderen. Je zet daarvoor een metadata-document op een vaste plek —
+        twee varianten die naast elkaar kunnen bestaan:
+      </p>
+      <ul className="list-disc pl-5 space-y-1">
+        <li>
+          <code>/.well-known/oauth-authorization-server</code> — OAuth 2.0
+          Authorization Server Metadata (RFC 8414)
+        </li>
+        <li>
+          <code>/.well-known/openid-configuration</code> — OpenID Connect
+          Discovery (als je OIDC/login gebruikt)
+        </li>
+      </ul>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Wat erop staat
+        </p>
+        <p>
+          <code>issuer</code>, <code>authorization_endpoint</code>,{" "}
+          <code>token_endpoint</code>, <code>jwks_uri</code>,{" "}
+          <code>scopes_supported</code> en <code>grant_types_supported</code> —
+          alles wat een client nodig heeft om de OAuth-flow te starten.
+        </p>
+      </div>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Minimaal voorbeeld
+        </p>
+        <pre
+          className="rounded-md border-[2px] p-3 text-xs overflow-x-auto whitespace-pre"
+          style={{ borderColor: "hsl(144.9 80.4% 10%)", backgroundColor: "white" }}
+        >
+          {`{
+  "issuer": "https://www.bbquality.nl",
+  "authorization_endpoint": "https://www.bbquality.nl/oauth/authorize",
+  "token_endpoint": "https://www.bbquality.nl/oauth/token",
+  "jwks_uri": "https://www.bbquality.nl/oauth/jwks",
+  "scopes_supported": ["orders:read"],
+  "grant_types_supported": ["authorization_code"]
+}`}
+        </pre>
+      </div>
+
+      <p className="text-xs italic">
+        Alleen relevant als je een eigen authorization server of login hebt waar
+        agents tegen moeten inloggen. Heb je geen beveiligde agent-API? Dan kun je
+        deze check gerust laten staan.
+      </p>
+    </div>
+  )
+}
+
+export function OAuthProtectedResourceRecommendation() {
+  return (
+    <div className="space-y-3">
+      <p>
+        Dit is de tegenhanger van OAuth discovery, maar dan vanuit de{" "}
+        <strong>beveiligde resource</strong> (je API) gezien. Op{" "}
+        <code>/.well-known/oauth-protected-resource</code> (RFC 9728) vertel je een
+        agent: &quot;deze API is beschermd, en dít is de authorization server waar
+        je een token moet halen.&quot;
+      </p>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Hoe het samenwerkt
+        </p>
+        <p>
+          Agent leest dit document → vindt je <code>authorization_servers</code> →
+          haalt daar via OAuth discovery (RFC 8414 / OIDC) een token → benadert je
+          API. Dit is precies de schakel die MCP gebruikt om beveiligde servers aan
+          agents te koppelen.
+        </p>
+      </div>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Minimaal voorbeeld
+        </p>
+        <pre
+          className="rounded-md border-[2px] p-3 text-xs overflow-x-auto whitespace-pre"
+          style={{ borderColor: "hsl(144.9 80.4% 10%)", backgroundColor: "white" }}
+        >
+          {`{
+  "resource": "https://www.bbquality.nl/api",
+  "authorization_servers": ["https://www.bbquality.nl"],
+  "scopes_supported": ["orders:read"],
+  "bearer_methods_supported": ["header"]
+}`}
+        </pre>
+      </div>
+
+      <p className="text-xs italic">
+        Net als OAuth discovery: alleen nodig als je beschermde, agent-toegankelijke
+        API&apos;s of MCP-servers aanbiedt.
+      </p>
     </div>
   )
 }
