@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, type ReactNode } from "react"
+import { useState } from "react"
+import { RECOMMENDATIONS } from "./recommendations"
 
 const DARK = "hsl(144.9 80.4% 10%)"
 const GREEN = "hsl(142.1 76.2% 36.3%)"
@@ -12,8 +13,9 @@ export type AccordionCheck = {
   title: string
   status: Status
   message: string
-  /** Optioneel: als dit gevuld is, wordt de rij klikbaar en klapt de aanbeveling uit. */
-  recommendation?: ReactNode
+  /** Optioneel: sleutel uit RECOMMENDATIONS. Is dit gezet, dan wordt de rij
+   *  klikbaar en klapt de bijbehorende aanbeveling uit. */
+  recommendationKey?: string
 }
 
 export type AccordionGroup = { label: string; checks: AccordionCheck[] }
@@ -95,7 +97,10 @@ function Row({
   categoryLabel?: string
 }) {
   const [open, setOpen] = useState(false)
-  const expandable = Boolean(check.recommendation)
+  const Recommendation = check.recommendationKey
+    ? RECOMMENDATIONS[check.recommendationKey]
+    : undefined
+  const expandable = Boolean(Recommendation)
 
   return (
     <li className="border-b last:border-b-0" style={{ borderColor: DARK }}>
@@ -141,7 +146,7 @@ function Row({
                 >
                   Bevindingen & aanbevelingen
                 </p>
-                {check.recommendation}
+                {Recommendation ? <Recommendation /> : null}
               </div>
             </div>
           </div>

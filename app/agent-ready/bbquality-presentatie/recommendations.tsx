@@ -6,9 +6,13 @@
  * client-side rendert en niet via de server/client-grens geserialiseerd wordt
  * (dat veroorzaakte een React "unique key"-waarschuwing).
  *
- * Wil je een nieuwe aanbeveling toevoegen? Maak hier een component en koppel
- * 'm in page.tsx aan de juiste check via `recommendation: <... />`.
+ * Wil je een nieuwe aanbeveling toevoegen? Maak hier een component, voeg 'm toe
+ * aan de RECOMMENDATIONS-map onderaan, en koppel de sleutel in page.tsx via
+ * `recommendationKey: "<sleutel>"`. Zo blijft alle JSX client-side (geen JSX
+ * over de server/client-grens → geen React "unique key"-waarschuwing).
  */
+
+import type { FC } from "react"
 
 const GREEN = "hsl(142.1 76.2% 36.3%)"
 
@@ -286,6 +290,19 @@ export function McpServerCardRecommendation() {
 }`}
         </pre>
       </div>
+
+      <p>
+        Live voorbeeld:{" "}
+        <a
+          href="http://localhost:8888/shop/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold underline"
+          style={{ color: GREEN }}
+        >
+          shop demo
+        </a>
+      </p>
     </div>
   )
 }
@@ -673,4 +690,23 @@ export function MarkdownRecommendation() {
       </p>
     </div>
   )
+}
+
+/**
+ * Registry: koppelt een sleutel-string aan de bijbehorende aanbeveling-component.
+ * page.tsx geeft alleen de sleutel door (geen JSX), zodat de accordion de
+ * component volledig client-side rendert.
+ */
+export const RECOMMENDATIONS: Record<string, FC> = {
+  robots: RobotsRecommendation,
+  linkHeaders: LinkHeadersRecommendation,
+  markdown: MarkdownRecommendation,
+  contentSignals: ContentSignalsRecommendation,
+  webMcp: WebMcpRecommendation,
+  mcpServerCard: McpServerCardRecommendation,
+  apiCatalog: ApiCatalogRecommendation,
+  agentSkills: AgentSkillsRecommendation,
+  a2a: A2aAgentCardRecommendation,
+  oauthDiscovery: OAuthDiscoveryRecommendation,
+  oauthProtectedResource: OAuthProtectedResourceRecommendation,
 }

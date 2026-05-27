@@ -1,7 +1,6 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import {
-  ArrowRightIcon,
   BarChartIcon,
   CardStackIcon,
   ExclamationTriangleIcon,
@@ -15,19 +14,7 @@ import {
   type AccordionCheck,
   type AccordionGroup,
 } from "./issue-accordion"
-import {
-  RobotsRecommendation,
-  MarkdownRecommendation,
-  ContentSignalsRecommendation,
-  WebMcpRecommendation,
-  McpServerCardRecommendation,
-  ApiCatalogRecommendation,
-  AgentSkillsRecommendation,
-  A2aAgentCardRecommendation,
-  OAuthDiscoveryRecommendation,
-  OAuthProtectedResourceRecommendation,
-  LinkHeadersRecommendation,
-} from "./recommendations"
+import { AanDeSlag } from "./aan-de-slag"
 
 /*
  * STATISCHE BBQUALITY-PRESENTATIE (kopie van de bbquality.nl scan).
@@ -85,13 +72,13 @@ const SCAN = {
           title: "robots.txt",
           status: "pass",
           message: "robots.txt exists with valid format",
-          recommendation: <RobotsRecommendation />,
+          recommendationKey: "robots",
         },
         {
           title: "Link headers (RFC 8288)",
           status: "pass",
           message: "Found agent-useful Link relations: alternate",
-          recommendation: <LinkHeadersRecommendation />,
+          recommendationKey: "linkHeaders",
         },
       ],
     },
@@ -102,7 +89,7 @@ const SCAN = {
           title: "Markdown voor agents",
           status: "fail",
           message: "Site does not support Markdown for Agents",
-          recommendation: <MarkdownRecommendation />,
+          recommendationKey: "markdown",
         },
       ],
     },
@@ -113,7 +100,7 @@ const SCAN = {
           title: "Content Signals",
           status: "fail",
           message: "No Content Signals found in robots.txt",
-          recommendation: <ContentSignalsRecommendation />,
+          recommendationKey: "contentSignals",
         },
         {
           title: "Web Bot Auth",
@@ -134,43 +121,43 @@ const SCAN = {
           title: "WebMCP",
           status: "fail",
           message: "No WebMCP tools detected on page load",
-          recommendation: <WebMcpRecommendation />,
+          recommendationKey: "webMcp",
         },
         {
           title: "MCP Server Card",
           status: "fail",
           message: "MCP Server Card not found",
-          recommendation: <McpServerCardRecommendation />,
+          recommendationKey: "mcpServerCard",
         },
         {
           title: "API Catalog",
           status: "fail",
           message: "API Catalog not found",
-          recommendation: <ApiCatalogRecommendation />,
+          recommendationKey: "apiCatalog",
         },
         {
           title: "Agent Skills",
           status: "fail",
           message: "Agent Skills index not found",
-          recommendation: <AgentSkillsRecommendation />,
+          recommendationKey: "agentSkills",
         },
         {
           title: "A2A Agent Card",
           status: "fail",
           message: "A2A Agent Card not found",
-          recommendation: <A2aAgentCardRecommendation />,
+          recommendationKey: "a2a",
         },
         {
           title: "OAuth discovery",
           status: "fail",
           message: "No OAuth/OIDC discovery metadata found",
-          recommendation: <OAuthDiscoveryRecommendation />,
+          recommendationKey: "oauthDiscovery",
         },
         {
           title: "OAuth Protected Resource",
           status: "fail",
           message: "No OAuth Protected Resource Metadata found",
-          recommendation: <OAuthProtectedResourceRecommendation />,
+          recommendationKey: "oauthProtectedResource",
         },
       ],
     },
@@ -205,20 +192,6 @@ const SCAN = {
     },
   ] satisfies AccordionCheck[],
 }
-
-const TIERS = [
-  { name: "Rapport", cta: "Bestel rapport", accent: "hsl(141.7 76.6% 73.1%)" },
-  {
-    name: "Implementatie-dossier",
-    cta: "Plan een gesprek",
-    accent: "hsl(141.9 69.2% 58%)",
-  },
-  {
-    name: "Subscription",
-    cta: "Neem contact op",
-    accent: "hsl(142.1 76.2% 36.3%)",
-  },
-]
 
 // ---------------------------------------------------------------------------
 // Kleuren & badges
@@ -485,39 +458,11 @@ export default function BbqualityPresentatiePage() {
 
         <ResultSection
           id="pakketten"
-          title="Aan de slag"
-          description="Van rapport tot volledig implementatie-dossier — zo kom je naar 100/100."
+          title="Het AI-landschap beweegt"
+          description="Hoe Google, ChatGPT en andere AI-platformen advertenties en commerce inbouwen — en waarom agent-readiness bepaalt of je zichtbaar én verhandelbaar bent."
           icon={<RocketIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {TIERS.map((tier) => (
-              <div
-                key={tier.name}
-                className="rounded-xl border-[3px] p-6 bg-white flex flex-col"
-                style={{ borderColor: DARK }}
-              >
-                <div
-                  className="h-2 -mx-6 -mt-6 mb-4 rounded-t-[9px]"
-                  style={{ backgroundColor: tier.accent }}
-                />
-                <h3
-                  className="text-2xl font-bold mb-4"
-                  style={{ color: DARK, fontFamily: "var(--font-fjalla-one)" }}
-                >
-                  {tier.name}
-                </h3>
-                <div className="flex-1" />
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:underline"
-                  style={{ color: DARK }}
-                >
-                  {tier.cta}
-                  <ArrowRightIcon className="w-4 h-4" />
-                </a>
-              </div>
-            ))}
-          </div>
+          <AanDeSlag />
         </ResultSection>
 
         <div className="text-center">
