@@ -1,3 +1,11 @@
+---
+title: Over Pim van Lieshout — AI & Webontwikkelaar in Lieshout
+description: Pim van Lieshout, oprichter van Code Lieshout. AI-specialist en webontwikkelaar in Lieshout (Noord-Brabant) — procesoptimalisatie met moderne AI-agents en maatwerk websites.
+canonical: https://code-lieshout.nl/about
+language: nl-NL
+updated: 2026-05-27
+---
+
 # Over Pim Lieshout
 
 > Oprichter van Code Lieshout. Webontwikkelaar en AI-specialist.

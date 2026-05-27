@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     "AI-nieuws, agent-ontwikkelingen en tech-insights door Pim van Lieshout. Diepgaande analyses over DeepSeek, Claude, Kimi, AI-infrastructuur en de toekomst van AI agents.",
   alternates: {
     canonical: "https://code-lieshout.nl/blog",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/blog.md",
+    },
   },
   openGraph: {
     title: "Blog — AI Nieuws & Tech Insights | Code Lieshout",

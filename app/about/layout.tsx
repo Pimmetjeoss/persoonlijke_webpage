@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     "Pim van Lieshout, oprichter van Code Lieshout. AI-specialist en webontwikkelaar in Lieshout (Noord-Brabant). Procesoptimalisatie met moderne AI-agents en maatwerk websites.",
   alternates: {
     canonical: "https://code-lieshout.nl/about",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/about.md",
+    },
   },
   openGraph: {
     title: "Over Pim van Lieshout — AI & Webontwikkelaar in Lieshout",

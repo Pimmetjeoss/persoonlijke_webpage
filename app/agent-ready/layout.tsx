@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://code-lieshout.nl/agent-ready",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/agent-ready.md",
+    },
   },
   openGraph: {
     title: "Agent-Ready Scan — Gratis Check voor AI-Agents",

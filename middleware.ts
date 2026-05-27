@@ -8,6 +8,10 @@ const MARKDOWN_ROUTES: Record<string, string> = {
   "/ai-agents": "/ai-agents.md",
   "/contact": "/contact.md",
   "/blog": "/blog.md",
+  "/jouw-website": "/jouw-website.md",
+  "/agent-ready": "/agent-ready.md",
+  "/FAQ": "/FAQ.md",
+  "/sir-prikkel": "/sir-prikkel.md",
 }
 
 const BOT_PATTERNS = [
@@ -55,6 +59,15 @@ function logBotVisit(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   logBotVisit(request)
+
+  // Serve static .md files (e.g. /about.md, /agents.md) with an explicit
+  // markdown content type so AI-agents get text/markdown; charset=utf-8.
+  if (request.nextUrl.pathname.endsWith(".md")) {
+    const response = NextResponse.next()
+    response.headers.set("Content-Type", "text/markdown; charset=utf-8")
+    response.headers.set("Cache-Control", "public, max-age=300")
+    return response
+  }
 
   const target = MARKDOWN_ROUTES[request.nextUrl.pathname]
   if (!target) {

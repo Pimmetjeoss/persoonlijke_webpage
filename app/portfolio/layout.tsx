@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     "Bekijk het portfolio van Code Lieshout: AI-agents, web-applicaties en automatiseringen voor Nederlandse bedrijven. Van chatbots tot complete platforms.",
   alternates: {
     canonical: "https://code-lieshout.nl/portfolio",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/portfolio.md",
+    },
   },
   openGraph: {
     title: "Portfolio — Werk & Projecten van Pim van Lieshout",

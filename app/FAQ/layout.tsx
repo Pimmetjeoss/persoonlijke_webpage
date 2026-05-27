@@ -93,6 +93,9 @@ export const metadata: Metadata = {
     "Antwoorden op de meest gestelde vragen over Code Lieshout, AI-agents, kosten, samenwerking en support. Geen verkooppraat — gewoon eerlijke antwoorden.",
   alternates: {
     canonical: "https://code-lieshout.nl/FAQ",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/FAQ.md",
+    },
   },
   openGraph: {
     title: "FAQ — Veelgestelde Vragen | Code Lieshout",

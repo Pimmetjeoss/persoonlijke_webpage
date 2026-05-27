@@ -1,3 +1,11 @@
+---
+title: Blog — AI Nieuws, Agents & Tech Insights
+description: Nederlandse artikelen over AI-infrastructuur, agent-protocollen en moderne webontwikkeling door Pim van Lieshout.
+canonical: https://code-lieshout.nl/blog
+language: nl-NL
+updated: 2026-05-27
+---
+
 # Blog — Code Lieshout
 
 > Nederlandse artikelen over AI, agents, webontwikkeling en moderne infrastructuur.

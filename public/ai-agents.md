@@ -1,3 +1,11 @@
+---
+title: AI Agents Bouwen voor MKB — Maatwerk Automatisering
+description: Code Lieshout bouwt autonome AI-agents voor Nederlandse MKB-bedrijven. Digitale medewerkers die e-mail, planning, data-analyse en klantcontact 24/7 afhandelen.
+canonical: https://code-lieshout.nl/ai-agents
+language: nl-NL
+updated: 2026-05-27
+---
+
 # AI-agents — Code Lieshout
 
 > AI-agents zijn autonome systemen die zelfstandig complexe taken uitvoeren. Code Lieshout implementeert ze voor het Nederlandse MKB.

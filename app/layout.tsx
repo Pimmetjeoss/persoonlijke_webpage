@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Webdesign bureau in Lieshout (Noord-Brabant) — van chatbots en AI agents tot workflow-automatisering en moderne websites.",
   alternates: {
     canonical: "https://code-lieshout.nl",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/index.md",
+    },
   },
   openGraph: {
     type: "website",

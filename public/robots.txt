@@ -23,3 +23,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://code-lieshout.nl/sitemap.xml
+Sitemap: https://code-lieshout.nl/sitemap_agentic_discovery.xml

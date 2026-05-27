@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://code-lieshout.nl/ai-agents",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/ai-agents.md",
+    },
   },
   openGraph: {
     title: "AI Agents Bouwen voor MKB — Maatwerk Automatisering",

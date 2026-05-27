@@ -1,3 +1,11 @@
+---
+title: Portfolio — Werk & Projecten van Pim van Lieshout
+description: AI-agents, web-applicaties en automatiseringen voor Nederlandse bedrijven. Recente projecten, werkwijze en technologie-stack van Code Lieshout.
+canonical: https://code-lieshout.nl/portfolio
+language: nl-NL
+updated: 2026-05-27
+---
+
 # Portfolio — Code Lieshout
 
 > Recente projecten en werkervaring van Pim Lieshout.

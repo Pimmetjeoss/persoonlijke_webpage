@@ -1,3 +1,11 @@
+---
+title: Contact — Direct Contact met Pim van Lieshout
+description: Neem contact op met Code Lieshout voor webontwikkeling en AI-agent implementaties. Reactie binnen één werkdag.
+canonical: https://code-lieshout.nl/contact
+language: nl-NL
+updated: 2026-05-27
+---
+
 # Contact — Code Lieshout
 
 > Neem contact op met Pim Lieshout. Beschikbaar voor nieuwe projecten in webontwikkeling en AI-agent implementaties.

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     "Direct contact met Code Lieshout. Mail naar pim@code-lieshout.nl, bel 06-12419980, of vind ons op LinkedIn, YouTube en Instagram. Reactie binnen één werkdag.",
   alternates: {
     canonical: "https://code-lieshout.nl/contact",
+    types: {
+      "text/markdown": "https://code-lieshout.nl/contact.md",
+    },
   },
   openGraph: {
     title: "Contact Code Lieshout",

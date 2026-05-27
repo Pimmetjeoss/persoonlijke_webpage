@@ -1,3 +1,11 @@
+---
+title: Code Lieshout — AI-gedreven webontwikkeling
+description: Webontwikkelaar en AI-specialist uit Lieshout. Bouwt agent-ready websites, slimme web-applicaties en AI-automatiseringen voor het Nederlandse MKB.
+canonical: https://code-lieshout.nl/
+language: nl-NL
+updated: 2026-05-27
+---
+
 # Code Lieshout — Pim Lieshout
 
 > Webontwikkelaar en AI-specialist uit Nederland. Bouwt agent-ready websites, slimme web-applicaties en AI-automatiseringen voor het MKB.
