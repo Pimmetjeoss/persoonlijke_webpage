@@ -26,6 +26,7 @@ import {
   A2aAgentCardRecommendation,
   OAuthDiscoveryRecommendation,
   OAuthProtectedResourceRecommendation,
+  LinkHeadersRecommendation,
 } from "./recommendations"
 
 /*
@@ -90,6 +91,7 @@ const SCAN = {
           title: "Link headers (RFC 8288)",
           status: "pass",
           message: "Found agent-useful Link relations: alternate",
+          recommendation: <LinkHeadersRecommendation />,
         },
       ],
     },

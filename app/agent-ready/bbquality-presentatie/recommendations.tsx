@@ -607,6 +607,49 @@ export function OAuthProtectedResourceRecommendation() {
   )
 }
 
+export function LinkHeadersRecommendation() {
+  return (
+    <div className="space-y-3">
+      <p>
+        De <code>Link</code> HTTP-header (RFC 8288, &quot;Web Linking&quot;) drukt
+        relaties tussen resources uit, zodat een agent gerelateerde bronnen
+        ontdekt zónder de HTML te hoeven parsen. Elke link heeft een doel-URI en
+        een relatietype (<code>rel</code>) — het is de HTTP-versie van{" "}
+        <code>&lt;link rel=...&gt;</code> uit HTML.
+      </p>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          ✅ Waarom geslaagd
+        </p>
+        <p>
+          bbquality stuurt een <code>Link</code>-header mee met relatietype{" "}
+          <code>alternate</code> (de WordPress wp-json JSON-versie). De scan vindt
+          dus minstens één agent-bruikbare relatie — vandaar groen.
+        </p>
+      </div>
+
+      <div>
+        <p className="font-bold uppercase text-xs tracking-wide mb-1">
+          Nog rijker maken (optioneel)
+        </p>
+        <p className="mb-2">
+          Voeg meer agent-nuttige relaties toe, zodat agents in één header je
+          sitemap, markdown-versie, API-catalogus of agent-card vinden:
+        </p>
+        <pre
+          className="rounded-md border-[2px] p-3 text-xs overflow-x-auto whitespace-pre"
+          style={{ borderColor: "hsl(144.9 80.4% 10%)", backgroundColor: "white" }}
+        >
+          {`Link: </sitemap.xml>; rel="sitemap",
+      </index.md>; rel="alternate"; type="text/markdown",
+      </.well-known/api-catalog>; rel="api-catalog"`}
+        </pre>
+      </div>
+    </div>
+  )
+}
+
 export function MarkdownRecommendation() {
   return (
     <div className="space-y-2">
