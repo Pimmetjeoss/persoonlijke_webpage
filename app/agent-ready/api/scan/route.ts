@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server"
 import { ScanRequestSchema } from "@/lib/agent-ready/schemas"
+import type { IsItAgentReadyResponse } from "@/lib/agent-ready/schemas"
 import { validateScanTarget } from "@/lib/agent-ready/url"
 import { runScan } from "@/lib/agent-ready/isitagentready"
+import { summarize } from "@/lib/agent-ready/scoring"
 import {
   countRecentScansByIp,
   getCachedScan,
@@ -13,10 +15,47 @@ import {
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
+type FailingCheck = { check: string; category: string; message: string }
+
+type ScanData = {
+  domain: string
+  cached: boolean
+  score: number
+  level: number
+  levelName: string
+  reportUrl: string
+  failing: FailingCheck[]
+}
+
 type ApiResponse = {
   success: boolean
-  data?: { domain: string; cached: boolean }
+  data?: ScanData
   error?: string
+}
+
+/**
+ * Bouwt de publieke samenvatting voor de API-response uit een ruwe scan.
+ * Alleen de kern-checks (niet-commerce) die gezakt zijn worden als "failing"
+ * teruggegeven — dat zijn de checks die de score drukken.
+ */
+function buildScanData(
+  domain: string,
+  cached: boolean,
+  raw: IsItAgentReadyResponse,
+): ScanData {
+  const summary = summarize(raw)
+  const failing: FailingCheck[] = summary.issues
+    .filter((i) => i.status === "fail" && i.category !== "commerce")
+    .map((i) => ({ check: i.checkKey, category: i.category, message: i.message }))
+  return {
+    domain,
+    cached,
+    score: summary.score,
+    level: summary.level,
+    levelName: summary.levelName,
+    reportUrl: `https://code-lieshout.nl/agent-ready/${domain}`,
+    failing,
+  }
 }
 
 function clientIp(req: Request): string {
@@ -59,10 +98,10 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
 
   try {
     const cached = await getCachedScan(domain)
-    if (cached) {
+    if (cached && cached.raw) {
       return NextResponse.json({
         success: true,
-        data: { domain, cached: true },
+        data: buildScanData(domain, true, cached.raw),
       })
     }
 
@@ -105,7 +144,7 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
 
     return NextResponse.json({
       success: true,
-      data: { domain, cached: false },
+      data: buildScanData(domain, false, outcome.data),
     })
   } catch (err) {
     console.error("[agent-ready] scan route failed:", err)

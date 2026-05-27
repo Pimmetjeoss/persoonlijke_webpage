@@ -9,6 +9,21 @@ import {
 } from "@radix-ui/react-icons"
 import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
+import {
+  IssueAccordionGroups,
+  IssueAccordionList,
+  type AccordionCheck,
+  type AccordionGroup,
+} from "./issue-accordion"
+import {
+  RobotsRecommendation,
+  MarkdownRecommendation,
+  ContentSignalsRecommendation,
+  WebMcpRecommendation,
+  McpServerCardRecommendation,
+  ApiCatalogRecommendation,
+  AgentSkillsRecommendation,
+} from "./recommendations"
 
 /*
  * STATISCHE BBQUALITY-PRESENTATIE (kopie van de bbquality.nl scan).
@@ -23,11 +38,6 @@ import { StickyFooter } from "@/app/components/sticky-footer"
 // ---------------------------------------------------------------------------
 // DATA — pas dit blok aan om de voorbeeldscore/checks te veranderen
 // ---------------------------------------------------------------------------
-
-type Status = "pass" | "fail" | "neutral" | "unableToCheck"
-
-type Check = { title: string; status: Status; message: string }
-type Group = { label: string; checks: Check[] }
 
 const SCAN = {
   domain: "bbquality.nl",
@@ -71,6 +81,7 @@ const SCAN = {
           title: "robots.txt",
           status: "pass",
           message: "robots.txt exists with valid format",
+          recommendation: <RobotsRecommendation />,
         },
         {
           title: "Link headers (RFC 8288)",
@@ -86,6 +97,7 @@ const SCAN = {
           title: "Markdown voor agents",
           status: "fail",
           message: "Site does not support Markdown for Agents",
+          recommendation: <MarkdownRecommendation />,
         },
       ],
     },
@@ -96,6 +108,7 @@ const SCAN = {
           title: "Content Signals",
           status: "fail",
           message: "No Content Signals found in robots.txt",
+          recommendation: <ContentSignalsRecommendation />,
         },
         {
           title: "Web Bot Auth",
@@ -116,26 +129,30 @@ const SCAN = {
           title: "WebMCP",
           status: "fail",
           message: "No WebMCP tools detected on page load",
-        },
-        {
-          title: "API Catalog",
-          status: "fail",
-          message: "API Catalog not found",
-        },
-        {
-          title: "Agent Skills",
-          status: "fail",
-          message: "Agent Skills index not found",
-        },
-        {
-          title: "A2A Agent Card",
-          status: "fail",
-          message: "A2A Agent Card not found",
+          recommendation: <WebMcpRecommendation />,
         },
         {
           title: "MCP Server Card",
           status: "fail",
           message: "MCP Server Card not found",
+          recommendation: <McpServerCardRecommendation />,
+        },
+        {
+          title: "API Catalog",
+          status: "fail",
+          message: "API Catalog not found",
+          recommendation: <ApiCatalogRecommendation />,
+        },
+        {
+          title: "Agent Skills",
+          status: "fail",
+          message: "Agent Skills index not found",
+          recommendation: <AgentSkillsRecommendation />,
+        },
+        {
+          title: "A2A Agent Card",
+          status: "fail",
+          message: "A2A Agent Card not found",
         },
         {
           title: "OAuth discovery",
@@ -149,7 +166,7 @@ const SCAN = {
         },
       ],
     },
-  ] satisfies Group[],
+  ] satisfies AccordionGroup[],
 
   // Optionele commerce-checks (tellen niet mee voor de score).
   commerceChecks: [
@@ -178,7 +195,7 @@ const SCAN = {
       status: "neutral",
       message: "x402 payment protocol not detected (not a commerce site)",
     },
-  ] satisfies Check[],
+  ] satisfies AccordionCheck[],
 }
 
 const TIERS = [
@@ -203,13 +220,6 @@ const DARK = "hsl(144.9 80.4% 10%)"
 const GREEN = "hsl(142.1 76.2% 36.3%)"
 const LIGHT = "hsl(141 78.9% 85.1%)"
 const PAGE_BG = "hsl(140.6 84.2% 92.5%)"
-
-const BADGE: Record<Status, { label: string; bg: string; fg: string }> = {
-  fail: { label: "ACTIE NODIG", bg: "#b91c1c", fg: "white" },
-  pass: { label: "OK", bg: GREEN, fg: "white" },
-  neutral: { label: "N.V.T.", bg: LIGHT, fg: DARK },
-  unableToCheck: { label: "NIET TE CHECKEN", bg: "#a16207", fg: "white" },
-}
 
 export const metadata: Metadata = {
   title: `Agent-readiness score voor ${SCAN.domain} — Code Lieshout`,
@@ -358,47 +368,6 @@ function CategoryBar() {
   )
 }
 
-function IssueRow({
-  check,
-  categoryLabel,
-}: {
-  check: Check
-  categoryLabel?: string
-}) {
-  const badge = BADGE[check.status]
-  return (
-    <li
-      className="py-4 flex items-start gap-4 border-b last:border-b-0"
-      style={{ borderColor: DARK }}
-    >
-      <span
-        className="shrink-0 text-[10px] font-bold px-2 py-1 rounded tracking-widest mt-1"
-        style={{ backgroundColor: badge.bg, color: badge.fg }}
-      >
-        {badge.label}
-      </span>
-      <div className="flex-1">
-        <div className="flex items-baseline justify-between gap-4 flex-wrap">
-          <h3
-            className="text-lg md:text-xl font-bold"
-            style={{ color: DARK, fontFamily: "var(--font-fjalla-one)" }}
-          >
-            {check.title}
-          </h3>
-          {categoryLabel && (
-            <span className="text-xs text-gray-500 uppercase tracking-wide">
-              {categoryLabel}
-            </span>
-          )}
-        </div>
-        {check.message && (
-          <p className="text-sm text-gray-600 mt-1">{check.message}</p>
-        )}
-      </div>
-    </li>
-  )
-}
-
 function NextLevelCard() {
   const nl = SCAN.nextLevel
   return (
@@ -491,27 +460,7 @@ export default function BbqualityPresentatiePage() {
           description="De 14 standaarden die AI-agents gebruiken om jouw site te vinden, begrijpen en te benaderen. Deze bepalen je score."
           icon={<ExclamationTriangleIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
-          <div className="space-y-8">
-            {SCAN.coreGroups.map((group) => (
-              <div key={group.label}>
-                <h3
-                  className="uppercase text-sm font-bold tracking-widest mb-2 pb-2 border-b-2"
-                  style={{
-                    color: DARK,
-                    borderColor: DARK,
-                    fontFamily: "var(--font-fjalla-one)",
-                  }}
-                >
-                  {group.label}
-                </h3>
-                <ul className="divide-y" style={{ borderColor: DARK }}>
-                  {group.checks.map((check) => (
-                    <IssueRow key={check.title} check={check} />
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <IssueAccordionGroups groups={SCAN.coreGroups} />
         </ResultSection>
 
         <ResultSection
@@ -520,11 +469,10 @@ export default function BbqualityPresentatiePage() {
           description="Deze 5 protocollen zijn relevant als je via je site betalingen of transacties aanbiedt aan AI-agents. Ze tellen niet mee voor je score."
           icon={<CardStackIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
-          <ul className="divide-y" style={{ borderColor: DARK }}>
-            {SCAN.commerceChecks.map((check) => (
-              <IssueRow key={check.title} check={check} categoryLabel="Commerce" />
-            ))}
-          </ul>
+          <IssueAccordionList
+            checks={SCAN.commerceChecks}
+            categoryLabel="Commerce"
+          />
         </ResultSection>
 
         <ResultSection
