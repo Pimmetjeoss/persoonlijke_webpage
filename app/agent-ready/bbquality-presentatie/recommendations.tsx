@@ -448,7 +448,8 @@ export function AgentSkillsRecommendation() {
           style={{ color: GREEN }}
         >
           agent-ready-scan SKILL.md (GitHub)
-        </a>
+        </a>{" "}
+        — aanroepen in Codex met <code>$agent-ready-scan</code>
       </p>
     </div>
   )
