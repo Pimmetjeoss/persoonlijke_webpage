@@ -147,7 +147,9 @@ export function AanDeSlag() {
         </p>
         <ul className="list-disc pl-5 space-y-3">
           <li>
-            <strong>Business Agent for Leads</strong> — een Gemini-chatbot in de
+            <strong>Business Agent for Leads</strong>{" "}
+            <span className="italic opacity-70">(de verkoper aan de balie)</span> —
+            een Gemini-chatbot in de
             advertentie die vragen beantwoordt op basis van jouw website.
             <em className="block mt-1 opacity-80">
               Voorbeeld: iemand zoekt &quot;BBQ voor 20 personen&quot;. In je
@@ -158,7 +160,11 @@ export function AanDeSlag() {
             </em>
           </li>
           <li>
-            <strong>AI-Powered Shopping Ads</strong> — Gemini legt uit waarom een
+            <strong>AI-Powered Shopping Ads</strong>{" "}
+            <span className="italic opacity-70">
+              (het product omhooghouden met uitleg)
+            </span>{" "}
+            — Gemini legt uit waarom een
             product bij de zoekvraag past.
             <em className="block mt-1 opacity-80">
               Voorbeeld: zoekopdracht &quot;beste steak voor low &amp; slow op de
@@ -168,8 +174,9 @@ export function AanDeSlag() {
             </em>
           </li>
           <li>
-            <strong>Conversational Discovery Ads</strong> — de advertentie
-            beantwoordt een concrete vraag met Gemini-creative.
+            <strong>Conversational Discovery Ads</strong>{" "}
+            <span className="italic opacity-70">(de stem die antwoordt)</span> — de
+            advertentie beantwoordt een concrete vraag met Gemini-creative.
             <em className="block mt-1 opacity-80">
               Voorbeeld: de vraag &quot;hoe lang moet dry-aged ribeye rusten?&quot;
               → je advertentie geeft het antwoord (&quot;5–10 min onder folie&quot;)
@@ -178,8 +185,12 @@ export function AanDeSlag() {
             </em>
           </li>
           <li>
-            <strong>Highlighted Answers</strong> — advertenties verschijnen binnen
-            Gemini&apos;s aanbevelingslijst in AI Mode.
+            <strong>Highlighted Answers</strong>{" "}
+            <span className="italic opacity-70">
+              (op het aanbevelingsbord van de marktmeester)
+            </span>{" "}
+            — advertenties verschijnen binnen Gemini&apos;s aanbevelingslijst in AI
+            Mode.
             <em className="block mt-1 opacity-80">
               Voorbeeld: bij &quot;waar kan ik online dry-aged vlees bestellen in
               Nederland?&quot; geeft Gemini een aanbevelingslijst — en bbquality
