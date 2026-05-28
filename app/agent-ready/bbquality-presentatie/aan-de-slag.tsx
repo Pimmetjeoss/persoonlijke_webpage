@@ -283,7 +283,7 @@ export function AanDeSlag() {
               <span className="flex items-center gap-2">
                 <span className="text-gray-500 w-5 text-right">{i + 1}.</span>
                 <a
-                  href={`https://${c.domain}`}
+                  href={`https://code-lieshout.nl/agent-ready/${c.domain}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:opacity-80"
