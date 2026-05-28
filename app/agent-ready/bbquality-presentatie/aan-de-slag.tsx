@@ -1,13 +1,21 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 const DARK = "hsl(144.9 80.4% 10%)"
 const GREEN = "hsl(142.1 76.2% 36.3%)"
 const LIGHT = "hsl(141 78.9% 85.1%)"
 
-type OpenCard = "google" | "chatgpt" | null
+type OpenCard = "google" | "chatgpt" | "concurrenten" | null
+
+const COMPETITORS = [
+  { domain: "themeatlovers.nl", score: 38 },
+  { domain: "vuurenrook.nl", score: 33 },
+  { domain: "bbquality.nl", score: 31, self: true },
+  { domain: "butchery.nl", score: 20 },
+  { domain: "devleesboerderij.nl", score: 20 },
+  { domain: "beefensteak.nl", score: 15 },
+]
 
 function ExpandCard({
   title,
@@ -115,31 +123,13 @@ export function AanDeSlag() {
           onClick={() => toggle("chatgpt")}
         />
 
-        {/* Subscription — contact-kaart */}
-        <div
-          className="rounded-xl border-[3px] p-6 bg-white flex flex-col"
-          style={{ borderColor: DARK }}
-        >
-          <div
-            className="h-2 -mx-6 -mt-6 mb-4 rounded-t-[9px]"
-            style={{ backgroundColor: "hsl(142.1 76.2% 36.3%)" }}
-          />
-          <h3
-            className="text-2xl font-bold mb-4"
-            style={{ color: DARK, fontFamily: "var(--font-fjalla-one)" }}
-          >
-            Subscription
-          </h3>
-          <div className="flex-1" />
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:underline"
-            style={{ color: DARK }}
-          >
-            Neem contact op
-            <ArrowRightIcon className="w-4 h-4" />
-          </a>
-        </div>
+        <ExpandCard
+          title="Concurrenten getest"
+          teaser="De top 5 premium vlees-webshops, gescand op agent-readiness."
+          accent="hsl(142.1 76.2% 36.3%)"
+          open={openCard === "concurrenten"}
+          onClick={() => toggle("concurrenten")}
+        />
       </div>
 
       {/* Google Marketing Live — uitklap */}
@@ -264,6 +254,71 @@ export function AanDeSlag() {
             href="https://developers.openai.com/api/docs/bots"
             label="OpenAI Crawlers"
           />
+        </p>
+      </Panel>
+
+      {/* Concurrenten getest — uitklap */}
+      <Panel open={openCard === "concurrenten"}>
+        <p
+          className="uppercase text-[10px] font-bold tracking-widest"
+          style={{ color: GREEN }}
+        >
+          Top 5 premium vlees-webshops — agent-ready scan (mei 2026)
+        </p>
+        <p>
+          We draaiden dezelfde scan op de vijf grootste concurrenten. De uitkomst:
+          de hele niche is nauwelijks klaar voor AI-agents.
+        </p>
+
+        <ul className="space-y-0">
+          {COMPETITORS.map((c, i) => (
+            <li
+              key={c.domain}
+              className="flex items-center justify-between gap-3 py-2 border-b last:border-b-0"
+              style={{
+                borderColor: DARK,
+                backgroundColor: c.self ? "white" : "transparent",
+              }}
+            >
+              <span className="flex items-center gap-2">
+                <span className="text-gray-500 w-5 text-right">{i + 1}.</span>
+                <a
+                  href={`https://${c.domain}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-80"
+                  style={{ color: DARK, fontWeight: c.self ? 700 : 400 }}
+                >
+                  {c.domain}
+                </a>
+                {c.self && (
+                  <span
+                    className="text-[10px] font-bold px-2 py-0.5 rounded tracking-widest"
+                    style={{ backgroundColor: GREEN, color: "white" }}
+                  >
+                    JIJ
+                  </span>
+                )}
+              </span>
+              <span
+                className="font-bold tabular-nums"
+                style={{ fontFamily: "var(--font-fjalla-one)" }}
+              >
+                {c.score}/100
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <p>
+          Geen enkele concurrent komt boven <strong>38/100</strong> — de lat ligt
+          dus laag. bbquality zit met 31 in de middenmoot, maar een paar quick wins
+          (Content Signals, llms.txt, Markdown voor agents) tillen je zó naar de
+          koppositie van de hele niche.
+        </p>
+        <p className="text-xs italic">
+          Scores zijn indicatief en gemeten in mei 2026; de scan-standaarden
+          evolueren, dus cijfers kunnen verschuiven.
         </p>
       </Panel>
     </div>
