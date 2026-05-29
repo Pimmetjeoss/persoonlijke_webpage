@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 const MARKDOWN_ROUTES: Record<string, string> = {
-  "/": "/index.md",
+  "/": "/home.md",
   "/about": "/about.md",
   "/portfolio": "/portfolio.md",
   "/ai-agents": "/ai-agents.md",

@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://code-lieshout.nl",
     types: {
-      "text/markdown": "https://code-lieshout.nl/index.md",
+      "text/markdown": "https://code-lieshout.nl/home.md",
     },
   },
   openGraph: {

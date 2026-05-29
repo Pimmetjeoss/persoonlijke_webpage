@@ -660,7 +660,7 @@ export function LinkHeadersRecommendation() {
           style={{ borderColor: "hsl(144.9 80.4% 10%)", backgroundColor: "white" }}
         >
           {`Link: </sitemap.xml>; rel="sitemap",
-      </index.md>; rel="alternate"; type="text/markdown",
+      </home.md>; rel="alternate"; type="text/markdown",
       </.well-known/api-catalog>; rel="api-catalog"`}
         </pre>
       </div>
