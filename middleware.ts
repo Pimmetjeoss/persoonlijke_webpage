@@ -69,24 +69,17 @@ export function middleware(request: NextRequest) {
     return response
   }
 
+  // Keep browser routes as HTML. Markdown remains available explicitly via
+  // /index.md, /about.md, etc. Vercel/CDN caching can otherwise serve a
+  // negotiated markdown response to normal browsers for the same URL.
   const target = MARKDOWN_ROUTES[request.nextUrl.pathname]
-  if (!target) {
-    return NextResponse.next()
-  }
-
-  const accept = request.headers.get("accept") ?? ""
-  if (!accept.toLowerCase().includes("text/markdown")) {
+  if (target) {
     const next = NextResponse.next()
-    next.headers.set("Vary", "Accept")
+    next.headers.set("Link", `<${target}>; rel="alternate"; type="text/markdown"`)
     return next
   }
 
-  const markdownUrl = new URL(target, request.url)
-  const response = NextResponse.rewrite(markdownUrl)
-  response.headers.set("Content-Type", "text/markdown; charset=utf-8")
-  response.headers.set("Vary", "Accept")
-  response.headers.set("Cache-Control", "public, max-age=300")
-  return response
+  return NextResponse.next()
 }
 
 export const config = {
