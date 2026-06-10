@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { useRouter } from "next/navigation"
 
 export type GoogleScoreResult = {
   target: string
@@ -10,13 +11,13 @@ export type GoogleScoreResult = {
 }
 
 export function GoogleScoreForm() {
+  const router = useRouter()
   const [ownDomain, setOwnDomain] = useState("")
   const [competitor1, setCompetitor1] = useState("")
   const [competitor2, setCompetitor2] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [results, setResults] = useState<GoogleScoreResult[] | null>(null)
-  const [ownDomainForLink, setOwnDomainForLink] = useState<string | null>(null)
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -45,8 +46,8 @@ export function GoogleScoreForm() {
         setSubmitting(false)
         return
       }
-      setResults(json.data.results)
-      setOwnDomainForLink(json.data.ownDomain)
+      // Direct door naar detailpagina, net als Agent Ready
+      router.push(`/google-score/${encodeURIComponent(json.data.ownDomain)}`)
       setSubmitting(false)
     } catch (err) {
       console.error("google-score submit failed", err)
@@ -138,9 +139,9 @@ export function GoogleScoreForm() {
             {!submitting && <ArrowRightIcon className="w-5 h-5" />}
           </button>
           <p className="text-xs text-gray-600 max-w-md">
-            We gebruiken de gratis Ahrefs Domain Rating API. Er wordt geen
-            persoonlijke data opgeslagen; alleen de domeinnamen en scores
-            kunnen worden gelogd voor analyse.
+            Voor elk domein halen we een officiële domeinscore (0–100) op uit
+            een externe databron. Er wordt geen persoonlijke data opgeslagen;
+            alleen domeinnamen en scores kunnen worden gelogd voor analyse.
           </p>
         </div>
       </form>
@@ -153,34 +154,20 @@ export function GoogleScoreForm() {
 
       {results && (
         <div className="mt-4 border-[3px] rounded-xl bg-white p-4 md:p-6" style={{ borderColor: "hsl(144.9 80.4% 10%)" }}>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
-            <div>
-              <h3
-                className="text-lg md:text-xl font-bold"
-                style={{
-                  color: "hsl(144.9 80.4% 10%)",
-                  fontFamily: "var(--font-fjalla-one)",
-                }}
-              >
-                Vergelijking
-              </h3>
-              <p className="text-xs text-gray-600">
-                Hoe hoger de Domain Rating (0-100), hoe sterker het backlink‑profiel.
-              </p>
-            </div>
-            {ownDomainForLink && (
-              <a
-                href={`/google-score/${encodeURIComponent(ownDomainForLink)}`}
-                className="inline-flex items-center justify-center px-4 py-2 rounded-lg border-[2px] text-xs font-semibold uppercase tracking-wide"
-                style={{
-                  color: "hsl(144.9 80.4% 10%)",
-                  borderColor: "hsl(144.9 80.4% 10%)",
-                  fontFamily: "var(--font-fjalla-one)",
-                }}
-              >
-                Bekijk detailpagina
-              </a>
-            )}
+          <div className="mb-3">
+            <h3
+              className="text-lg md:text-xl font-bold"
+              style={{
+                color: "hsl(144.9 80.4% 10%)",
+                fontFamily: "var(--font-fjalla-one)",
+              }}
+            >
+              Vergelijking
+            </h3>
+            <p className="text-xs text-gray-600">
+              Hoe hoger de score (0–100), hoe sterker het backlink‑profiel van
+              het domein.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

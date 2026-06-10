@@ -21,8 +21,8 @@ const FEATURES = [
   },
   {
     Icon: LightningBoltIcon,
-    title: "Live Ahrefs data",
-    text: "Gebruikt de gratis Ahrefs Domain Rating API (geen login nodig).",
+    title: "Officiële score",
+    text: "Gebaseerd op een officiële domeinscore (0–100) uit een externe databron.",
     hover: "hsl(141.9 69.2% 58%)",
   },
   {
@@ -79,9 +79,9 @@ export default function GoogleScoreLanding() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
-              Vul je eigen domein en twee concurrenten in. We halen voor elk de
-              Ahrefs Domain Rating op en tonen in een simpele vergelijking wie
-              de meeste autoriteit heeft.
+              Vul je eigen domein en twee concurrenten in. Voor elk domein
+              halen we een officiële domeinscore (0–100) op en tonen we in een
+              simpele vergelijking wie de meeste autoriteit heeft.
             </p>
           </div>
         </TimelineContent>
