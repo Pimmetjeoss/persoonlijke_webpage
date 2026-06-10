@@ -1,10 +1,10 @@
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 
-interface ResultSectionProps {
+type ResultSectionProps = {
   id: string
   title: string
   description: string
-  icon?: ReactNode
+  icon: ReactNode
   children: ReactNode
 }
 
@@ -16,23 +16,29 @@ export function ResultSection({
   children,
 }: ResultSectionProps) {
   return (
-    <section id={id} className="space-y-4">
-      <div className="flex items-center gap-3">
-        {icon && <div className="shrink-0">{icon}</div>}
-        <div>
+    <section
+      id={id}
+      className="w-full rounded-xl border-[3px] bg-white p-8 md:p-12 shadow-xl scroll-mt-32"
+      style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
+    >
+      <div className="flex items-start gap-6">
+        <div
+          className="flex-shrink-0"
+          style={{ color: "hsl(144.9 80.4% 10%)" }}
+        >
+          {icon}
+        </div>
+        <div className="flex-1">
           <h2
-            className="text-xl md:text-2xl font-bold"
-            style={{
-              color: "hsl(144.9 80.4% 10%)",
-              fontFamily: "var(--font-fjalla-one)",
-            }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4"
+            style={{ color: "hsl(144.9 80.4% 10%)" }}
           >
             {title}
           </h2>
-          <p className="text-xs text-gray-600 max-w-xl">{description}</p>
+          <p className="text-lg md:text-xl text-gray-600 mb-6">{description}</p>
+          <div>{children}</div>
         </div>
       </div>
-      <div>{children}</div>
     </section>
   )
 }
