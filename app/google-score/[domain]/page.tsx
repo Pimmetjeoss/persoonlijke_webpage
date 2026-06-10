@@ -5,7 +5,6 @@ import { BarChartIcon, RocketIcon } from "@radix-ui/react-icons"
 import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
 import { getLatestComparisonByDomain } from "@/lib/google-score/cache"
-import { ScoreCircle } from "../components/score-circle"
 import { ResultSection } from "../components/result-section"
 import { TierTeasers } from "../components/tier-teasers"
 
@@ -62,83 +61,78 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
           >
             {row.own_domain}
           </h1>
-          <p className="mt-2 text-sm text-gray-700 max-w-2xl">
-            Laatste vergelijking van jouw domein met twee concurrenten. Cijfers
-            komen uit een externe bron met een officiële domeinscore (0–100).
-          </p>
         </div>
 
-        {/* Jouw score (cirkel) */}
+        {/* Jouw score (grote witte kaart met score) */}
         <ResultSection
           id="score"
           title="Jouw score"
           description="Gebaseerd op de sterkte van het backlink-profiel van jouw domein."
-          icon={<BarChartIcon className="w-8 h-8" style={{ color: "hsl(142.1 76.2% 36.3%)" }} />}
+          icon={<BarChartIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <ScoreCircle score={row.own_dr ?? 0} />
-            <div className="text-center md:text-left max-w-md">
-              <p className="text-sm text-gray-700">
-                Deze score loopt van 0 tot 100. Hoe hoger de score, hoe sterker
-                jouw domein staat ten opzichte van andere websites qua
-                autoriteit en linkprofiel.
-              </p>
+          <div className="flex flex-col items-center">
+            <div
+              className="text-7xl md:text-8xl lg:text-9xl font-bold leading-none"
+              style={{
+                color: "hsl(144.9 80.4% 10%)",
+                fontFamily: "var(--font-fjalla-one)",
+              }}
+            >
+              {row.own_dr ?? "-"}
             </div>
+            <p className="text-sm text-gray-600 mt-1">van 100</p>
           </div>
         </ResultSection>
 
-        {/* Vergelijking met concurrenten */}
+        {/* Vergelijking met concurrenten (twee witte kaarten naast elkaar) */}
         <ResultSection
           id="vergelijking"
           title="Vergelijking met concurrenten"
           description="Zie in één oogopslag hoe jouw domein zich verhoudt tot de gekozen concurrenten."
-          icon={<BarChartIcon className="w-8 h-8" style={{ color: "hsl(142.1 76.2% 36.3%)" }} />}
+          icon={<BarChartIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 rounded-lg border-[3px] bg-white" style={{ borderColor: "hsl(142.1 76.2% 36.3%)" }}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">
-                Jouw domein
-              </p>
-              <p className="text-sm font-mono text-gray-800 mb-1">{row.own_domain}</p>
-              <p
-                className="text-3xl md:text-4xl font-bold"
-                style={{
-                  color: "hsl(144.9 80.4% 10%)",
-                  fontFamily: "var(--font-fjalla-one)",
-                }}
-              >
-                {row.own_dr ?? "-"}
-              </p>
-            </div>
-            <div className="p-4 rounded-lg border-[3px] bg-white" style={{ borderColor: "hsl(141.9 69.2% 58%)" }}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              className="p-6 rounded-lg border-[3px] bg-white flex flex-col items-center"
+              style={{ borderColor: "hsl(141.9 69.2% 58%)" }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-2">
                 Concurrent 1
               </p>
-              <p className="text-sm font-mono text-gray-800 mb-1">{row.competitor1}</p>
-              <p
-                className="text-3xl md:text-4xl font-bold"
+              <p className="text-sm font-mono text-gray-800 mb-2">
+                {row.competitor1}
+              </p>
+              <div
+                className="text-5xl md:text-6xl lg:text-7xl font-bold"
                 style={{
                   color: "hsl(144.9 80.4% 10%)",
                   fontFamily: "var(--font-fjalla-one)",
                 }}
               >
                 {row.competitor1_dr ?? "-"}
-              </p>
+              </div>
+              <p className="text-xs text-gray-600 mt-1">van 100</p>
             </div>
-            <div className="p-4 rounded-lg border-[3px] bg-white" style={{ borderColor: "hsl(141.7 76.6% 73.1%)" }}>
-              <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">
+            <div
+              className="p-6 rounded-lg border-[3px] bg-white flex flex-col items-center"
+              style={{ borderColor: "hsl(141.7 76.6% 73.1%)" }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-2">
                 Concurrent 2
               </p>
-              <p className="text-sm font-mono text-gray-800 mb-1">{row.competitor2}</p>
-              <p
-                className="text-3xl md:text-4xl font-bold"
+              <p className="text-sm font-mono text-gray-800 mb-2">
+                {row.competitor2}
+              </p>
+              <div
+                className="text-5xl md:text-6xl lg:text-7xl font-bold"
                 style={{
                   color: "hsl(144.9 80.4% 10%)",
                   fontFamily: "var(--font-fjalla-one)",
                 }}
               >
                 {row.competitor2_dr ?? "-"}
-              </p>
+              </div>
+              <p className="text-xs text-gray-600 mt-1">van 100</p>
             </div>
           </div>
         </ResultSection>
@@ -148,7 +142,7 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
           id="aan-de-slag"
           title="Aan de slag"
           description="Van rapport tot volledig implementatie-dossier — zo kom je naar 100/100."
-          icon={<RocketIcon className="w-8 h-8" style={{ color: "hsl(142.1 76.2% 36.3%)" }} />}
+          icon={<RocketIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
           <TierTeasers />
         </ResultSection>
