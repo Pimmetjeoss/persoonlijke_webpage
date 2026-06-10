@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  BarChartIcon,
+} from "@radix-ui/react-icons"
 import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
 import { getLatestComparisonByDomain } from "@/lib/google-score/cache"
@@ -14,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const decoded = decodeURIComponent(domain)
   return {
     title: `Google Score voor ${decoded}`,
-    description: `Vergelijk de Ahrefs Domain Rating van ${decoded} met twee concurrenten.`,
+    description: `Vergelijk de domeinscore van ${decoded} met twee concurrenten.`,
     robots: { index: false },
   }
 }
@@ -34,7 +37,7 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
       <StickyHeader
-        title={`GOOGLE SCORE`}
+        title={row.own_domain.toUpperCase()}
         backgroundColor="hsl(140.6 84.2% 92.5%)"
         hoverColor="hsl(141 78.9% 85.1%)"
         startExpanded={true}
@@ -58,20 +61,31 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
             {row.own_domain}
           </h1>
           <p className="mt-2 text-sm text-gray-700 max-w-2xl">
-            Laatste vergelijking van jouw domein met twee concurrenten. Cijfers komen uit de gratis Ahrefs Domain Rating API.
+            Laatste vergelijking van jouw domein met twee concurrenten. Cijfers
+            komen uit een externe bron met een officiële domeinscore (0–100).
           </p>
         </div>
 
         <section className="space-y-4">
-          <h2
-            className="text-xl md:text-2xl font-bold"
-            style={{
-              color: "hsl(144.9 80.4% 10%)",
-              fontFamily: "var(--font-fjalla-one)",
-            }}
-          >
-            Scores
-          </h2>
+          <div className="flex items-center gap-3">
+            <BarChartIcon className="w-8 h-8" style={{ color: "hsl(142.1 76.2% 36.3%)" }} />
+            <div>
+              <h2
+                className="text-xl md:text-2xl font-bold"
+                style={{
+                  color: "hsl(144.9 80.4% 10%)",
+                  fontFamily: "var(--font-fjalla-one)",
+                }}
+              >
+                Scores
+              </h2>
+              <p className="text-xs text-gray-600">
+                Hoe hoger de score (0–100), hoe sterker het backlink‑profiel van
+                het domein.
+              </p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 rounded-lg border-[3px] bg-white" style={{ borderColor: "hsl(142.1 76.2% 36.3%)" }}>
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">
@@ -119,9 +133,6 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
               </p>
             </div>
           </div>
-          <p className="text-xs text-gray-600 max-w-xl">
-            Domain Rating is een logaritmische schaal van 0 tot 100. Een paar punten verschil kan al een groot verschil in backlink‑profiel betekenen.
-          </p>
         </section>
 
         <div className="text-center">
