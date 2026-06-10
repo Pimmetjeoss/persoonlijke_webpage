@@ -24,6 +24,7 @@ export function WorkExperience() {
     router.prefetch('/sir-prikkel')
     router.prefetch('/database')
     router.prefetch('/agent-ready')
+    router.prefetch('/google-score')
     router.prefetch('/under-construction')
   }, [router])
 
@@ -70,6 +71,7 @@ export function WorkExperience() {
       "sir-prikkel": "/sir-prikkel",
       "database": "/database",
       "agent-ready": "/agent-ready",
+      "google-score": "/google-score",
     }
     return routes[id] || "/under-construction"
   }

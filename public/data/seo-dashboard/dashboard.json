@@ -1,57 +1,57 @@
 {
-  "generatedAt": "2026-05-19T15:35:26.345Z",
+  "generatedAt": "2026-06-10T03:15:02.532Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
-    "start": "2025-11-19",
-    "end": "2026-05-18",
+    "start": "2025-12-11",
+    "end": "2026-06-09",
     "label": "Laatste 180 dagen"
   },
   "sources": [
     {
       "source": "gsc",
       "status": "ok",
-      "generatedAt": "2026-05-19T13:16:05.527Z",
-      "rows": 16
+      "generatedAt": "2026-06-10T03:15:02.039Z",
+      "rows": 15
     },
     {
       "source": "ga4",
       "status": "unavailable",
-      "generatedAt": "2026-05-19T13:16:05.573Z",
+      "generatedAt": "2026-06-10T03:15:02.081Z",
       "detail": "SEO_GA4_COMMAND is not configured. Point it to the existing Analytics MCP/GA4 read-only export command; placeholders: {property}, {days}, {limit}.",
       "rows": 0
     },
     {
       "source": "pagespeed",
       "status": "unavailable",
-      "generatedAt": "2026-05-19T13:16:05.864Z",
+      "generatedAt": "2026-06-10T03:15:02.317Z",
       "detail": "PageSpeed Insights data is unavailable. Set SEO_PAGESPEED_API_KEY if quota/auth is required.",
       "rows": 0
     },
     {
       "source": "crux",
       "status": "unavailable",
-      "generatedAt": "2026-05-19T13:16:05.905Z",
+      "generatedAt": "2026-06-10T03:15:02.399Z",
       "detail": "SEO_CRUX_API_KEY or SEO_PAGESPEED_API_KEY is not configured. PageSpeed may still expose limited field data when available.",
       "rows": 0
     },
     {
       "source": "gbp",
       "status": "unavailable",
-      "generatedAt": "2026-05-19T13:16:05.948Z",
+      "generatedAt": "2026-06-10T03:15:02.442Z",
       "detail": "SEO_GBP_COMMAND is not configured. Point it to a read-only Google Business Profile export command; placeholders: {location}, {days}, {limit}.",
       "rows": 0
     },
     {
       "source": "bots",
       "status": "ok",
-      "generatedAt": "2026-05-19T13:16:12.186Z",
-      "detail": "Bot/crawler activiteit opgehaald uit Vercel logs. User-agent details komen mee zodra de nieuwe middleware live is. Cloudflare fallback reden: Cloudflare Analytics Engine SQL faalde: 403 Authorization error",
-      "rows": 2
+      "generatedAt": "2026-05-21T08:50:27.025Z",
+      "detail": "Bot/crawler activiteit opgehaald uit Vercel logs. User-agent details komen mee zodra de nieuwe middleware live is.",
+      "rows": 1
     },
     {
       "source": "clarity",
       "status": "ok",
-      "generatedAt": "2026-05-19T15:35:26.346Z",
+      "generatedAt": "2026-06-10T03:15:02.532Z",
       "detail": "Discovery board klaar voor project wtkycths2o.",
       "rows": 3
     }
@@ -60,7 +60,7 @@
     "cards": [
       {
         "label": "GSC workflow rows",
-        "value": "16",
+        "value": "15",
         "tone": "positive"
       },
       {
@@ -95,7 +95,7 @@
       },
       {
         "label": "AI crawlers",
-        "value": "2",
+        "value": "1",
         "tone": "positive"
       },
       {
@@ -200,12 +200,12 @@
         "id": "compare-0",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 1,
+        "impressions": 2,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": 1,
-        "opportunity": 0.08
+        "deltaImpressions": -5,
+        "opportunity": 0.16
       },
       {
         "id": "compare-1",
@@ -215,41 +215,41 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -3,
+        "deltaImpressions": -6,
         "opportunity": 0.16
       },
       {
         "id": "compare-2",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 8,
+        "impressions": 1,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": 8,
-        "opportunity": 0.64
+        "deltaImpressions": 1,
+        "opportunity": 0.08
       },
       {
         "id": "compare-3",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 9,
+        "impressions": 1,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": 4,
-        "opportunity": 0.72
+        "deltaImpressions": -1,
+        "opportunity": 0.08
       },
       {
         "id": "compare-4",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 0,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": 0,
-        "opportunity": 0.4
+        "deltaImpressions": -1,
+        "opportunity": 0
       },
       {
         "id": "compare-5",
@@ -259,7 +259,7 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -1,
+        "deltaImpressions": -6,
         "opportunity": 0
       },
       {
@@ -281,18 +281,7 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -4,
-        "opportunity": 0
-      },
-      {
-        "id": "compare-8",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -3,
+        "deltaImpressions": -1,
         "opportunity": 0
       }
     ],
@@ -368,43 +357,25 @@
   },
   "botAnalytics": {
     "totals": {
-      "visits": 2,
-      "uniqueBots": 2,
-      "lastSeen": "2026-05-19T13:15:19.589Z"
+      "visits": 1,
+      "uniqueBots": 1,
+      "lastSeen": "2026-05-21T07:51:55.795Z"
     },
     "bots": [
       {
-        "botName": "Sitemap crawler",
+        "botName": "Robots.txt crawler",
         "family": "crawler",
         "total": 1,
-        "lastSeen": "2026-05-19T13:15:19.589Z",
+        "lastSeen": "2026-05-21T07:51:55.795Z",
         "topPaths": [
           {
-            "path": "/sitemap.xml",
+            "path": "/robots.txt",
             "count": 1
           }
         ],
         "daily": [
           {
-            "date": "2026-05-19",
-            "count": 1
-          }
-        ]
-      },
-      {
-        "botName": "Other crawler",
-        "family": "other",
-        "total": 1,
-        "lastSeen": "2026-05-19T13:15:18.814Z",
-        "topPaths": [
-          {
-            "path": "/seo-dashboard",
-            "count": 1
-          }
-        ],
-        "daily": [
-          {
-            "date": "2026-05-19",
+            "date": "2026-05-21",
             "count": 1
           }
         ]
@@ -412,19 +383,10 @@
     ],
     "recent": [
       {
-        "timestamp": "2026-05-19T13:15:19.589Z",
-        "botName": "Sitemap crawler",
+        "timestamp": "2026-05-21T07:51:55.795Z",
+        "botName": "Robots.txt crawler",
         "family": "crawler",
-        "path": "/sitemap.xml",
-        "count": 1
-      },
-      {
-        "timestamp": "2026-05-19T13:15:18.814Z",
-        "botName": "Other crawler",
-        "family": "other",
-        "path": "/seo-dashboard",
-        "userAgent": "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)",
-        "country": "NL",
+        "path": "/robots.txt",
         "count": 1
       }
     ]
@@ -438,7 +400,7 @@
     "heatmapsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/heatmaps",
     "recordingsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/recordings",
     "insightsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/insights",
-    "exportApiStatus": "token-missing",
+    "exportApiStatus": "token-present",
     "quickLinks": [
       {
         "label": "Open Clarity dashboard",
@@ -488,8 +450,8 @@
       },
       {
         "title": "AI crawler context",
-        "metric": "2 bot hits",
-        "detail": "Sitemap crawler, Other crawler",
+        "metric": "1 bot hits",
+        "detail": "Robots.txt crawler",
         "action": "Combineer bot-crawls met heatmaps: pagina's die bots vinden moeten ook voor mensen duidelijk scannen.",
         "href": "#ai-crawlers",
         "tone": "positive"
@@ -520,8 +482,8 @@
     "checks": [
       {
         "label": "Data Export API",
-        "status": "warning",
-        "detail": "Geen Clarity Data Export API-token gevonden. Heatmaps/recordings open je in Clarity; live insight-metrics kunnen later via token."
+        "status": "ok",
+        "detail": "Clarity API-token is aanwezig; pp-clarity kan live insights ophalen."
       },
       {
         "label": "Consent gate",
@@ -549,8 +511,8 @@
       },
       {
         "label": "pp-clarity",
-        "value": "Token nodig",
-        "tone": "warning",
+        "value": "Live insights",
+        "tone": "positive",
         "detail": "CLI kan insights ophalen, geen heatmapbeelden embedden."
       }
     ]
@@ -749,6 +711,344 @@
       "desktopPerformance": 0,
       "gbpWebsiteClicks": 0,
       "botVisits": 2,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-20T03:15:05.310Z",
+      "date": "2026-05-20",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 0,
+      "okSources": 1
+    },
+    {
+      "generatedAt": "2026-05-20T20:38:49.370Z",
+      "date": "2026-05-20",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-20T20:40:02.658Z",
+      "date": "2026-05-20",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 2,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-21T03:15:02.451Z",
+      "date": "2026-05-21",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 2,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-21T08:49:10.864Z",
+      "date": "2026-05-21",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 2,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-21T08:50:27.084Z",
+      "date": "2026-05-21",
+      "gscRows": 16,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-22T03:15:02.363Z",
+      "date": "2026-05-22",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-23T03:15:02.807Z",
+      "date": "2026-05-23",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-24T03:15:02.720Z",
+      "date": "2026-05-24",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-25T03:15:02.724Z",
+      "date": "2026-05-25",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-26T03:15:02.533Z",
+      "date": "2026-05-26",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-27T03:15:02.987Z",
+      "date": "2026-05-27",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-28T03:15:02.071Z",
+      "date": "2026-05-28",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-29T03:15:02.431Z",
+      "date": "2026-05-29",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-30T03:15:02.397Z",
+      "date": "2026-05-30",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-05-31T03:15:02.467Z",
+      "date": "2026-05-31",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-01T03:15:02.349Z",
+      "date": "2026-06-01",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-02T03:15:02.674Z",
+      "date": "2026-06-02",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-03T03:15:02.036Z",
+      "date": "2026-06-03",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-04T03:15:02.874Z",
+      "date": "2026-06-04",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-05T03:15:02.416Z",
+      "date": "2026-06-05",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-06T03:15:02.570Z",
+      "date": "2026-06-06",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-07T03:15:01.817Z",
+      "date": "2026-06-07",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-08T03:15:02.176Z",
+      "date": "2026-06-08",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-09T03:15:02.529Z",
+      "date": "2026-06-09",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-10T03:15:02.532Z",
+      "date": "2026-06-10",
+      "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
       "okSources": 3
     }
   ]

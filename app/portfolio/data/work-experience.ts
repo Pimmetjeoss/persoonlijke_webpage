@@ -72,4 +72,13 @@ export const workExperiences: WorkExperience[] = [
     description: "Gratis scan: hoe klaar is jouw site voor AI-agents?",
     highlights: [],
   },
+  {
+    id: "google-score",
+    company: "GOOGLE SCORE",
+    role: "VERGELIJK MET CONCURRENTEN",
+    period: "",
+    description:
+      "Vergelijk jouw domein met twee concurrenten op Google-autoriteit (Ahrefs Domain Rating).",
+    highlights: [],
+  },
 ]
