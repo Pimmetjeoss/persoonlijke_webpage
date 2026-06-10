@@ -110,7 +110,8 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
 
   const parsed = INPUT_SCHEMA.safeParse(body)
   if (!parsed.success) {
-    const firstError = parsed.error.errors[0]?.message ?? "Ongeldige invoer."
+    const issues = parsed.error.issues ?? []
+    const firstError = issues[0]?.message ?? "Ongeldige invoer."
     return NextResponse.json(
       { success: false, error: firstError },
       { status: 400 },
