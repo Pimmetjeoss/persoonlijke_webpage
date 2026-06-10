@@ -38,7 +38,7 @@ export function WorkExperience() {
     "hsl(144.9 80.4% 10%)",   // #1 - donkerste
     "hsl(141.7 76.6% 73.1%)", // #8 - licht
     "hsl(142.8 64.2% 24.1%)", // #3 - donker
-    "hsl(140.6 84.2% 92.5%)", // #10 - bijna lichtste
+    "hsl(141.7 76.6% 73.1%)", // #8 - licht (GOOGLE SCORE)
     "hsl(142.1 76.2% 36.3%)", // #5 - medium donker
     "hsl(141.9 69.2% 58%)",   // #7 - medium groen (herhaald)
     "hsl(143.8 61.2% 20.2%)", // #2 - zeer donker (herhaald)
