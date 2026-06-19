@@ -1,11 +1,13 @@
 "use client"
 
+import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { Plus } from "lucide-react";
 
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
+import { useTransition } from "@/app/components/transition_provider";
 
 interface AgentItem {
   id: string;
@@ -13,6 +15,7 @@ interface AgentItem {
   kicker: string;
   description: string;
   highlights: string[];
+  href?: string;
 }
 
 const agentItems: AgentItem[] = [
@@ -55,6 +58,7 @@ const agentItems: AgentItem[] = [
     description:
       "Helpt met documenten, e-mail, planning en Drive-structuur. Ideaal voor teams die al in Google Workspace werken maar minder handwerk willen.",
     highlights: ["Documenten en samenvattingen", "Agenda- en mailflows", "Drive-structuur en procesbewaking"],
+    href: "/ai-agents/google-workspace-agent",
   },
   {
     id: "second-brain-agent",
@@ -65,12 +69,12 @@ const agentItems: AgentItem[] = [
     highlights: ["Obsidian/wiki-ingest", "Bronnen samenvatten en labelen", "QA op structuur en vindbaarheid"],
   },
   {
-    id: "linkedin-agent",
-    name: "LINKEDIN AGENT",
-    kicker: "Consistente zichtbaarheid zonder generieke posts",
+    id: "lead-agent",
+    name: "LEAD AGENT",
+    kicker: "Leads vinden zonder generieke outreach",
     description:
-      "Ondersteunt bij ideeën, drafts, hergebruik van content en publicatieplanning met behoud van je eigen toon en scherpe mening.",
-    highlights: ["Postideeën uit echte projecten", "Drafts in jouw stem", "Contentplanning en hergebruik"],
+      "Ondersteunt bij leadlijsten, invalshoeken, opvolging en content die aansluit op echte gesprekken in plaats van koude standaardberichten.",
+    highlights: ["Leadideeën uit echte projecten", "Outreach in jouw stem", "Opvolging en contentplanning"],
   },
   {
     id: "cli-agent",
@@ -130,7 +134,7 @@ const aiAgentsSchema = {
         position: index + 1,
         name: item.name,
         description: item.description,
-        url: `https://code-lieshout.nl/ai-agents#${item.id}`,
+        url: item.href ? `https://code-lieshout.nl${item.href}` : `https://code-lieshout.nl/ai-agents#${item.id}`,
       })),
     },
   ],
@@ -140,6 +144,7 @@ export default function AIAgentsPage() {
   const pageRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { startTransition } = useTransition();
 
   return (
     <div
@@ -159,11 +164,23 @@ export default function AIAgentsPage() {
         startExpanded={true}
       />
 
-      <main className="pt-[42vh]">
+      <main>
+        <div className="relative h-[42vh] overflow-visible">
+          <Image
+            src="/cactus_laptop_transparent.png"
+            alt="Cactus mascotte"
+            width={250}
+            height={250}
+            priority
+            className="pointer-events-none absolute -bottom-[3px] right-[5%] z-0 w-[150px] md:right-[10%] md:w-[200px] lg:right-[15%] lg:w-[250px]"
+          />
+        </div>
+
         <div className="relative z-10">
           {agentItems.map((agent, index) => {
             const isHovered = hoveredIndex === index;
-            const isOpen = openIndex === index;
+            const isLink = Boolean(agent.href);
+            const isOpen = !isLink && openIndex === index;
             const textColor = getTextColor(index, isHovered);
             const rowColor = isHovered ? hoverColors[index] : "hsl(140.6 84.2% 92.5%)";
 
@@ -185,7 +202,13 @@ export default function AIAgentsPage() {
                     type="button"
                     aria-expanded={isOpen}
                     aria-controls={`${agent.id}-content`}
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    onClick={() => {
+                      if (agent.href) {
+                        startTransition(agent.href);
+                        return;
+                      }
+                      setOpenIndex(isOpen ? null : index);
+                    }}
                     className="group w-full rounded-none border-t-[3px] border-black text-left transition-all duration-300 ease-out hover:-translate-y-6 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black"
                     style={{ backgroundColor: rowColor }}
                   >
@@ -221,27 +244,29 @@ export default function AIAgentsPage() {
                     </div>
                   </button>
 
-                  <div
-                    id={`${agent.id}-content`}
-                    className={`overflow-hidden border-black transition-[max-height,opacity] duration-500 ease-out ${
-                      isOpen ? "max-h-96 border-t-[3px] opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                    style={{ backgroundColor: "hsl(138.5 76.5% 96.7%)" }}
-                  >
-                    <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 md:grid-cols-[1.1fr_0.9fr] md:px-8 lg:px-16">
-                      <p className="max-w-3xl text-lg leading-relaxed text-[hsl(144.9_80.4%_10%)] md:text-xl">
-                        {agent.description}
-                      </p>
-                      <ul className="space-y-2 text-base font-semibold text-[hsl(144.9_80.4%_10%)] md:text-lg">
-                        {agent.highlights.map((highlight) => (
-                          <li key={highlight} className="flex gap-3">
-                            <span aria-hidden="true">→</span>
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
+                  {!isLink && (
+                    <div
+                      id={`${agent.id}-content`}
+                      className={`overflow-hidden border-black transition-[max-height,opacity] duration-500 ease-out ${
+                        isOpen ? "max-h-96 border-t-[3px] opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                      style={{ backgroundColor: "hsl(138.5 76.5% 96.7%)" }}
+                    >
+                      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 md:grid-cols-[1.1fr_0.9fr] md:px-8 lg:px-16">
+                        <p className="max-w-3xl text-lg leading-relaxed text-[hsl(144.9_80.4%_10%)] md:text-xl">
+                          {agent.description}
+                        </p>
+                        <ul className="space-y-2 text-base font-semibold text-[hsl(144.9_80.4%_10%)] md:text-lg">
+                          {agent.highlights.map((highlight) => (
+                            <li key={highlight} className="flex gap-3">
+                              <span aria-hidden="true">→</span>
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </section>
               </TimelineContent>
             );
