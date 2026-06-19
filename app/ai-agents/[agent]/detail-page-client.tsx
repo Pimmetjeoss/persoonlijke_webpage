@@ -16,11 +16,16 @@ import { BentoCard, BentoGrid } from "@/app/test/components/bento-grid";
 import { SectionCard } from "@/app/test/components/section-card";
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
 
-const faqItems: FAQItem[] = [
+interface AgentDetailClientProps {
+  title: string;
+  label: string;
+}
+
+const makeFaqItems = (label: string): FAQItem[] => [
   {
     id: "1",
     title: "Placeholder vraag 1?",
-    content: "Dit is placeholder content. De echte Google Workspace Agent-inhoud vullen we later in.",
+    content: `Dit is placeholder content. De echte ${label}-inhoud vullen we later in.`,
   },
   {
     id: "2",
@@ -30,15 +35,15 @@ const faqItems: FAQItem[] = [
   {
     id: "3",
     title: "Placeholder vraag 3?",
-    content: "Dit is placeholder content voor de nieuwe agent-pagina.",
+    content: "Dit is placeholder content voor deze agent-pagina.",
   },
 ];
 
-const features = [
+const makeFeatures = (label: string) => [
   {
     Icon: PersonIcon,
     name: "Simpel uitgelegd",
-    description: "Placeholder voor de korte uitleg van deze agent.",
+    description: `Placeholder voor de korte uitleg van ${label}.`,
     href: "#simpel-uitgelegd",
     cta: "",
     background: <div className="absolute -right-20 -top-20 opacity-60" aria-hidden="true" />,
@@ -87,8 +92,10 @@ const features = [
   },
 ];
 
-export default function GoogleWorkspaceAgentPage() {
+export function AgentDetailClient({ title, label }: AgentDetailClientProps) {
   const pageRef = useRef<HTMLDivElement>(null);
+  const features = makeFeatures(label);
+  const faqItems = makeFaqItems(label);
 
   return (
     <div
@@ -97,7 +104,7 @@ export default function GoogleWorkspaceAgentPage() {
       style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
     >
       <StickyHeader
-        title="GOOGLE WORKSPACE AGENT"
+        title={title}
         backgroundColor="hsl(140.6 84.2% 92.5%)"
         hoverColor="hsl(141 78.9% 85.1%)"
         startExpanded={true}
@@ -116,7 +123,7 @@ export default function GoogleWorkspaceAgentPage() {
             <SectionCard
               id="simpel-uitgelegd"
               title="Simpel uitgelegd"
-              description="Placeholder voor de korte uitleg van deze agent."
+              description={`Placeholder voor de korte uitleg van ${label}.`}
               Icon={PersonIcon}
             />
             <SectionCard

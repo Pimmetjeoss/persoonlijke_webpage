@@ -26,6 +26,7 @@ const agentItems: AgentItem[] = [
     description:
       "Een gespecialiseerde agent voor Shopify-webshops: van custom secties en productpagina's tot conversieverbetering, content en technische checks.",
     highlights: ["Shopify-thema's en storefront UX", "Productdata, collecties en SEO-copy", "Conversiechecks en checkout-frictie"],
+    href: "/ai-agents/shopify-agent",
   },
   {
     id: "seo-agent",
@@ -34,6 +35,7 @@ const agentItems: AgentItem[] = [
     description:
       "Controleert technische SEO, contentkansen, Search Console-data en concurrentiesignalen, zodat optimalisatie geen losse maandelijkse taak blijft.",
     highlights: ["Technische audits en prioriteiten", "Contentkansen uit zoekdata", "Rapportage zonder spreadsheet-chaos"],
+    href: "/ai-agents/seo-agent",
   },
   {
     id: "bol-com-agent",
@@ -42,6 +44,7 @@ const agentItems: AgentItem[] = [
     description:
       "Helpt met bol.com assortiment, productcontent, prijs- en voorraadchecks, feedproblemen en commerciële optimalisaties voor verkopers die grip willen op hun kanaal.",
     highlights: ["Productcontent en attributen", "Voorraad, prijs en feed-controle", "Marketplace-SEO en conversiekansen"],
+    href: "/ai-agents/bol-com-agent",
   },
   {
     id: "dataset-agent",
@@ -50,6 +53,7 @@ const agentItems: AgentItem[] = [
     description:
       "Leest CSV's, productfeeds en databestanden, ontdekt kolomproblemen en zet ruwe data om naar beslissingen, mappings of dashboards.",
     highlights: ["CSV- en feed-validatie", "Datamapping en opschoning", "Concrete fouten terug naar bronregels"],
+    href: "/ai-agents/dataset-agent",
   },
   {
     id: "google-workspace-agent",
@@ -67,6 +71,7 @@ const agentItems: AgentItem[] = [
     description:
       "Bouwt en onderhoudt een persoonlijke kennisbank: bronnen verwerken, notities structureren, verbanden leggen en kwaliteit bewaken.",
     highlights: ["Obsidian/wiki-ingest", "Bronnen samenvatten en labelen", "QA op structuur en vindbaarheid"],
+    href: "/ai-agents/second-brain-agent",
   },
   {
     id: "lead-agent",
@@ -75,6 +80,7 @@ const agentItems: AgentItem[] = [
     description:
       "Ondersteunt bij leadlijsten, invalshoeken, opvolging en content die aansluit op echte gesprekken in plaats van koude standaardberichten.",
     highlights: ["Leadideeën uit echte projecten", "Outreach in jouw stem", "Opvolging en contentplanning"],
+    href: "/ai-agents/lead-agent",
   },
   {
     id: "cli-agent",
@@ -83,6 +89,7 @@ const agentItems: AgentItem[] = [
     description:
       "Een agent voor commandline-taken: inspecteren, scripts draaien, services checken en technische problemen oplossen met echte output als bewijs.",
     highlights: ["Server- en servicechecks", "Scripts, logs en builds", "Veilig werken zonder secrets te lekken"],
+    href: "/ai-agents/cli-agent",
   },
   {
     id: "website-builder-agent",
@@ -91,6 +98,7 @@ const agentItems: AgentItem[] = [
     description:
       "Ontwerpt, bouwt, test en publiceert websites met een duidelijke visuele identiteit — geen standaard template met een AI-sausje.",
     highlights: ["Design-first websitebouw", "Next.js, Vercel en GitHub workflow", "Browser-QA en visuele polish"],
+    href: "/ai-agents/website-builder-agent",
   },
 ];
 
@@ -201,7 +209,7 @@ export default function AIAgentsPage() {
                   <button
                     type="button"
                     aria-expanded={isOpen}
-                    aria-controls={`${agent.id}-content`}
+                    aria-controls={isLink ? undefined : `${agent.id}-content`}
                     onClick={() => {
                       if (agent.href) {
                         startTransition(agent.href);
