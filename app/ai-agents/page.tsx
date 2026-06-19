@@ -173,14 +173,14 @@ export default function AIAgentsPage() {
       />
 
       <main>
-        <div className="relative h-[42vh] overflow-visible">
+        <div className="relative h-[50vh] overflow-visible">
           <Image
             src="/cactus_laptop_transparent.png"
             alt="Cactus mascotte"
             width={250}
             height={250}
             priority
-            className="pointer-events-none absolute -bottom-[3px] right-[5%] z-0 w-[150px] md:right-[10%] md:w-[200px] lg:right-[15%] lg:w-[250px]"
+            className="pointer-events-none absolute -bottom-[130px] right-[5%] z-0 w-[150px] md:right-[10%] md:w-[200px] lg:right-[15%] lg:w-[250px]"
           />
         </div>
 
@@ -208,6 +208,7 @@ export default function AIAgentsPage() {
                 >
                   <button
                     type="button"
+                    aria-label={`${agent.name}: ${agent.kicker}`}
                     aria-expanded={isOpen}
                     aria-controls={isLink ? undefined : `${agent.id}-content`}
                     onClick={() => {
@@ -217,24 +218,18 @@ export default function AIAgentsPage() {
                       }
                       setOpenIndex(isOpen ? null : index);
                     }}
-                    className="group w-full rounded-none border-t-[3px] border-black text-left transition-all duration-300 ease-out hover:-translate-y-6 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black"
+                    className="group mb-0 w-full cursor-pointer overflow-hidden rounded-none border-t-[3px] border-black text-left transition-all duration-300 ease-out hover:-translate-y-6 hover:overflow-visible focus-visible:outline focus-visible:outline-4 focus-visible:outline-black"
                     style={{ backgroundColor: rowColor }}
                   >
                     <div className="px-4 pb-2 pt-4 md:px-8 lg:px-16">
-                      <div className="mx-auto grid w-full max-w-7xl grid-cols-[1fr_auto] items-end gap-4 md:gap-8">
+                      <div className="mx-auto grid w-full max-w-7xl grid-cols-[1fr_auto] items-end gap-8">
                         <div className="min-w-0">
-                          <p
-                            className="mb-2 max-w-3xl text-sm font-bold uppercase tracking-[0.28em] md:text-base"
-                            style={{ color: textColor }}
-                          >
-                            {agent.kicker}
-                          </p>
-                          <h1
-                            className="text-[clamp(3.8rem,8.8vw,8.5rem)] font-bold leading-[0.82] tracking-tight"
-                            style={{ color: textColor, marginBottom: "-0.22em" }}
+                          <h2
+                            className="text-[clamp(2.4rem,14vw,4.5rem)] font-bold leading-[0.85] tracking-tight transition-all duration-300 md:whitespace-nowrap md:text-[clamp(4rem,6.7vw,8rem)]"
+                            style={{ color: textColor, marginBottom: "-0.3em" }}
                           >
                             {agent.name}
-                          </h1>
+                          </h2>
                         </div>
 
                         <div className="flex items-center justify-center pb-2">
@@ -283,7 +278,7 @@ export default function AIAgentsPage() {
           <div className="h-[3px] w-full bg-black" />
         </div>
 
-        <div className="h-32" />
+        <div className="h-12" />
       </main>
 
       <StickyFooter />
