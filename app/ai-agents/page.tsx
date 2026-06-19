@@ -33,6 +33,14 @@ const agentItems: AgentItem[] = [
     highlights: ["Technische audits en prioriteiten", "Contentkansen uit zoekdata", "Rapportage zonder spreadsheet-chaos"],
   },
   {
+    id: "bol-com-agent",
+    name: "BOL.COM AGENT",
+    kicker: "Marketplace-groei zonder catalogusgedoe",
+    description:
+      "Helpt met bol.com assortiment, productcontent, prijs- en voorraadchecks, feedproblemen en commerciële optimalisaties voor verkopers die grip willen op hun kanaal.",
+    highlights: ["Productcontent en attributen", "Voorraad, prijs en feed-controle", "Marketplace-SEO en conversiekansen"],
+  },
+  {
     id: "dataset-agent",
     name: "DATASET AGENT",
     kicker: "Rommelige exports naar bruikbare inzichten",
@@ -91,6 +99,7 @@ const hoverColors = [
   "hsl(144.9 80.4% 10%)",
   "hsl(142.1 76.2% 36.3%)",
   "hsl(142.1 70.6% 45.3%)",
+  "hsl(140.6 84.2% 92.5%)",
 ];
 
 const darkIndices = [1, 3, 5, 6, 7];
