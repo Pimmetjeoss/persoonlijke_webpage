@@ -506,7 +506,7 @@ function ClarityPanel({ clarity }: { clarity: SeoDashboardData["clarity"] }) {
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-200">Microsoft Clarity Discovery</p>
           <h3 className="mt-3 text-5xl leading-none md:text-6xl">Wat valt bezoekers op?</h3>
           <p className="mt-4 max-w-2xl font-mono text-sm leading-6 text-white/70">
-            Niet alleen “staat het aan?”, maar: welke pagina's verdienen heatmaps, welke recordings moet je terugkijken, en welke frictie-signalen zijn interessant voor Code Lieshout?
+            Niet alleen “staat het aan?”, maar: welke pagina&apos;s verdienen heatmaps, welke recordings moet je terugkijken, en welke frictie-signalen zijn interessant voor Code Lieshout?
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             {clarity.signals.map((signal) => (
