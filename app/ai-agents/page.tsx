@@ -224,6 +224,12 @@ export default function AIAgentsPage() {
                     <div className="px-4 pb-2 pt-4 md:px-8 lg:px-16">
                       <div className="mx-auto grid w-full max-w-7xl grid-cols-[1fr_auto] items-end gap-8">
                         <div className="min-w-0">
+                          <p
+                            className="mb-1 max-w-3xl text-xs font-bold uppercase tracking-[0.24em] md:text-sm"
+                            style={{ color: textColor }}
+                          >
+                            {agent.kicker}
+                          </p>
                           <h2
                             className="text-[clamp(2.4rem,14vw,4.5rem)] font-bold leading-[0.85] tracking-tight transition-all duration-300 md:whitespace-nowrap md:text-[clamp(4rem,6.7vw,8rem)]"
                             style={{ color: textColor, marginBottom: "-0.3em" }}
