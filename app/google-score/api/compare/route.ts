@@ -16,7 +16,7 @@ type CompareResult = {
 
 type ApiResponse = {
   success: boolean
-  data?: { results: CompareResult[]; ownDomain: string }
+  data?: { results: CompareResult[]; ownDomain: string; persisted: boolean }
   error?: string
 }
 
@@ -127,20 +127,25 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
       fetchDomainRating(competitor2),
     ])
 
-    const saved = await saveComparison({
-      ownDomain: own.target,
-      competitor1: c1.target,
-      competitor2: c2.target,
-      ownDr: own.domain_rating,
-      competitor1Dr: c1.domain_rating,
-      competitor2Dr: c2.domain_rating,
-    })
+    let saved = null
+    try {
+      saved = await saveComparison({
+        ownDomain: own.target,
+        competitor1: c1.target,
+        competitor2: c2.target,
+        ownDr: own.domain_rating,
+        competitor1Dr: c1.domain_rating,
+        competitor2Dr: c2.domain_rating,
+      })
+    } catch (saveError) {
+      console.error("[google-score] save skipped", saveError)
+    }
 
     const redirectDomain = saved?.own_domain ?? own.target
 
     return NextResponse.json({
       success: true,
-      data: { results: [own, c1, c2], ownDomain: redirectDomain },
+      data: { results: [own, c1, c2], ownDomain: redirectDomain, persisted: Boolean(saved) },
     })
   } catch (err) {
     console.error("[google-score] compare route failed", err)

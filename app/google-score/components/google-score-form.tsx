@@ -38,7 +38,7 @@ export function GoogleScoreForm() {
       })
       const json = (await res.json()) as {
         success: boolean
-        data?: { results: GoogleScoreResult[]; ownDomain: string }
+        data?: { results: GoogleScoreResult[]; ownDomain: string; persisted?: boolean }
         error?: string
       }
       if (!res.ok || !json.success || !json.data) {
@@ -46,8 +46,13 @@ export function GoogleScoreForm() {
         setSubmitting(false)
         return
       }
-      // Direct door naar detailpagina, net als Agent Ready
-      router.push(`/google-score/${encodeURIComponent(json.data.ownDomain)}`)
+      if (json.data.persisted) {
+        // Direct door naar detailpagina als de vergelijking is opgeslagen.
+        router.push(`/google-score/${encodeURIComponent(json.data.ownDomain)}`)
+      } else {
+        // Fallback voor deployments zonder Supabase-runtime-env: toon de scores direct.
+        setResults(json.data.results)
+      }
       setSubmitting(false)
     } catch (err) {
       console.error("google-score submit failed", err)
