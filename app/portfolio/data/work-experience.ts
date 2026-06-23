@@ -25,6 +25,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
   },
   {
+    id: "webdesign",
+    company: "WEBDESIGN",
+    role: "WEBSITES OP MAAT",
+    period: "",
+    description: "Moderne websites met karakter, snelheid en slimme conversieflows.",
+    highlights: [],
+  },
+  {
     id: "faq",
     company: "FAQ",
     role: "VEELGESTELDE VRAGEN",
