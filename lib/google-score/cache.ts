@@ -52,21 +52,26 @@ export async function saveComparison(params: {
 export async function getLatestComparisonByDomain(
   ownDomain: string,
 ): Promise<GoogleScoreRow | null> {
-  const supabase = getServerSupabase()
-  const normalized = ownDomain.toLowerCase().replace(/^www\./, "")
+  try {
+    const supabase = getServerSupabase()
+    const normalized = ownDomain.toLowerCase().replace(/^www\./, "")
 
-  const { data, error } = await supabase
-    .from(TABLE)
-    .select("*")
-    .eq("own_domain", normalized)
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle()
+    const { data, error } = await supabase
+      .from(TABLE)
+      .select("*")
+      .eq("own_domain", normalized)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle()
 
-  if (error) {
-    console.error("[google-score] latest lookup failed:", error.message)
+    if (error) {
+      console.error("[google-score] latest lookup failed:", error.message)
+      return null
+    }
+
+    return (data as GoogleScoreRow | null) ?? null
+  } catch (err) {
+    console.error("[google-score] latest lookup skipped", err)
     return null
   }
-
-  return (data as GoogleScoreRow | null) ?? null
 }

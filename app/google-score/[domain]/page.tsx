@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { BarChartIcon, RocketIcon } from "@radix-ui/react-icons"
@@ -29,7 +28,51 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
 
   const row = await getLatestComparisonByDomain(domain)
   if (!row) {
-    notFound()
+    return (
+      <div
+        className="min-h-screen"
+        style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
+      >
+        <StickyHeader
+          title="GOOGLE SCORE"
+          backgroundColor="hsl(140.6 84.2% 92.5%)"
+          hoverColor="hsl(141 78.9% 85.1%)"
+          startExpanded={true}
+        />
+        <div className="mx-auto max-w-3xl p-6 lg:p-10 space-y-6">
+          <p
+            className="uppercase text-xs tracking-widest mb-1"
+            style={{ color: "hsl(142.1 76.2% 36.3%)" }}
+          >
+            Vergelijking niet opgeslagen
+          </p>
+          <h1
+            className="text-3xl md:text-5xl font-bold"
+            style={{
+              color: "hsl(144.9 80.4% 10%)",
+              fontFamily: "var(--font-fjalla-one)",
+            }}
+          >
+            Maak een nieuwe Google Score vergelijking
+          </h1>
+          <p className="text-sm md:text-base text-gray-700 max-w-xl">
+            Deze vergelijking is niet beschikbaar als losse detailpagina. Start opnieuw; de scores worden direct op de pagina getoond.
+          </p>
+          <Link
+            href="/google-score"
+            className="inline-block px-6 py-3 rounded-lg border-[3px] bg-white font-semibold uppercase tracking-wide text-sm"
+            style={{
+              color: "hsl(144.9 80.4% 10%)",
+              borderColor: "hsl(144.9 80.4% 10%)",
+              fontFamily: "var(--font-fjalla-one)",
+            }}
+          >
+            Nieuwe vergelijking maken
+          </Link>
+        </div>
+        <StickyFooter />
+      </div>
+    )
   }
 
   return (
