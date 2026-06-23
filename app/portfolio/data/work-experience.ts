@@ -73,20 +73,29 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
   },
   {
-    id: "agent-ready",
-    company: "AGENT-READY",
-    role: "SCAN JOUW SITE",
-    period: "",
-    description: "Gratis scan: hoe klaar is jouw site voor AI-agents?",
-    highlights: [],
-  },
-  {
     id: "google-score",
     company: "GOOGLE SCORE",
     role: "VERGELIJK MET CONCURRENTEN",
     period: "",
     description:
       "Vergelijk jouw domein met twee concurrenten op Google-autoriteit (Ahrefs Domain Rating).",
+    highlights: [],
+  },
+  {
+    id: "chatgpt-check",
+    company: "CHATGPT-CHECK",
+    role: "WAT ZIET AI VAN JOUW SITE?",
+    period: "",
+    description:
+      "Vergelijk wat ChatGPT van jouw website ziet met wat het van je concurrent ziet. Side-by-side.",
+    highlights: [],
+  },
+  {
+    id: "agent-ready",
+    company: "AGENT-READY",
+    role: "SCAN JOUW SITE",
+    period: "",
+    description: "Gratis scan: hoe klaar is jouw site voor AI-agents?",
     highlights: [],
   },
 ]

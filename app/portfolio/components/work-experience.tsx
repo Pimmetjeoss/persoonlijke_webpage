@@ -25,6 +25,7 @@ export function WorkExperience() {
     router.prefetch('/database')
     router.prefetch('/agent-ready')
     router.prefetch('/google-score')
+    router.prefetch('/chatgpt-check')
     router.prefetch('/under-construction')
   }, [router])
 
@@ -72,6 +73,7 @@ export function WorkExperience() {
       "database": "/database",
       "agent-ready": "/agent-ready",
       "google-score": "/google-score",
+      "chatgpt-check": "/chatgpt-check",
     }
     return routes[id] || "/under-construction"
   }
