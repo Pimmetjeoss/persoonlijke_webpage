@@ -133,13 +133,7 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
     })
 
     if (!saved) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Scan gelukt, maar opslaan mislukte. Probeer opnieuw.",
-        },
-        { status: 500 },
-      )
+      console.error("[agent-ready] scan succeeded but cache save failed")
     }
 
     return NextResponse.json({

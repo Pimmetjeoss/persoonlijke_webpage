@@ -29,13 +29,24 @@ function dailySalt(): string {
   return `${d.getUTCFullYear()}-${d.getUTCMonth() + 1}-${d.getUTCDate()}`
 }
 
+function getOptionalSupabase() {
+  try {
+    return getServerSupabase()
+  } catch (err) {
+    console.error("[agent-ready] supabase unavailable:", (err as Error).message)
+    return null
+  }
+}
+
 export function hashIp(ip: string | null | undefined): string {
   const safe = (ip ?? "anon").slice(0, 64)
   return createHash("sha256").update(`${safe}|${dailySalt()}`).digest("hex")
 }
 
 export async function getCachedScan(domain: string): Promise<ScanRow | null> {
-  const supabase = getServerSupabase()
+  const supabase = getOptionalSupabase()
+  if (!supabase) return null
+
   const threshold = new Date(Date.now() - CACHE_TTL_MS).toISOString()
   const { data, error } = await supabase
     .from(TABLE)
@@ -54,7 +65,9 @@ export async function getCachedScan(domain: string): Promise<ScanRow | null> {
 }
 
 export async function getLatestScanByDomain(domain: string): Promise<ScanRow | null> {
-  const supabase = getServerSupabase()
+  const supabase = getOptionalSupabase()
+  if (!supabase) return null
+
   const { data, error } = await supabase
     .from(TABLE)
     .select("*")
@@ -70,7 +83,9 @@ export async function getLatestScanByDomain(domain: string): Promise<ScanRow | n
 }
 
 export async function countRecentScansByIp(ipHash: string): Promise<number> {
-  const supabase = getServerSupabase()
+  const supabase = getOptionalSupabase()
+  if (!supabase) return 0
+
   const threshold = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString()
   const { count, error } = await supabase
     .from(TABLE)
@@ -90,7 +105,9 @@ export async function saveScanResult(params: {
   ipHash: string
   response: IsItAgentReadyResponse
 }): Promise<ScanRow | null> {
-  const supabase = getServerSupabase()
+  const supabase = getOptionalSupabase()
+  if (!supabase) return null
+
   const summary = summarize(params.response)
   const row = {
     uuid: randomUUID(),
