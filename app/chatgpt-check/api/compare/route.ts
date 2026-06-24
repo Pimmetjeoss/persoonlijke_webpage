@@ -170,11 +170,11 @@ function generateInsights(
   const compOg = compMeta.ogImage || compMeta["og:image"]
   if (!ownOg && compOg) {
     insights.push(
-      `Jij hebt geen OG image — ${competitor.domain} wél. AI-chats tonen hun preview-plaatje, die van jou niet.`,
+      `Jij hebt geen OG image — ${competitor.domain} wél. Daardoor mist jouw pagina een duidelijk preview-beeld wanneer tools of platformen een link samenvatten.`,
     )
   } else if (ownOg && !compOg) {
     insights.push(
-      `${competitor.domain} mist een OG image. Jouw pagina heeft er wél een — jouw site oogt beter in AI-chats.`,
+      `${competitor.domain} mist een OG image. Jouw pagina heeft er wél een — dat helpt bij herkenbare previews wanneer je link gedeeld of samengevat wordt.`,
     )
   }
 
@@ -184,11 +184,11 @@ function generateInsights(
   if (ownLen > 0 && compLen > 0) {
     if (ownLen < compLen * 0.5) {
       insights.push(
-        `${competitor.domain} heeft veel meer tekstinhoud (${compLen.toLocaleString()} vs ${ownLen.toLocaleString()} karakters). AI ziet hen als informatiever.`,
+        `${competitor.domain} geeft AI veel meer tekstcontext (${compLen.toLocaleString()} vs ${ownLen.toLocaleString()} karakters). Meer tekst is niet automatisch beter, maar te weinig context maakt je pagina moeilijker te begrijpen.`,
       )
     } else if (compLen < ownLen * 0.5) {
       insights.push(
-        `Jouw pagina heeft meer inhoud (${ownLen.toLocaleString()} vs ${compLen.toLocaleString()} karakters) — AI ziet jou als de rijkere bron.`,
+        `Jouw pagina geeft AI meer tekstcontext (${ownLen.toLocaleString()} vs ${compLen.toLocaleString()} karakters). Dat is gunstig zolang de inhoud duidelijk, relevant en goed gestructureerd is.`,
       )
     }
   }

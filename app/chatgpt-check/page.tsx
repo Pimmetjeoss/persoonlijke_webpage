@@ -16,7 +16,7 @@ const FEATURES = [
   {
     Icon: EyeOpenIcon,
     title: "Side-by-side",
-    text: "Jouw site naast de concurrent — wat ziet ChatGPT bij jullie allebei?",
+    text: "Jouw site naast de concurrent: wat ziet AI bij jullie allebei?",
     hover: "hsl(141.7 76.6% 73.1%)",
   },
   {
@@ -28,7 +28,7 @@ const FEATURES = [
   {
     Icon: RocketIcon,
     title: "Concrete inzichten",
-    text: "Ontdek wat AI écht van je site vindt en waar je concurrent sterker is.",
+    text: "Ontdek welke signalen AI helpen om je site goed te begrijpen.",
     hover: "hsl(142.1 76.2% 36.3%)",
   },
 ]
@@ -74,14 +74,14 @@ export default function ChatGPTCheckLanding() {
                   fontWeight: 400,
                 }}
               >
-                ChatGPT
+                AI
               </span>{" "}
               van jouw website?
             </h1>
             <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
-              ChatGPT, Claude en Perplexity zien alleen platte tekst — geen
-              styling, geen plaatjes. Vul twee URL&apos;s in en ontdek wat AI
-              écht ziet. Jij vs. de concurrent.
+              AI-systemen zoals ChatGPT, Claude en Perplexity kijken naar tekst,
+              structuur en metadata. Vul twee URL&apos;s in en ontdek welke pagina
+              het duidelijkst te begrijpen is.
             </p>
           </div>
         </TimelineContent>
@@ -90,7 +90,7 @@ export default function ChatGPTCheckLanding() {
           <SectionCard
             id="vergelijking"
             title="Vergelijk twee websites"
-            description="Plak jouw URL en die van een concurrent. Wij laten zien wat AI van jullie allebei ziet."
+            description="Plak jouw URL en die van een concurrent. Wij vergelijken tekstcontext, metadata en paginastructuur."
             Icon={EyeOpenIcon}
           >
             <CompareForm />
