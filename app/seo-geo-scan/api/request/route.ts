@@ -8,10 +8,10 @@ export const dynamic = "force-dynamic"
 const RequestSchema = z.object({
   name: z.string().trim().min(2, "Vul je naam in.").max(120),
   email: z.string().trim().email("Vul een geldig e-mailadres in.").max(200),
-  phone: z.string().trim().max(60).optional(),
+  phone: z.string().trim().min(6, "Vul je telefoonnummer of WhatsApp in.").max(60),
   website: z.string().trim().min(3, "Vul je website in.").max(240),
   currentScore: z.number().min(0).max(100).nullable().optional(),
-  notes: z.string().trim().max(1200).optional(),
+  notes: z.string().trim().min(10, "Vertel kort waar je op wilt groeien.").max(1200),
   source: z.string().trim().max(120).optional(),
 })
 

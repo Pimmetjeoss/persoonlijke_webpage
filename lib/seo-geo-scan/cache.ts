@@ -21,10 +21,10 @@ export type SeoGeoScanRequestRow = {
 export async function saveSeoGeoScanRequest(params: {
   name: string
   email: string
-  phone?: string
+  phone: string
   website: string
   currentScore?: number | null
-  notes?: string
+  notes: string
   source?: string
 }): Promise<SeoGeoScanRequestRow | null> {
   const supabase = getServerSupabase()
@@ -32,10 +32,10 @@ export async function saveSeoGeoScanRequest(params: {
     uuid: randomUUID(),
     name: params.name,
     email: params.email,
-    phone: params.phone || null,
+    phone: params.phone,
     website: params.website,
     current_score: params.currentScore ?? null,
-    notes: params.notes || null,
+    notes: params.notes,
     source: params.source ?? "google-score-level-up",
     status: "new" as const,
   }

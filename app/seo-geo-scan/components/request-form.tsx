@@ -59,7 +59,12 @@ export function RequestForm({
     }
   }
 
-  const canSubmit = name.trim() && email.trim() && website.trim()
+  const canSubmit =
+    name.trim() &&
+    email.trim() &&
+    website.trim() &&
+    phone.trim() &&
+    notes.trim().length >= 10
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
@@ -73,6 +78,7 @@ export function RequestForm({
             onChange={(event) => setName(event.target.value)}
             disabled={submitting || success}
             autoComplete="name"
+            required
             className="px-4 py-3 rounded-lg border-[3px] bg-white text-base focus:outline-none focus:ring-2"
             style={{
               borderColor: "hsl(144.9 80.4% 10%)",
@@ -90,6 +96,7 @@ export function RequestForm({
             onChange={(event) => setEmail(event.target.value)}
             disabled={submitting || success}
             autoComplete="email"
+            required
             className="px-4 py-3 rounded-lg border-[3px] bg-white text-base focus:outline-none focus:ring-2"
             style={{
               borderColor: "hsl(144.9 80.4% 10%)",
@@ -108,6 +115,7 @@ export function RequestForm({
             inputMode="url"
             autoComplete="url"
             placeholder="code-lieshout.nl"
+            required
             className="px-4 py-3 rounded-lg border-[3px] bg-white text-base focus:outline-none focus:ring-2"
             style={{
               borderColor: "hsl(144.9 80.4% 10%)",
@@ -124,6 +132,7 @@ export function RequestForm({
             onChange={(event) => setPhone(event.target.value)}
             disabled={submitting || success}
             autoComplete="tel"
+            required
             className="px-4 py-3 rounded-lg border-[3px] bg-white text-base focus:outline-none focus:ring-2"
             style={{
               borderColor: "hsl(144.9 80.4% 10%)",
@@ -142,6 +151,9 @@ export function RequestForm({
           onChange={(event) => setNotes(event.target.value)}
           disabled={submitting || success}
           rows={5}
+          required
+          minLength={10}
+          placeholder="Bijvoorbeeld: beter gevonden worden op lokale zoekwoorden, hoger scoren dan concurrenten, of beter zichtbaar worden in AI-antwoorden."
           className="px-4 py-3 rounded-lg border-[3px] bg-white text-base focus:outline-none focus:ring-2 resize-none"
           style={{
             borderColor: "hsl(144.9 80.4% 10%)",
