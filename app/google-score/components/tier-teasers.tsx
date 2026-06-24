@@ -2,25 +2,38 @@ import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 type Tier = {
   name: string
+  description: string
   cta: string
   accent: string
+  href: string
+  external?: boolean
 }
 
 const TIERS: Tier[] = [
   {
-    name: "Rapport",
-    cta: "Bestel rapport",
-    accent: "hsl(141.7 76.6% 73.1%)",
+    name: "Laatste plaats",
+    description:
+      "Je concurrenten hebben nu een betere kans om gevonden te worden. Geen paniek: stuur mij een kort appje, dan lossen we dit direct samen op.",
+    cta: "Direct contact opnemen",
+    accent: "hsl(0 72% 47%)",
+    href: "https://wa.me/31612419980?text=Hoi%20Pim%2C%20ik%20sta%20laatste%20in%20de%20Google%20Score%20vergelijking.%20Kun%20je%20me%20helpen%20met%20SEO%20en%20GEO%3F",
+    external: true,
   },
   {
-    name: "Implementatie-dossier",
-    cta: "Plan een gesprek",
-    accent: "hsl(141.9 69.2% 58%)",
+    name: "Level up",
+    description:
+      "Je zit in de buurt. Vraag een gratis SEO/GEO scan aan en ontdek welke stappen je naar het volgende level brengen.",
+    cta: "Gratis SEO/GEO scan",
+    accent: "hsl(32 95% 44%)",
+    href: "/seo-geo-scan",
   },
   {
-    name: "Subscription",
-    cta: "Neem contact op",
+    name: "Overtuigend wereldkampioen",
+    description:
+      "Je website staat sterk. Test nu of AI jouw site ook beter begrijpt dan de concurrentie.",
+    cta: "Doe de volgende test",
     accent: "hsl(142.1 76.2% 36.3%)",
+    href: "/chatgpt-check",
   },
 ]
 
@@ -46,9 +59,12 @@ export function TierTeasers() {
           >
             {tier.name}
           </h3>
+          <p className="text-sm text-gray-700 mb-6">{tier.description}</p>
           <div className="flex-1" />
           <a
-            href="/contact"
+            href={tier.href}
+            target={tier.external ? "_blank" : undefined}
+            rel={tier.external ? "noopener noreferrer" : undefined}
             className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide hover:underline"
             style={{ color: "hsl(144.9 80.4% 10%)" }}
           >

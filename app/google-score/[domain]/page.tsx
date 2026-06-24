@@ -12,6 +12,72 @@ export type PageProps = {
   params: Promise<{ domain: string }>
 }
 
+type GoogleScoreLevel = {
+  level: number
+  name: string
+  range: string
+  description: string
+  next?: string
+  accent: string
+}
+
+const GOOGLE_SCORE_LEVELS: GoogleScoreLevel[] = [
+  {
+    level: 1,
+    name: "Nog nauwelijks zichtbaar",
+    range: "0-9",
+    description:
+      "Je website heeft nog weinig autoriteit. Concurrenten hebben een grotere kans om eerder gevonden te worden.",
+    next: "Werk eerst aan technische basis, indexeerbaarheid en de eerste betrouwbare vermeldingen.",
+    accent: "hsl(0 72% 47%)",
+  },
+  {
+    level: 2,
+    name: "Basis aanwezig",
+    range: "10-29",
+    description:
+      "Er is online tractie, maar je website heeft nog te weinig kracht om structureel mee te doen.",
+    next: "Bouw aan relevante content, lokale signalen en kwalitatieve links.",
+    accent: "hsl(32 95% 44%)",
+  },
+  {
+    level: 3,
+    name: "In de wedstrijd",
+    range: "30-49",
+    description:
+      "Je website staat redelijk, maar sterke concurrenten kunnen je nog makkelijk voorbij.",
+    next: "Versterk je belangrijkste pagina's en autoriteit binnen je niche.",
+    accent: "hsl(48 96% 44%)",
+  },
+  {
+    level: 4,
+    name: "Sterke speler",
+    range: "50-69",
+    description:
+      "Je website heeft duidelijke autoriteit en kan op veel zoekopdrachten concurreren.",
+    next: "Richt je op thought leadership, digitale PR en AI-vindbaarheid.",
+    accent: "hsl(142.1 76.2% 36.3%)",
+  },
+  {
+    level: 5,
+    name: "Autoriteit",
+    range: "70-100",
+    description:
+      "Je website hoort bij de sterke autoriteiten. De volgende stap is dominantie in Google en AI-antwoorden.",
+    accent: "hsl(142.4 71.8% 29.2%)",
+  },
+]
+
+function googleScoreLevel(score: number | null): GoogleScoreLevel {
+  const normalized = Math.max(0, Math.min(100, score ?? 0))
+
+  if (normalized >= 70) return GOOGLE_SCORE_LEVELS[4]
+  if (normalized >= 50) return GOOGLE_SCORE_LEVELS[3]
+  if (normalized >= 30) return GOOGLE_SCORE_LEVELS[2]
+  if (normalized >= 10) return GOOGLE_SCORE_LEVELS[1]
+  return GOOGLE_SCORE_LEVELS[0]
+}
+
 function scoreTone(
   score: number | null,
   allScores: [number | null, number | null, number | null],
@@ -96,6 +162,7 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
   const ownTone = scoreTone(row.own_dr, scores)
   const competitor1Tone = scoreTone(row.competitor1_dr, scores)
   const competitor2Tone = scoreTone(row.competitor2_dr, scores)
+  const ownLevel = googleScoreLevel(row.own_dr)
 
   return (
     <div
@@ -133,7 +200,7 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
         <ResultSection
           id="score"
           title="Jouw score"
-          description="Gebaseerd op de sterkte van het backlink-profiel van jouw domein."
+          description="Gebaseerd op hoe sterk jouw website online staat."
           icon={<BarChartIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -142,8 +209,42 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
               <p className="text-sm text-gray-700">
                 Deze score loopt van 0 tot 100. Hoe hoger de score, hoe sterker
                 jouw domein staat ten opzichte van andere websites qua
-                autoriteit en linkprofiel.
+                autoriteit en vindbaarheid.
               </p>
+            </div>
+          </div>
+        </ResultSection>
+
+        <ResultSection
+          id="level"
+          title={`Level ${ownLevel.level}: ${ownLevel.name}`}
+          description="Deze indeling maakt snel duidelijk waar je website nu staat en wat de volgende stap is."
+          icon={<BarChartIcon className="w-10 h-10 md:w-12 md:h-12" />}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6 items-stretch">
+            <div
+              className="rounded-xl border-[3px] p-6 flex flex-col justify-center"
+              style={{
+                borderColor: "hsl(144.9 80.4% 10%)",
+                backgroundColor: ownLevel.accent,
+                color: "white",
+              }}
+            >
+              <p className="text-xs uppercase tracking-widest font-bold">Score range</p>
+              <p
+                className="text-5xl font-bold mt-2"
+                style={{ fontFamily: "var(--font-fjalla-one)" }}
+              >
+                {ownLevel.range}
+              </p>
+            </div>
+            <div className="rounded-xl border-[3px] p-6 bg-white" style={{ borderColor: "hsl(144.9 80.4% 10%)" }}>
+              <p className="text-base text-gray-700">{ownLevel.description}</p>
+              {ownLevel.next && (
+                <p className="text-sm text-gray-600 mt-4">
+                  <strong>Volgende stap:</strong> {ownLevel.next}
+                </p>
+              )}
             </div>
           </div>
         </ResultSection>
@@ -175,7 +276,7 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
         <ResultSection
           id="aan-de-slag"
           title="Aan de slag"
-          description="Van rapport tot volledig implementatie-dossier — zo kom je naar 100/100."
+          description="Kies de vervolgstap die past bij jouw positie: herstellen, level up gaan of je AI-zichtbaarheid testen."
           icon={<RocketIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
           <TierTeasers />
