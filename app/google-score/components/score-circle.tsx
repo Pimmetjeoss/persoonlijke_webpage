@@ -1,11 +1,28 @@
 type ScoreCircleProps = {
   score: number
+  tone?: "green" | "orange" | "red"
 }
 
-export function ScoreCircle({ score }: ScoreCircleProps) {
+const TONE_COLORS = {
+  green: {
+    track: "hsl(141 78.9% 85.1%)",
+    progress: "hsl(142.1 76.2% 36.3%)",
+  },
+  orange: {
+    track: "hsl(35 92% 86%)",
+    progress: "hsl(32 95% 44%)",
+  },
+  red: {
+    track: "hsl(0 86% 90%)",
+    progress: "hsl(0 72% 47%)",
+  },
+} as const
+
+export function ScoreCircle({ score, tone = "green" }: ScoreCircleProps) {
   const normalized = Math.max(0, Math.min(100, score))
   const circumference = 2 * Math.PI * 70
   const dash = (normalized / 100) * circumference
+  const colors = TONE_COLORS[tone]
 
   return (
     <div className="flex flex-col items-center">
@@ -20,7 +37,7 @@ export function ScoreCircle({ score }: ScoreCircleProps) {
             cy="80"
             r="70"
             fill="none"
-            stroke="hsl(141 78.9% 85.1%)"
+            stroke={colors.track}
             strokeWidth="12"
           />
           <circle
@@ -28,7 +45,7 @@ export function ScoreCircle({ score }: ScoreCircleProps) {
             cy="80"
             r="70"
             fill="none"
-            stroke="hsl(142.1 76.2% 36.3%)"
+            stroke={colors.progress}
             strokeWidth="12"
             strokeLinecap="round"
             strokeDasharray={`${dash} ${circumference}`}

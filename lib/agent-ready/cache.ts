@@ -2,12 +2,14 @@ import { randomUUID, createHash } from "node:crypto"
 import { getServerSupabase } from "./supabase-server"
 import type { IsItAgentReadyResponse } from "./schemas"
 import { summarize } from "./scoring"
+import { isCacheableScan } from "./quality"
 
 export const CACHE_TTL_MS = 24 * 60 * 60 * 1000
 export const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000
 export const RATE_LIMIT_MAX = 10
 
 const TABLE = "agent_ready_scans"
+const CACHE_LOOKBACK_LIMIT = 5
 
 export type ScanRow = {
   id: string
@@ -55,13 +57,14 @@ export async function getCachedScan(domain: string): Promise<ScanRow | null> {
     .eq("status", "done")
     .gte("created_at", threshold)
     .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle()
+    .limit(CACHE_LOOKBACK_LIMIT)
   if (error) {
     console.error("[agent-ready] cache lookup failed:", error.message)
     return null
   }
-  return (data as ScanRow | null) ?? null
+
+  const rows = (data as ScanRow[] | null) ?? []
+  return rows.find((row) => isCacheableScan(row.raw)) ?? null
 }
 
 export async function getLatestScanByDomain(domain: string): Promise<ScanRow | null> {

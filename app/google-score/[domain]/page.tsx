@@ -12,6 +12,19 @@ export type PageProps = {
   params: Promise<{ domain: string }>
 }
 
+function scoreTone(
+  score: number | null,
+  allScores: [number | null, number | null, number | null],
+): "green" | "orange" | "red" {
+  const normalized = score ?? 0
+  const scores = allScores.map((value) => value ?? 0)
+  const betterCount = scores.filter((value) => value > normalized).length
+
+  if (betterCount === 0) return "green"
+  if (betterCount === 1) return "orange"
+  return "red"
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { domain } = await params
   const decoded = decodeURIComponent(domain)
@@ -75,6 +88,15 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
     )
   }
 
+  const scores: [number | null, number | null, number | null] = [
+    row.own_dr,
+    row.competitor1_dr,
+    row.competitor2_dr,
+  ]
+  const ownTone = scoreTone(row.own_dr, scores)
+  const competitor1Tone = scoreTone(row.competitor1_dr, scores)
+  const competitor2Tone = scoreTone(row.competitor2_dr, scores)
+
   return (
     <div
       className="min-h-screen"
@@ -115,7 +137,7 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
           icon={<BarChartIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <ScoreCircle score={row.own_dr ?? 0} />
+            <ScoreCircle score={row.own_dr ?? 0} tone={ownTone} />
             <div className="text-center md:text-left max-w-md">
               <p className="text-sm text-gray-700">
                 Deze score loopt van 0 tot 100. Hoe hoger de score, hoe sterker
@@ -138,13 +160,13 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
               <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
                 {row.competitor1}
               </p>
-              <ScoreCircle score={row.competitor1_dr ?? 0} />
+              <ScoreCircle score={row.competitor1_dr ?? 0} tone={competitor1Tone} />
             </div>
             <div className="flex flex-col items-center gap-4">
               <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
                 {row.competitor2}
               </p>
-              <ScoreCircle score={row.competitor2_dr ?? 0} />
+              <ScoreCircle score={row.competitor2_dr ?? 0} tone={competitor2Tone} />
             </div>
           </div>
         </ResultSection>

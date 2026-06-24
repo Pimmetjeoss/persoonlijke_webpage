@@ -2,10 +2,12 @@ import {
   IsItAgentReadyResponseSchema,
   type IsItAgentReadyResponse,
 } from "./schemas"
+import { hasTransientUnableToCheck } from "./quality"
 
 const ENDPOINT = "https://isitagentready.com/api/scan"
-const REQUEST_TIMEOUT_MS = 45_000
-const RETRY_DELAY_MS = 1_500
+const REQUEST_TIMEOUT_MS = 120_000
+const RETRY_DELAY_MS = 2_500
+const MAX_ATTEMPTS = 3
 
 export type ScanError = {
   code: "timeout" | "network" | "upstream" | "parse"
@@ -79,22 +81,36 @@ async function attemptScan(targetUrl: string): Promise<ScanOutcome> {
 }
 
 function isRetryable(err: ScanError): boolean {
-  return err.code === "upstream" || err.code === "network"
+  return err.code === "upstream" || err.code === "network" || err.code === "timeout"
 }
 
 export async function runScan(targetUrl: string): Promise<ScanOutcome> {
-  const first = await attemptScan(targetUrl)
-  if (first.ok) return first
-  if (!isRetryable(first.error)) return first
+  let lastRetryableError: ScanError | null = null
+  let lastPartialSuccess: IsItAgentReadyResponse | null = null
 
-  await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS))
-  const second = await attemptScan(targetUrl)
-  if (second.ok) return second
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
+    const outcome = await attemptScan(targetUrl)
+    if (outcome.ok) {
+      if (!hasTransientUnableToCheck(outcome.data)) return outcome
+      lastPartialSuccess = outcome.data
+    } else {
+      if (!isRetryable(outcome.error)) return outcome
+      lastRetryableError = outcome.error
+    }
+
+    if (attempt < MAX_ATTEMPTS) {
+      await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS))
+    }
+  }
+
+  if (lastPartialSuccess) {
+    return { ok: true, data: lastPartialSuccess }
+  }
 
   return {
     ok: false,
     error: {
-      code: second.error.code,
+      code: lastRetryableError?.code ?? "upstream",
       message:
         "De scan-service is even onbereikbaar. Probeer het over een paar minuten opnieuw.",
     },
