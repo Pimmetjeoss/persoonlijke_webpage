@@ -143,4 +143,4 @@ Het blog systeem leest statische `.md` bestanden uit de `content/` map.
 ---
 
 **Auteur**: Pim ([@Pimmetjeoss](https://github.com/Pimmetjeoss))
-*Project Status: Actief in ontwikkeling - Laatste update: December 2025*
+*Project Status: Actief in ontwikkeling - Laatste update: Juni 2026*
