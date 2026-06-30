@@ -14,6 +14,8 @@ const steps = [
     cactus: "/webdesign/mascots/verkenning.png",
     video: "/webdesign/videos/verkenning.mp4",
     poster: "/webdesign/posters/verkenning.jpg",
+    theme: "mint",
+    videoAlign: "right",
     intro:
       "Een website begint met scherp krijgen wat er moet gebeuren. Wat moet iemand voelen, begrijpen of doen? Als dat helder is, wordt de rest veel makkelijker. Dan bouwen we niet op smaak alleen, maar op richting.",
     quote:
@@ -33,6 +35,8 @@ const steps = [
     cactus: "/webdesign/mascots/realisatie.png",
     video: "/webdesign/videos/realisatie.mp4",
     poster: "/webdesign/posters/realisatie.jpg",
+    theme: "gold",
+    videoAlign: "left",
     intro:
       "In deze fase wordt het concreet. Ontwerp, techniek en inhoud komen samen in schermen die je kunt zien, testen en verbeteren.",
     paragraphs: [
@@ -51,6 +55,8 @@ const steps = [
     cactus: "/webdesign/mascots/testen-en-redactie.png",
     video: "/webdesign/videos/testen-en-redactie.mp4",
     poster: "/webdesign/posters/testen-en-redactie.jpg",
+    theme: "coral",
+    videoAlign: "stack",
     intro:
       "Nu halen we de rafels eruit. We testen, vullen, lezen terug en verbeteren totdat de site klopt in gebruik én in verhaal.",
     quote:
@@ -71,6 +77,8 @@ const steps = [
     cactus: "/webdesign/mascots/go-live.png",
     video: "/webdesign/videos/go-live.mp4",
     poster: "/webdesign/posters/go-live.jpg",
+    theme: "blue",
+    videoAlign: "wide",
     intro:
       "Live gaan is spannend, maar het hoeft geen chaos te zijn. We zetten vooraf klaar wat klaar moet staan en lopen de laatste checks stap voor stap na.",
     paragraphs: [
@@ -89,6 +97,8 @@ const steps = [
     cactus: "/webdesign/mascots/onderhoud.png",
     video: "/webdesign/videos/onderhoud.mp4",
     poster: "/webdesign/posters/onderhoud.jpg",
+    theme: "olive",
+    videoAlign: "right",
     intro:
       "Na livegang moet de site gewoon blijven werken. Updates, kleine verbeteringen, vragen en technische controle horen daar bij.",
     bullets: [
@@ -113,6 +123,8 @@ const steps = [
     cactus: "/webdesign/mascots/optimalisatie.png",
     video: "/webdesign/videos/optimalisatie.mp4",
     poster: "/webdesign/posters/optimalisatie.jpg",
+    theme: "lime",
+    videoAlign: "left",
     intro:
       "Na livegang begint het echte leren. Je ziet hoe bezoekers klikken, waar ze afhaken en welke onderdelen juist goed werken. Daar kun je gericht op verbeteren.",
     quote: "Live gaan is geen eindpunt. Het is meetpunt één.",
@@ -128,6 +140,16 @@ const steps = [
     nextHref: "/webdesign#werkwijze",
   },
 ];
+
+
+const themeStyles = {
+  mint: { panel: "bg-[hsl(144.9_80.4%_10%)]", text: "text-[hsl(140.6_84.2%_92.5%)]", soft: "text-[hsl(141_78.9%_85.1%)]", badge: "bg-[hsl(141_78.9%_85.1%)]" },
+  gold: { panel: "bg-[#4b3a05]", text: "text-[#fff8dc]", soft: "text-[#f5d66b]", badge: "bg-[#f5d66b]" },
+  coral: { panel: "bg-[#5b1515]", text: "text-[#fff0ec]", soft: "text-[#ffb7aa]", badge: "bg-[#ffb7aa]" },
+  blue: { panel: "bg-[#073a4c]", text: "text-[#e7fbff]", soft: "text-[#9ee7ff]", badge: "bg-[#9ee7ff]" },
+  olive: { panel: "bg-[#24370d]", text: "text-[#f1ffd7]", soft: "text-[#bfdc88]", badge: "bg-[#bfdc88]" },
+  lime: { panel: "bg-[#123f17]", text: "text-[#efffe6]", soft: "text-[#b9f07b]", badge: "bg-[#b9f07b]" },
+} as const;
 
 export function generateStaticParams() {
   return steps.map((step) => ({ stap: step.slug }));
@@ -154,6 +176,11 @@ export default async function WebdesignStepPage({
     notFound();
   }
 
+  const theme = themeStyles[step.theme as keyof typeof themeStyles];
+  const videoFirst = step.videoAlign === "left";
+  const videoWide = step.videoAlign === "wide";
+  const videoStack = step.videoAlign === "stack";
+
   return (
     <div
       className="min-h-screen"
@@ -168,14 +195,6 @@ export default async function WebdesignStepPage({
 
       <AwardInteractions />
       <main className="mx-auto max-w-5xl space-y-8 p-6 pb-32 lg:p-10 lg:pb-36">
-        <Link
-          href="/webdesign#werkwijze"
-          data-award-hover
-          className="inline-flex rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(140.6_84.2%_92.5%)] px-5 py-3 font-semibold text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(141_78.9%_85.1%)]"
-        >
-          Terug naar overzicht
-        </Link>
-
         <section
           data-award-reveal
           data-award-hover
@@ -213,29 +232,38 @@ export default async function WebdesignStepPage({
           </div>
         </section>
 
-        <section data-award-reveal data-award-hover className="overflow-hidden rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(144.9_80.4%_10%)] shadow-xl">
-          <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="p-6 text-[hsl(140.6_84.2%_92.5%)] md:p-8">
-              <p className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[hsl(141_78.9%_85.1%)]">
-                Video per fase
+        <section data-award-reveal data-award-hover className={`overflow-hidden rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] ${theme.panel} shadow-xl`}>
+          <div className={`grid gap-0 ${videoWide || videoStack ? "lg:grid-cols-1" : "lg:grid-cols-[0.95fr_1.05fr]"}`}>
+            <div className={`p-6 md:p-8 ${theme.text} ${videoFirst ? "lg:order-2" : ""}`}>
+              <p className={`mb-3 text-sm font-bold uppercase tracking-[0.24em] ${theme.soft}`}>
+                Video per fase · stap {step.number}
               </p>
               <h2 className="text-3xl font-bold leading-tight md:text-5xl">
-                {step.title} in beweging.
+                {step.title} uitgelegd in 16 seconden.
               </h2>
-              <p className="mt-4 max-w-xl text-lg leading-relaxed text-[hsl(141_78.9%_85.1%)]">
-                Een korte visuele samenvatting met je cactusmascotte in de hoofdrol.
+              <p className={`mt-4 max-w-xl text-lg leading-relaxed ${theme.soft}`}>
+                Geen losse mascotte-loop meer, maar een korte uitleg met concrete punten uit deze fase.
               </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["richting", "keuzes", "resultaat"].map((label) => (
+                  <span key={label} className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[hsl(144.9_80.4%_10%)] ${theme.badge}`}>
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
-            <video
-              className="h-full min-h-[260px] w-full bg-black object-cover"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              poster={step.poster}
-            >
-              <source src={step.video} type="video/mp4" />
-            </video>
+            <div className={`${videoFirst ? "lg:order-1" : ""} ${videoWide ? "border-t-[3px] border-[hsl(144.9_80.4%_10%)]" : ""}`}>
+              <video
+                className={`${videoWide ? "max-h-[520px]" : "h-full min-h-[300px]"} w-full bg-black object-cover`}
+                controls
+                muted
+                playsInline
+                preload="metadata"
+                poster={step.poster}
+              >
+                <source src={step.video} type="video/mp4" />
+              </video>
+            </div>
           </div>
         </section>
 
@@ -281,6 +309,14 @@ export default async function WebdesignStepPage({
             </Link>
           </div>
         </section>
+
+        <Link
+          href="/webdesign#werkwijze"
+          data-award-hover
+          className="mb-24 inline-flex rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(140.6_84.2%_92.5%)] px-5 py-3 font-semibold text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(141_78.9%_85.1%)]"
+        >
+          Terug naar overzicht
+        </Link>
       </main>
 
       <StickyFooter />

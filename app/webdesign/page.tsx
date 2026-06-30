@@ -158,20 +158,16 @@ export default function WebdesignPage() {
                         key={step.href}
                         type="button"
                         data-award-hover
-                        data-award-tilt="true"
                         onClick={() => startTransition(step.href)}
-                        className="group w-full border-b border-[hsl(144.9_80.4%_10%)]/10 py-2 text-left text-[hsl(144.9_80.4%_10%)] transition-colors duration-200 hover:bg-[hsl(141_78.9%_85.1%)]/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(144.9_80.4%_10%)]"
+                        className="group relative block h-[4.6rem] w-full overflow-visible border-b border-[hsl(144.9_80.4%_10%)]/12 text-left text-[hsl(144.9_80.4%_10%)] transition-colors duration-200 hover:bg-[hsl(141_78.9%_85.1%)]/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(144.9_80.4%_10%)] md:h-[5.25rem]"
                       >
-                        <span data-award-target className="flex flex-1 items-start gap-4 overflow-hidden rounded-lg px-1 py-1">
-                          <span className="pt-2 text-xs">{index + 1}</span>
-                          <span className="relative text-left text-4xl font-bold uppercase leading-none md:text-6xl">
+                        <span data-award-target className="flex h-full items-end gap-5 overflow-visible px-0">
+                          <span className="mb-[1.05rem] w-5 shrink-0 text-xs leading-none md:mb-[1.2rem]">
+                            {index + 1}
+                          </span>
+                          <span className="relative -mb-[0.46rem] block text-left text-5xl font-bold uppercase leading-[0.82] tracking-tight md:-mb-[0.62rem] md:text-7xl">
                             {step.title}
                           </span>
-                          <img
-                            src={step.cactus}
-                            alt=""
-                            className="ml-auto hidden h-16 w-16 shrink-0 object-contain transition-transform duration-300 group-hover:rotate-[-4deg] group-hover:scale-110 sm:block"
-                          />
                         </span>
                       </button>
                     ))}
