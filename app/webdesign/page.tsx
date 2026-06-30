@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react";
-import Image from "next/image";
 import {
   FileTextIcon,
   LayersIcon,
@@ -134,19 +133,7 @@ export default function WebdesignPage() {
           timelineRef={pageRef}
           once={true}
         >
-          <BentoGrid className="lg:grid-rows-3">
-            {features.map((feature) => (
-              <BentoCard key={feature.name} {...feature} />
-            ))}
-          </BentoGrid>
-        </TimelineContent>
-
-        <TimelineContent
-          animationNum={2}
-          timelineRef={pageRef}
-          once={true}
-        >
-          <div className="mt-16 space-y-8">
+          <div className="space-y-8">
             <SectionCard
               id="simpel-uitgelegd"
               title="Simpel uitgelegd"
@@ -168,20 +155,11 @@ export default function WebdesignPage() {
               Icon={VideoIcon}
             />
 
-            <div
-              className="overflow-hidden rounded-[10px] border-[3px] border-[hsl(144.9_80.4%_10%)] bg-white shadow-[0_12px_28px_rgba(20,83,45,0.18)]"
-              aria-label="Voorbeeld van de bento-layout voor de webdesign pagina"
-            >
-              <Image
-                src="/webdesign/bento-layout-reference.webp"
-                alt="Bento-layout voorbeeld met FAQ, Visueel materiaal, Simpel uitgelegd, Stack met en In detail blokken"
-                width={1024}
-                height={539}
-                className="h-auto w-full"
-                sizes="(min-width: 1024px) 960px, calc(100vw - 48px)"
-                priority={false}
-              />
-            </div>
+            <BentoGrid className="lg:grid-rows-3">
+              {features.map((feature) => (
+                <BentoCard key={feature.name} {...feature} />
+              ))}
+            </BentoGrid>
 
             <SectionCard
               id="stack"
