@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
+import { AwardInteractions, AwardMotionLayer } from "../components/award-motion";
 
 const steps = [
   {
@@ -14,14 +15,14 @@ const steps = [
     video: "/webdesign/videos/verkenning.mp4",
     poster: "/webdesign/posters/verkenning.jpg",
     intro:
-      "Een website die echt iets losmaakt, valt of staat met een goed fundament. Niet improviseren, maar een helder vertrekpunt. Door vooraf scherp te krijgen waar jullie naartoe willen en waaróm, voorkomen we ruis, twijfel en dure omwegen later in het traject. Die helderheid zie je terug in het eindresultaat.",
+      "Een website begint met scherp krijgen wat er moet gebeuren. Wat moet iemand voelen, begrijpen of doen? Als dat helder is, wordt de rest veel makkelijker. Dan bouwen we niet op smaak alleen, maar op richting.",
     quote:
-      "Goed ontwerp komt niet uit aannames, maar uit gesprekken. Daarom luisteren we eerst en tekenen we daarna.",
+      "Eerst luisteren. Dan pas tekenen.",
     paragraphs: [
-      "We brengen eerst alle perspectieven in kaart. In interactieve sessies — vaak met een customer empathy map — vertalen we de behoefte van jullie klant naar concrete user stories: ‘Als [rol] wil ik [taak] zodat ik [doel] bereik.’ Zo bouwen we straks iets dat aansluit en converteert.",
-      "Voor de uitstraling werken we met een compacte Style Tile: een snelle visuele richting voor de look-and-feel, die meteen rekening houdt met toegankelijkheid (WCAG), denk aan kleurcontrast en typografie. En onze specialisten brengen het volledige technische landschap in beeld, inclusief de rol van elke koppeling in de customer journey. De bevindingen en adviezen leggen we vast in een helder visiedocument. Dat scheelt verrassingen achteraf.",
+      "We brengen de belangrijkste perspectieven in kaart. Wie komt er op de site? Wat zoekt die persoon? Waar zit twijfel? Dat vertalen we naar concrete situaties, zodat de site straks logisch voelt voor de bezoeker.",
+      "Voor de stijl maken we snel een duidelijke richting: kleur, typografie, sfeer en toegankelijkheid. Ook kijken we naar techniek en koppelingen. Alles wat belangrijk is leggen we vast, zodat we later niet hoeven te gokken.",
     ],
-    cta: "De koers ligt vast. Tijd om te bouwen.",
+    cta: "De richting staat. Nu bouwen.",
     nextLabel: "Naar de realisatiefase",
     nextHref: "/webdesign/realisatie",
   },
@@ -33,13 +34,13 @@ const steps = [
     video: "/webdesign/videos/realisatie.mp4",
     poster: "/webdesign/posters/realisatie.jpg",
     intro:
-      "In de realisatiefase gaan de mouwen omhoog. Onze multidisciplinaire teams bouwen samen met jou aan de oplossing die impact maakt.",
+      "In deze fase wordt het concreet. Ontwerp, techniek en inhoud komen samen in schermen die je kunt zien, testen en verbeteren.",
     paragraphs: [
-      "Design, projectmanagement, front-end, back-end en QA werken gelijktijdig en dicht op elkaar — het liefst fysiek aan één tafel. Korte lijntjes, snel schakelen, uitdagingen meteen oplossen. We werken in sprints en pakken steeds de user stories met de hoogste prioriteit op. Die prioriteit bepaal jij mee als Product Owner; jouw beslissingen houden de vaart erin.",
-      "Feedback halen we zo vroeg mogelijk op — via Figma, overleg of een testomgeving waarin je de feature echt kunt ervaren. Hoe eerder we bijsturen, hoe goedkoper. Bij onzekerheid zetten we wireframes of een proof-of-concept in, zodat je een feature al ziet vóór de volledige bouw.",
-      "En je blijft altijd op de hoogte: via ons Asana-bord volg je de voortgang, en wekelijks bespreken we planning en afhankelijkheden met jou. Voor snelle knopen pakken we gewoon de telefoon.",
+      "We werken kort op elkaar. Design, front-end, back-end en QA lopen niet als losse eilandjes naast elkaar, maar schuiven steeds in elkaar. De belangrijkste onderdelen pakken we eerst op, zodat er snel iets staat waar je op kunt reageren.",
+      "Feedback komt vroeg. In Figma, in overleg of in een testomgeving. Als iets nog onzeker is, maken we eerst een schets of proof of concept. Liever vroeg bijsturen dan laat repareren.",
+      "Je blijft ondertussen dichtbij het werk. We bespreken voortgang, keuzes en blokkades gewoon helder. Moet er snel iets besloten worden, dan bellen we.",
     ],
-    cta: "We hebben het gebouwd. Nu mag jij het proberen te breken.",
+    cta: "Het staat. Nu gaan we testen.",
     nextLabel: "Naar de test- en redactiefase",
     nextHref: "/webdesign/testen-en-redactie",
   },
@@ -51,15 +52,15 @@ const steps = [
     video: "/webdesign/videos/testen-en-redactie.mp4",
     poster: "/webdesign/posters/testen-en-redactie.jpg",
     intro:
-      "Nu zetten we de puntjes op de i. Niet alleen bouwen, maar ook testen, stuk proberen te krijgen en finetunen tot alles klopt.",
+      "Nu halen we de rafels eruit. We testen, vullen, lezen terug en verbeteren totdat de site klopt in gebruik én in verhaal.",
     quote:
-      "Pas als je het verhaal gaat vertellen, komt je project echt tot leven.",
+      "Een site wordt pas echt als het verhaal erin staat.",
     quoteAuthor: "Dorin Heijboer, Lead Project Manager",
     paragraphs: [
-      "Het vullen maken we je makkelijk: met standaardtemplates wordt content toevoegen een invuloefening, en je krijgt een training in het CMS zodat iedereen weet wat er moet gebeuren. We houden al in de realisatiefase rekening met de content die je beschikbaar hebt — bestaande teksten of beeld — en bouwen nooit een site die meer vraagt dan je kunt leveren. Omdat we in de verkenning al bepaalden welke pagina’s cruciaal zijn, ligt de focus meteen goed.",
-      "Doordat we onderweg continu feedback ophaalden, zitten de grote hobbels er al uit. Deze fase draait dus om de details. Loopt het vullen vast door tijdgebrek? Dan helpen we je met de kritische pagina’s die we eerder al vaststelden.",
+      "Content vullen moet geen worsteling zijn. Daarom werken we met duidelijke velden en een CMS dat je snapt. We houden tijdens de bouw al rekening met wat er aan tekst en beeld beschikbaar is, zodat de site niet méér vraagt dan je kunt leveren.",
+      "Omdat we onderweg al feedback hebben opgehaald, gaat het hier vooral om de details. Tekst, beeld, formulieren, mobiele weergave, klikpaden. Loopt het vullen vast, dan pakken we eerst de pagina’s aan die echt nodig zijn voor livegang.",
     ],
-    cta: "Tijd voor champagne.",
+    cta: "Klaar voor livegang.",
     nextLabel: "Naar de go-live",
     nextHref: "/webdesign/go-live",
   },
@@ -71,13 +72,13 @@ const steps = [
     video: "/webdesign/videos/go-live.mp4",
     poster: "/webdesign/posters/go-live.jpg",
     intro:
-      "De go-live is het moment waarop de nieuwe website live gaat. Spannend, dus zorgen we voor een soepele overgang met zo min mogelijk risico.",
+      "Live gaan is spannend, maar het hoeft geen chaos te zijn. We zetten vooraf klaar wat klaar moet staan en lopen de laatste checks stap voor stap na.",
     paragraphs: [
-      "Een livegang kan interne processen raken; daar houden we al vanaf de verkenning rekening mee, bijvoorbeeld door kritieke workflows te behouden. We werken met een duidelijk draaiboek en zijn bij voorkeur fysiek aanwezig, zodat we direct kunnen schakelen: domeinen omzetten, redirects instellen, analytics configureren en essentiële zaken als formulieren opnieuw checken.",
-      "Heeft een wijziging veel impact? Dan bespreken we een soft-launch — gefaseerd live, bijvoorbeeld per regio of voor specifieke gebruikers. Dat verlaagt het risico en geeft je organisatie rust om te wennen. Is dat risico er niet, dan is direct live vaak efficiënter.",
-      "Na de livegang laten we je niet los. Ons projectteam blijft betrokken tot alles op groen staat — denk aan verwerking door zoekmachines en andere externe signalen — en pas dan dragen we over aan support en onderhoud.",
+      "We werken met een draaiboek. Domein omzetten, redirects nalopen, analytics controleren, formulieren testen. Als er iets wringt, kunnen we meteen schakelen.",
+      "Is de wijziging groot, dan kunnen we gefaseerd live. Bijvoorbeeld eerst voor een deel van je bezoekers of een specifieke regio. Is dat niet nodig, dan gaan we direct live.",
+      "Na livegang kijken we mee of alles goed landt. Pas als de basis op groen staat, dragen we over naar onderhoud.",
     ],
-    cta: "Live gaan is het begin, niet het einde.",
+    cta: "Live is pas het begin.",
     nextLabel: "Naar het onderhoud",
     nextHref: "/webdesign/onderhoud",
   },
@@ -89,19 +90,19 @@ const steps = [
     video: "/webdesign/videos/onderhoud.mp4",
     poster: "/webdesign/posters/onderhoud.jpg",
     intro:
-      "Bij Level Level houdt het werk niet op na de livegang — dan begint juist een belangrijk nieuw hoofdstuk. We dragen het stokje zorgvuldig over van het project- naar het supportteam, zodat jij met een gerust hart verder kunt.",
+      "Na livegang moet de site gewoon blijven werken. Updates, kleine verbeteringen, vragen en technische controle horen daar bij.",
     bullets: [
-      "Overdracht op maat — Het projectteam geeft het supportteam een volledige briefing: van technische documentatie tot het nut en de noodzaak van de gebruikte functionaliteiten.",
-      "Maandelijkse updates — Elke maand voeren we WordPress-core- en plugin-updates uit op een staging-omgeving, testen we grondig en nemen we na jouw akkoord de live site onder handen.",
-      "Monitoring & support — We houden je site proactief in de gaten, lossen issues op voordat het problemen worden, en staan klaar voor vragen, kleine aanpassingen en optimalisaties.",
+      "Goede overdracht: wat is gebouwd, waarom is het zo gebouwd en waar moeten we op letten.",
+      "Updates met beleid: eerst testen, daarna pas live aanpassen.",
+      "Support zonder gedoe: vragen, kleine aanpassingen en technische signalen pakken we snel op.",
     ],
     quote:
-      "Is het stuk, dan maken we het. En is het niet stuk, dan zorgen we dat het zo blijft.",
+      "Is het stuk, dan maken we het. Is het niet stuk, dan houden we het zo.",
     quoteAuthor: "Patrick Louter, Lead Maintenance & Support",
     paragraphs: [
-      "We onderhouden niet alleen — we willen blijven optimaliseren. Samen met jou. Want de lancering van een website is het startschot voor een succesvol digitaal product, niet de finish.",
+      "Onderhoud is niet alleen brandjes blussen. Het is ook de plek waar je merkt wat beter kan en waar je kleine verbeteringen blijft doorvoeren.",
     ],
-    cta: "Blijven verbeteren is onderdeel van het product.",
+    cta: "Goed onderhoud houdt de site scherp.",
     nextLabel: "Naar de optimalisatiefase",
     nextHref: "/webdesign/optimalisatie",
   },
@@ -113,16 +114,16 @@ const steps = [
     video: "/webdesign/videos/optimalisatie.mp4",
     poster: "/webdesign/posters/optimalisatie.jpg",
     intro:
-      "Voor veel mensen voelt de livegang als de finish. Voor ons is het juist het startsein. Een digitaal product is nooit echt ‘klaar’: het web verandert door, en de wensen van je gebruikers veranderen mee. Daarom is de fase ná de lancering misschien wel de belangrijkste — hier maken we van een goede site een geweldige.",
-    quote: "Live gaan is niet de finish, maar het startschot.",
+      "Na livegang begint het echte leren. Je ziet hoe bezoekers klikken, waar ze afhaken en welke onderdelen juist goed werken. Daar kun je gericht op verbeteren.",
+    quote: "Live gaan is geen eindpunt. Het is meetpunt één.",
     paragraphs: [
-      "Pas na de livegang begint het echte werk. Echte bezoekers navigeren, klikken en voeren taken uit, en dat levert een schat aan informatie op. We combineren kwantitatieve data over gebruikersgedrag met kwalitatieve feedback: welke features scoren, waar haken mensen af, en welke verbeteringen dragen ze zelf aan? Tegelijk levert de lancering vaak nieuwe inspiratie op — bij ons én bij jou ontstaan ideeën die voortbouwen op het fundament. Al die inzichten, feedback en ideeën komen samen op één gedeelde backlog.",
-      "Een backlog vol goede ideeën is mooi, maar alles tegelijk doen kan niet. De kunst zit in de juiste keuzes. Daarom plotten we elk item samen op een prioriteitsmatrix langs twee assen: impact (hoeveel waarde levert het op voor gebruiker en business?) en effort (hoeveel tijd en middelen kost het?). Hoge impact en lage effort — de quick wins — pakken we vaak als eerste; complexe features met veel potentie plannen we zorgvuldig in.",
+      "Na livegang komen de echte signalen binnen. Bezoekers klikken, zoeken, twijfelen en haken soms af. We kijken naar data, maar ook naar feedback van echte gebruikers. Alles wat we leren verzamelen we op één lijst.",
+      "Niet elk idee hoeft meteen gebouwd te worden. We kijken samen naar impact en inspanning. Kleine aanpassingen met veel effect pakken we snel op. Grotere ideeën plannen we bewust in.",
     ],
-    secondQuote: "Aan ideeën geen gebrek. Samen bepalen we welke de moeite waard zijn.",
+    secondQuote: "Ideeën genoeg. Nu kiezen wat echt iets oplevert.",
     closing:
-      "Beslissingen baseren we zo veel mogelijk op feiten. Data is daarbij ons startpunt: in de statistieken valideren we hypotheses en sporen we kansen op. Maar cijfers vertellen niet alles. Daarom gaan we ook in gesprek met de gebruiker; via gebruikerstesten zien we hoe mensen je product écht ervaren en halen we onverbloemde feedback op. En tot slot vertrouwen we op onze eigen expertise en onderbuik — jarenlange ervaring geeft een scherp gevoel voor wat werkt en wat niet. Die combinatie van data, gebruikersinzicht en vakmanschap maakt onze keuzes weloverwogen en effectief.",
-    cta: "Maak van een goede site een steeds betere site.",
+      "Data helpt, maar cijfers vertellen niet alles. Daarom combineren we statistieken met gebruikerstests en gezond vakgevoel. Zo verbeteren we niet omdat het kan, maar omdat het ergens aan bijdraagt.",
+    cta: "Van goed naar beter. Stap voor stap.",
     nextLabel: "Terug naar de werkwijze",
     nextHref: "/webdesign#werkwijze",
   },
@@ -165,12 +166,25 @@ export default async function WebdesignStepPage({
         startExpanded={true}
       />
 
-      <main className="mx-auto max-w-5xl space-y-8 p-6 lg:p-10">
+      <AwardInteractions />
+      <main className="mx-auto max-w-5xl space-y-8 p-6 pb-32 lg:p-10 lg:pb-36">
+        <Link
+          href="/webdesign#werkwijze"
+          data-award-hover
+          className="inline-flex rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(140.6_84.2%_92.5%)] px-5 py-3 font-semibold text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(141_78.9%_85.1%)]"
+        >
+          Terug naar overzicht
+        </Link>
+
         <section
-          className="overflow-hidden rounded-xl border-[3px] bg-white shadow-xl"
+          data-award-reveal
+          data-award-hover
+          data-award-tilt="true"
+          className="relative overflow-hidden rounded-xl border-[3px] bg-white shadow-xl"
           style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
         >
-          <div className="grid gap-8 p-8 md:grid-cols-[1fr_220px] md:p-12">
+          <AwardMotionLayer className="opacity-40" />
+          <div data-award-target className="relative grid gap-8 p-8 md:grid-cols-[1fr_220px] md:p-12">
             <div>
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-[hsl(142.1_76.2%_36.3%)]">
                 Webdesign werkwijze · stap {step.number}
@@ -199,7 +213,7 @@ export default async function WebdesignStepPage({
           </div>
         </section>
 
-        <section className="overflow-hidden rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(144.9_80.4%_10%)] shadow-xl">
+        <section data-award-reveal data-award-hover className="overflow-hidden rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(144.9_80.4%_10%)] shadow-xl">
           <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="p-6 text-[hsl(140.6_84.2%_92.5%)] md:p-8">
               <p className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[hsl(141_78.9%_85.1%)]">
@@ -209,7 +223,7 @@ export default async function WebdesignStepPage({
                 {step.title} in beweging.
               </h2>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-[hsl(141_78.9%_85.1%)]">
-                Een korte visuele samenvatting van deze stap, met dezelfde cactusmascotte-stijl als je voorbeeld.
+                Een korte visuele samenvatting met je cactusmascotte in de hoofdrol.
               </p>
             </div>
             <video
@@ -225,7 +239,7 @@ export default async function WebdesignStepPage({
           </div>
         </section>
 
-        <section className="rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-white p-8 shadow-xl md:p-12">
+        <section data-award-reveal className="rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-white p-8 shadow-xl md:p-12">
           {step.quote ? <QuoteBox quote={step.quote} author={step.quoteAuthor} /> : null}
 
           <div className="space-y-5 text-lg leading-relaxed text-gray-600 md:text-xl">
@@ -260,19 +274,13 @@ export default async function WebdesignStepPage({
             <p className="text-2xl font-bold leading-tight md:text-3xl">{step.cta}</p>
             <Link
               href={step.nextHref}
+              data-award-hover
               className="mt-5 inline-flex rounded-full bg-[hsl(141_78.9%_85.1%)] px-5 py-3 font-bold text-[hsl(144.9_80.4%_10%)] transition-transform hover:-translate-y-1 md:mt-0"
             >
               {step.nextLabel} →
             </Link>
           </div>
         </section>
-
-        <Link
-          href="/webdesign#werkwijze"
-          className="inline-flex rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 font-semibold text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(141_78.9%_85.1%)]"
-        >
-          Terug naar overzicht
-        </Link>
       </main>
 
       <StickyFooter />

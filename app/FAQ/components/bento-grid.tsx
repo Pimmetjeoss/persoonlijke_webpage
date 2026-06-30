@@ -1,6 +1,6 @@
 "use client"
 
-import { ComponentPropsWithoutRef, ReactNode, useState } from "react"
+import { ComponentPropsWithoutRef, ComponentType, CSSProperties, ReactNode, useState } from "react"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
@@ -15,7 +15,7 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string
   className: string
   background?: ReactNode
-  Icon: React.ElementType
+  Icon: ComponentType<{ className?: string; style?: CSSProperties }>
   description: string
   href: string
   cta: string
