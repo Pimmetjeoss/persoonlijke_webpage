@@ -1,158 +1,237 @@
 from __future__ import annotations
 
+import json
 import shutil
 import subprocess
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
 VIDEO_DIR = ROOT / "public/webdesign/videos"
 POSTER_DIR = ROOT / "public/webdesign/posters"
 MASCOT_DIR = ROOT / "public/webdesign/mascots"
-TMP = ROOT / ".tmp-webdesign-video-frames"
+BRAG_DIR = ROOT / "brag-output-webdesign-phases"
+COMP_ROOT = BRAG_DIR / "composition"
+QA_DIR = BRAG_DIR / "qa-frames"
 W, H = 1280, 720
-FPS = 12
 DURATION = 16
 
-DARK = (3, 54, 28)
-MINT = (221, 255, 232)
-PAPER = (250, 255, 252)
-
-FONT_DISPLAY = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 82)
-FONT_TITLE = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 60)
-FONT_BODY = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 42)
-FONT_SMALL = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 28)
+DARK = "#03361c"
+MINT = "#ddffe8"
+PAPER = "#fbfffd"
 
 STEPS = [
-    ("verkenning", "1", "Verkenning", (28, 166, 91), ["Doel en doelgroep scherp", "Structuur en sfeer bepalen", "Techniek en planning helder"], "Eerst richting. Dan bouwen."),
-    ("realisatie", "2", "Realisatie", (220, 174, 44), ["Ontwerp wordt werkend scherm", "Feedback vroeg verwerken", "Snel zien wat er staat"], "Van plan naar pagina."),
-    ("testen-en-redactie", "3", "Testen & redactie", (231, 62, 59), ["Mobiel, formulieren en links testen", "Teksten en beelden aanscherpen", "Laatste fouten eruit halen"], "Kloppen in gebruik én verhaal."),
-    ("go-live", "4", "Go-live", (44, 143, 222), ["Domein en redirects klaarzetten", "Analytics en formulieren checken", "Gecontroleerd live zetten"], "Live zonder chaos."),
-    ("onderhoud", "5", "Onderhoud", (108, 128, 75), ["Updates eerst testen", "Support en kleine aanpassingen", "Site veilig en actueel houden"], "Blijven werken na livegang."),
-    ("optimalisatie", "6", "Optimalisatie", (108, 206, 56), ["Data en gedrag bekijken", "Kansen prioriteren", "Stap voor stap verbeteren"], "Meer resultaat uit je site."),
+    {
+        "slug": "verkenning",
+        "num": "1",
+        "title": "Verkenning",
+        "accent": "#1ca65b",
+        "intro": "We maken scherp wat de site moet doen, voor wie hij is en welke richting past.",
+        "bullets": ["Doel en doelgroep", "Structuur en stijl", "Techniek en planning"],
+        "result": "Een helder plan voordat we bouwen.",
+    },
+    {
+        "slug": "realisatie",
+        "num": "2",
+        "title": "Realisatie",
+        "accent": "#dcae2c",
+        "intro": "Ontwerp, techniek en inhoud worden omgezet naar echte pagina’s.",
+        "bullets": ["Werkende schermen", "Feedback snel verwerken", "Content op de juiste plek"],
+        "result": "Van idee naar klikbare website.",
+    },
+    {
+        "slug": "testen-en-redactie",
+        "num": "3",
+        "title": "Testen & redactie",
+        "accent": "#e73e3b",
+        "intro": "We controleren of de site logisch voelt, goed werkt en prettig leest.",
+        "bullets": ["Mobiel en formulieren", "Links en snelheid", "Tekst en beelden"],
+        "result": "Klaar voor echte bezoekers.",
+    },
+    {
+        "slug": "go-live",
+        "num": "4",
+        "title": "Go-live",
+        "accent": "#2c8fde",
+        "intro": "Alles wordt gecontroleerd klaargezet zodat de site zonder chaos live kan.",
+        "bullets": ["Domein en redirects", "Analytics en formulieren", "Laatste live-check"],
+        "result": "Online met controle.",
+    },
+    {
+        "slug": "onderhoud",
+        "num": "5",
+        "title": "Onderhoud",
+        "accent": "#6c804b",
+        "intro": "Na livegang houden we de website veilig, actueel en bruikbaar.",
+        "bullets": ["Updates eerst testen", "Support bij vragen", "Kleine verbeteringen"],
+        "result": "De site blijft goed werken.",
+    },
+    {
+        "slug": "optimalisatie",
+        "num": "6",
+        "title": "Optimalisatie",
+        "accent": "#6cce38",
+        "intro": "We kijken naar data en gedrag en verbeteren stap voor stap wat meer resultaat oplevert.",
+        "bullets": ["Data bekijken", "Kansen prioriteren", "Gericht verbeteren"],
+        "result": "Meer rendement uit je site.",
+    },
 ]
 
 
-def ease(t: float) -> float:
-    t = max(0, min(1, t))
-    return 1 - (1 - t) ** 3
+def run(cmd: list[str], cwd: Path) -> None:
+    print("$", " ".join(cmd), "(cwd", cwd, ")")
+    subprocess.run(cmd, cwd=cwd, check=True)
 
 
-def wrap(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int) -> list[str]:
-    words = text.split()
-    lines, cur = [], ""
-    for word in words:
-        test = (cur + " " + word).strip()
-        if draw.textbbox((0, 0), test, font=font)[2] <= max_width:
-            cur = test
-        else:
-            if cur:
-                lines.append(cur)
-            cur = word
-    if cur:
-        lines.append(cur)
-    return lines
+def safe_json(value) -> str:
+    return json.dumps(value, ensure_ascii=False)
 
 
-def text(draw, xy, text, font, fill, max_width=None, spacing=8):
-    x, y = xy
-    if max_width:
-        for line in wrap(draw, text, font, max_width):
-            draw.text((x, y), line, font=font, fill=fill)
-            y += font.getbbox(line)[3] - font.getbbox(line)[1] + spacing
-    else:
-        draw.text((x, y), text, font=font, fill=fill)
+def write_composition(step: dict) -> Path:
+    slug = step["slug"]
+    comp = COMP_ROOT / slug
+    if comp.exists():
+        shutil.rmtree(comp)
+    (comp / "assets").mkdir(parents=True)
+    shutil.copy2(MASCOT_DIR / f"{slug}.png", comp / "assets" / "mascot.png")
+    (comp / "package.json").write_text(json.dumps({
+        "private": True,
+        "type": "module",
+        "scripts": {
+            "check": "npx --yes hyperframes@0.7.21 lint && npx --yes hyperframes@0.7.21 validate && npx --yes hyperframes@0.7.21 inspect",
+            "render": "npx --yes hyperframes@0.7.21 render --quality high"
+        }
+    }, indent=2))
+    title = step["title"]
+    html = f'''<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width={W}, height={H}" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * {{ box-sizing: border-box; }}
+    html, body {{ margin:0; width:{W}px; height:{H}px; overflow:hidden; background:{MINT}; }}
+    body {{ font-family: Arial, Helvetica, sans-serif; color:{DARK}; }}
+    #root {{ position:relative; width:{W}px; height:{H}px; overflow:hidden; background:{MINT}; }}
+    .frame {{ position:absolute; inset:16px 18px 70px 18px; border:5px solid {DARK}; border-radius:16px; overflow:hidden; background:{MINT}; }}
+    .topline {{ position:absolute; left:34px; right:34px; top:30px; height:34px; border-top:4px solid {DARK}; border-bottom:3px solid {DARK}; }}
+    .accent {{ position:absolute; left:-20px; top:0; width:250px; height:650px; background:{step['accent']}; opacity:.85; clip-path:polygon(0 0, 100% 0, 55% 100%, 0 100%); }}
+    .ring {{ position:absolute; right:70px; top:88px; width:330px; height:330px; border:3px solid {DARK}; border-radius:50%; opacity:.75; }}
+    .kicker {{ position:absolute; left:72px; top:86px; font-size:28px; line-height:1; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }}
+    .title {{ position:absolute; left:72px; top:122px; right:320px; font-size:58px; line-height:.96; font-weight:950; letter-spacing:.03em; text-transform:uppercase; white-space:nowrap; }}
+    .mascotBox {{ position:absolute; right:72px; top:176px; width:270px; height:270px; border:4px solid {DARK}; border-radius:26px; background:rgba(251,255,253,.45); display:flex; align-items:center; justify-content:center; box-shadow:0 12px 0 rgba(3,54,28,.12); }}
+    .mascot {{ max-width:230px; max-height:230px; object-fit:contain; filter:drop-shadow(0 10px 10px rgba(3,54,28,.18)); }}
+    .panel {{ position:absolute; left:72px; top:220px; width:700px; height:310px; border:4px solid {DARK}; border-radius:24px; background:{PAPER}; box-shadow:0 16px 0 rgba(3,54,28,.12); padding:38px 42px; overflow:hidden; }}
+    .panel.dark {{ background:{DARK}; color:{MINT}; border-color:{DARK}; }}
+    .label {{ font-size:24px; line-height:1; font-weight:950; color:{step['accent']}; margin-bottom:18px; letter-spacing:.02em; }}
+    .headline {{ font-size:44px; line-height:1.02; font-weight:950; margin-bottom:22px; max-width:610px; }}
+    .body {{ font-size:32px; line-height:1.18; font-weight:850; max-width:590px; }}
+    .check {{ display:flex; align-items:flex-start; gap:20px; margin:19px 0; font-size:34px; line-height:1.08; font-weight:950; }}
+    .dot {{ flex:0 0 auto; width:24px; height:24px; margin-top:6px; border-radius:99px; background:{step['accent']}; border:3px solid {DARK}; }}
+    .resultText {{ font-size:52px; line-height:1.02; font-weight:950; max-width:590px; }}
+    .progressTrack {{ position:absolute; left:52px; right:52px; bottom:26px; height:14px; border:2px solid {DARK}; border-radius:99px; background:rgba(251,255,253,.55); overflow:hidden; }}
+    .progress {{ width:0%; height:100%; background:{step['accent']}; }}
+    .brand {{ position:absolute; right:60px; bottom:42px; font-size:20px; font-weight:950; letter-spacing:.01em; opacity:.55; }}
+    .scene {{ position:absolute; inset:0; }}
+    .scene2, .scene3 {{ opacity:0; }}
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="{DURATION}" data-width="{W}" data-height="{H}">
+  <div id="phase-frame" class="frame clip" data-start="0" data-duration="{DURATION}" data-track-index="0">
+    <div class="accent" data-layout-allow-overflow></div><div class="ring"></div><div class="topline"></div>
+    <div class="kicker">STAP {step['num']}</div>
+    <div class="title">{title.upper()}</div>
+    <div class="mascotBox"><img class="mascot" src="assets/mascot.png" alt="" /></div>
+    <div class="scene scene1">
+      <div class="panel">
+        <div class="label">Wat gebeurt er?</div>
+        <div class="body">{step['intro']}</div>
+      </div>
+    </div>
+    <div class="scene scene2">
+      <div class="panel">
+        <div class="label">Belangrijk in deze stap</div>
+        <div class="check"><span class="dot"></span><span>{step['bullets'][0]}</span></div>
+        <div class="check"><span class="dot"></span><span>{step['bullets'][1]}</span></div>
+        <div class="check"><span class="dot"></span><span>{step['bullets'][2]}</span></div>
+      </div>
+    </div>
+    <div class="scene scene3">
+      <div class="panel dark">
+        <div class="label">Resultaat</div>
+        <div class="resultText">{step['result']}</div>
+      </div>
+    </div>
+    <div class="brand">Code Lieshout</div>
+    <div class="progressTrack"><div class="progress"></div></div>
+  </div>
+</div>
+<script>
+  window.__timelines = window.__timelines || {{}};
+  const tl = gsap.timeline({{ paused: true }});
+  tl.from('.frame', {{ opacity:0, scale:.985, duration:.55, ease:'power2.out' }}, .15);
+  tl.from('.accent', {{ x:-160, duration:.7, ease:'expo.out' }}, .2);
+  tl.from('.kicker', {{ y:-18, opacity:0, duration:.45, ease:'back.out(1.5)' }}, .35);
+  tl.from('.title', {{ y:20, opacity:0, duration:.55, ease:'power3.out' }}, .55);
+  tl.from('.mascotBox', {{ x:35, opacity:0, duration:.55, ease:'power2.out' }}, .75);
+  tl.from('.scene1 .panel', {{ y:24, opacity:0, duration:.55, ease:'power3.out' }}, .9);
+  tl.to('.progress', {{ width:'100%', duration:{DURATION}, ease:'none' }}, 0);
+
+  // transition 1
+  tl.to('.scene2', {{ opacity:1, duration:.01 }}, 4.1);
+  tl.from('.scene2 .panel', {{ x:34, opacity:0, duration:.55, ease:'power2.out' }}, 4.12);
+  tl.from('.scene2 .check', {{ x:-30, opacity:0, duration:.45, ease:'back.out(1.35)', stagger:.62 }}, 4.65);
+  tl.to('.scene1', {{ opacity:0, duration:.18 }}, 4.15);
+
+  // transition 2
+  tl.to('.scene3', {{ opacity:1, duration:.01 }}, 11.15);
+  tl.from('.scene3 .panel', {{ y:28, opacity:0, duration:.55, ease:'power4.out' }}, 11.18);
+  tl.from('.scene3 .label', {{ x:-20, opacity:0, duration:.45, ease:'power2.out' }}, 11.45);
+  tl.from('.scene3 .resultText', {{ y:18, opacity:0, duration:.55, ease:'power2.out' }}, 11.72);
+  tl.to('.scene2', {{ opacity:0, duration:.18 }}, 11.18);
+
+  tl.to('#root', {{ opacity:0, duration:.4, ease:'power1.inOut' }}, 15.55);
+  window.__timelines['main'] = tl;
+</script>
+</body>
+</html>'''
+    (comp / "index.html").write_text(html)
+    return comp
 
 
-def mascot(slug: str, size=330) -> Image.Image:
-    im = Image.open(MASCOT_DIR / f"{slug}.png").convert("RGBA")
-    im.thumbnail((size, size), Image.Resampling.LANCZOS)
-    return im
-
-
-def card(draw, box, fill=PAPER, outline=DARK):
-    x1, y1, x2, y2 = box
-    shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    sd = ImageDraw.Draw(shadow)
-    sd.rounded_rectangle((x1+10, y1+12, x2+10, y2+12), radius=22, fill=(0, 0, 0, 48))
-    return shadow.filter(ImageFilter.GaussianBlur(10))
-
-
-def frame(slug, num, title, accent, bullets, payoff, sec):
-    im = Image.new("RGBA", (W, H), MINT + (255,))
-    d = ImageDraw.Draw(im)
-    # background shapes
-    d.polygon([(0, 0), (230, 0), (70, 720), (0, 720)], fill=accent + (80,))
-    d.ellipse((805, 95, 1230, 520), outline=DARK + (90,), width=3)
-    d.line((32, 34, 1248, 34), fill=DARK, width=4)
-    d.line((32, 64, 1248, 64), fill=DARK, width=3)
-    d.rounded_rectangle((12, 12, 1268, 708), radius=10, outline=DARK, width=5)
-
-    # step label
-    d.text((70, 92), f"STAP {num}", font=FONT_SMALL, fill=DARK)
-    d.text((70, 125), title.upper(), font=FONT_TITLE, fill=DARK)
-
-    # mascot always fully visible, never covering text
-    m = mascot(slug)
-    im.alpha_composite(m, (890, 225))
-
-    # readable content card
-    box = (70, 225, 820, 610)
-    im.alpha_composite(card(d, box))
-    d.rounded_rectangle(box, radius=24, fill=PAPER, outline=DARK, width=4)
-
-    if sec < 4.3:
-        d.text((110, 275), "Wat gebeurt er?", font=FONT_TITLE, fill=DARK)
-        text(d, (112, 365), "In deze fase maken we concreet wat nodig is om de website goed te laten werken.", FONT_BODY, DARK, 630, 12)
-    elif sec < 12.2:
-        d.text((110, 258), "Belangrijk in deze stap", font=FONT_TITLE, fill=DARK)
-        reveal = min(3, max(1, int((sec - 4.3) / 2.3) + 1))
-        y = 360
-        for b in bullets[:reveal]:
-            d.ellipse((112, y+8, 150, y+46), fill=accent)
-            text(d, (172, y), b, FONT_BODY, DARK, 560, 10)
-            y += 88
-    else:
-        d.rounded_rectangle((70, 225, 1185, 610), radius=24, fill=DARK, outline=DARK, width=4)
-        d.text((115, 285), "Resultaat", font=FONT_TITLE, fill=accent)
-        text(d, (115, 380), payoff, FONT_DISPLAY, MINT, 720, 12)
-        im.alpha_composite(mascot(slug, 260), (890, 310))
-
-    # progress bar
-    d.rounded_rectangle((42, 674, 1238, 690), radius=8, outline=DARK, width=2)
-    d.rounded_rectangle((42, 674, 42 + int(1196 * (sec / DURATION)), 690), radius=8, fill=accent)
-    d.text((1048, 635), "Code Lieshout webdesign", font=FONT_SMALL, fill=DARK)
-    return im.convert("RGB")
-
-
-def render_one(step):
-    slug, num, title, accent, bullets, payoff = step
-    out = TMP / slug
-    if out.exists():
-        shutil.rmtree(out)
-    out.mkdir(parents=True)
-    total = DURATION * FPS
-    for i in range(total):
-        sec = i / FPS
-        frame(slug, num, title, accent, bullets, payoff, sec).save(out / f"frame_{i:04d}.jpg", quality=92)
-    POSTER_DIR.mkdir(parents=True, exist_ok=True)
-    (out / "frame_0000.jpg").replace(POSTER_DIR / f"{slug}.jpg")
+def render_one(step: dict) -> None:
+    comp = write_composition(step)
+    run(["npx", "--yes", "hyperframes@0.7.21", "lint", "--strict"], comp)
+    run(["npx", "--yes", "hyperframes@0.7.21", "validate"], comp)
+    run(["npx", "--yes", "hyperframes@0.7.21", "inspect"], comp)
     VIDEO_DIR.mkdir(parents=True, exist_ok=True)
-    subprocess.run([
-        "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-framerate", str(FPS),
-        "-i", str(out / "frame_%04d.jpg"), "-c:v", "libx264", "-pix_fmt", "yuv420p",
-        "-movflags", "+faststart", "-vf", "scale=1280:720", str(VIDEO_DIR / f"{slug}.mp4")
-    ], check=True)
-    print(f"rendered {slug}")
+    out_video = VIDEO_DIR / f"{step['slug']}.mp4"
+    run(["npx", "--yes", "hyperframes@0.7.21", "render", "--quality", "high", "--fps", "30", "--output", str(out_video)], comp)
+    POSTER_DIR.mkdir(parents=True, exist_ok=True)
+    poster = POSTER_DIR / f"{step['slug']}.jpg"
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", "00:00:01.0", "-i", str(out_video), "-frames:v", "1", "-q:v", "2", str(poster)], check=True)
 
 
-def main():
-    if TMP.exists():
-        shutil.rmtree(TMP)
-    TMP.mkdir()
+def main() -> None:
+    BRAG_DIR.mkdir(exist_ok=True)
+    COMP_ROOT.mkdir(parents=True, exist_ok=True)
+    QA_DIR.mkdir(parents=True, exist_ok=True)
     for step in STEPS:
         render_one(step)
-    shutil.rmtree(TMP)
+    # QA contact sheet across the exact times the user complained about: checklist and result scenes.
+    frames = []
+    for step in STEPS:
+        for sec in (1, 7, 13):
+            target = QA_DIR / f"{step['slug']}-{sec:02d}.jpg"
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", f"00:00:{sec:02d}", "-i", str(VIDEO_DIR / f"{step['slug']}.mp4"), "-frames:v", "1", "-q:v", "2", str(target)], check=True)
+            frames.append(str(target))
+    listfile = QA_DIR / "frames.txt"
+    listfile.write_text("".join(f"file '{p}'\n" for p in frames))
+    contact = QA_DIR / "contact-sheet.jpg"
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(listfile), "-vf", "scale=320:-1,tile=3x6", "-frames:v", "1", str(contact)], check=True)
+    print(contact)
+
 
 if __name__ == "__main__":
     main()

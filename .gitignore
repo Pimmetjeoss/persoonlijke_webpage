@@ -47,6 +47,7 @@ next-env.d.ts
 
 # local generated launch/demo artifacts
 /brag-output/
+/brag-output*/
 
 # claude code workspace
 .claude/
