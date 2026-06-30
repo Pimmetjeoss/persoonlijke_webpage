@@ -10,7 +10,9 @@ const steps = [
     slug: "verkenning",
     title: "Verkenning",
     number: "1",
-    cactus: "/webdesign/cactussen/verkenning.svg",
+    cactus: "/webdesign/mascots/verkenning.png",
+    video: "/webdesign/videos/verkenning.mp4",
+    poster: "/webdesign/posters/verkenning.jpg",
     intro:
       "Een website die echt iets losmaakt, valt of staat met een goed fundament. Niet improviseren, maar een helder vertrekpunt. Door vooraf scherp te krijgen waar jullie naartoe willen en waaróm, voorkomen we ruis, twijfel en dure omwegen later in het traject. Die helderheid zie je terug in het eindresultaat.",
     quote:
@@ -27,7 +29,9 @@ const steps = [
     slug: "realisatie",
     title: "Realisatie",
     number: "2",
-    cactus: "/webdesign/cactussen/realisatie.svg",
+    cactus: "/webdesign/mascots/realisatie.png",
+    video: "/webdesign/videos/realisatie.mp4",
+    poster: "/webdesign/posters/realisatie.jpg",
     intro:
       "In de realisatiefase gaan de mouwen omhoog. Onze multidisciplinaire teams bouwen samen met jou aan de oplossing die impact maakt.",
     paragraphs: [
@@ -43,7 +47,9 @@ const steps = [
     slug: "testen-en-redactie",
     title: "Testen & redactie",
     number: "3",
-    cactus: "/webdesign/cactussen/testen-en-redactie.svg",
+    cactus: "/webdesign/mascots/testen-en-redactie.png",
+    video: "/webdesign/videos/testen-en-redactie.mp4",
+    poster: "/webdesign/posters/testen-en-redactie.jpg",
     intro:
       "Nu zetten we de puntjes op de i. Niet alleen bouwen, maar ook testen, stuk proberen te krijgen en finetunen tot alles klopt.",
     quote:
@@ -61,7 +67,9 @@ const steps = [
     slug: "go-live",
     title: "Go-live",
     number: "4",
-    cactus: "/webdesign/cactussen/go-live.svg",
+    cactus: "/webdesign/mascots/go-live.png",
+    video: "/webdesign/videos/go-live.mp4",
+    poster: "/webdesign/posters/go-live.jpg",
     intro:
       "De go-live is het moment waarop de nieuwe website live gaat. Spannend, dus zorgen we voor een soepele overgang met zo min mogelijk risico.",
     paragraphs: [
@@ -77,7 +85,9 @@ const steps = [
     slug: "onderhoud",
     title: "Onderhoud",
     number: "5",
-    cactus: "/webdesign/cactussen/onderhoud.svg",
+    cactus: "/webdesign/mascots/onderhoud.png",
+    video: "/webdesign/videos/onderhoud.mp4",
+    poster: "/webdesign/posters/onderhoud.jpg",
     intro:
       "Bij Level Level houdt het werk niet op na de livegang — dan begint juist een belangrijk nieuw hoofdstuk. We dragen het stokje zorgvuldig over van het project- naar het supportteam, zodat jij met een gerust hart verder kunt.",
     bullets: [
@@ -99,7 +109,9 @@ const steps = [
     slug: "optimalisatie",
     title: "Optimalisatie",
     number: "6",
-    cactus: "/webdesign/cactussen/optimalisatie.svg",
+    cactus: "/webdesign/mascots/optimalisatie.png",
+    video: "/webdesign/videos/optimalisatie.mp4",
+    poster: "/webdesign/posters/optimalisatie.jpg",
     intro:
       "Voor veel mensen voelt de livegang als de finish. Voor ons is het juist het startsein. Een digitaal product is nooit echt ‘klaar’: het web verandert door, en de wensen van je gebruikers veranderen mee. Daarom is de fase ná de lancering misschien wel de belangrijkste — hier maken we van een goede site een geweldige.",
     quote: "Live gaan is niet de finish, maar het startschot.",
@@ -184,6 +196,32 @@ export default async function WebdesignStepPage({
                 />
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(144.9_80.4%_10%)] shadow-xl">
+          <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="p-6 text-[hsl(140.6_84.2%_92.5%)] md:p-8">
+              <p className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[hsl(141_78.9%_85.1%)]">
+                Video per fase
+              </p>
+              <h2 className="text-3xl font-bold leading-tight md:text-5xl">
+                {step.title} in beweging.
+              </h2>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-[hsl(141_78.9%_85.1%)]">
+                Een korte visuele samenvatting van deze stap, met dezelfde cactusmascotte-stijl als je voorbeeld.
+              </p>
+            </div>
+            <video
+              className="h-full min-h-[260px] w-full bg-black object-cover"
+              controls
+              muted
+              playsInline
+              preload="metadata"
+              poster={step.poster}
+            >
+              <source src={step.video} type="video/mp4" />
+            </video>
           </div>
         </section>
 

@@ -20,32 +20,32 @@ const workflowSteps = [
   {
     title: "Verkenning",
     href: "/webdesign/verkenning",
-    cactus: "/webdesign/cactussen/verkenning.svg",
+    cactus: "/webdesign/mascots/verkenning.png",
   },
   {
     title: "Realisatie",
     href: "/webdesign/realisatie",
-    cactus: "/webdesign/cactussen/realisatie.svg",
+    cactus: "/webdesign/mascots/realisatie.png",
   },
   {
     title: "Testen & redactie",
     href: "/webdesign/testen-en-redactie",
-    cactus: "/webdesign/cactussen/testen-en-redactie.svg",
+    cactus: "/webdesign/mascots/testen-en-redactie.png",
   },
   {
     title: "Go-live",
     href: "/webdesign/go-live",
-    cactus: "/webdesign/cactussen/go-live.svg",
+    cactus: "/webdesign/mascots/go-live.png",
   },
   {
     title: "Onderhoud",
     href: "/webdesign/onderhoud",
-    cactus: "/webdesign/cactussen/onderhoud.svg",
+    cactus: "/webdesign/mascots/onderhoud.png",
   },
   {
     title: "Optimalisatie",
     href: "/webdesign/optimalisatie",
-    cactus: "/webdesign/cactussen/optimalisatie.svg",
+    cactus: "/webdesign/mascots/optimalisatie.png",
   },
 ];
 
