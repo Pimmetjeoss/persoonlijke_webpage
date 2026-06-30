@@ -26,6 +26,11 @@ version: 1.0.0
 - Desktop rows should feel monumental like `/portfolio` without causing horizontal overflow.
 - Keep adequate bottom spacer for sticky footer.
 
+## Webdesign page placeholder
+- `/webdesign` is intentionally a scaffold that mirrors `/test` so it can be filled out later into a full sales/service page.
+- Keep the same pale-green surface, sticky header, bento-grid entry block, section cards, FAQ accordion, timeline animation, and sticky footer pattern as `/test`.
+- Portfolio accordion item `webdesign` routes directly to `/webdesign`; it must not fall back to `/under-construction`.
+
 ## Pitfalls
 - Do not replace the `/ai-agents` header/navigation behavior.
 - Do not touch unrelated portfolio/tool changes unless requested.

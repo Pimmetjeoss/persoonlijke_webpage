@@ -45,6 +45,9 @@ next-env.d.ts
 *.skill
 *.zip
 
+# local generated launch/demo artifacts
+/brag-output/
+
 # claude code workspace
 .claude/
 dev-server.log

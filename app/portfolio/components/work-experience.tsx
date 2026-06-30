@@ -19,6 +19,7 @@ export function WorkExperience() {
   useEffect(() => {
     router.prefetch('/about')
     router.prefetch('/contact')
+    router.prefetch('/webdesign')
     router.prefetch('/blog')
     router.prefetch('/ai-agents')
     router.prefetch('/sir-prikkel')
@@ -67,6 +68,7 @@ export function WorkExperience() {
     const routes: Record<string, string> = {
       "about-me": "/about",
       "contact": "/contact",
+      "webdesign": "/webdesign",
       "blog": "/blog",
       "ai-agents": "/ai-agents",
       "sir-prikkel": "/sir-prikkel",

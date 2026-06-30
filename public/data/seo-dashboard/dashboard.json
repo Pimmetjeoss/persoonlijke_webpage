@@ -1,43 +1,43 @@
 {
-  "generatedAt": "2026-06-10T03:15:02.532Z",
+  "generatedAt": "2026-06-30T03:15:02.779Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
-    "start": "2025-12-11",
-    "end": "2026-06-09",
+    "start": "2025-12-31",
+    "end": "2026-06-29",
     "label": "Laatste 180 dagen"
   },
   "sources": [
     {
       "source": "gsc",
       "status": "ok",
-      "generatedAt": "2026-06-10T03:15:02.039Z",
-      "rows": 15
+      "generatedAt": "2026-06-30T03:15:02.293Z",
+      "rows": 11
     },
     {
       "source": "ga4",
       "status": "unavailable",
-      "generatedAt": "2026-06-10T03:15:02.081Z",
+      "generatedAt": "2026-06-30T03:15:02.336Z",
       "detail": "SEO_GA4_COMMAND is not configured. Point it to the existing Analytics MCP/GA4 read-only export command; placeholders: {property}, {days}, {limit}.",
       "rows": 0
     },
     {
       "source": "pagespeed",
       "status": "unavailable",
-      "generatedAt": "2026-06-10T03:15:02.317Z",
+      "generatedAt": "2026-06-30T03:15:02.560Z",
       "detail": "PageSpeed Insights data is unavailable. Set SEO_PAGESPEED_API_KEY if quota/auth is required.",
       "rows": 0
     },
     {
       "source": "crux",
       "status": "unavailable",
-      "generatedAt": "2026-06-10T03:15:02.399Z",
+      "generatedAt": "2026-06-30T03:15:02.631Z",
       "detail": "SEO_CRUX_API_KEY or SEO_PAGESPEED_API_KEY is not configured. PageSpeed may still expose limited field data when available.",
       "rows": 0
     },
     {
       "source": "gbp",
       "status": "unavailable",
-      "generatedAt": "2026-06-10T03:15:02.442Z",
+      "generatedAt": "2026-06-30T03:15:02.680Z",
       "detail": "SEO_GBP_COMMAND is not configured. Point it to a read-only Google Business Profile export command; placeholders: {location}, {days}, {limit}.",
       "rows": 0
     },
@@ -51,7 +51,7 @@
     {
       "source": "clarity",
       "status": "ok",
-      "generatedAt": "2026-06-10T03:15:02.532Z",
+      "generatedAt": "2026-06-30T03:15:02.779Z",
       "detail": "Discovery board klaar voor project wtkycths2o.",
       "rows": 3
     }
@@ -60,7 +60,7 @@
     "cards": [
       {
         "label": "GSC workflow rows",
-        "value": "15",
+        "value": "11",
         "tone": "positive"
       },
       {
@@ -109,8 +109,7 @@
       "webdesignbureau lieshout: positie 19, 7 impressies",
       "pim van lieshout: positie 9, 3 impressies",
       "webdesigner lieshout: positie 8.5, 2 impressies",
-      "webdesign bureau lieshout: positie 9, 1 impressies",
-      "Nieuwe query: website maken lieshout"
+      "webdesign bureau lieshout: positie 9, 1 impressies"
     ],
     "warnings": [
       "GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports.",
@@ -200,45 +199,45 @@
         "id": "compare-0",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 2,
+        "impressions": 0,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -5,
-        "opportunity": 0.16
+        "deltaImpressions": -1,
+        "opportunity": 0
       },
       {
         "id": "compare-1",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 2,
+        "impressions": 0,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -6,
-        "opportunity": 0.16
+        "deltaImpressions": -2,
+        "opportunity": 0
       },
       {
         "id": "compare-2",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 1,
+        "impressions": 0,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": 1,
-        "opportunity": 0.08
+        "deltaImpressions": -5,
+        "opportunity": 0
       },
       {
         "id": "compare-3",
         "metric": "compare",
         "clicks": 0,
-        "impressions": 1,
+        "impressions": 0,
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -1,
-        "opportunity": 0.08
+        "deltaImpressions": -6,
+        "opportunity": 0
       },
       {
         "id": "compare-4",
@@ -250,56 +249,10 @@
         "deltaClicks": 0,
         "deltaImpressions": -1,
         "opportunity": 0
-      },
-      {
-        "id": "compare-5",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -6,
-        "opportunity": 0
-      },
-      {
-        "id": "compare-6",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -1,
-        "opportunity": 0
-      },
-      {
-        "id": "compare-7",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -1,
-        "opportunity": 0
       }
     ],
     "decaying": [],
-    "newQueries": [
-      {
-        "id": "newQueries-0",
-        "query": "website maken lieshout",
-        "metric": "newQueries",
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": 0,
-        "opportunity": 0
-      }
-    ],
+    "newQueries": [],
     "cliff": [],
     "outliers": [],
     "sitemapWatch": [],
@@ -1042,6 +995,266 @@
       "generatedAt": "2026-06-10T03:15:02.532Z",
       "date": "2026-06-10",
       "gscRows": 15,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-11T03:15:02.870Z",
+      "date": "2026-06-11",
+      "gscRows": 14,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-12T03:15:02.818Z",
+      "date": "2026-06-12",
+      "gscRows": 14,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-13T03:15:02.942Z",
+      "date": "2026-06-13",
+      "gscRows": 13,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-14T03:15:01.981Z",
+      "date": "2026-06-14",
+      "gscRows": 13,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-15T03:15:02.224Z",
+      "date": "2026-06-15",
+      "gscRows": 13,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-16T03:15:02.901Z",
+      "date": "2026-06-16",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-17T03:15:02.516Z",
+      "date": "2026-06-17",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-18T03:15:02.756Z",
+      "date": "2026-06-18",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-19T03:15:02.672Z",
+      "date": "2026-06-19",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-20T03:15:02.245Z",
+      "date": "2026-06-20",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-21T03:15:02.095Z",
+      "date": "2026-06-21",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-22T03:15:02.502Z",
+      "date": "2026-06-22",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-23T03:15:02.946Z",
+      "date": "2026-06-23",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-24T03:15:02.327Z",
+      "date": "2026-06-24",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-25T03:15:02.963Z",
+      "date": "2026-06-25",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-26T03:15:02.206Z",
+      "date": "2026-06-26",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-27T03:15:02.824Z",
+      "date": "2026-06-27",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-28T03:15:02.129Z",
+      "date": "2026-06-28",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-29T03:15:02.098Z",
+      "date": "2026-06-29",
+      "gscRows": 11,
+      "quickWins": 6,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-06-30T03:15:02.779Z",
+      "date": "2026-06-30",
+      "gscRows": 11,
       "quickWins": 6,
       "organicSessions": 0,
       "techScore": 0,
