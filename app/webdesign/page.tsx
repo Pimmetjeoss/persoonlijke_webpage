@@ -140,24 +140,22 @@ export default function WebdesignPage() {
               description="Hieronder kant en klaar uitgelegd hoe mijn standaardwerkwijze is."
               Icon={FileTextIcon}
             >
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="w-full">
                 {workflowSteps.map((step, index) => (
                   <button
                     key={step.href}
                     type="button"
                     onClick={() => startTransition(step.href)}
-                    className="group flex items-center justify-between rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-white p-4 text-left transition-all duration-300 hover:-translate-y-1 hover:bg-[hsl(141_78.9%_85.1%)] hover:shadow-lg"
+                    className="group w-full border-b border-[hsl(144.9_80.4%_10%)]/10 py-4 text-left text-[hsl(144.9_80.4%_10%)] transition-colors duration-200 hover:bg-[hsl(141_78.9%_85.1%)]/35"
                   >
-                    <span className="flex items-center gap-4">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[hsl(144.9_80.4%_10%)] text-sm font-bold text-white">
-                        {index + 1}
-                      </span>
-                      <span className="text-xl font-semibold text-[hsl(144.9_80.4%_10%)]">
+                    <span className="flex flex-1 items-start gap-4 overflow-hidden">
+                      <span className="pt-2 text-xs">{index + 1}</span>
+                      <span className="relative text-left text-3xl font-bold uppercase leading-none md:text-5xl">
                         {step.title}
                       </span>
-                    </span>
-                    <span className="text-2xl text-[hsl(144.9_80.4%_10%)] transition-transform duration-300 group-hover:translate-x-1">
-                      →
+                      <span className="ml-auto pt-1 text-3xl transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
                     </span>
                   </button>
                 ))}
