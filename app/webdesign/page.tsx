@@ -136,10 +136,19 @@ export default function WebdesignPage() {
           <div className="space-y-8">
             <SectionCard
               id="simpel-uitgelegd"
-              title="Simpel uitgelegd"
-              description="Complexe concepten begrijpelijk gemaakt voor iedereen."
+              title="Van strategie naar een website die blijft presteren"
+              description="Een heldere werkwijze voor digitale platforms die kloppen in strategie, techniek, vorm en resultaat."
               Icon={PersonIcon}
-            />
+            >
+              <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+                <p>
+                  Een sterke website ontstaat niet zomaar; het is de uitkomst van een weloverwogen aanpak. Vanaf de eerste strategische analyse tot aan de blijvende verbetering na lancering staat elke stap in het teken van maximaal resultaat. Wij vertrouwen niet op gissingen, maar leggen samen een rotsvast fundament. Door intensieve samenwerking, voortdurend testen en heldere communicatie zorgen we dat het eindproduct perfect past bij jullie doelen én bij wat de gebruiker nodig heeft.
+                </p>
+                <p>
+                  Onze werkwijze bestaat uit duidelijke, op elkaar volgende stappen. We beginnen met een grondige verkenning. Daarna geven we in de realisatiefase vorm aan een technisch en visueel sterke oplossing. In de test- & redactiefase verfijnen we tot in detail, om vervolgens bij de go-live het resultaat aan de buitenwereld te presenteren. En daar houdt het niet op. Met aandachtig onderhoud en proactieve optimalisatie zorgen we ervoor dat jouw digitale platform blijft groeien, presteren en toekomstbestendig blijft.
+                </p>
+              </div>
+            </SectionCard>
             <SectionCard
               id="faq"
               title="FAQ"
