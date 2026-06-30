@@ -5,6 +5,7 @@ export interface WorkExperience {
   period: string
   description: string
   highlights: string[]
+  href?: string
 }
 
 export const workExperiences: WorkExperience[] = [
@@ -15,6 +16,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Leer meer over wie ik ben en wat ik doe.",
     highlights: [],
+    href: "/about",
   },
   {
     id: "contact",
@@ -23,6 +25,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Neem contact met mij op via het formulier.",
     highlights: [],
+    href: "/contact",
   },
   {
     id: "webdesign",
@@ -31,6 +34,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Moderne websites met karakter, snelheid en slimme conversieflows.",
     highlights: [],
+    href: "/webdesign",
   },
   {
     id: "faq",
@@ -47,6 +51,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Lees mijn laatste blogartikelen over AI en automatisering.",
     highlights: [],
+    href: "/blog",
   },
   {
     id: "ai-agents",
@@ -55,6 +60,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Ontdek de kracht van AI agents die zelfstandig taken uitvoeren.",
     highlights: [],
+    href: "/ai-agents",
   },
   {
     id: "sir-prikkel",
@@ -63,6 +69,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Maak kennis met Sir Prikkel — stekelig aan de buitenkant, zacht van binnen.",
     highlights: [],
+    href: "/sir-prikkel",
   },
   {
     id: "database",
@@ -71,6 +78,7 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Intelligente database oplossingen.",
     highlights: [],
+    href: "/database",
   },
   {
     id: "google-score",
@@ -80,6 +88,7 @@ export const workExperiences: WorkExperience[] = [
     description:
       "Vergelijk jouw domein met twee concurrenten op Google-autoriteit (Ahrefs Domain Rating).",
     highlights: [],
+    href: "/google-score",
   },
   {
     id: "chatgpt-check",
@@ -89,6 +98,7 @@ export const workExperiences: WorkExperience[] = [
     description:
       "Vergelijk wat ChatGPT van jouw website ziet met wat het van je concurrent ziet. Side-by-side.",
     highlights: [],
+    href: "/chatgpt-check",
   },
   {
     id: "agent-ready",
@@ -97,5 +107,6 @@ export const workExperiences: WorkExperience[] = [
     period: "",
     description: "Gratis scan: hoe klaar is jouw site voor AI-agents?",
     highlights: [],
+    href: "/agent-ready",
   },
 ]

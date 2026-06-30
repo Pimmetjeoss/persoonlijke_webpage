@@ -63,23 +63,6 @@ export function WorkExperience() {
     return "hsl(144.9 80.4% 10%)" // donkerste groen (standaard)
   }
 
-  // Route mapping voor alle items
-  const getRoute = (id: string): string => {
-    const routes: Record<string, string> = {
-      "about-me": "/about",
-      "contact": "/contact",
-      "webdesign": "/webdesign",
-      "blog": "/blog",
-      "ai-agents": "/ai-agents",
-      "sir-prikkel": "/sir-prikkel",
-      "database": "/database",
-      "agent-ready": "/agent-ready",
-      "google-score": "/google-score",
-      "chatgpt-check": "/chatgpt-check",
-    }
-    return routes[id] || "/under-construction"
-  }
-
   return (
     <div
       ref={timelineRef}
@@ -116,8 +99,16 @@ export function WorkExperience() {
               >
               <div
                 onClick={() => {
-                  const route = getRoute(experience.id)
+                  const route = experience.href || "/under-construction"
                   if (route) startTransition(route)
+                }}
+                role="link"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault()
+                    startTransition(experience.href || "/under-construction")
+                  }
                 }}
                 className="transition-all duration-300 ease-out mb-0 rounded-none border-t-[3px] border-black hover:-translate-y-6 overflow-hidden hover:overflow-visible w-full cursor-pointer"
                 style={{
