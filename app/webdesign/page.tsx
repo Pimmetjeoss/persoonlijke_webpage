@@ -13,49 +13,33 @@ import { BentoCard, BentoGrid } from "../test/components/bento-grid";
 import { SectionCard } from "../test/components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
-import { Accordion05, FAQItem } from "../test/components/accordion-05";
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
+import { useTransition } from "@/app/components/transition_provider";
 
-const faqItems: FAQItem[] = [
+const workflowSteps = [
   {
-    id: "1",
-    title: "Placeholder vraag 1?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
+    title: "Verkenning",
+    href: "/webdesign/verkenning",
   },
   {
-    id: "2",
-    title: "Placeholder vraag 2?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
+    title: "Realisatie",
+    href: "/webdesign/realisatie",
   },
   {
-    id: "3",
-    title: "Placeholder vraag 3?",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Testen & redactie",
+    href: "/webdesign/testen-en-redactie",
   },
   {
-    id: "4",
-    title: "Placeholder vraag 4?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
+    title: "Go-live",
+    href: "/webdesign/go-live",
   },
   {
-    id: "5",
-    title: "Placeholder vraag 5?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
+    title: "Onderhoud",
+    href: "/webdesign/onderhoud",
   },
   {
-    id: "6",
-    title: "Placeholder vraag 6?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
-  },
-  {
-    id: "7",
-    title: "Placeholder vraag 7?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
-  },
-  {
-    id: "8",
-    title: "Placeholder vraag 8?",
-    content: "Dit is een placeholder antwoord. Vul hier later de echte webdesign-content in.",
+    title: "Optimalisatie",
+    href: "/webdesign/optimalisatie",
   },
 ];
 
@@ -72,10 +56,10 @@ const features = [
   },
   {
     Icon: FileTextIcon,
-    name: "FAQ",
-    description: "Antwoord op de meeste vragen omtrent dit onderwerp.",
-    href: "#faq",
-    cta: "Stel je vraag!",
+    name: "Werkwijze",
+    description: "De stappen van verkenning tot optimalisatie.",
+    href: "#werkwijze",
+    cta: "Bekijk de stappen",
     background: <img className="absolute -right-20 -top-20 opacity-60" alt="" />,
     className: "col-span-1 lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
     hoverColor: "hsl(141.7 76.6% 73.1%)",
@@ -114,6 +98,7 @@ const features = [
 
 export default function WebdesignPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const { startTransition } = useTransition();
 
   return (
     <div
@@ -150,12 +135,33 @@ export default function WebdesignPage() {
               </div>
             </SectionCard>
             <SectionCard
-              id="faq"
-              title="FAQ"
-              description="Antwoord op de meeste vragen omtrent dit onderwerp."
+              id="werkwijze"
+              title="Werkwijze"
+              description="Hieronder kant en klaar uitgelegd hoe mijn standaardwerkwijze is."
               Icon={FileTextIcon}
             >
-              <Accordion05 items={faqItems} />
+              <div className="grid gap-3 sm:grid-cols-2">
+                {workflowSteps.map((step, index) => (
+                  <button
+                    key={step.href}
+                    type="button"
+                    onClick={() => startTransition(step.href)}
+                    className="group flex items-center justify-between rounded-xl border-[3px] border-[hsl(144.9_80.4%_10%)] bg-white p-4 text-left transition-all duration-300 hover:-translate-y-1 hover:bg-[hsl(141_78.9%_85.1%)] hover:shadow-lg"
+                  >
+                    <span className="flex items-center gap-4">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[hsl(144.9_80.4%_10%)] text-sm font-bold text-white">
+                        {index + 1}
+                      </span>
+                      <span className="text-xl font-semibold text-[hsl(144.9_80.4%_10%)]">
+                        {step.title}
+                      </span>
+                    </span>
+                    <span className="text-2xl text-[hsl(144.9_80.4%_10%)] transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </button>
+                ))}
+              </div>
             </SectionCard>
             <SectionCard
               id="visueel"
