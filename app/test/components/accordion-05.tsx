@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import {
   Accordion,
   AccordionContent,
@@ -8,7 +10,7 @@ import {
 export interface FAQItem {
   id: string;
   title: string;
-  content: string;
+  content: ReactNode;
 }
 
 interface Accordion05Props {

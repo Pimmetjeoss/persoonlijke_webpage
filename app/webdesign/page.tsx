@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import { useRef } from "react";
 import {
   FileTextIcon,
@@ -13,39 +14,40 @@ import { SectionCard } from "../test/components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
-import { useTransition } from "@/app/components/transition_provider";
+import { Accordion05, FAQItem } from "../test/components/accordion-05";
 import { AwardInteractions, AwardMotionLayer } from "./components/award-motion";
 
-const workflowSteps = [
+
+const workflowFaqItems: FAQItem[] = [
   {
+    id: "1",
     title: "Verkenning",
-    href: "/webdesign/verkenning",
-    cactus: "/webdesign/mascots/verkenning.png",
+    content: <span>We bepalen doel, doelgroep, structuur, stijlrichting en techniek. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/verkenning">Bekijk deze stap</Link>.</span>
   },
   {
+    id: "2",
     title: "Realisatie",
-    href: "/webdesign/realisatie",
-    cactus: "/webdesign/mascots/realisatie.png",
+    content: <span>Ontwerp, techniek en inhoud komen samen in echte schermen. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/realisatie">Bekijk deze stap</Link>.</span>
   },
   {
+    id: "3",
     title: "Testen & redactie",
-    href: "/webdesign/testen-en-redactie",
-    cactus: "/webdesign/mascots/testen-en-redactie.png",
+    content: <span>We testen formulieren, mobiel gebruik, snelheid, teksten en klikpaden. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/testen-en-redactie">Bekijk deze stap</Link>.</span>
   },
   {
+    id: "4",
     title: "Go-live",
-    href: "/webdesign/go-live",
-    cactus: "/webdesign/mascots/go-live.png",
+    content: <span>We zetten domein, analytics, redirects en laatste checks klaar. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/go-live">Bekijk deze stap</Link>.</span>
   },
   {
+    id: "5",
     title: "Onderhoud",
-    href: "/webdesign/onderhoud",
-    cactus: "/webdesign/mascots/onderhoud.png",
+    content: <span>Na livegang houden we updates, support en kleine verbeteringen bij. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/onderhoud">Bekijk deze stap</Link>.</span>
   },
   {
+    id: "6",
     title: "Optimalisatie",
-    href: "/webdesign/optimalisatie",
-    cactus: "/webdesign/mascots/optimalisatie.png",
+    content: <span>We kijken naar data en gebruikersgedrag en verbeteren stap voor stap. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/optimalisatie">Bekijk deze stap</Link>.</span>
   },
 ];
 
@@ -94,7 +96,6 @@ const features = [
 
 export default function WebdesignPage() {
   const pageRef = useRef<HTMLDivElement>(null);
-  const { startTransition } = useTransition();
 
   return (
     <div
@@ -134,7 +135,7 @@ export default function WebdesignPage() {
             <section
               id="werkwijze"
               data-award-reveal
-              className="relative overflow-hidden rounded-xl border-[3px] bg-white p-8 shadow-xl scroll-mt-32 md:p-12"
+              className="relative overflow-hidden rounded-xl border-[3px] bg-white p-8 pb-24 shadow-xl scroll-mt-32 md:p-12 md:pb-24"
               style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
             >
               <AwardMotionLayer className="opacity-45" />
@@ -150,27 +151,10 @@ export default function WebdesignPage() {
                     Werkwijze
                   </h2>
                   <p className="mb-9 max-w-3xl text-xl font-semibold leading-relaxed text-gray-600 md:text-2xl">
-                    Antwoord op de meeste vragen omtrent dit onderwerp.
+                    De zes vaste stappen van eerste idee tot doorlopende verbetering.
                   </p>
                   <div className="w-full">
-                    {workflowSteps.map((step, index) => (
-                      <button
-                        key={step.href}
-                        type="button"
-                        data-award-hover
-                        onClick={() => startTransition(step.href)}
-                        className="group relative block h-[4.6rem] w-full overflow-visible border-b border-[hsl(144.9_80.4%_10%)]/12 text-left text-[hsl(144.9_80.4%_10%)] transition-colors duration-200 hover:bg-[hsl(141_78.9%_85.1%)]/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[hsl(144.9_80.4%_10%)] md:h-[5.25rem]"
-                      >
-                        <span data-award-target className="flex h-full items-end gap-5 overflow-visible px-0">
-                          <span className="mb-[1.05rem] w-5 shrink-0 text-xs leading-none md:mb-[1.2rem]">
-                            {index + 1}
-                          </span>
-                          <span className="relative -mb-[0.46rem] block text-left text-5xl font-bold uppercase leading-[0.82] tracking-tight md:-mb-[0.62rem] md:text-7xl">
-                            {step.title}
-                          </span>
-                        </span>
-                      </button>
-                    ))}
+                    <Accordion05 items={workflowFaqItems} />
                   </div>
                 </div>
               </div>

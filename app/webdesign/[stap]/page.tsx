@@ -16,6 +16,7 @@ const steps = [
     poster: "/webdesign/posters/verkenning.jpg",
     theme: "mint",
     videoAlign: "right",
+    videoTitle: "Wat gebeurt er in de verkenning?",
     intro:
       "Een website begint met scherp krijgen wat er moet gebeuren. Wat moet iemand voelen, begrijpen of doen? Als dat helder is, wordt de rest veel makkelijker. Dan bouwen we niet op smaak alleen, maar op richting.",
     quote:
@@ -37,6 +38,7 @@ const steps = [
     poster: "/webdesign/posters/realisatie.jpg",
     theme: "gold",
     videoAlign: "left",
+    videoTitle: "Hoe wordt het ontwerp een werkende site?",
     intro:
       "In deze fase wordt het concreet. Ontwerp, techniek en inhoud komen samen in schermen die je kunt zien, testen en verbeteren.",
     paragraphs: [
@@ -57,6 +59,7 @@ const steps = [
     poster: "/webdesign/posters/testen-en-redactie.jpg",
     theme: "coral",
     videoAlign: "stack",
+    videoTitle: "Hoe controleren we of alles klopt?",
     intro:
       "Nu halen we de rafels eruit. We testen, vullen, lezen terug en verbeteren totdat de site klopt in gebruik én in verhaal.",
     quote:
@@ -79,6 +82,7 @@ const steps = [
     poster: "/webdesign/posters/go-live.jpg",
     theme: "blue",
     videoAlign: "wide",
+    videoTitle: "Hoe gaat de website veilig live?",
     intro:
       "Live gaan is spannend, maar het hoeft geen chaos te zijn. We zetten vooraf klaar wat klaar moet staan en lopen de laatste checks stap voor stap na.",
     paragraphs: [
@@ -99,6 +103,7 @@ const steps = [
     poster: "/webdesign/posters/onderhoud.jpg",
     theme: "olive",
     videoAlign: "right",
+    videoTitle: "Hoe blijft de site goed werken?",
     intro:
       "Na livegang moet de site gewoon blijven werken. Updates, kleine verbeteringen, vragen en technische controle horen daar bij.",
     bullets: [
@@ -125,6 +130,7 @@ const steps = [
     poster: "/webdesign/posters/optimalisatie.jpg",
     theme: "lime",
     videoAlign: "left",
+    videoTitle: "Hoe verbeteren we na livegang?",
     intro:
       "Na livegang begint het echte leren. Je ziet hoe bezoekers klikken, waar ze afhaken en welke onderdelen juist goed werken. Daar kun je gericht op verbeteren.",
     quote: "Live gaan is geen eindpunt. Het is meetpunt één.",
@@ -239,13 +245,13 @@ export default async function WebdesignStepPage({
                 Video per fase · stap {step.number}
               </p>
               <h2 className="text-3xl font-bold leading-tight md:text-5xl">
-                {step.title} uitgelegd in 16 seconden.
+                {step.videoTitle}
               </h2>
               <p className={`mt-4 max-w-xl text-lg leading-relaxed ${theme.soft}`}>
-                Geen losse mascotte-loop meer, maar een korte uitleg met concrete punten uit deze fase.
+                Een korte, duidelijke samenvatting van wat jij in deze fase kunt verwachten.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {["richting", "keuzes", "resultaat"].map((label) => (
+                {["duidelijk", "praktisch", "controle"].map((label) => (
                   <span key={label} className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[hsl(144.9_80.4%_10%)] ${theme.badge}`}>
                     {label}
                   </span>
@@ -254,7 +260,7 @@ export default async function WebdesignStepPage({
             </div>
             <div className={`${videoFirst ? "lg:order-1" : ""} ${videoWide ? "border-t-[3px] border-[hsl(144.9_80.4%_10%)]" : ""}`}>
               <video
-                className={`${videoWide ? "max-h-[520px]" : "h-full min-h-[300px]"} w-full bg-black object-cover`}
+                className="aspect-video w-full bg-black object-contain"
                 controls
                 muted
                 playsInline
