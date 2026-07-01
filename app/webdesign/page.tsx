@@ -172,13 +172,73 @@ export default function WebdesignPage() {
               title="Stack met"
               description="Werkt goed samen met deze andere mogelijkheden."
               Icon={LayersIcon}
-            />
+            >
+              <div className="space-y-5 text-lg leading-relaxed text-gray-700">
+                <p>
+                  Een nieuwe website is vaak de start. Daarna wil je dat Google de pagina&apos;s goed snapt, dat AI-tools je bedrijf correct kunnen samenvatten en dat bezoekers zonder twijfel de juiste actie nemen.
+                </p>
+                <p>
+                  Daarom past webdesign goed bij de SEO/GEO scan. Die laat zien waar je huidige vindbaarheid lekt en welke pagina&apos;s slimmer kunnen worden opgebouwd. Combineer dat met Agent-Ready, Google Score en de ChatGPT Check, dan zie je niet alleen hoe je site eruitziet, maar ook hoe zoekmachines en AI-assistenten hem lezen.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Link
+                    href="/seo-geo-scan"
+                    className="rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(144.9_80.4%_10%)] hover:text-white"
+                  >
+                    Vraag de SEO/GEO scan aan
+                  </Link>
+                  <Link
+                    href="/agent-ready"
+                    className="rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(144.9_80.4%_10%)] hover:text-white"
+                  >
+                    Check Agent-Ready
+                  </Link>
+                  <Link
+                    href="/google-score"
+                    className="rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(144.9_80.4%_10%)] hover:text-white"
+                  >
+                    Vergelijk je Google Score
+                  </Link>
+                  <Link
+                    href="/chatgpt-check"
+                    className="rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(144.9_80.4%_10%)] hover:text-white"
+                  >
+                    Doe de ChatGPT Check
+                  </Link>
+                </div>
+              </div>
+            </SectionCard>
             <SectionCard
               id="in-detail"
               title="In detail"
               description="Technische uitleg voor wie meer wil weten en wat te vertellen wil hebben bij het koffieautomaat."
               Icon={MagnifyingGlassIcon}
-            />
+            >
+              <div className="space-y-5 text-lg leading-relaxed text-gray-700">
+                <p>
+                  Ik bouw nieuwe websites standaard met Next.js. Niet omdat het hip klinkt, maar omdat het in de praktijk snel, stabiel en toekomstbestendig is. Pagina&apos;s laden strak, content kan netjes worden voorbereid voor Google en AI-crawlers, en je zit niet vast aan de beperkingen van een kant-en-klaar thema.
+                </p>
+                <p>
+                  WordPress kan prima zijn voor een simpele site, maar bij maatwerk betaal je vaak dubbel: eerst voor een duur thema, daarna voor plugins, onderhoud, updates en fixes wanneer alles elkaar in de weg zit. Met Next.js bouw je lichter. Minder ballast, minder pluginstress en meer controle over snelheid, techniek, design en groei.
+                </p>
+                <div className="grid gap-3 pt-2 md:grid-cols-2">
+                  {[
+                    "Snelle pagina’s met moderne rendering en minder overbodige code.",
+                    "Meer vrijheid in design zonder vast te zitten aan thema-blokken.",
+                    "Beter voorbereid op SEO, GEO en AI-lezers door schone structuur.",
+                    "Lagere onderhoudsdruk dan een WordPress-site vol betaalde plugins.",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-xl border-[3px] bg-[hsl(140.6_84.2%_92.5%)] p-4 text-base font-semibold text-[hsl(144.9_80.4%_10%)]"
+                      style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionCard>
           </div>
         </TimelineContent>
 
