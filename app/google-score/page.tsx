@@ -6,6 +6,8 @@ import {
   LightningBoltIcon,
   RocketIcon,
 } from "@radix-ui/react-icons"
+import { TegakiRenderer } from "tegaki/react"
+import caveat from "tegaki/fonts/caveat"
 import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation"
@@ -67,16 +69,20 @@ export default function GoogleScoreLanding() {
             >
               Hoe sterk is jouw domein in
               {" "}
-              <span
-                className="inline-block"
+              <TegakiRenderer
+                as="span"
+                font={caveat}
+                className="inline-block align-baseline"
                 style={{
-                  fontFamily: "var(--font-homemade-apple)",
                   color: "hsl(142.1 76.2% 36.3%)",
+                  fontSize: "1.25em",
                   fontWeight: 400,
+                  lineHeight: 0.85,
+                  verticalAlign: "-0.04em",
                 }}
               >
                 Google?
-              </span>
+              </TegakiRenderer>
             </h1>
             <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
               Vul je eigen domein en twee concurrenten in. Voor elk domein
