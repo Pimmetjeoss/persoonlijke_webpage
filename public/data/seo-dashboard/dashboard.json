@@ -1,57 +1,56 @@
 {
-  "generatedAt": "2026-06-30T03:15:02.779Z",
+  "generatedAt": "2026-07-09T08:06:23.342Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
-    "start": "2025-12-31",
-    "end": "2026-06-29",
+    "start": "2026-01-09",
+    "end": "2026-07-08",
     "label": "Laatste 180 dagen"
   },
   "sources": [
     {
       "source": "gsc",
       "status": "ok",
-      "generatedAt": "2026-06-30T03:15:02.293Z",
-      "rows": 11
+      "generatedAt": "2026-07-09T08:05:48.439Z",
+      "rows": 10
     },
     {
       "source": "ga4",
       "status": "unavailable",
-      "generatedAt": "2026-06-30T03:15:02.336Z",
+      "generatedAt": "2026-07-09T08:05:48.476Z",
       "detail": "SEO_GA4_COMMAND is not configured. Point it to the existing Analytics MCP/GA4 read-only export command; placeholders: {property}, {days}, {limit}.",
       "rows": 0
     },
     {
       "source": "pagespeed",
-      "status": "unavailable",
-      "generatedAt": "2026-06-30T03:15:02.560Z",
-      "detail": "PageSpeed Insights data is unavailable. Set SEO_PAGESPEED_API_KEY if quota/auth is required.",
-      "rows": 0
+      "status": "ok",
+      "generatedAt": "2026-07-09T08:06:16.293Z",
+      "rows": 2
     },
     {
       "source": "crux",
       "status": "unavailable",
-      "generatedAt": "2026-06-30T03:15:02.631Z",
-      "detail": "SEO_CRUX_API_KEY or SEO_PAGESPEED_API_KEY is not configured. PageSpeed may still expose limited field data when available.",
+      "generatedAt": "2026-07-09T08:06:16.567Z",
+      "detail": "CrUX API returned no usable field data for this origin.",
       "rows": 0
     },
     {
       "source": "gbp",
       "status": "unavailable",
-      "generatedAt": "2026-06-30T03:15:02.680Z",
+      "generatedAt": "2026-07-09T08:06:16.645Z",
       "detail": "SEO_GBP_COMMAND is not configured. Point it to a read-only Google Business Profile export command; placeholders: {location}, {days}, {limit}.",
       "rows": 0
     },
     {
       "source": "bots",
       "status": "ok",
-      "generatedAt": "2026-05-21T08:50:27.025Z",
-      "detail": "Bot/crawler activiteit opgehaald uit Vercel logs. User-agent details komen mee zodra de nieuwe middleware live is.",
-      "rows": 1
+      "generatedAt": "2026-07-09T08:06:23.262Z",
+      "detail": "Bot/crawler activiteit opgehaald uit Vercel logs. User-agent details komen mee zodra de nieuwe middleware live is. Cloudflare fallback reden: Cloudflare credentials ontbreken. Zet CF_ACCOUNT_ID en CF_API_TOKEN om live bot visits op te halen.",
+      "rows": 8
     },
     {
       "source": "clarity",
       "status": "ok",
-      "generatedAt": "2026-06-30T03:15:02.779Z",
+      "generatedAt": "2026-07-09T08:06:23.342Z",
       "detail": "Discovery board klaar voor project wtkycths2o.",
       "rows": 3
     }
@@ -60,7 +59,7 @@
     "cards": [
       {
         "label": "GSC workflow rows",
-        "value": "11",
+        "value": "10",
         "tone": "positive"
       },
       {
@@ -85,8 +84,8 @@
       },
       {
         "label": "Tech score",
-        "value": "—",
-        "tone": "neutral"
+        "value": "97",
+        "tone": "positive"
       },
       {
         "label": "GBP clicks",
@@ -95,7 +94,7 @@
       },
       {
         "label": "AI crawlers",
-        "value": "1",
+        "value": "8",
         "tone": "positive"
       },
       {
@@ -113,8 +112,7 @@
     ],
     "warnings": [
       "GA4 organic data ontbreekt; configureer SEO_GA4_COMMAND voor live exports.",
-      "PageSpeed/Lighthouse data ontbreekt of is gedeeltelijk beschikbaar.",
-      "CrUX field data ontbreekt; controleer SEO_CRUX_API_KEY of gebruik PageSpeed field data.",
+      "CrUX field data is nog niet beschikbaar voor dit domein; PageSpeed/Lighthouse labdata wordt wel gebruikt.",
       "Google Business Profile data ontbreekt; configureer SEO_GBP_COMMAND voor read-only local SEO exports."
     ]
   },
@@ -214,7 +212,7 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -2,
+        "deltaImpressions": -1,
         "opportunity": 0
       },
       {
@@ -225,22 +223,11 @@
         "ctr": 0,
         "position": 0,
         "deltaClicks": 0,
-        "deltaImpressions": -5,
+        "deltaImpressions": -1,
         "opportunity": 0
       },
       {
         "id": "compare-3",
-        "metric": "compare",
-        "clicks": 0,
-        "impressions": 0,
-        "ctr": 0,
-        "position": 0,
-        "deltaClicks": 0,
-        "deltaImpressions": -6,
-        "opportunity": 0
-      },
-      {
-        "id": "compare-4",
         "metric": "compare",
         "clicks": 0,
         "impressions": 0,
@@ -271,7 +258,120 @@
     "events": []
   },
   "technical": {
-    "pagespeed": [],
+    "pagespeed": [
+      {
+        "page": "https://code-lieshout.nl/",
+        "strategy": "mobile",
+        "performance": 88,
+        "accessibility": 98,
+        "bestPractices": 96,
+        "seo": 100,
+        "coreWebVitals": [
+          {
+            "id": "LCP",
+            "label": "Largest Contentful Paint",
+            "value": 3784.676356738176,
+            "unit": "ms",
+            "displayValue": "3.8s",
+            "status": "needs-improvement",
+            "p75": 3784.676356738176
+          },
+          {
+            "id": "INP",
+            "label": "Interaction to Next Paint",
+            "value": 0,
+            "unit": "ms",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "CLS",
+            "label": "Cumulative Layout Shift",
+            "value": 0,
+            "unit": "score",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "FCP",
+            "label": "First Contentful Paint",
+            "value": 906.8567576935957,
+            "unit": "ms",
+            "displayValue": "907ms",
+            "status": "good",
+            "p75": 906.8567576935957
+          },
+          {
+            "id": "TTFB",
+            "label": "Time to First Byte",
+            "value": 4,
+            "unit": "ms",
+            "displayValue": "4ms",
+            "status": "good",
+            "p75": 4
+          }
+        ],
+        "fieldStatus": "unavailable"
+      },
+      {
+        "page": "https://code-lieshout.nl/",
+        "strategy": "desktop",
+        "performance": 98,
+        "accessibility": 98,
+        "bestPractices": 96,
+        "seo": 100,
+        "coreWebVitals": [
+          {
+            "id": "LCP",
+            "label": "Largest Contentful Paint",
+            "value": 880.1133130384738,
+            "unit": "ms",
+            "displayValue": "880ms",
+            "status": "good",
+            "p75": 880.1133130384738
+          },
+          {
+            "id": "INP",
+            "label": "Interaction to Next Paint",
+            "value": 0,
+            "unit": "ms",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "CLS",
+            "label": "Cumulative Layout Shift",
+            "value": 0,
+            "unit": "score",
+            "displayValue": "—",
+            "status": "unknown",
+            "p75": 0
+          },
+          {
+            "id": "FCP",
+            "label": "First Contentful Paint",
+            "value": 249.7466608681354,
+            "unit": "ms",
+            "displayValue": "250ms",
+            "status": "good",
+            "p75": 249.7466608681354
+          },
+          {
+            "id": "TTFB",
+            "label": "Time to First Byte",
+            "value": 2,
+            "unit": "ms",
+            "displayValue": "2ms",
+            "status": "good",
+            "p75": 2
+          }
+        ],
+        "fieldStatus": "unavailable"
+      }
+    ],
     "crux": []
   },
   "gbp": {
@@ -310,33 +410,82 @@
   },
   "botAnalytics": {
     "totals": {
-      "visits": 1,
+      "visits": 8,
       "uniqueBots": 1,
-      "lastSeen": "2026-05-21T07:51:55.795Z"
+      "lastSeen": "2026-07-09T08:05:57.550Z"
     },
     "bots": [
       {
         "botName": "Robots.txt crawler",
         "family": "crawler",
-        "total": 1,
-        "lastSeen": "2026-05-21T07:51:55.795Z",
+        "total": 8,
+        "lastSeen": "2026-07-09T08:05:57.550Z",
         "topPaths": [
           {
             "path": "/robots.txt",
-            "count": 1
+            "count": 8
           }
         ],
         "daily": [
           {
-            "date": "2026-05-21",
-            "count": 1
+            "date": "2026-07-09",
+            "count": 8
           }
         ]
       }
     ],
     "recent": [
       {
-        "timestamp": "2026-05-21T07:51:55.795Z",
+        "timestamp": "2026-07-09T08:05:57.550Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T08:05:57.550Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T08:04:55.979Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T08:04:55.979Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T08:04:39.737Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T08:04:39.737Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T07:50:13.894Z",
+        "botName": "Robots.txt crawler",
+        "family": "crawler",
+        "path": "/robots.txt",
+        "count": 1
+      },
+      {
+        "timestamp": "2026-07-09T07:50:13.894Z",
         "botName": "Robots.txt crawler",
         "family": "crawler",
         "path": "/robots.txt",
@@ -353,7 +502,7 @@
     "heatmapsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/heatmaps",
     "recordingsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/recordings",
     "insightsUrl": "https://clarity.microsoft.com/projects/view/wtkycths2o/insights",
-    "exportApiStatus": "token-present",
+    "exportApiStatus": "token-missing",
     "quickLinks": [
       {
         "label": "Open Clarity dashboard",
@@ -403,7 +552,7 @@
       },
       {
         "title": "AI crawler context",
-        "metric": "1 bot hits",
+        "metric": "8 bot hits",
         "detail": "Robots.txt crawler",
         "action": "Combineer bot-crawls met heatmaps: pagina's die bots vinden moeten ook voor mensen duidelijk scannen.",
         "href": "#ai-crawlers",
@@ -435,8 +584,8 @@
     "checks": [
       {
         "label": "Data Export API",
-        "status": "ok",
-        "detail": "Clarity API-token is aanwezig; pp-clarity kan live insights ophalen."
+        "status": "warning",
+        "detail": "Geen Clarity Data Export API-token gevonden. Heatmaps/recordings open je in Clarity; live insight-metrics kunnen later via token."
       },
       {
         "label": "Consent gate",
@@ -464,805 +613,51 @@
       },
       {
         "label": "pp-clarity",
-        "value": "Live insights",
-        "tone": "positive",
+        "value": "Token nodig",
+        "tone": "warning",
         "detail": "CLI kan insights ophalen, geen heatmapbeelden embedden."
       }
     ]
   },
   "history": [
     {
-      "generatedAt": "2026-05-19T11:03:57.154Z",
-      "date": "2026-05-19",
+      "generatedAt": "2026-07-09T07:46:08.995Z",
+      "date": "2026-07-09",
       "gscRows": 0,
       "quickWins": 0,
       "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 15,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-19T12:07:58.662Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
+      "techScore": 96,
+      "mobilePerformance": 83,
+      "desktopPerformance": 99,
       "gbpWebsiteClicks": 0,
       "botVisits": 0,
       "okSources": 1
     },
     {
-      "generatedAt": "2026-05-19T12:08:34.697Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
+      "generatedAt": "2026-07-09T08:05:09.016Z",
+      "date": "2026-07-09",
+      "gscRows": 10,
       "quickWins": 6,
       "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
+      "techScore": 97,
+      "mobilePerformance": 87,
+      "desktopPerformance": 98,
       "gbpWebsiteClicks": 0,
-      "botVisits": 0,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-19T12:10:55.223Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 0,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-19T12:25:15.252Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 0,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-19T12:29:15.999Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 0,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-19T12:55:14.210Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 0,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-19T12:56:06.556Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 2
-    },
-    {
-      "generatedAt": "2026-05-19T12:58:48.091Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 2
-    },
-    {
-      "generatedAt": "2026-05-19T13:10:12.150Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 2
-    },
-    {
-      "generatedAt": "2026-05-19T13:10:45.796Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 2
-    },
-    {
-      "generatedAt": "2026-05-19T13:11:59.337Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 7,
-      "okSources": 2
-    },
-    {
-      "generatedAt": "2026-05-19T13:16:12.253Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 2
-    },
-    {
-      "generatedAt": "2026-05-19T15:23:31.072Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
+      "botVisits": 10,
       "okSources": 3
     },
     {
-      "generatedAt": "2026-05-19T15:35:26.345Z",
-      "date": "2026-05-19",
-      "gscRows": 16,
+      "generatedAt": "2026-07-09T08:06:23.342Z",
+      "date": "2026-07-09",
+      "gscRows": 10,
       "quickWins": 6,
       "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
+      "techScore": 97,
+      "mobilePerformance": 88,
+      "desktopPerformance": 98,
       "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-20T03:15:05.310Z",
-      "date": "2026-05-20",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 0,
-      "okSources": 1
-    },
-    {
-      "generatedAt": "2026-05-20T20:38:49.370Z",
-      "date": "2026-05-20",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-20T20:40:02.658Z",
-      "date": "2026-05-20",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-21T03:15:02.451Z",
-      "date": "2026-05-21",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-21T08:49:10.864Z",
-      "date": "2026-05-21",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 2,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-21T08:50:27.084Z",
-      "date": "2026-05-21",
-      "gscRows": 16,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-22T03:15:02.363Z",
-      "date": "2026-05-22",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-23T03:15:02.807Z",
-      "date": "2026-05-23",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-24T03:15:02.720Z",
-      "date": "2026-05-24",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-25T03:15:02.724Z",
-      "date": "2026-05-25",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-26T03:15:02.533Z",
-      "date": "2026-05-26",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-27T03:15:02.987Z",
-      "date": "2026-05-27",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-28T03:15:02.071Z",
-      "date": "2026-05-28",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-29T03:15:02.431Z",
-      "date": "2026-05-29",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-30T03:15:02.397Z",
-      "date": "2026-05-30",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-05-31T03:15:02.467Z",
-      "date": "2026-05-31",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-01T03:15:02.349Z",
-      "date": "2026-06-01",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-02T03:15:02.674Z",
-      "date": "2026-06-02",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-03T03:15:02.036Z",
-      "date": "2026-06-03",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-04T03:15:02.874Z",
-      "date": "2026-06-04",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-05T03:15:02.416Z",
-      "date": "2026-06-05",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-06T03:15:02.570Z",
-      "date": "2026-06-06",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-07T03:15:01.817Z",
-      "date": "2026-06-07",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-08T03:15:02.176Z",
-      "date": "2026-06-08",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-09T03:15:02.529Z",
-      "date": "2026-06-09",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-10T03:15:02.532Z",
-      "date": "2026-06-10",
-      "gscRows": 15,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-11T03:15:02.870Z",
-      "date": "2026-06-11",
-      "gscRows": 14,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-12T03:15:02.818Z",
-      "date": "2026-06-12",
-      "gscRows": 14,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-13T03:15:02.942Z",
-      "date": "2026-06-13",
-      "gscRows": 13,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-14T03:15:01.981Z",
-      "date": "2026-06-14",
-      "gscRows": 13,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-15T03:15:02.224Z",
-      "date": "2026-06-15",
-      "gscRows": 13,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-16T03:15:02.901Z",
-      "date": "2026-06-16",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-17T03:15:02.516Z",
-      "date": "2026-06-17",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-18T03:15:02.756Z",
-      "date": "2026-06-18",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-19T03:15:02.672Z",
-      "date": "2026-06-19",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-20T03:15:02.245Z",
-      "date": "2026-06-20",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-21T03:15:02.095Z",
-      "date": "2026-06-21",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-22T03:15:02.502Z",
-      "date": "2026-06-22",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-23T03:15:02.946Z",
-      "date": "2026-06-23",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-24T03:15:02.327Z",
-      "date": "2026-06-24",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-25T03:15:02.963Z",
-      "date": "2026-06-25",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-26T03:15:02.206Z",
-      "date": "2026-06-26",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-27T03:15:02.824Z",
-      "date": "2026-06-27",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-28T03:15:02.129Z",
-      "date": "2026-06-28",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-29T03:15:02.098Z",
-      "date": "2026-06-29",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
-    },
-    {
-      "generatedAt": "2026-06-30T03:15:02.779Z",
-      "date": "2026-06-30",
-      "gscRows": 11,
-      "quickWins": 6,
-      "organicSessions": 0,
-      "techScore": 0,
-      "mobilePerformance": 0,
-      "desktopPerformance": 0,
-      "gbpWebsiteClicks": 0,
-      "botVisits": 1,
-      "okSources": 3
+      "botVisits": 8,
+      "okSources": 4
     }
   ]
 }

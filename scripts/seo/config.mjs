@@ -42,8 +42,20 @@ export const DEFAULTS = {
     "/home/pimmetje/.hermes/profiles/seo/home/.local/bin/google-search-console-pp-cli",
   gscHome: process.env.SEO_GSC_HOME || "/home/pimmetje/.hermes/profiles/seo/home",
   ga4Command: process.env.SEO_GA4_COMMAND || "",
-  pagespeedApiKey: process.env.SEO_PAGESPEED_API_KEY || process.env.PAGESPEED_API_KEY || "",
-  cruxApiKey: process.env.SEO_CRUX_API_KEY || process.env.CRUX_API_KEY || process.env.SEO_PAGESPEED_API_KEY || process.env.PAGESPEED_API_KEY || "",
+  pagespeedApiKey:
+    process.env.SEO_PAGESPEED_API_KEY ||
+    process.env.PAGESPEED_INSIGHTS_API_KEY ||
+    process.env.GOOGLE_API_KEY ||
+    process.env.PAGESPEED_API_KEY ||
+    "",
+  cruxApiKey:
+    process.env.SEO_CRUX_API_KEY ||
+    process.env.SEO_PAGESPEED_API_KEY ||
+    process.env.PAGESPEED_INSIGHTS_API_KEY ||
+    process.env.GOOGLE_API_KEY ||
+    process.env.CRUX_API_KEY ||
+    process.env.PAGESPEED_API_KEY ||
+    "",
   gbpCommand: process.env.SEO_GBP_COMMAND || "",
   gbpLocation: process.env.SEO_GBP_LOCATION || "",
 };
