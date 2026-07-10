@@ -162,8 +162,8 @@ function InteractivePointCube() {
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduceMotion) {
-      points.rotation.x += delta * 0.035;
-      points.rotation.y += delta * 0.07;
+      points.rotation.x += delta * 0.11;
+      points.rotation.y += delta * 0.24;
     }
 
     raycaster.current.params.Points = { threshold: 0.09 };
