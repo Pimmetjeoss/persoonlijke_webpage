@@ -1,9 +1,21 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
-import type { Group } from "three";
+import { useEffect, useMemo, useRef } from "react";
+import {
+  BoxGeometry,
+  BufferAttribute,
+  BufferGeometry,
+  Color,
+  Float32BufferAttribute,
+  Group,
+  Points,
+  Raycaster,
+  ShaderMaterial,
+  Vector2,
+} from "three";
+import { mergeVertices } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 function FloatingGeometry() {
   const groupRef = useRef<Group>(null);
@@ -53,6 +65,145 @@ export function AwardMotionLayer({ className = "" }: { className?: string }) {
         <directionalLight position={[2, 3, 4]} intensity={1.4} />
         <FloatingGeometry />
       </Canvas>
+    </div>
+  );
+}
+
+const pointVertexShader = `
+  attribute float size;
+  attribute vec3 customColor;
+  varying vec3 vColor;
+
+  void main() {
+    vColor = customColor;
+    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+    gl_PointSize = size * (7.0 / -mvPosition.z);
+    gl_Position = projectionMatrix * mvPosition;
+  }
+`;
+
+const pointFragmentShader = `
+  varying vec3 vColor;
+
+  void main() {
+    vec2 center = gl_PointCoord - vec2(0.5);
+    float distanceFromCenter = length(center);
+    if (distanceFromCenter > 0.5) discard;
+    float softEdge = 1.0 - smoothstep(0.38, 0.5, distanceFromCenter);
+    gl_FragColor = vec4(vColor, softEdge);
+  }
+`;
+
+function InteractivePointCube() {
+  const pointsRef = useRef<Points<BufferGeometry, ShaderMaterial>>(null);
+  const hoveredPoint = useRef<number | null>(null);
+  const pointer = useRef(new Vector2(2, 2));
+  const raycaster = useRef(new Raycaster());
+  const { gl, size } = useThree();
+
+  const geometry = useMemo(() => {
+    const box = new BoxGeometry(3.4, 3.4, 3.4, 16, 16, 16);
+    box.deleteAttribute("normal");
+    box.deleteAttribute("uv");
+    const mergedBox = mergeVertices(box);
+    const positions = mergedBox.getAttribute("position");
+    const colors: number[] = [];
+    const sizes = new Float32Array(positions.count);
+    const color = new Color();
+
+    for (let index = 0; index < positions.count; index += 1) {
+      color.setHSL(0.36 + 0.055 * (index / positions.count), 0.72, 0.38);
+      color.toArray(colors, index * 3);
+      sizes[index] = 5.5;
+    }
+
+    const pointsGeometry = new BufferGeometry();
+    pointsGeometry.setAttribute("position", positions.clone());
+    pointsGeometry.setAttribute("customColor", new Float32BufferAttribute(colors, 3));
+    pointsGeometry.setAttribute("size", new BufferAttribute(sizes, 1));
+    mergedBox.dispose();
+    box.dispose();
+    return pointsGeometry;
+  }, []);
+
+  const material = useMemo(
+    () =>
+      new ShaderMaterial({
+        vertexShader: pointVertexShader,
+        fragmentShader: pointFragmentShader,
+        transparent: true,
+        depthWrite: false,
+      }),
+    [],
+  );
+
+  useEffect(() => {
+    const updatePointer = (event: PointerEvent) => {
+      const bounds = gl.domElement.getBoundingClientRect();
+      pointer.current.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+      pointer.current.y = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
+    };
+
+    document.addEventListener("pointermove", updatePointer, { passive: true });
+    return () => document.removeEventListener("pointermove", updatePointer);
+  }, [gl]);
+
+  useEffect(
+    () => () => {
+      geometry.dispose();
+      material.dispose();
+    },
+    [geometry, material],
+  );
+
+  useFrame((state, delta) => {
+    const points = pointsRef.current;
+    if (!points) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      points.rotation.x += delta * 0.035;
+      points.rotation.y += delta * 0.07;
+    }
+
+    raycaster.current.params.Points = { threshold: 0.09 };
+    raycaster.current.setFromCamera(pointer.current, state.camera);
+
+    const hit = raycaster.current.intersectObject(points, false)[0];
+    const nextHovered = hit?.index ?? null;
+    if (nextHovered === hoveredPoint.current) return;
+
+    const sizes = geometry.getAttribute("size") as BufferAttribute;
+    if (hoveredPoint.current !== null) sizes.setX(hoveredPoint.current, 5.5);
+    if (nextHovered !== null) sizes.setX(nextHovered, 13);
+    sizes.needsUpdate = true;
+    hoveredPoint.current = nextHovered;
+  });
+
+  return (
+    <points
+      ref={pointsRef}
+      geometry={geometry}
+      material={material}
+      position={[size.width >= 768 ? 2.05 : 0, 0.1, 0]}
+      rotation={[0.22, 0.38, 0]}
+      scale={size.width >= 768 ? 0.78 : 0.72}
+    />
+  );
+}
+
+export function InteractivePointsLayer({ className = "" }: { className?: string }) {
+  return (
+    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
+      <Canvas
+        className="opacity-35 md:opacity-55"
+        camera={{ position: [0, 0, 6.4], fov: 45 }}
+        dpr={[1, 1.5]}
+        gl={{ alpha: true, antialias: true }}
+      >
+        <InteractivePointCube />
+      </Canvas>
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-white/75 to-transparent md:bg-gradient-to-r md:from-white md:via-white/85 md:to-transparent" />
     </div>
   );
 }

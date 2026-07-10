@@ -15,7 +15,7 @@ import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
 import { Accordion05, FAQItem } from "../test/components/accordion-05";
-import { AwardInteractions, AwardMotionLayer } from "./components/award-motion";
+import { AwardInteractions, InteractivePointsLayer } from "./components/award-motion";
 
 
 const workflowFaqItems: FAQItem[] = [
@@ -138,7 +138,7 @@ export default function WebdesignPage() {
               className="relative overflow-hidden rounded-xl border-[3px] bg-white p-8 pb-24 shadow-xl scroll-mt-32 md:p-12 md:pb-24"
               style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
             >
-              <AwardMotionLayer className="opacity-45" />
+              <InteractivePointsLayer />
               <div className="relative flex items-start gap-6">
                 <div className="flex-shrink-0 text-[hsl(144.9_80.4%_10%)]">
                   <FileTextIcon className="h-10 w-10 md:h-12 md:w-12" />

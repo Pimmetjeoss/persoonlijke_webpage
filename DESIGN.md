@@ -30,6 +30,7 @@ version: 1.0.0
 - `/webdesign` is intentionally a scaffold that mirrors `/test` so it can be filled out later into a full sales/service page.
 - Keep the same pale-green surface, sticky header, bento-grid entry block, section cards, FAQ accordion, timeline animation, and sticky footer pattern as `/test`.
 - Portfolio accordion item `webdesign` routes directly to `/webdesign`; it must not fall back to `/under-construction`.
+- The `Werkwijze` section uses a slowly rotating, interactive Three.js point cube behind the editorial content. Hover proximity enlarges one point at a time; colors stay within the Code Lieshout green palette, and reduced-motion preferences must be respected.
 
 ## Pitfalls
 - Do not replace the `/ai-agents` header/navigation behavior.
