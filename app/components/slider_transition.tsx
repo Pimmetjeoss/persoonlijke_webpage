@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 export interface SliderTransitionProps {
@@ -101,6 +101,19 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
   const slider2Ref = useRef<HTMLDivElement>(null);
   const slider3Ref = useRef<HTMLDivElement>(null);
   const hasAnimatedRef = useRef(false);
+  // Of onCover al is aangeroepen binnen de huidige animatie. Wordt per run
+  // gereset, zodat elke volgende overgang opnieuw kan navigeren.
+  const hasCoveredRef = useRef(false);
+
+  // De callbacks in refs, zodat een nieuwe functie-instantie van de ouder de
+  // lopende animatie niet opnieuw opbouwt.
+  const onCoverRef = useRef(onCover);
+  const onCompleteRef = useRef(onComplete);
+
+  useEffect(() => {
+    onCoverRef.current = onCover;
+    onCompleteRef.current = onComplete;
+  }, [onCover, onComplete]);
 
   // Calculate transform values based on direction
   const getTransformValue = () => {
@@ -132,10 +145,13 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
   useEffect(() => {
     if (!trigger || hasAnimatedRef.current) return;
 
+    // Nieuwe animatie: onCover mag weer één keer vuren.
+    hasCoveredRef.current = false;
+
     const timeline = gsap.timeline({
       onComplete: () => {
         hasAnimatedRef.current = true;
-        onComplete?.();
+        onCompleteRef.current?.();
       },
     });
 
@@ -165,10 +181,9 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
           ease,
           onUpdate: function() {
             // Call onCover at 40% to give new page more time to load
-            if (this.progress() >= 0.4 && onCover) {
-              onCover();
-              // Set to null to prevent multiple calls
-              onCover = null as unknown as typeof onCover;
+            if (this.progress() >= 0.4 && !hasCoveredRef.current) {
+              hasCoveredRef.current = true;
+              onCoverRef.current?.();
             }
           }
         },
@@ -178,12 +193,19 @@ export const SliderTransition: React.FC<SliderTransitionProps> = ({
     return () => {
       timeline.kill();
     };
-  }, [trigger, duration, stagger, initialDelay, ease, start, end, axis, onComplete, onCover]);
+    // onCover/onComplete staan bewust niet in de deps: die worden via refs
+    // gelezen, zodat een nieuwe functie-instantie de lopende animatie niet
+    // halverwege opnieuw opbouwt.
+  }, [trigger, duration, stagger, initialDelay, ease, start, end, axis]);
 
   // Reset animation state when trigger becomes false
   useEffect(() => {
-    if (!trigger && hasAnimatedRef.current) {
+    if (!trigger) {
+      // Onvoorwaardelijk resetten: als de timeline tussentijds is afgebroken
+      // draaide `onComplete` nooit, en zouden de blokken anders midden in
+      // beeld blijven staan.
       hasAnimatedRef.current = false;
+      hasCoveredRef.current = false;
 
       // Reset positions to start
       gsap.set([slider1Ref.current, slider2Ref.current, slider3Ref.current], {

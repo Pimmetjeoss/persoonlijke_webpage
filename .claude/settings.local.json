@@ -82,7 +82,11 @@
       "Bash(powershell.exe -Command \"Select-String -Path ''C:\\\\Users\\\\pimme\\\\.claude\\\\plugins\\\\marketplaces\\\\everything-claude-code\\\\mcp-configs\\\\mcp-servers.json'' -Pattern ''agent.browser|vercel''\")",
       "Bash(gh api:*)",
       "Bash(gh repo view:*)",
-      "Bash(git ls-tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(git *)",
+      "Bash(npx playwright *)",
+      "Bash(cd C:\\\\Users\\\\lieshoup\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-lieshoup-agents-persoonlijke-webpage\\\\e4f569b8-50fa-4b3e-aa2c-b4d7de0c74aa\\\\scratchpad *)",
+      "Bash(node *)"
     ],
     "deny": [],
     "ask": []
@@ -91,6 +95,7 @@
     "seo-analysis-monitoring@claude-code-workflows": true,
     "seo-content-creation@claude-code-workflows": true,
     "seo-technical-optimization@claude-code-workflows": true,
-    "content-marketing@claude-code-workflows": true
+    "content-marketing@claude-code-workflows": true,
+    "brag@brag": true
   }
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import {
   FileTextIcon,
+  ImageIcon,
   LayersIcon,
   MagnifyingGlassIcon,
   PersonIcon,
@@ -160,6 +161,26 @@ export default function WebdesignPage() {
               </div>
             </section>
 
+            <SectionCard
+              id="portfolio"
+              title="Portfolio"
+              description="Bekijk eerder opgeleverd werk."
+              Icon={ImageIcon}
+            >
+              <div className="space-y-5 text-lg leading-relaxed text-gray-700">
+                <p>
+                  Benieuwd wat er uit deze werkwijze komt? Op de portfoliopagina zie je eerder opgeleverd werk voorbijkomen. Klik een project aan om het te openen.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Link
+                    href="/werk"
+                    className="rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(144.9_80.4%_10%)] hover:text-white"
+                  >
+                    Bekijk het portfolio
+                  </Link>
+                </div>
+              </div>
+            </SectionCard>
 
             <BentoGrid className="lg:grid-rows-3">
               {features.map((feature) => (
