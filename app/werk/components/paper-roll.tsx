@@ -40,6 +40,16 @@ interface PaperRollProps {
   onPrintedChange?: (printed: number) => void
   /** Meldt of de rol gepauzeerd is. */
   onPausedChange?: (paused: boolean) => void
+  /**
+   * Meldt welke kaart is aangetikt op een touchscreen. Daar bestaat geen
+   * hover, dus wordt selecteren een aparte stap vóór het openen.
+   */
+  onSelectChange?: (project: Project | null) => void
+  /**
+   * Onderdrukt navigeren bij een tik op een kaart. Op touch bevestigt de
+   * bezoeker eerst via een knop; op desktop opent één klik direct.
+   */
+  selectOnly?: boolean
 }
 
 /** Uitkomst van de WebGL-check; één keer bepaald en daarna hergebruikt. */
@@ -87,6 +97,8 @@ export default function PaperRoll({
   onHoverChange,
   onPrintedChange,
   onPausedChange,
+  onSelectChange,
+  selectOnly = false,
 }: PaperRollProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { startTransition, isTransitioning } = useTransition()
@@ -105,7 +117,14 @@ export default function PaperRoll({
   const hoverRef = useRef(onHoverChange)
   const printedRef = useRef(onPrintedChange)
   const pausedRef = useRef(onPausedChange)
+  const selectRef = useRef(onSelectChange)
+  const selectOnlyRef = useRef(selectOnly)
   const navigateRef = useRef<(href: string) => void>(() => {})
+
+  useEffect(() => {
+    selectRef.current = onSelectChange
+    selectOnlyRef.current = selectOnly
+  }, [onSelectChange, selectOnly])
 
   useEffect(() => {
     hoverRef.current = onHoverChange
@@ -349,6 +368,12 @@ export default function PaperRoll({
     let lastPointerTime = -1e9
     let autoAngle = Math.PI * 0.25
     let paused = false
+    // Op een touchscreen bestaat geen zweven: de vinger raakt het scherm pas
+    // aan op het moment van tikken. De rol mag daar dus niet naartoe rijden,
+    // anders beweegt het doel onder de vinger vandaan.
+    let usingTouch = false
+    // Of de vinger op dit moment het scherm raakt en sleept.
+    let touchDragging = false
 
     function handlePointer(event: PointerEvent | TouchEvent) {
       let clientX: number | undefined
@@ -357,9 +382,13 @@ export default function PaperRoll({
       if ("touches" in event && event.touches.length) {
         clientX = event.touches[0].clientX
         clientY = event.touches[0].clientY
+        usingTouch = true
       } else if ("clientX" in event) {
         clientX = event.clientX
         clientY = event.clientY
+        if ("pointerType" in event && event.pointerType === "touch") {
+          usingTouch = true
+        }
       }
       if (clientX === undefined || clientY === undefined) return
 
@@ -405,10 +434,15 @@ export default function PaperRoll({
       downX = event.clientX
       downY = event.clientY
       downTime = performance.now()
+      if (event.pointerType === "touch") {
+        touchDragging = true
+      }
       handlePointer(event)
     }
 
     function handlePointerUp(event: PointerEvent) {
+      touchDragging = false
+
       // Klikken op bedienelementen (zoals de terugknop) mag de rol niet
       // pauzeren; die liggen boven het canvas.
       if (event.target !== stage) return
@@ -420,6 +454,22 @@ export default function PaperRoll({
       if (wasDrag || wasSlow) return
 
       const target = projectUnderPointer()
+
+      // Zonder hover kan de bezoeker niet zien wat hij aantikt. Daarom is de
+      // eerste tik selecteren: de rol stopt en de UI toont welk project het
+      // is, met een knop om te openen.
+      if (selectOnlyRef.current) {
+        if (target) {
+          selectRef.current?.(target)
+          setPaused(true)
+        } else {
+          // Tik naast de strook heft de selectie op en laat de rol weer gaan.
+          selectRef.current?.(null)
+          setPaused(false)
+        }
+        return
+      }
+
       if (target?.href) {
         navigateRef.current(target.href)
         return
@@ -427,16 +477,28 @@ export default function PaperRoll({
       setPaused(!paused)
     }
 
+    // Onderbreekt het systeem de aanraking (melding, gebaar), dan blijft
+    // `touchDragging` anders hangen en stuurt de rol eindeloos door.
+    function handlePointerCancel() {
+      touchDragging = false
+    }
+
     window.addEventListener("pointermove", handlePointer, { passive: true })
     window.addEventListener("pointerdown", handlePointerDown, { passive: true })
     window.addEventListener("pointerup", handlePointerUp, { passive: true })
+    window.addEventListener("pointercancel", handlePointerCancel, {
+      passive: true,
+    })
     window.addEventListener("touchmove", handlePointer, { passive: true })
     window.addEventListener("touchstart", handlePointer, { passive: true })
 
     /** Stuurt de rol: naar de muis, of anders zwervend op de automaat. */
     function updateTarget(elapsed: number, dt: number) {
       const idle = performance.now() - lastPointerTime > 3200
-      if (pointerActive && !idle) {
+      // Met een muis stuurt elke beweging; met een vinger alleen tijdens
+      // slepen, zodat een tik het doelwit niet wegtrekt.
+      const steering = usingTouch ? touchDragging : pointerActive && !idle
+      if (steering) {
         raycaster.setFromCamera(pointerNdc, camera)
         if (raycaster.ray.intersectPlane(floorPlane, hitPoint)) {
           state.targetX = hitPoint.x
@@ -539,11 +601,14 @@ export default function PaperRoll({
         printedRef.current?.(printed)
       }
 
-      const nowHovered = projectUnderPointer()
-      if (nowHovered?.id !== hovered?.id) {
-        hovered = nowHovered
-        hoverRef.current?.(nowHovered)
-        stage.style.cursor = nowHovered?.href ? "pointer" : "grab"
+      // Zweven bestaat niet op touch; daar bepaalt de tik de selectie.
+      if (!usingTouch) {
+        const nowHovered = projectUnderPointer()
+        if (nowHovered?.id !== hovered?.id) {
+          hovered = nowHovered
+          hoverRef.current?.(nowHovered)
+          stage.style.cursor = nowHovered?.href ? "pointer" : "grab"
+        }
       }
 
       renderer.render(scene, camera)
@@ -564,6 +629,7 @@ export default function PaperRoll({
       window.removeEventListener("pointermove", handlePointer)
       window.removeEventListener("pointerdown", handlePointerDown)
       window.removeEventListener("pointerup", handlePointerUp)
+      window.removeEventListener("pointercancel", handlePointerCancel)
       window.removeEventListener("touchmove", handlePointer)
       window.removeEventListener("touchstart", handlePointer)
       window.removeEventListener("resize", handleResize)

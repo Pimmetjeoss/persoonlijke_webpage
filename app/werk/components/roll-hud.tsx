@@ -16,6 +16,10 @@ interface RollHudProps {
   hovered: Project | null
   /** Of de rol stilstaat. */
   paused: boolean
+  /** Of het apparaat met aanraking bediend wordt. */
+  isTouch?: boolean
+  /** Of er een project geselecteerd is; dan neemt het paneel het over. */
+  hasSelection?: boolean
 }
 
 /** Getal met voorloopnullen, bijv. 42 -> "0042". */
@@ -26,7 +30,17 @@ function pad4(value: number): string {
 const INK = "hsl(144.9 80.4% 10%)"
 const MUTED = "hsl(142.8 64.2% 24.1%)"
 
-export default function RollHud({ printed, hovered, paused }: RollHudProps) {
+export default function RollHud({
+  printed,
+  hovered,
+  paused,
+  isTouch = false,
+  hasSelection = false,
+}: RollHudProps) {
+  // Zodra het selectiepaneel opent, verdwijnen teller en hint: op een smal
+  // scherm zouden ze anders achter het paneel doorlopen.
+  if (hasSelection) return null
+
   return (
     <div className="pointer-events-none fixed inset-0 z-10 select-none">
       {/* Merk linksboven */}
@@ -103,9 +117,13 @@ export default function RollHud({ printed, hovered, paused }: RollHudProps) {
               style={{ background: "hsl(142.1 76.2% 36.3%)" }}
             />
             <span>
-              {paused
-                ? "Gepauzeerd — klik om verder te rollen"
-                : "Beweeg om te sturen — klik op een kaart"}
+              {isTouch
+                ? paused
+                  ? "Tik naast de strook om verder te gaan"
+                  : "Sleep om te sturen — tik op een kaart"
+                : paused
+                  ? "Gepauzeerd — klik om verder te rollen"
+                  : "Beweeg om te sturen — klik op een kaart"}
             </span>
           </div>
         )}
