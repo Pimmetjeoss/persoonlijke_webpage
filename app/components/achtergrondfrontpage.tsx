@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     >
       <video
         ref={videoRef}
-        className='w-full h-full object-cover z-0'
+        className='w-full h-full object-contain md:object-cover z-0'
         autoPlay
         muted
         playsInline
@@ -44,9 +44,13 @@ const Home: React.FC = () => {
       >
         <source src='/CodeLieshout-intro!720p.mp4' type='video/mp4' />
       </video>
-      <div className='absolute bottom-8 right-8 z-10 text-white/50 text-sm pointer-events-none select-none'>
-        Klik om te skippen →
-      </div>
+      <button
+        type='button'
+        onClick={handleSkipVideo}
+        className='absolute bottom-6 right-6 md:bottom-8 md:right-8 z-10 rounded-full border border-white/40 bg-black/40 px-5 py-2.5 text-sm text-white backdrop-blur-sm transition-colors hover:bg-black/60'
+      >
+        Skip intro →
+      </button>
     </div>
   );
 };

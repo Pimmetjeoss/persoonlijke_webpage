@@ -70,10 +70,10 @@ export default function StickyHeader({
           }}
         >
           <div className="pt-4 pb-2 px-4 md:px-8 lg:px-16">
-            <div className="grid grid-cols-[1fr_auto] gap-8 items-end w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-[1fr_auto] gap-4 md:gap-8 items-end w-full max-w-7xl mx-auto">
               {/* Title */}
               <div>
-                <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]">
+                <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]">
                   {title}
                 </h1>
               </div>

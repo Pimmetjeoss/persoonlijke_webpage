@@ -242,7 +242,7 @@ export default function WebdesignPage() {
           </div>
         </TimelineContent>
 
-        <div className="h-[200vh]" />
+        <div className="h-24 md:h-40" />
       </div>
       <StickyFooter />
     </div>

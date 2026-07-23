@@ -69,7 +69,7 @@ function ContactHeader() {
             <div className="grid grid-cols-[1fr_auto] gap-8 items-end w-full max-w-7xl mx-auto">
               <div>
                 <h1
-                  className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]"
+                  className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]"
                   style={{ color: 'hsl(144.9, 80.4%, 10%)' }}
                 >
                   CONTACT
@@ -157,7 +157,7 @@ export default function HorizontalScroll() {
 
   return (
     <ReactLenis root>
-      <main className='bg-[hsl(141,78.9%,85.1%)]'>
+      <main className='bg-[hsl(141,78.9%,85.1%)] overflow-x-clip'>
         <ContactHeader />
 
         {/* Section Card onder de header */}
@@ -180,13 +180,13 @@ export default function HorizontalScroll() {
           </div>
         </div>
 
-        <article className='mt-[300px]'>
-          <section className='h-[500vh] relative'>
+        <article className='mt-24 md:mt-[300px]'>
+          <section className='h-[500vh] relative overflow-x-clip'>
             <ul ref={ulRef} className='flex sticky top-0 h-screen'>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-visible items-center' style={{ backgroundColor: 'hsl(142.1, 76.2%, 36.3%)' }}>
                 <a href="mailto:pim@code-lieshout.nl" onClick={() => trackEmailClick('pim@code-lieshout.nl')} className="flex flex-col items-center cursor-pointer">
                 <h1
-                  className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight inline-block'
+                  className='text-[8vw] sm:text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight inline-block'
                   style={{
                     backgroundImage: 'linear-gradient(to bottom, hsl(138.5, 76.5%, 96.7%) 50%, hsl(141, 78.9%, 85.1%) 50%)',
                     backgroundSize: '100% 100%',
@@ -211,7 +211,7 @@ export default function HorizontalScroll() {
                   alt="Cactus met email"
                   width={900}
                   height={900}
-                  className="absolute left-1/2 -translate-x-1/2 -top-[200px] object-contain opacity-90 z-10"
+                  className="absolute left-1/2 -translate-x-1/2 -top-16 w-[65vw] md:w-auto md:-top-[200px] object-contain opacity-90 z-10"
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.4, 71.8%, 29.2%)' }}>
@@ -223,7 +223,7 @@ export default function HorizontalScroll() {
                   Mobiel nummer
                 </span>
                 <h1
-                  className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block'
+                  className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block'
                   style={{
                     color: 'hsl(141, 78.9%, 85.1%)',
                     textShadow: '8px 8px 0px hsl(144.9, 80.4%, 10%)'
@@ -237,7 +237,7 @@ export default function HorizontalScroll() {
                   alt="Cactus met telefoon"
                   width={900}
                   height={900}
-                  className="absolute bottom-0 right-0 object-contain opacity-90"
+                  className="absolute bottom-0 right-0 w-[55vw] md:w-auto object-contain opacity-90"
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(142.8, 64.2%, 24.1%)' }}>
@@ -248,7 +248,7 @@ export default function HorizontalScroll() {
                   Social 1
                 </span>
                 <h1
-                  className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block transition-colors duration-300 hover:text-[hsl(141,78.9%,85.1%)] cursor-pointer'
+                  className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block transition-colors duration-300 hover:text-[hsl(141,78.9%,85.1%)] cursor-pointer'
                   style={{
                     color: 'transparent',
                     WebkitTextStroke: '3px hsl(141, 78.9%, 85.1%)'
@@ -261,14 +261,14 @@ export default function HorizontalScroll() {
                   alt="Cactus met Instagram"
                   width={600}
                   height={600}
-                  className="absolute left-1/2 -translate-x-1/2 bottom-[-150px] object-contain opacity-90"
+                  className="absolute left-1/2 -translate-x-1/2 bottom-[-60px] w-[60vw] md:w-auto md:bottom-[-150px] object-contain opacity-90"
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center youtube-section' style={{ backgroundColor: 'hsl(143.8, 61.2%, 20.2%)' }}>
                 <a href="https://www.youtube.com/channel/UCY58wz5iIWjZkbHxiQmCSXA" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer"
                   onClick={() => trackOutboundClick('https://www.youtube.com/@PimvanLieshout', 'YouTube')}>
                   <span className='relative inline-block'>
-                    <h1 className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
+                    <h1 className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                       Youtube
                     </h1>
                     <span
@@ -293,7 +293,7 @@ export default function HorizontalScroll() {
                   alt="Cactus met YouTube"
                   width={900}
                   height={900}
-                  className="absolute top-0 left-0 object-contain opacity-90"
+                  className="absolute top-0 left-0 w-[55vw] md:w-auto object-contain opacity-90"
                 />
               </li>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-hidden items-center' style={{ backgroundColor: 'hsl(144.9, 80.4%, 10%)' }}>
@@ -306,7 +306,7 @@ export default function HorizontalScroll() {
                     Social 2
                   </span>
                   <h1
-                    className='text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block border-4 rounded-2xl px-8 py-4'
+                    className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block border-4 rounded-2xl px-6 py-3 md:px-8 md:py-4'
                     style={{
                       color: 'hsl(141, 78.9%, 85.1%)',
                       borderColor: 'hsl(141, 78.9%, 85.1%)'
@@ -320,7 +320,7 @@ export default function HorizontalScroll() {
                   alt="Cactus met LinkedIn"
                   width={900}
                   height={900}
-                  className="absolute bottom-0 right-0 object-contain opacity-90"
+                  className="absolute bottom-0 right-0 w-[55vw] md:w-auto object-contain opacity-90"
                 />
               </li>
             </ul>

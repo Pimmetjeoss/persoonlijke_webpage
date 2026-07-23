@@ -47,10 +47,11 @@ function Index() {
           muted
           loop
           playsInline
-          className='absolute inset-0 w-full h-full object-cover opacity-10'
+          preload='none'
+          className='absolute inset-0 hidden md:block w-full h-full object-cover opacity-10'
         >
           <source
-            src='https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4'
+            src='https://videos.pexels.com/video-files/7710243/7710243-hd_1920_1080_30fps.mp4'
             type='video/mp4'
           />
         </video>
