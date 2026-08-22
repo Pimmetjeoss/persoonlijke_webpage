@@ -1008,19 +1008,30 @@ const sketchStyles = `
 .sb-full{position:absolute;inset:0}
 .sb-full img{width:100%;height:auto;display:block}
 
-/* tekstpagina's: links illustratie, rechts het verhaal in boektypografie */
-.sb-story{position:absolute;inset:0;display:flex;align-items:center;gap:clamp(16px,3%,40px);
-  padding:4.5% 5%;background:#f6f2e6;border-radius:10px;
-  box-shadow:inset 0 0 0 1px rgba(34,48,31,.08), inset 0 0 60px rgba(120,100,60,.12)}
-.sb-story:before{content:"";position:absolute;left:50%;top:3.5%;bottom:3.5%;width:1px;
-  background:linear-gradient(180deg,transparent,rgba(34,48,31,.22) 18%,rgba(34,48,31,.22) 82%,transparent)}
-.sb-story-img{flex:0 0 42%;width:42%;height:auto;max-height:82%;object-fit:contain;user-select:none;-webkit-user-drag:none}
-.sb-story-text{flex:1;min-width:0;font-family:'Newsreader SB',Georgia,'Times New Roman',serif;color:#22301f;
-  padding-right:clamp(4px,2%,20px)}
-.sb-story-heading{font-family:'SB Instrument Serif',Georgia,serif;font-weight:400;
-  font-size:clamp(17px,2.6cqw,30px);margin:0 0 .7em;letter-spacing:.01em}
-.sb-story-text p{font-size:clamp(11px,1.55cqw,17px);line-height:1.72;margin:0 0 .9em;font-weight:340}
+/* tekstpagina's: een echte openslag — links de afbeeldingspagina,
+   rechts de beschreven pagina, beide op het papier van het boek */
+.sb-story{position:absolute;inset:0;display:flex;align-items:stretch;
+  background:#f3eddc;
+  box-shadow:inset 0 0 0 1px rgba(34,48,31,.06), inset 0 2px 26px rgba(120,100,60,.16)}
+.sb-story:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:7%;transform:translateX(-50%);
+  background:linear-gradient(90deg,rgba(84,64,32,0) 0%,rgba(84,64,32,.16) 42%,rgba(84,64,32,.30) 50%,rgba(84,64,32,.16) 58%,rgba(84,64,32,0) 100%);
+  pointer-events:none;z-index:2}
+.sb-story:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(90% 60% at 50% 0%,rgba(255,252,240,.5),rgba(255,252,240,0) 60%),
+    radial-gradient(120% 90% at 50% 110%,rgba(110,88,50,.10),rgba(110,88,50,0) 55%)}
+.sb-story-img{flex:0 0 50%;width:50%;height:100%;object-fit:contain;padding:6% 4%;
+  box-sizing:border-box;user-select:none;-webkit-user-drag:none}
+.sb-story-text{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;
+  font-family:'Newsreader SB',Georgia,'Times New Roman',serif;color:#2e2a20;
+  padding:6% 7% 6% 9%;position:relative;z-index:1}
+.sb-story-heading{font-family:'SB Instrument Serif',Georgia,serif;font-weight:400;font-style:italic;
+  font-size:clamp(15px,2.4cqw,28px);margin:0 0 .8em;letter-spacing:.01em;color:#22301f}
+.sb-story-text p{font-size:clamp(10px,1.5cqw,16px);line-height:1.78;margin:0 0 1em;font-weight:360;
+  color:#3a3426}
 .sb-story-text p:last-child{margin-bottom:0}
+.sb-story-text p:first-of-type::first-letter{font-family:'SB Instrument Serif',Georgia,serif;
+  font-size:2.1em;line-height:.9;float:left;padding-right:.08em;color:#3c7a46}
 .sb-story-enter-next{animation:sb-in-next .42s ease both}
 .sb-story-enter-prev{animation:sb-in-prev .42s ease both}
 .sb-story-leave-next{animation:sb-out-next .42s ease both forwards}
@@ -1030,12 +1041,10 @@ const sketchStyles = `
 @keyframes sb-out-next{to{opacity:0;transform:translateX(-26px)}}
 @keyframes sb-out-prev{to{opacity:0;transform:translateX(26px)}}
 @media (max-width:640px){
-  .sb-story{flex-direction:column;justify-content:center;gap:8px;padding:8% 9%;text-align:left}
-  .sb-story:before{left:8%;right:8%;top:50%;bottom:auto;width:auto;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(34,48,31,.22) 18%,rgba(34,48,31,.22) 82%,transparent)}
-  .sb-story-img{flex:none;width:auto;max-width:70%;max-height:38%}
-  .sb-story-heading{font-size:16px;margin:.35em 0}
-  .sb-story-text p{font-size:11px;line-height:1.55;margin:0 0 .55em}
+  .sb-story-heading{font-size:13px;margin:0 0 .5em}
+  .sb-story-text p{font-size:8.5px;line-height:1.6;margin:0 0 .5em}
+  .sb-story-text{padding:5% 6% 5% 9%}
+  .sb-story-img{padding:8% 3%}
 }
 .sb-half{position:absolute;top:0;bottom:0;width:50%;overflow-x:clip;overflow-y:visible}
 .sb-half.left{left:0}
