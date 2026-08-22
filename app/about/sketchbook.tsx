@@ -25,6 +25,58 @@ export const SPREADS = [
   { file: 'contact.png', title: 'Neem contact op', place: 'Ik denk met je mee' },
 ] as const
 
+/**
+ * Tekstpagina's: een open spread met links een illustratie en rechts het
+ * verhaal in boektypografie. Ze verschijnen als extra pagina's tussen de
+ * aquarel-spreads en faden zacht in en uit (het omslaande blad is alleen
+ * tussen volledige afbeeldingspagina's te zien).
+ */
+export const STORY_PAGES: Record<
+  string,
+  { image: string; heading: string; body: string[] }
+> = {
+  proces: {
+    image: 's-proces.png',
+    heading: 'Procesoptimalisatie',
+    body: [
+      'In mijn werk ben ik altijd gefascineerd geweest door processen: waarom gaat iets zoals het gaat, en kan het slimmer, sneller of prettiger?',
+      'Van chaos naar richting — eerst begrijpen, dan vereenvoudigen, dan pas automatiseren.',
+    ],
+  },
+  creatief: {
+    image: 's-creatief.png',
+    heading: 'Creatief bezig zijn',
+    body: [
+      'Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken!',
+      'Tekenen, knutselen, bouwen: het maakt niet uit wat, zolang er maar iets staat waar eerst niets was.',
+    ],
+  },
+  ai: {
+    image: 's-ai.png',
+    heading: 'Het AI-virus',
+    body: [
+      'Sinds een jaar ben ik volledig gegrepen door het AI-virus — en ik heb geen tegengif gezocht.',
+      'Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen.',
+    ],
+  },
+  codelieshout: {
+    image: 's-code.png',
+    heading: 'Code Lieshout',
+    body: [
+      'Daarom ben ik oprichter van Code Lieshout: bedrijven helpen op een persoonlijke en pragmatische manier.',
+      'Innovatief en flexibel genoeg voor de modernste technieken op het gebied van AI en agents — tegen een fractie van de prijs die traditionele consultants vragen.',
+    ],
+  },
+  contact: {
+    image: 's-contact.png',
+    heading: 'Neem contact op',
+    body: [
+      'Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!',
+      'Koffie of een online gesprek? Ik denk graag met je mee — mail pim@code-lieshout.nl of bel 06-12419980.',
+    ],
+  },
+}
+
 type Page = (typeof SPREADS)[number]
 
 const N = 18 // aantal strips in het blad
@@ -88,7 +140,7 @@ export default function Sketchbook() {
       im.className = 'sb-half-img ' + pos
       im.draggable = false
       im.alt = ''
-      im.src = pageUrl(SPREADS[i])
+      im.src = pageUrl(SPREADS[viewSpread(i)])
       d.appendChild(im)
       d.appendChild(el('div', 'gutter-shade ' + pos))
       return d
@@ -276,18 +328,61 @@ export default function Sketchbook() {
     }
 
     /* ------------------------------- paint ------------------------------ */
+    // Paginavolgorde: spread 0, dan afwisselend [tekstpagina, volgende spread].
+    // Een "view index" wijst ofwel naar een afbeeldingsspread (even) of een
+    // tekstpagina (oneven, gekoppeld aan SPREADS[(i+1)/2]).
+    const totalViews = SPREADS.length * 2 - 1
+    function isStoryView(v: number) {
+      return v % 2 === 1
+    }
+    function viewIsImage(v: number) {
+      return !isStoryView(v)
+    }
+
+    let storyEl: HTMLDivElement | null = null
+
+    function buildStoryPage(viewIdx: number): HTMLDivElement {
+      const key = SPREADS[(viewIdx + 1) / 2].file.replace('.png', '')
+      const story = STORY_PAGES[key]
+      const d = el('div', 'sb-story') as HTMLDivElement
+      if (!story) return d
+      const img = new Image()
+      img.className = 'sb-story-img'
+      img.src = DIR + story.image
+      img.alt = ''
+      img.draggable = false
+      const text = el('div', 'sb-story-text')
+      const h = el('h3', 'sb-story-heading')
+      h.textContent = story.heading
+      text.appendChild(h)
+      story.body.forEach((par) => {
+        const p = el('p')
+        p.textContent = par
+        text.appendChild(p)
+      })
+      d.appendChild(img)
+      d.appendChild(text)
+      return d
+    }
+
     function paint() {
       book.textContent = ''
       if (!turn) {
-        const f = el('div', 'sb-full')
-        const im = new Image()
-        im.src = pageUrl(SPREADS[idx])
-        im.alt = SPREADS[idx].title
-        im.draggable = false
-        f.appendChild(im)
-        book.appendChild(f)
+        if (viewIsImage(idx)) {
+          const f = el('div', 'sb-full')
+          const im = new Image()
+          im.src = pageUrl(SPREADS[idx / 2])
+          im.alt = SPREADS[idx / 2].title
+          im.draggable = false
+          f.appendChild(im)
+          book.appendChild(f)
+        } else {
+          storyEl = buildStoryPage(idx)
+          book.appendChild(storyEl)
+        }
         sb3d.style.setProperty('--shade', '0')
       } else {
+        // Het omslaande blad bestaat alleen tussen twee afbeeldingspaginas.
         const next = turn.dir === 'next'
         book.appendChild(halfEl('left', next ? turn.from : turn.to))
         book.appendChild(halfEl('right', next ? turn.to : turn.from))
@@ -359,16 +454,43 @@ export default function Sketchbook() {
     stage.addEventListener('pointercancel', endDrag)
 
     /* ---------------------------- turn control -------------------------- */
+    // Bladen (curl) bestaat alleen tussen afbeeldingspaginas. Vanaf een
+    // tekstpagina of naar een tekstpagina: directe fade via storyFade().
     function startTurn(dir: 'next' | 'prev', t: number) {
       spring = null
       if (turn) {
         idx = turn.to
         turn = null
       }
+      const target = dir === 'next' ? (idx + 1) % totalViews : (idx - 1 + totalViews) % totalViews
+      if (isStoryView(idx) || isStoryView(target)) {
+        storyFade(dir, target)
+        return
+      }
       shoveLoupe(dir)
-      const from = idx
-      turn = { dir, from, to: dir === 'next' ? (from + 1) % M : (from - 1 + M) % M, t: t || 0 }
+      turn = { dir, from: idx, to: target, t: t || 0 }
       paint()
+    }
+    function storyFade(dir: 'next' | 'prev', target: number) {
+      if (REDUCED) {
+        idx = target
+        paint()
+        return
+      }
+      const leaving = book.querySelector('.sb-story')
+      const incoming = buildStoryPage(target)
+      incoming.classList.add('sb-story-enter-next')
+      if (dir === 'prev') incoming.classList.remove('sb-story-enter-next'), incoming.classList.add('sb-story-enter-prev')
+      book.appendChild(incoming)
+      if (leaving) leaving.classList.add('sb-story-leave-' + (dir === 'next' ? 'next' : 'prev'))
+      setTimeout(
+        () => {
+          idx = target
+          turn = null
+          paint()
+        },
+        420,
+      )
     }
     function commit() {
       if (!turn) return
@@ -409,19 +531,19 @@ export default function Sketchbook() {
     }
     function goTo(i: number) {
       if (introOn) endIntro()
-      if (i === idx) return
+      const target = i * 2 // index-lijst wijst naar afbeeldingspaginas
+      if (target === idx) return
       if (turn) {
         idx = turn.to
         turn = null
       }
-      const fwd = (i - idx + M) % M
-      const back = (idx - i + M) % M
+      const fwd = (target - idx + totalViews) % totalViews
+      const back = (idx - target + totalViews) % totalViews
       if (Math.min(fwd, back) === 1) {
         step(fwd === 1 ? 'next' : 'prev')
         return
       }
-      idx = i
-      paint()
+      storyFade(fwd <= back ? 'next' : 'prev', target)
     }
 
     const btnLeft = wrap.querySelector<HTMLButtonElement>('#sbLeft')
@@ -617,17 +739,21 @@ export default function Sketchbook() {
       capOut = capIn = null
       if (turn) {
         capOut = el('p', 'sb-caption live')
-        capOut.textContent = SPREADS[turn.from].title
+        capOut.textContent = SPREADS[viewSpread(turn.from)].title
         capBox.appendChild(capOut)
         capIn = el('p', 'sb-caption live')
-        capIn.textContent = SPREADS[turn.to].title
+        capIn.textContent = SPREADS[viewSpread(turn.to)].title
         capBox.appendChild(capIn)
         fadeCaption(turn.t)
       } else {
         const p = el('p', 'sb-caption')
-        p.textContent = SPREADS[idx].title
+        p.textContent = SPREADS[viewSpread(idx)].title
         capBox.appendChild(p)
       }
+    }
+    // view-index → spread-index in SPREADS
+    function viewSpread(v: number) {
+      return isStoryView(v) ? (v + 1) / 2 : v / 2
     }
 
     /* ------------------------------- intro ------------------------------ */
@@ -666,7 +792,7 @@ export default function Sketchbook() {
         paint()
         return
       }
-      const steps = M + 4
+      const steps = 6 // korte intro: alleen over afbeeldingspaginas riffelen
       riffle = []
       for (let r = 0; r < steps; r++) {
         const bell = Math.sin(Math.PI * (r / (steps - 1)))
@@ -881,6 +1007,36 @@ const sketchStyles = `
   filter:blur(4px);opacity:calc(1 - var(--shade,0)*.62)}
 .sb-full{position:absolute;inset:0}
 .sb-full img{width:100%;height:auto;display:block}
+
+/* tekstpagina's: links illustratie, rechts het verhaal in boektypografie */
+.sb-story{position:absolute;inset:0;display:flex;align-items:center;gap:clamp(16px,3%,40px);
+  padding:4.5% 5%;background:#f6f2e6;border-radius:10px;
+  box-shadow:inset 0 0 0 1px rgba(34,48,31,.08), inset 0 0 60px rgba(120,100,60,.12)}
+.sb-story:before{content:"";position:absolute;left:50%;top:3.5%;bottom:3.5%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(34,48,31,.22) 18%,rgba(34,48,31,.22) 82%,transparent)}
+.sb-story-img{flex:0 0 42%;width:42%;height:auto;max-height:82%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.sb-story-text{flex:1;min-width:0;font-family:'Newsreader SB',Georgia,'Times New Roman',serif;color:#22301f;
+  padding-right:clamp(4px,2%,20px)}
+.sb-story-heading{font-family:'SB Instrument Serif',Georgia,serif;font-weight:400;
+  font-size:clamp(17px,2.6cqw,30px);margin:0 0 .7em;letter-spacing:.01em}
+.sb-story-text p{font-size:clamp(11px,1.55cqw,17px);line-height:1.72;margin:0 0 .9em;font-weight:340}
+.sb-story-text p:last-child{margin-bottom:0}
+.sb-story-enter-next{animation:sb-in-next .42s ease both}
+.sb-story-enter-prev{animation:sb-in-prev .42s ease both}
+.sb-story-leave-next{animation:sb-out-next .42s ease both forwards}
+.sb-story-leave-prev{animation:sb-out-prev .42s ease both forwards}
+@keyframes sb-in-next{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes sb-in-prev{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+@keyframes sb-out-next{to{opacity:0;transform:translateX(-26px)}}
+@keyframes sb-out-prev{to{opacity:0;transform:translateX(26px)}}
+@media (max-width:640px){
+  .sb-story{flex-direction:column;justify-content:center;gap:8px;padding:8% 9%;text-align:left}
+  .sb-story:before{left:8%;right:8%;top:50%;bottom:auto;width:auto;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(34,48,31,.22) 18%,rgba(34,48,31,.22) 82%,transparent)}
+  .sb-story-img{flex:none;width:auto;max-width:70%;max-height:38%}
+  .sb-story-heading{font-size:16px;margin:.35em 0}
+  .sb-story-text p{font-size:11px;line-height:1.55;margin:0 0 .55em}
+}
 .sb-half{position:absolute;top:0;bottom:0;width:50%;overflow-x:clip;overflow-y:visible}
 .sb-half.left{left:0}
 .sb-half.right{left:50%}
