@@ -462,7 +462,9 @@ export default function Sketchbook() {
         idx = turn.to
         turn = null
       }
-      const target = dir === 'next' ? (idx + 1) % totalViews : (idx - 1 + totalViews) % totalViews
+      // Geen wrap-around: aan het begin/einde van het boek stopt het bladen.
+      const target = dir === 'next' ? idx + 1 : idx - 1
+      if (target < 0 || target >= totalViews) return
       if (isStoryView(idx) || isStoryView(target)) {
         storyFade(dir, target)
         return
@@ -1020,7 +1022,7 @@ const sketchStyles = `
   background:
     radial-gradient(90% 60% at 50% 0%,rgba(255,252,240,.5),rgba(255,252,240,0) 60%),
     radial-gradient(120% 90% at 50% 110%,rgba(110,88,50,.10),rgba(110,88,50,0) 55%)}
-.sb-story-img{flex:0 0 50%;width:50%;height:100%;object-fit:contain;padding:6% 4%;
+.sb-story-img{flex:0 0 50%;width:50%;height:100%;object-fit:cover;padding:0;
   box-sizing:border-box;user-select:none;-webkit-user-drag:none}
 .sb-story-text{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;
   font-family:'Newsreader SB',Georgia,'Times New Roman',serif;color:#2e2a20;
