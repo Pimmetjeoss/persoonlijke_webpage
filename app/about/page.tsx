@@ -2,13 +2,10 @@
 
 import { useState } from 'react'
 import { StickyFooter } from '@/app/components/sticky-footer'
+import Sketchbook, { SPREADS } from './sketchbook'
 
 function Index() {
-  const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set([0]))
-
-  const revealSection = (section: number) => {
-    setVisibleSections(prev => new Set([...prev, section]))
-  }
+  const [showStory] = useState(true)
 
   return (
     <>
@@ -24,7 +21,7 @@ function Index() {
           whiteSpace: 'nowrap',
         }}
       >
-        <h1>Pim van Lieshout — AI & Webontwikkelaar in Lieshout</h1>
+        <h1>Pim van Lieshout — AI &amp; Webontwikkelaar in Lieshout</h1>
         <p>
           Pim van Lieshout is oprichter van Code Lieshout, een webdesign bureau in Lieshout
           (Noord-Brabant). Hij combineert procesoptimalisatie met moderne AI-technologie en bouwt
@@ -40,100 +37,47 @@ function Index() {
           <li>Full-stack developer (Next.js, React, TypeScript)</li>
         </ul>
       </div>
-      <section className='relative w-full min-h-screen bg-black'>
-        {/* Video background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload='none'
-          className='absolute inset-0 hidden md:block w-full h-full object-cover opacity-10'
+
+      {/* Sketchbook — het interactieve over-mij verhaal als bladerbaar schetsboek */}
+      <Sketchbook />
+
+      {/* Toegankelijke tekstversie van het verhaal (visueel subtiel onder het boek) */}
+      {showStory && (
+        <section
+          aria-label="Het verhaal in tekst"
+          style={{
+            width: 'min(760px, 88vw)',
+            margin: 'clamp(24px, 4vh, 48px) auto clamp(56px, 8vh, 96px)',
+            fontFamily: "'Newsreader SB', Georgia, serif",
+            fontSize: 'clamp(16px, 1.6vw, 19px)',
+            lineHeight: 1.74,
+            color: '#22301f',
+          }}
         >
-          <source
-            src='https://videos.pexels.com/video-files/7710243/7710243-hd_1920_1080_30fps.mp4'
-            type='video/mp4'
-          />
-        </video>
+          <p style={{ margin: 0 }}>
+            Hola! Ik ben Pim van Lieshout. Voorstellen blijft altijd een uitdaging, maar ik waag
+            toch een poging. In mijn werk ben ik altijd gefascineerd geweest door procesoptimalisatie.
+            Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord —
+            van niets iets maken! Sinds een jaar ben ik volledig gegrepen door het AI-virus. Voor mij
+            is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit
+            eindelijk volledig samenkomen. Daarom ben ik oprichter van Code Lieshout. Met Code Lieshout
+            wil ik bedrijven helpen op een persoonlijke en pragmatische manier — innovatief en flexibel
+            genoeg om de modernste technieken op het gebied van AI en agents te implementeren, tegen een
+            fractie van de prijs die traditionele consultants vragen.{' '}
+            <a href='/contact' style={{ color: '#3c7a46', textDecoration: 'underline', textUnderlineOffset: 4 }}>
+              Neem contact op →
+            </a>
+          </p>
+          <p style={{ margin: '1.4em 0 0', fontSize: '0.82em', letterSpacing: '0.08em', textTransform: 'uppercase' as const, opacity: 0.55 }}>
+            Blader door de spreads hierboven:{' '}
+            {SPREADS.map((s) => s.title.toLowerCase()).join(' · ')}
+          </p>
+        </section>
+      )}
 
-        {/* Text content */}
-        <div className='relative z-10 flex items-center justify-center min-h-screen px-8 py-20'>
-          <div className='max-w-4xl'>
-            {/* All content in one continuous flow - render everything, blur what's not revealed */}
-            <div className='text-2xl md:text-4xl leading-relaxed' style={{ willChange: 'filter', mixBlendMode: 'screen' }}>
-              <span className='text-white'>Hola! ik ben </span>
-              <button
-                onClick={() => revealSection(1)}
-                className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors'
-                style={{ color: 'hsl(141.7, 76.6%, 73.1%)' }}
-              >
-                Pim
-              </button>
-              <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(1) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}van Lieshout. Voorstellen blijft altijd een uitdaging, maar ik waag toch een poging. In mijn werk ben ik altijd gefascineerd geweest door{' '}
-              </span>
-              <button
-                onClick={() => revealSection(2)}
-                disabled={!visibleSections.has(1)}
-                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-all duration-500 ${visibleSections.has(1) ? 'blur-0' : 'blur-md pointer-events-none'}`}
-                style={{ color: visibleSections.has(1) ? 'hsl(141.7, 76.6%, 73.1%)' : 'rgba(255, 255, 255, 0.2)' }}
-              >
-                procesoptimalisatie
-              </button>
-              <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(2) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                . Buiten het werk om ben ik het liefst creatief bezig in de breedste zin van het woord — van niets iets maken! Sinds een jaar ben ik volledig gegrepen door het{' '}
-              </span>
-              <button
-                onClick={() => revealSection(3)}
-                disabled={!visibleSections.has(2)}
-                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-all duration-500 ${visibleSections.has(2) ? 'blur-0' : 'blur-md pointer-events-none'}`}
-                style={{ color: visibleSections.has(2) ? 'hsl(141.7, 76.6%, 73.1%)' : 'rgba(255, 255, 255, 0.2)' }}
-              >
-                AI-virus
-              </button>
-              <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(3) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                . Voor mij is dit de perfecte combinatie waarin mijn passie voor procesverbetering en mijn creativiteit eindelijk volledig samenkomen. Daarom ben ik{' '}
-              </span>
-              <span className='text-white'>oprichter van </span>
-              <button
-                onClick={() => revealSection(4)}
-                className='border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-colors'
-                style={{ color: 'hsl(141.7, 76.6%, 73.1%)' }}
-              >
-                Code Lieshout
-              </button>
-              <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(4) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                . Met Code Lieshout wil ik bedrijven helpen op een persoonlijke en pragmatische manier. Omdat ik recent ben gestart, kan ik met trots zeggen dat ik innovatief en flexibel genoeg ben om de modernste technieken op het gebied van{' '}
-              </span>
-              <button
-                onClick={() => revealSection(5)}
-                disabled={!visibleSections.has(4)}
-                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-all duration-500 ${visibleSections.has(4) ? 'blur-0' : 'blur-md pointer-events-none'}`}
-                style={{ color: visibleSections.has(4) ? 'hsl(141.7, 76.6%, 73.1%)' : 'rgba(255, 255, 255, 0.2)' }}
-              >
-                AI en agents
-              </button>
-              <span className={`px-4 py-2 rounded-lg transition-all duration-500 ${visibleSections.has(5) ? 'text-white/60 blur-0 bg-black/30' : 'text-white/20 blur-md pointer-events-none'}`}>
-                {' '}te implementeren — tegen een fractie van de prijs die traditionele consultants vragen. Functioneel ontwerp dat jij en ik allebei begrijpen. Een persoonlijke aanpak, vanuit jouw wens!{' '}
-              </span>
-              <a
-                href='/contact'
-                className={`border border-white/30 rounded-full px-3 py-1 hover:bg-white/10 transition-all duration-500 inline-block ${visibleSections.has(5) ? 'blur-0' : 'blur-md pointer-events-none'}`}
-                style={{ color: visibleSections.has(5) ? 'hsl(141.7, 76.6%, 73.1%)' : 'rgba(255, 255, 255, 0.2)' }}
-              >
-                Neem contact op →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer with reveal animation */}
-      <div className={`relative z-50 transition-all duration-1000 ${visibleSections.has(5) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
-        <StickyFooter />
-      </div>
+      <StickyFooter />
     </>
-  );
+  )
 }
 
-export default Index;
+export default Index
