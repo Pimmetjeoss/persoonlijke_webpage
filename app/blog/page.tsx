@@ -1,40 +1,27 @@
-import StickyHeader from "@/app/components/sticky-header";
-import { StickyFooter } from "@/app/components/sticky-footer";
-import { BlogPostCard } from "./components/blog-post-card";
-import { MasonryGrid } from "./components/masonry-grid";
+import type { Metadata } from "next";
+
 import { getAllPosts } from "./lib/blog";
+import BlogRollClient from "./roll/blog-roll-client";
+import { postToProject } from "./roll/lib/blog-projects";
 
-export default function BlogPage() {
+export const metadata: Metadata = {
+  title: "Blog — Code Lieshout",
+  description:
+    "Blogartikelen over AI, automatisering en webdevelopment van Code Lieshout. Kies een artikel vanaf de papierrol.",
+  alternates: {
+    canonical: "https://code-lieshout.nl/blog",
+  },
+  openGraph: {
+    title: "Blog — Code Lieshout",
+    description: "Blogartikelen over AI, automatisering en webdevelopment.",
+    url: "https://code-lieshout.nl/blog",
+    type: "website",
+  },
+};
+
+export default function BlogRollPage() {
   const posts = getAllPosts();
+  const projects = posts.map((post, index) => postToProject(post, index));
 
-  return (
-    <div
-      className="min-h-screen pb-32"
-      style={{ backgroundColor: "hsl(140.6 84.2% 92.5%)" }}
-    >
-      <StickyHeader
-        title="BLOG"
-        backgroundColor="hsl(140.6 84.2% 92.5%)"
-        hoverColor="hsl(141 78.9% 85.1%)"
-        startExpanded={true}
-      />
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-32">
-        {posts.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-[hsl(144.9,80.4%,10%)] text-xl">Geen blog posts gevonden.</p>
-            <p className="text-gray-600 mt-2">Voeg .md bestanden toe aan de content/posts/ folder.</p>
-          </div>
-        ) : (
-          <MasonryGrid>
-            {posts.map((post, index) => (
-              <BlogPostCard key={post.slug} {...post} index={index} />
-            ))}
-          </MasonryGrid>
-        )}
-      </div>
-
-      <StickyFooter />
-    </div>
-  );
+  return <BlogRollClient projects={projects} />;
 }

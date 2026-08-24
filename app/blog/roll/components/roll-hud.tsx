@@ -7,7 +7,7 @@
  * Puur presentatie — alle waarden komen van de pagina, die ze van de rol krijgt.
  */
 
-import type { Project } from "../data/projects"
+import type { Project } from "../lib/project"
 
 interface RollHudProps {
   /** Aantal geprinte kaarten. */
@@ -55,7 +55,7 @@ export default function RollHud({
           className="text-[10px] font-semibold uppercase tracking-[0.32em]"
           style={{ color: MUTED }}
         >
-          Werk
+          Blog
         </span>
       </div>
 
@@ -64,7 +64,7 @@ export default function RollHud({
         className="absolute right-6 top-24 text-right text-[10px] font-semibold uppercase leading-[1.9] tracking-[0.28em] md:right-10"
         style={{ color: MUTED }}
       >
-        Geselecteerd werk
+        Laatste artikelen
         <br />
         <b style={{ color: INK }}>Editie 2024 &mdash; 2026</b>
       </div>

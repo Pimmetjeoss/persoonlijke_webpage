@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog — AI Nieuws, Agents & Tech Insights",
+  title: "Blog — Code Lieshout",
   description:
-    "AI-nieuws, agent-ontwikkelingen en tech-insights door Pim van Lieshout. Diepgaande analyses over DeepSeek, Claude, Kimi, AI-infrastructuur en de toekomst van AI agents.",
+    "Blogartikelen over AI, automatisering en webdevelopment van Code Lieshout.",
   alternates: {
     canonical: "https://code-lieshout.nl/blog",
-    types: {
-      "text/markdown": "https://code-lieshout.nl/blog.md",
-    },
   },
   openGraph: {
-    title: "Blog — AI Nieuws & Tech Insights | Code Lieshout",
-    description:
-      "Diepgaande analyses over AI, agents, en tech door Pim van Lieshout.",
+    title: "Blog — Code Lieshout",
+    description: "Blogartikelen over AI, automatisering en webdevelopment.",
     url: "https://code-lieshout.nl/blog",
     type: "website",
   },

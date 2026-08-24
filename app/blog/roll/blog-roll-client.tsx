@@ -1,10 +1,11 @@
 "use client"
 
 /**
- * /werk — een oneindig rollende papierstrook die het portfolio print.
+ * /blog — de papierrol als instap van de blog.
  *
- * De rol volgt de muis en print in zijn spoor projectkaarten. Klikken op een
- * kaart opent het project via de bestaande paginatransitie.
+ * De rol volgt de muis en print in zijn spoor blogkaarten. Klikken op een
+ * kaart opent het artikel via de bestaande paginatransitie. Zonder WebGL
+ * (of voor crawlers) linkt de pagina naar het tekstuele archief.
  */
 
 import { useCallback, useState, useSyncExternalStore } from "react"
@@ -14,7 +15,7 @@ import { useTransition } from "@/app/components/transition_provider"
 import PaperRoll from "./components/paper-roll"
 import RollHud from "./components/roll-hud"
 import SelectedProjectPanel from "./components/selected-project-panel"
-import { projects, type Project } from "./data/projects"
+import type { Project } from "./lib/project"
 
 /** Apparaten zonder zweefaanwijzer, oftewel touchscreens. */
 const TOUCH_QUERY = "(hover: none), (pointer: coarse)"
@@ -31,7 +32,7 @@ function subscribeToPointerType(onChange: () => void): () => void {
   return () => query.removeEventListener("change", onChange)
 }
 
-export default function WerkPage() {
+export default function BlogRollClient({ projects }: { projects: Project[] }) {
   const { startTransition } = useTransition()
   const [printed, setPrinted] = useState(0)
   const [hovered, setHovered] = useState<Project | null>(null)
@@ -79,17 +80,15 @@ export default function WerkPage() {
     setSelected(null)
   }, [])
 
-  const handleBack = useCallback(() => {
-    startTransition("/portfolio")
+  const handleArchive = useCallback(() => {
+    startTransition("/blog/archief")
   }, [startTransition])
 
   return (
     <main className="relative h-dvh w-full overflow-hidden bg-[hsl(140.6_84.2%_92.5%)]">
       {/* Geen `startExpanded`: deze pagina scrollt niet, dus de header zou
-          anders altijd volledig uitgeklapt blijven staan. Zonder die vlag staat
-          hij half in beeld en schuift hij bij hover volledig open — hetzelfde
-          gedrag als op /webdesign zodra je daar gescrold hebt. */}
-      <StickyHeader title="WERK" />
+          anders altijd volledig uitgeklapt blijven staan. */}
+      <StickyHeader title="BLOG" />
 
       <PaperRoll
         projects={projects}
@@ -108,18 +107,18 @@ export default function WerkPage() {
         hasSelection={selected !== null}
       />
 
-      {/* Terugknop, gecentreerd boven de rol. Eigen laag met pointer events,
+      {/* Archiefknop, gecentreerd boven de rol. Eigen laag met pointer events,
           omdat de HUD eromheen bewust niet klikbaar is. Verbergt zich zodra
           het selectiepaneel diezelfde ruimte inneemt. */}
       {!selected && (
         <div className="pointer-events-none fixed inset-x-0 bottom-28 z-20 flex justify-center">
           <button
             type="button"
-            onClick={handleBack}
+            onClick={handleArchive}
             data-award-hover
             className="pointer-events-auto inline-flex rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(140.6_84.2%_92.5%)] px-5 py-3 font-semibold text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(141_78.9%_85.1%)]"
           >
-            Terug naar portfolio
+            Alle artikelen
           </button>
         </div>
       )}
@@ -133,7 +132,7 @@ export default function WerkPage() {
       {/* Tekstuele fallback voor zoekmachines en schermlezers: de canvas zelf
           bevat geen leesbare inhoud. */}
       <div className="sr-only">
-        <h1>Werk van Code Lieshout</h1>
+        <h1>Blog van Code Lieshout</h1>
         <ul>
           {projects.map((project) => (
             <li key={project.id}>

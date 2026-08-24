@@ -8,8 +8,26 @@
  * worden; die wordt dan ingeladen en over de kaart getekend.
  */
 
-import type { Project } from "../data/projects"
-import { PAPER } from "../data/projects"
+import type { Project } from "./project"
+
+/** Papierkleuren — hierop wordt geprint. */
+export const PAPER = {
+  base: "#f3faf5",
+  card: "#fbfdfb",
+  ink: "#052e16",
+  muted: "#5b7a66",
+} as const
+
+/** Merkkleuren uit kleuren.txt, omgezet naar hex. */
+export const BRAND_ACCENTS = {
+  ink: "#052e16",
+  forest: "#166534",
+  brand: "#15a34a",
+  bright: "#22c55e",
+  soft: "#4ade80",
+  mint: "#86efac",
+  pale: "#bbf7d0",
+} as const
 
 /** Resolutie per kaart in de atlas. */
 export const CELL_SIZE = 512

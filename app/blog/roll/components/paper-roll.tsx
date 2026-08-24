@@ -12,7 +12,7 @@ import { useEffect, useRef, useSyncExternalStore } from "react"
 import * as THREE from "three"
 
 import { useTransition } from "@/app/components/transition_provider"
-import type { Project } from "../data/projects"
+import type { Project } from "../lib/project"
 import { buildAtlasCanvas } from "../lib/atlas"
 import { buildBlobCanvas, buildCapCanvas } from "../lib/textures"
 import {

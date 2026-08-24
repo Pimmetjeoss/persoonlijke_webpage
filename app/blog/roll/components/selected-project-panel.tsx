@@ -8,7 +8,7 @@
  * welk project geraakt is en pas de knop erin opent het.
  */
 
-import type { Project } from "../data/projects"
+import type { Project } from "../lib/project"
 
 interface SelectedProjectPanelProps {
   /** Het geselecteerde project, of null als er niets geselecteerd is. */

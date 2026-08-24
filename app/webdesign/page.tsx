@@ -130,21 +130,21 @@ export default function WebdesignPage() {
             </section>
 
             <SectionCard
-              id="portfolio"
-              title="Portfolio"
-              description="Bekijk eerder opgeleverd werk."
+              id="blog"
+              title="Blog"
+              description="Lees mijn laatste artikelen over AI en automatisering."
               Icon={ImageIcon}
             >
               <div className="space-y-5 text-lg leading-relaxed text-gray-700">
                 <p>
-                  Benieuwd wat er uit deze werkwijze komt? Op de portfoliopagina zie je eerder opgeleverd werk voorbijkomen. Klik een project aan om het te openen.
+                  Op de blogpagina rollen mijn laatste artikelen voorbij. Kies een artikel vanaf de rol en lees het direct.
                 </p>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Link
-                    href="/werk"
+                    href="/blog"
                     className="rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] px-5 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(144.9_80.4%_10%)] hover:text-white"
                   >
-                    Bekijk het portfolio
+                    Bekijk de blog
                   </Link>
                 </div>
               </div>
