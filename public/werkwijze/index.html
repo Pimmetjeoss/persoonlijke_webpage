@@ -2783,8 +2783,6 @@
       const titleSize = book.title.length > 10 ? 72 : 88;
       ctx.font = `400 ${titleSize}px "Fjalla One", "Arial Narrow", sans-serif`;
       ctx.fillText(book.title, canvasTexture.width / 2, canvasTexture.height * 0.72);
-      ctx.font = '500 16px "Fjalla One", "Arial Narrow", sans-serif';
-      ctx.fillText(book.discipline.toUpperCase(), canvasTexture.width / 2, canvasTexture.height * 0.79);
 
       return configureCanvasTexture(new THREE.CanvasTexture(canvasTexture));
     }
@@ -2812,13 +2810,6 @@
       ctx.lineTo(164, 86);
       ctx.stroke();
       ctx.globalAlpha = 1;
-
-      const titleSize = book.title.length > 10 ? 64 : 78;
-      ctx.font = `400 ${titleSize}px "Fjalla One", "Arial Narrow", sans-serif`;
-      ctx.fillText(book.title, 58, 1020);
-      ctx.font = '500 14px "Fjalla One", "Arial Narrow", sans-serif';
-      ctx.letterSpacing = "2.4px";
-      ctx.fillText(book.discipline.toUpperCase(), 60, 1066);
 
       return configureCanvasTexture(new THREE.CanvasTexture(foilCanvas));
     }
@@ -3556,9 +3547,6 @@
       ctx.font = `400 ${book.title.length > 10 ? 52 : 62}px "Fjalla One", "Arial Narrow", sans-serif`;
       ctx.letterSpacing = "0px";
       ctx.fillText(book.title, 68, 956);
-      ctx.font = '500 15px "Fjalla One", "Arial Narrow", sans-serif';
-      ctx.letterSpacing = "2.6px";
-      ctx.fillText(book.discipline.toUpperCase(), 70, 1004);
       ctx.globalAlpha = 0.68;
       ctx.fillRect(68, 1040, 632, 1.5);
       ctx.globalAlpha = 1;
