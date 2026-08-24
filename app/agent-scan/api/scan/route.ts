@@ -7,6 +7,7 @@ import {
   triggerScan,
   ScanError,
 } from "@/lib/agent-scan/is-agentic"
+import { hashIp, logScanRequest } from "@/lib/agent-scan/log"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -16,6 +17,14 @@ type ApiResponse = {
   success: boolean
   data?: { domain: string; scanning?: boolean }
   error?: string
+}
+
+function clientIp(req: Request): string {
+  const xff = req.headers.get("x-forwarded-for")
+  if (xff) return xff.split(",")[0].trim()
+  const real = req.headers.get("x-real-ip")
+  if (real) return real.trim()
+  return "anon"
 }
 
 export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
@@ -47,17 +56,20 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
 
   const domain = validated.domain
   const target = canonicalTarget(domain)
+  const ipHash = hashIp(clientIp(req))
 
   try {
     // Bestaand rapport ophalen (geen verse scan nodig).
     const report = await getReport(target)
     if (report) {
+      await logScanRequest({ domain, url: target, ipHash, report })
       return NextResponse.json({ success: true, data: { domain } })
     }
 
     // Nog geen rapport — start een verse scan en geef direct een
     // "pending" status terug. De detailpagina pollt tot het klaar is.
     await triggerScan(target)
+    await logScanRequest({ domain, url: target, ipHash })
 
     return NextResponse.json({
       success: true,
