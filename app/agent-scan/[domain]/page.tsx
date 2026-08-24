@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import StickyHeader from "@/app/components/sticky-header"
 import { StickyFooter } from "@/app/components/sticky-footer"
-import { getLatestByDomain } from "@/lib/agent-scan/cache"
-import { ReportSchema } from "@/lib/agent-scan/schemas"
+import { canonicalTarget, getReport } from "@/lib/agent-scan/is-agentic"
 import { ReportContent } from "../components/report-content"
 import { ScanningView } from "../components/scanning-view"
 
@@ -24,9 +23,8 @@ export default async function AgentScanResultPage({ params }: PageProps) {
   const { domain: rawDomain } = await params
   const domain = decodeURIComponent(rawDomain).toLowerCase()
 
-  const row = await getLatestByDomain(domain)
-  const parsed = row?.raw ? ReportSchema.safeParse(row.raw) : null
-  const hasReport = row?.status === "done" && parsed?.success === true
+  // Rapport direct bij Is Agentic opvragen (server-side).
+  const report = await getReport(canonicalTarget(domain)).catch(() => null)
 
   return (
     <div
@@ -41,8 +39,8 @@ export default async function AgentScanResultPage({ params }: PageProps) {
       />
 
       <div className="mx-auto max-w-5xl p-6 lg:p-10 space-y-10">
-        {hasReport && parsed?.success ? (
-          <ReportContent domain={domain} report={parsed.data} />
+        {report ? (
+          <ReportContent domain={domain} report={report} />
         ) : (
           <ScanningView domain={domain} />
         )}

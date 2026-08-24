@@ -4,7 +4,6 @@ import {
   ExclamationTriangleIcon,
   CheckCircledIcon,
   RocketIcon,
-  ExternalLinkIcon,
 } from "@radix-ui/react-icons"
 import { SectionCard } from "@/app/test/components/section-card"
 import type { Report, Issue } from "@/lib/agent-scan/schemas"
@@ -234,17 +233,7 @@ export function ReportContent({
             month: "long",
             year: "numeric",
           })}{" "}
-          · {report.eligible_checks} checks van toepassing ·{" "}
-          <a
-            href={report.report_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 underline"
-            style={{ color: "hsl(142.1 76.2% 36.3%)" }}
-          >
-            Volledig rapport op Is Agentic{" "}
-            <ExternalLinkIcon className="w-4 h-4" />
-          </a>
+          · {report.eligible_checks} checks van toepassing
         </p>
       </div>
 
