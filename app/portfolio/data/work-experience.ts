@@ -109,4 +109,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
     href: "/agent-ready",
   },
+  {
+    id: "agent-scan",
+    company: "AGENT-SCAN",
+    role: "100+ CHECKS · SCORE 0-100",
+    period: "",
+    description:
+      "De complete agent-scan van Is Agentic: score 0-100, bewijs per bevinding en concrete fixes.",
+    highlights: [],
+    href: "/agent-scan",
+  },
 ]
