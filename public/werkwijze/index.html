@@ -1216,7 +1216,7 @@
 
     .browse-ui {
       right: 34px;
-      bottom: 26px;
+      bottom: 34px;
       left: 34px;
       width: auto;
       grid-template-columns: minmax(240px, 1fr) auto minmax(240px, 1fr);
@@ -1229,6 +1229,16 @@
       grid-template-columns: 44px minmax(0, 1fr);
       align-items: start;
       gap: 13px;
+    }
+
+    .selection__copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .browse-ui {
+      align-items: end;
     }
 
     .counter {
@@ -1262,6 +1272,11 @@
       letter-spacing: 0.01em;
       line-height: 1.45;
       transition: color 520ms var(--ease-out);
+    }
+    @media (max-height: 560px) {
+      .selection__note {
+        display: none;
+      }
     }
 
     .browse-actions {
