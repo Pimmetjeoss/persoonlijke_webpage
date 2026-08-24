@@ -15,42 +15,7 @@ import { SectionCard } from "../test/components/section-card";
 import StickyHeader from "@/app/components/sticky-header";
 import { StickyFooter } from "@/app/components/sticky-footer";
 import { TimelineContent } from "@/app/portfolio/components/timeline-animation";
-import { Accordion05, FAQItem } from "../test/components/accordion-05";
-import { AwardInteractions, InteractivePointsLayer } from "./components/award-motion";
-
-
-const workflowFaqItems: FAQItem[] = [
-  {
-    id: "1",
-    title: "Verkenning",
-    content: <span>We bepalen doel, doelgroep, structuur, stijlrichting en techniek. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/verkenning">Bekijk deze stap</Link>.</span>
-  },
-  {
-    id: "2",
-    title: "Realisatie",
-    content: <span>Ontwerp, techniek en inhoud komen samen in echte schermen. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/realisatie">Bekijk deze stap</Link>.</span>
-  },
-  {
-    id: "3",
-    title: "Testen & redactie",
-    content: <span>We testen formulieren, mobiel gebruik, snelheid, teksten en klikpaden. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/testen-en-redactie">Bekijk deze stap</Link>.</span>
-  },
-  {
-    id: "4",
-    title: "Go-live",
-    content: <span>We zetten domein, analytics, redirects en laatste checks klaar. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/go-live">Bekijk deze stap</Link>.</span>
-  },
-  {
-    id: "5",
-    title: "Onderhoud",
-    content: <span>Na livegang houden we updates, support en kleine verbeteringen bij. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/onderhoud">Bekijk deze stap</Link>.</span>
-  },
-  {
-    id: "6",
-    title: "Optimalisatie",
-    content: <span>We kijken naar data en gebruikersgedrag en verbeteren stap voor stap. <Link className="font-bold text-[hsl(144.9_80.4%_10%)] underline" href="/webdesign/optimalisatie">Bekijk deze stap</Link>.</span>
-  },
-];
+import { AwardInteractions } from "./components/award-motion";
 
 const features = [
   {
@@ -136,10 +101,9 @@ export default function WebdesignPage() {
             <section
               id="werkwijze"
               data-award-reveal
-              className="relative overflow-hidden rounded-xl border-[3px] bg-white p-8 pb-24 shadow-xl scroll-mt-32 md:p-12 md:pb-24"
+              className="relative overflow-hidden rounded-xl border-[3px] bg-white p-8 shadow-xl scroll-mt-32 md:p-12"
               style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
             >
-              <InteractivePointsLayer />
               <div className="relative flex items-start gap-6">
                 <div className="flex-shrink-0 text-[hsl(144.9_80.4%_10%)]">
                   <FileTextIcon className="h-10 w-10 md:h-12 md:w-12" />
@@ -151,12 +115,16 @@ export default function WebdesignPage() {
                   >
                     Werkwijze
                   </h2>
-                  <p className="mb-9 max-w-3xl text-xl font-semibold leading-relaxed text-gray-600 md:text-2xl">
-                    De zes vaste stappen van eerste idee tot doorlopende verbetering.
+                  <p className="mb-8 max-w-3xl text-xl font-semibold leading-relaxed text-gray-600 md:text-2xl">
+                    De zes vaste stappen van eerste idee tot doorlopende verbetering, als interactieve boekenkast. Pak een boek van de plank en open het — daarin lees je wat er in die stap gebeurt.
                   </p>
-                  <div className="w-full">
-                    <Accordion05 items={workflowFaqItems} />
-                  </div>
+                  <a
+                    href="/werkwijze/"
+                    className="inline-flex items-center gap-3 rounded-full border-[3px] border-[hsl(144.9_80.4%_10%)] bg-[hsl(140.6_84.2%_92.5%)] px-8 py-4 text-lg font-bold uppercase tracking-[0.12em] text-[hsl(144.9_80.4%_10%)] transition-colors hover:bg-[hsl(141_78.9%_85.1%)]"
+                  >
+                    Open de boekenkast
+                    <span aria-hidden="true">→</span>
+                  </a>
                 </div>
               </div>
             </section>
