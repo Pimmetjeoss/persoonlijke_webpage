@@ -1273,11 +1273,9 @@
       line-height: 1.45;
       transition: color 520ms var(--ease-out);
     }
-    @media (max-height: 560px) {
-      .selection__note {
-        display: none;
-      }
-    }
+    /* Geen max-height guard meer: het UI-blok groeit naar boven,
+       dus de note kan nooit onder de rand vallen — op geen enkel
+       vensterformaat of zoomniveau. */
 
     .browse-actions {
       align-self: end;
