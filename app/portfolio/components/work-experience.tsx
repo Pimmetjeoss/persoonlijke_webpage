@@ -25,9 +25,9 @@ export function WorkExperience() {
     router.prefetch('/sir-prikkel')
     router.prefetch('/database')
     router.prefetch('/agent-ready')
-    router.prefetch('/agent-scan')
     router.prefetch('/google-score')
     router.prefetch('/chatgpt-check')
+    router.prefetch('/mcp-explorer')
     router.prefetch('/under-construction')
   }, [router])
 

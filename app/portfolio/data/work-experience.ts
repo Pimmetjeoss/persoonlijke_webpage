@@ -101,6 +101,16 @@ export const workExperiences: WorkExperience[] = [
     href: "/chatgpt-check",
   },
   {
+    id: "mcp-explorer",
+    company: "MCP EXPLORER",
+    role: "WAT IS EEN MCP-SERVER?",
+    period: "",
+    description:
+      "Interactieve uitleg over MCP-servers in een retro Windows 98-desktop.",
+    highlights: [],
+    href: "/mcp-explorer",
+  },
+  {
     id: "agent-ready",
     company: "AGENT-READY",
     role: "SCAN JOUW SITE",
@@ -108,15 +118,5 @@ export const workExperiences: WorkExperience[] = [
     description: "Gratis scan: hoe klaar is jouw site voor AI-agents?",
     highlights: [],
     href: "/agent-ready",
-  },
-  {
-    id: "agent-scan",
-    company: "AGENT-SCAN",
-    role: "100+ CHECKS · SCORE 0-100",
-    period: "",
-    description:
-      "De complete agent-scan van Is Agentic: score 0-100, bewijs per bevinding en concrete fixes.",
-    highlights: [],
-    href: "/agent-scan",
   },
 ]

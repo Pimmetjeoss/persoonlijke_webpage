@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wat is een MCP-server? — Windows 98 Editie</title>
+    <!--
+        Gebaseerd op pollygon-dev/WIN98-template (The Unlicense)
+        Opnieuw ingericht als uitleg over Model Context Protocol (MCP)-servers.
+    -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- DESKTOP ACHTERGROND -->
+    <div id="desktop" class="crt-effect">
+
+        <!-- DESKTOP ICONS -->
+        <div class="desktop-icons">
+            <!-- Icon 1: Wat is MCP -->
+            <div class="icon" onclick="openWindow('intro')">
+                <div class="icon-image">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <span class="icon-text">Wat is MCP?</span>
+            </div>
+
+            <!-- Icon 2: Hoe werkt het -->
+            <div class="icon" onclick="openWindow('hoe-werkt-het')">
+                <div class="icon-image">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <span class="icon-text">Hoe werkt het?</span>
+            </div>
+
+            <!-- Icon 3: Voorbeelden -->
+            <div class="icon" onclick="openWindow('voorbeelden')">
+                <div class="icon-image">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <span class="icon-text">Voorbeelden</span>
+            </div>
+
+            <!-- Icon 4: Waarom -->
+            <div class="icon" onclick="openWindow('waarom')">
+                <div class="icon-image">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <span class="icon-text">Waarom handig?</span>
+            </div>
+
+            <!-- Icon 5: Notepad -->
+            <div class="icon" onclick="openWindow('notepad')">
+                <div class="icon-image">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <span class="icon-text">Notities</span>
+            </div>
+
+            <!-- Icon 6: Themes -->
+            <div class="icon" onclick="openWindow('themes')">
+                <div class="icon-image">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <span class="icon-text">Thema's</span>
+            </div>
+        </div>
+
+        <!-- VENSTERS -->
+
+        <!-- Intro venster -->
+        <div class="window" id="intro-window" style="top: 50px; left: 100px; width: 480px; height: 400px;">
+            <div class="window-header">
+                <span class="window-title">Wat is een MCP-server?</span>
+                <div class="window-controls">
+                    <a href="#" class="window-button minimize-btn" onclick="minimizeWindow('intro')">_</a>
+                    <a href="#" class="window-button maximize-btn" onclick="maximizeWindow('intro')">□</a>
+                    <a href="#" class="window-button close-btn" onclick="closeWindow('intro')">×</a>
+                </div>
+            </div>
+            <div class="window-content">
+                <h3>MCP = Model Context Protocol</h3>
+                <p>Een <strong>MCP-server</strong> is een soort <em>stopcontact tussen AI en de buitenwereld</em>.</p>
+                <br>
+                <p>Een AI-assistent (zoals Claude of ChatGPT) kan van zichzelf alleen praten. Wil die AI écht iets doen — je e-mail lezen, in je bestanden zoeken, het weer opzoeken, een database bevragen — dan heeft hij een poort nodig naar die tools. Dat is precies wat een MCP-server doet.</p>
+                <br>
+                <p><strong>Kort gezegd:</strong></p>
+                <ul>
+                    <li>📡 Eén standaardprotocol (open source, van Anthropic)</li>
+                    <li>🔌 De AI koppelt zich aan de server via een vaste "stekker"</li>
+                    <li>🛠️ De server biedt <em>tools</em>, <em>data</em> en <em>prompts</em> aan</li>
+                    <li>💬 De gebruiker merkt er weinig van: de AI doet gewoon zijn werk</li>
+                </ul>
+                <br>
+                <p class="center"><button onclick="openWindow('hoe-werkt-het')">Volgende: hoe werkt het? »</button></p>
+            </div>
+        </div>
+
+        <!-- Hoe werkt het venster -->
+        <div class="window" id="hoe-werkt-het-window" style="top: 80px; left: 150px; width: 500px; height: 420px;">
+            <div class="window-header">
+                <span class="window-title">Hoe werkt het? — C:\\MCP&gt;</span>
+                <div class="window-controls">
+                    <a href="#" class="window-button minimize-btn" onclick="minimizeWindow('hoe-werkt-het')">_</a>
+                    <a href="#" class="window-button maximize-btn" onclick="maximizeWindow('hoe-werkt-het')">□</a>
+                    <a href="#" class="window-button close-btn" onclick="closeWindow('hoe-werkt-het')">×</a>
+                </div>
+            </div>
+            <div class="window-content">
+                <h3>De drie spelers</h3>
+                <ol>
+                    <li><strong>Host</strong> — het programma waar jij praat met de AI (bijv. Claude Desktop, een IDE of Discord-bot).</li>
+                    <li><strong>MCP-client</strong> — zit in de host en houdt één lijn open naar elke server.</li>
+                    <li><strong>MCP-server</strong> — een klein programmaatje dat specifieke mogelijkheden aanbiedt.</li>
+                </ol>
+                <br>
+                <h3>Het gesprek verloopt in JSON-RPC:</h3>
+                <pre style="background:#000; color:#0f0; padding:10px; font-family:'Courier New',monospace; font-size:11px; overflow-x:auto;">AI: "Welke tools heb jij?"
+Server: [zoek_bestanden, stuur_email,
+         haal_weer_op]
+AI:     { "tool": "haal_weer_op",
+          "args": {"stad": "Ede"} }
+Server: { "temp": 18, "bewolkt": true }
+AI: "Het is 18°C en bewolkt in Ede."</pre>
+                <br>
+                <p>De server kan lokaal draaien (via stdio) of op afstand (via HTTP/SSE). Voor de AI maakt dat niet uit — het protocol is hetzelfde.</p>
+                <br>
+                <p class="center"><button onclick="openWindow('voorbeelden')">Zie voorbeelden »</button></p>
+            </div>
+        </div>
+
+        <!-- Voorbeelden venster -->
+        <div class="window" id="voorbeelden-window" style="top: 110px; left: 200px; width: 460px; height: 380px;">
+            <div class="window-header">
+                <span class="window-title">Voorbeelden van MCP-servers</span>
+                <div class="window-controls">
+                    <a href="#" class="window-button minimize-btn" onclick="minimizeWindow('voorbeelden')">_</a>
+                    <a href="#" class="window-button maximize-btn" onclick="maximizeWindow('voorbeelden')">□</a>
+                    <a href="#" class="window-button close-btn" onclick="closeWindow('voorbeelden')">×</a>
+                </div>
+            </div>
+            <div class="window-content">
+                <h3>Populaire MCP-servers</h3>
+                <table border="1" cellpadding="6" cellspacing="0" width="100%" style="font-size:12px; background:#fff;">
+                    <tr style="background:#c0c0c0;"><th>Server</th><th>Wat kan de AI ermee?</th></tr>
+                    <tr><td><strong>filesystem</strong></td><td>Bestanden lezen, zoeken en bewerken op jouw computer</td></tr>
+                    <tr><td><strong>github</strong></td><td>Repos bekijken, issues maken, pull requests beheren</td></tr>
+                    <tr><td><strong>puppeteer</strong></td><td>Een browser besturen: klikken, screenshots, formulieren</td></tr>
+                    <tr><td><strong>sqlite / postgres</strong></td><td>Directe query's draaien op databases</td></tr>
+                    <tr><td><strong>slack</strong></td><td>Berichten lezen en versturen</td></tr>
+                    <tr><td><strong>memory</strong></td><td>Een geheugen-graph zodat de AI dingen onthoudt</td></tr>
+                </table>
+                <br>
+                <p>💡 Je kunt ook je <strong>eigen</strong> MCP-server schrijven in Python of TypeScript — een paar tientallen regels code is genoeg om je eigen tool aan de AI toe te voegen.</p>
+                <br>
+                <p class="center"><button onclick="openWindow('waarom')">Waarom is dit handig? »</button></p>
+            </div>
+        </div>
+
+        <!-- Waarom venster -->
+        <div class="window" id="waarom-window" style="top: 140px; left: 250px; width: 450px; height: 340px;">
+            <div class="window-header">
+                <span class="window-title">Waarom handig?</span>
+                <div class="window-controls">
+                    <a href="#" class="window-button minimize-btn" onclick="minimizeWindow('waarom')">_</a>
+                    <a href="#" class="window-button maximize-btn" onclick="maximizeWindow('waarom')">□</a>
+                    <a href="#" class="window-button close-btn" onclick="closeWindow('waarom')">×</a>
+                </div>
+            </div>
+            <div class="window-content">
+                <h3>Het probleem zonder MCP</h3>
+                <p>Vóór MCP moest élke AI-app aparte integraties bouwen voor élke tool: M×N maatwerk. Rommelig en dubbel werk.</p>
+                <br>
+                <h3>Met MCP: M+N</h3>
+                <ul>
+                    <li>✅ <strong>Eén standaard</strong> — elke AI-host werkt met elke MCP-server</li>
+                    <li>✅ <strong>Plug &amp; play</strong> — server toevoegen = nieuwe vaardigheden voor de AI</li>
+                    <li>✅ <strong>Open ecosysteem</strong> — honderden gratis servers beschikbaar</li>
+                    <li>✅ <strong>Jij bepaalt de toegang</strong> — per server instellen wat de AI mag</li>
+                </ul>
+                <br>
+                <p class="center"><button onclick="alert('MCP: USB-stick voor je AI-assistent! 🎉')">Samenvatten!</button></p>
+            </div>
+        </div>
+
+        <!-- Notepad venster -->
+        <div class="window" id="notepad-window" style="top: 160px; left: 300px; width: 400px; height: 280px;">
+            <div class="window-header">
+                <span class="window-title">mcp-notities - Notepad</span>
+                <div class="window-controls">
+                    <a href="#" class="window-button minimize-btn" onclick="minimizeWindow('notepad')">_</a>
+                    <a href="#" class="window-button maximize-btn" onclick="maximizeWindow('notepad')">□</a>
+                    <a href="#" class="window-button close-btn" onclick="closeWindow('notepad')">×</a>
+                </div>
+            </div>
+            <div class="window-content" style="padding: 0;">
+                <textarea id="notepad-text" style="width: 100%; height: 100%; border: none; resize: none; font-family: 'Courier New', monospace; font-size: 11px; padding: 4px;" placeholder="Typ je notities hier...">MIJN MCP-CHEATSHEET
+===================
+
+MCP-server = stopcontact tussen AI en tools
+
+Host      -> waar jij chat (Claude Desktop, IDE)
+Client    -> in de host, 1 lijn per server
+Server    -> biedt tools/data/prompts aan
+
+Protocol: JSON-RPC (lokaal via stdio
+of remote via HTTP/SSE)
+
+Denk aan: USB-poort voor je AI.</textarea>
+            </div>
+        </div>
+
+        <!-- Themes Window -->
+        <div class="window" id="themes-window" style="top: 180px; left: 350px; width: 350px; height: 400px;">
+            <div class="window-header">
+                <span class="window-title">Display Properties</span>
+                <div class="window-controls">
+                    <a href="#" class="window-button minimize-btn" onclick="minimizeWindow('themes')">_</a>
+                    <a href="#" class="window-button maximize-btn" onclick="maximizeWindow('themes')">□</a>
+                    <a href="#" class="window-button close-btn" onclick="closeWindow('themes')">×</a>
+                </div>
+            </div>
+            <div class="window-content">
+                <h3>Desktop-thema's</h3>
+                <p>Kies een kleurenschema voor je desktop:</p>
+                <br>
+
+                <div style="border: 1px inset #c0c0c0; padding: 8px; background: #f0f0f0; margin-bottom: 10px;">
+                    <h4>Beschikbare thema's:</h4>
+                    <div style="margin: 8px 0;">
+                        <input type="radio" id="default-theme" name="theme" value="default" checked onchange="previewTheme('default')">
+                        <label for="default-theme">Windows Standard</label>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        <input type="radio" id="pink-theme" name="theme" value="pink" onchange="previewTheme('pink')">
+                        <label for="pink-theme">Pastel Pink</label>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        <input type="radio" id="cyberpunk-theme" name="theme" value="cyberpunk" onchange="previewTheme('cyberpunk')">
+                        <label for="cyberpunk-theme">Cyberpunk</label>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        <input type="radio" id="lilac-theme" name="theme" value="lilac" onchange="previewTheme('lilac')">
+                        <label for="lilac-theme">Lilac</label>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        <input type="radio" id="green-theme" name="theme" value="green" onchange="previewTheme('green')">
+                        <label for="green-theme">Forest Green</label>
+                    </div>
+                </div>
+
+                <div style="border: 1px inset #c0c0c0; padding: 8px; background: #f0f0f0;">
+                    <h4>Voorbeeld:</h4>
+                    <div id="theme-preview" style="border: 1px solid #808080; height: 100px; margin: 8px 0; position: relative;">
+                        <div id="preview-desktop" style="width: 100%; height: 100%; background: #008080; position: relative;">
+                            <div id="preview-window" style="background: #c0c0c0; border: 1px outset #c0c0c0; margin: 10px; padding: 0; width: 120px; position: absolute;">
+                                <div id="preview-titlebar" style="background: linear-gradient(90deg, #000080 0%, #0040c0 100%); color: white; padding: 2px 4px; font-size: 9px; font-weight: bold;">Voorbeeldvenster</div>
+                                <div id="preview-content" style="padding: 4px; font-size: 9px; color: #000000; background: #c0c0c0;">Dit is een voorbeeld van het gekozen thema.</div>
+                                <div id="preview-button" style="background: #c0c0c0; border: 1px outset #c0c0c0; margin: 4px; padding: 2px 8px; font-size: 8px; display: inline-block;">Knop</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="center">
+                    <button onclick="applyCurrentTheme()">Toepassen</button>
+                    <button onclick="applyCurrentTheme(); closeWindow('themes');">OK</button>
+                    <button onclick="resetTheme()">Herstellen</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAAKBALK -->
+    <div class="taskbar">
+        <div class="start-button" onclick="toggleStartMenu()">
+            <i class="fab fa-windows"></i>
+            Start
+        </div>
+
+        <div class="taskbar-items" id="taskbar-items">
+            <!-- Taakbalk-items worden dynamisch toegevoegd -->
+        </div>
+
+        <div class="clock" id="clock">
+            12:00 PM
+        </div>
+    </div>
+
+    <!-- STARTMENU -->
+    <div class="start-menu" id="start-menu">
+        <div class="start-menu-header">
+            <i class="fab fa-windows"></i>
+            MCP Explorer 98
+        </div>
+        <div class="start-menu-items">
+            <div class="start-menu-item" onclick="openWindow('intro')">
+                <i class="fas fa-question-circle"></i>
+                Wat is MCP?
+            </div>
+            <div class="start-menu-item" onclick="openWindow('hoe-werkt-het')">
+                <i class="fas fa-cogs"></i>
+                Hoe werkt het?
+            </div>
+            <div class="start-menu-item" onclick="openWindow('voorbeelden')">
+                <i class="fas fa-plug"></i>
+                Voorbeelden
+            </div>
+            <div class="start-menu-separator"></div>
+            <div class="start-menu-item" onclick="openWindow('themes')">
+                <i class="fas fa-palette"></i>
+                Thema's
+            </div>
+            <div class="start-menu-item" onclick="openWindow('notepad')">
+                <i class="fas fa-edit"></i>
+                Notities
+            </div>
+            <div class="start-menu-separator"></div>
+            <div class="start-menu-item" onclick="showShutdownDialog()">
+                <i class="fas fa-power-off"></i>
+                  Afsluiten...
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

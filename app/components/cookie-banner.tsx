@@ -25,6 +25,9 @@ export function CookieBanner() {
     return () => cancelAnimationFrame(frame)
   }, [pathname])
 
+  // Niet tonen op volledig-iframe routes zoals /mcp-explorer
+  if (pathname?.startsWith("/mcp-explorer")) return null
+
   const handleAccept = () => {
     localStorage.setItem("cookie-consent", "granted")
     // Consent Mode v2: analytics aan
