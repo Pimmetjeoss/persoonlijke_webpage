@@ -998,3 +998,14 @@ button:active, input[type="button"]:active, input[type="submit"]:active {
     );
     pointer-events: none;
 }
+
+/* ===== LIJST-INSPRONGING (fix: nummers/opsommingstekens hangen te ver links door de * reset) ===== */
+.window-content ul,
+.window-content ol {
+    padding-left: 24px;
+    margin: 6px 0;
+}
+
+.window-content li {
+    margin: 2px 0;
+}
