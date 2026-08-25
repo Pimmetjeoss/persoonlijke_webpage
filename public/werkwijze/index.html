@@ -1570,9 +1570,16 @@
 
     @media (max-width: 560px) {
       .editorial-index span:last-child,
-      .selection__note,
       .microcopy {
         display: none;
+      }
+
+      /* Note blijft op mobiel zichtbaar: het UI-blok groeit naar boven,
+         dus hij kan niet meer onder de rand verdwijnen. */
+      .selection__note {
+        max-width: min(86vw, 420px);
+        margin-top: 6px;
+        font-size: 0.72rem;
       }
 
       .editorial-identity strong {
