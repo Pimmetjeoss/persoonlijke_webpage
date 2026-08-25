@@ -1,7 +1,7 @@
 ---
 title: "Diffusion Models Uitgelegd: Hoe Werkt de Magie Achter AI-beeldgeneratie?"
 date: "2026-05-03"
-category: "AI & Technologie"
+category: "AI Begrijpen"
 excerpt: "Diffusion modellen zijn het fundament van DALL-E, Stable Diffusion en Midjourney. Maar diffusion is geen architectuur — het is een framework dat veel verder gaat dan beelden alleen."
 featuredImage: "/images/blog/diffusion-models-uitgelegd-ai-beeldgeneratie.png"
 ---

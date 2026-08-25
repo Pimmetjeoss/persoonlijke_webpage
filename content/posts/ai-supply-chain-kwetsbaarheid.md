@@ -1,7 +1,7 @@
 ---
 title: "Eén Mijn, Drie Bedrijven: De Fragiele Waarheid Achter de AI-Revolutie"
 date: "2025-11-30"
-category: "AI & Technologie"
+category: "Hardware & Infrastructuur"
 excerpt: "De AI-revolutie rust op een fragiele ketting van kritieke schakels: een Amerikaanse mijn, westerse IP, en één Nederlands bedrijf dat de meest geavanceerde machines bouwt."
 ---
 

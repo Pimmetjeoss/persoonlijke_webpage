@@ -1,7 +1,7 @@
 ---
 title: "De Economie van Neoclouds: Hoe GPU-as-a-Service de AI-markt verandert"
 date: "2026-03-09"
-category: "AI & Technologie"
+category: "Hardware & Infrastructuur"
 excerpt: "Neoclouds zoals CoreWeave, Nebius en Lambda veranderen hoe AI-rekenkracht wordt aangeboden. Maar hoe werkt die economie — en waarom financieren banken deze risicovolle hardware?"
 featuredImage: "/images/blog/de-economie-van-neoclouds.png"
 ---

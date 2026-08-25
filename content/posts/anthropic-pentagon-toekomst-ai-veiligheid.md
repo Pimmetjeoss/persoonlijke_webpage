@@ -1,7 +1,7 @@
 ---
 title: "Anthropic vs. Pentagon: Wie Bepaalt de Toekomst van AI-Veiligheid?"
 date: "2026-02-28"
-category: "AI & Technologie"
+category: "Nieuws & Analyse"
 excerpt: "Duik in de strijd tussen Anthropic en het Amerikaanse Ministerie van Defensie over AI-ethiek en -veiligheid. Wie trekt aan de touwtjes van geavanceerde AI?"
 featuredImage: "/images/blog/anthropic-pentagon-toekomst-ai-veiligheid.png"
 ---

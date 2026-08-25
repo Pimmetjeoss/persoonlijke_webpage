@@ -1,7 +1,7 @@
 ---
 title: "Waarom de SaaS-markt $300 miljard verloor: De onzichtbare revolutie van AI-agents"
 date: "2026-02-10"
-category: "AI & Technologie"
+category: "Nieuws & Analyse"
 excerpt: "Gevestigde SaaS-namen verloren meer dan 65% van hun marktwaarde. AI-agents herschikken fundamenteel wat software waardevol maakt — van schermen naar acties, van abonnementen naar verbruik."
 featuredImage: "/blog/images/saas-markt-ai-agents-revolutie.jpg"
 ---

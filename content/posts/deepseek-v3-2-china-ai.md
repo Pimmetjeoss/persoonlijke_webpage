@@ -1,7 +1,7 @@
 ---
 title: "DeepSeek V3.2: Waarom China's Nieuwe AI-model Stilletjes de Spelregels Verandert"
 date: "2025-12-07"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 excerpt: "Terwijl de VS zich richt op topmodellen, voert China een slimme strategie uit: verovering van de zakelijke markt met goedkopere, efficiëntere AI."
 ---
 

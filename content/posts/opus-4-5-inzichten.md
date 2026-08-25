@@ -1,7 +1,7 @@
 ---
 title: "Opus 4.5 Is Hier: De 3 Verrassende Inzichten Die Iedereen Mist"
 date: "2025-11-27"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 excerpt: "Achter de prestaties van Opus 4.5 schuilen drie cruciale trends: instortende kosten, agentic AI, en strategische allianties die de toekomst bepalen."
 ---
 

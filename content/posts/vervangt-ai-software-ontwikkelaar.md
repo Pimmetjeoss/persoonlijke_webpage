@@ -1,7 +1,7 @@
 ---
 title: "Vervangt AI de Software Ontwikkelaar?"
 date: "2026-03-30"
-category: "AI & Technologie"
+category: "Nieuws & Analyse"
 excerpt: "De banenmarkt voor softwareontwikkelaars herstelt langzaam van recente ontslagrondes, terwijl de opkomst van AI-modellen zorgt voor onzekerheid over instapfuncties. Tegelijkertijd ontstaat er een tweedeling tussen programmeurs die AI volledig omarmen en degenen die terughoudend zijn."
 featuredImage: "/images/blog/vervangt-ai-software-ontwikkelaar.jpg"
 ---

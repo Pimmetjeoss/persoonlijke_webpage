@@ -1,7 +1,7 @@
 ---
 title: "De Impact van MiniMax M2.7: Zelf-Evolutie en de Compute-Kloof"
 date: "2026-03-24"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 excerpt: "Ontdek hoe het nieuwe MiniMax M2.7 AI-model grenzen verlegt met agentic workflows en vroege 'zelf-evolutie', ondanks de groeiende hardwarebeperkingen in China."
 featuredImage: "/images/blog/impact-minimax-m2-7-zelf-evolutie-compute-kloof.png"
 ---

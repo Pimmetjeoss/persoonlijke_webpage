@@ -1,7 +1,7 @@
 ---
 title: "Waarom Inferentie Zo Moeilijk Is: Van GGUF tot vLLM Uitgelegd"
 date: "2026-05-03"
-category: "AI & Technologie"
+category: "AI Begrijpen"
 excerpt: "Van mmap en quantization tot vLLM en SGLang: een uitgebreide gids over de complexiteit van LLM inferentie, loading strategieën en serving voor productie."
 featuredImage: "/images/blog/waarom-inferentie-moeilijk-gguf-vllm-uitgelegd.png"
 ---

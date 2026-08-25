@@ -1,7 +1,7 @@
 ---
 title: "Meta's $600 Miljard Gok op AI: Een Wanhopige Sprong of Geniale Strategie?"
 date: "2026-02-28"
-category: "AI & Technologie"
+category: "Nieuws & Analyse"
 excerpt: "Meta pompt $600 miljard in AI. Is dit een wanhopige sprong of een geniale zet? Analyse van de strategie, risico's en kansen van Meta's AI-ambities."
 featuredImage: "/images/blog/meta-600-miljard-gok-ai-strategie.png"
 ---

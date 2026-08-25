@@ -2,7 +2,7 @@
 title: "Kimi K 2.5: Waarom 100 AI-agents tegelijk de toekomst zijn"
 excerpt: "Een nieuw open-source AI-model kan tot 100 agents parallel laten werken. Wat betekent dit voor jou?"
 date: "2026-01-30"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 featuredImage: "/images/blog/kimi-k25-agents.png"
 ---
 

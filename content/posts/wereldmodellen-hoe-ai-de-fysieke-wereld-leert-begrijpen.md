@@ -1,7 +1,7 @@
 ---
 title: "Wereldmodellen: Hoe AI de Fysieke Wereld Leert Begrijpen"
 date: "2026-03-30"
-category: "AI & Technologie"
+category: "AI Begrijpen"
 excerpt: "Terwijl traditionele taalmodellen uitsluitend op tekst worden getraind, simuleren wereldmodellen de fysieke omgeving om wetten van oorzaak en gevolg te begrijpen. Deze aanpak zou AI veel dichter bij AGI kunnen brengen."
 featuredImage: "/images/blog/wereldmodellen-hoe-ai-de-fysieke-wereld-leert-begrijpen.jpg"
 ---

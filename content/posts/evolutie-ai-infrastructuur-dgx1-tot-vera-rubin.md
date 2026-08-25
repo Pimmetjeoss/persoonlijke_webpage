@@ -1,7 +1,7 @@
 ---
 title: "De Evolutie van AI-Infrastructuur: Van DGX-1 tot Vera Rubin"
 date: "2026-03-30"
-category: "AI & Technologie"
+category: "Hardware & Infrastructuur"
 excerpt: "Ontdek hoe de vraag naar rekenkracht voor AI is geëvolueerd, van de eerste Transformer-modellen tot de nieuwste agentische systemen met NVIDIA's Vera Rubin-architectuur en Groq 3 LPX."
 featuredImage: "/images/blog/evolutie-ai-infrastructuur-dgx1-tot-vera-rubin.jpg"
 ---

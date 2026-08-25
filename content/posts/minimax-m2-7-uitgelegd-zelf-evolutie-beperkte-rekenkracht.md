@@ -1,7 +1,7 @@
 ---
 title: "MiniMax M2.7 Uitgelegd: Zelf-Evolutie en Beperkte Rekenkracht"
 date: "2026-03-24"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 excerpt: "De release van MiniMax M2.7 trekt de aandacht voor agentic use cases zoals OpenClaw, ondanks dat China te maken heeft met zware beperkingen in rekenkracht ten opzichte van de VS. Daarnaast toont het model vroege signalen van 'zelf-evolutie' doordat agenten het machine learning-trainingsproces aanzienlijk helpen optimaliseren en automatiseren."
 featuredImage: "/images/blog/minimax-m2-7-uitgelegd-zelf-evolutie-beperkte-rekenkracht.png"
 ---

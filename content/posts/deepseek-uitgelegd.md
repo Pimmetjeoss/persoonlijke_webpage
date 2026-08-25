@@ -1,7 +1,7 @@
 ---
 title: "DeepSeek uitgelegd: Waarom slimmer bouwen belangrijker is dan groter bouwen"
 date: "2026-01-22"
-category: "AI & Technologie"
+category: "AI Begrijpen"
 excerpt: "Een Chinees AI-bedrijf heeft aangetoond dat je met veel minder geld een AI kunt maken die net zo goed is als de duurste Amerikaanse modellen. Hun geheim? Niet meer rekenkracht kopen, maar slimmer ontwerpen."
 featuredImage: "/blog/images/deepseek-uitgelegd.png"
 ---

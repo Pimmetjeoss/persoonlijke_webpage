@@ -1,7 +1,7 @@
 ---
 title: "Inference Engines: Waarom AI Draaien Zoveel Complexer Is Geworden"
 date: "2026-03-16"
-category: "AI & Technologie"
+category: "AI Begrijpen"
 excerpt: "Van 2.000 naar 1 miljoen tokens, van honderden miljoenen naar triljoenen parameters: ontdek waarom moderne AI-inferentie een compleet nieuwe aanpak vereist en hoe inference engines die uitdaging aanpakken."
 featuredImage: "/images/blog/inference-engines-waarom-ai-draaien-zoveel-complexer-is-geworden.png"
 ---

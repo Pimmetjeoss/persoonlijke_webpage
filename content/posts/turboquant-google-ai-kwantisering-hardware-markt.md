@@ -1,7 +1,7 @@
 ---
 title: "TurboQuant: Hoe Google's AI-Kwantisering de Hardware-Markt Schudt"
 date: "2026-04-02"
-category: "AI & Technologie"
+category: "Hardware & Infrastructuur"
 excerpt: "Google's TurboQuant optimaliseert KV-cache kwantisering voor AI-modellen met een slimme codebook-aanpak. Minder VRAM nodig — maar wat betekent dat voor Nvidia?"
 featuredImage: "/images/blog/turboquant-google-ai-kwantisering-hardware-markt.png"
 ---

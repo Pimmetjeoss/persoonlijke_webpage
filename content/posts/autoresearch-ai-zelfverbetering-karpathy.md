@@ -1,7 +1,7 @@
 ---
 title: "AutoResearch: Hoe AI Zichzelf Verbetert Zonder Jouw Hulp"
 date: "2026-04-04"
-category: "AI & Technologie"
+category: "AI Begrijpen"
 excerpt: "Andrej Karpathy's AutoResearch laat AI-agenten zichzelf iteratief verbeteren — van ELO 750 naar 2600 in een schaakmotor. Wat betekent dit voor de toekomst van softwareontwikkeling?"
 featuredImage: "/images/blog/autoresearch-ai-zelfverbetering-karpathy.png"
 ---

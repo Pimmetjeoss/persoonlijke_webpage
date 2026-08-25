@@ -1,7 +1,7 @@
 ---
 title: "Kimi K2.6 en Agent Swarms: De Volgende Stap in AI-agenten"
 date: "2026-05-03"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 excerpt: "MoonShot AI's Kimi K2.6 blinkt uit bij langlopende coderingstaken en agent swarms. Ontdek hoe Spec Driven Development en AI-agenten software development transformeren."
 featuredImage: "/images/blog/kimi-k2-6-agent-swarms-volgende-stap-ai.png"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Google TPU 8t en 8i zijn er: Zo verandert het AI-chiplandschap"
 date: "2026-05-03"
-category: "AI & Technologie"
+category: "Hardware & Infrastructuur"
 excerpt: "Google's nieuwe TPU 8t voor training en 8i voor inferentie veranderen de AI-hardware race. Met het Virgo Network als backbone daagt Google NVIDIA uit op efficiëntie en kosten."
 featuredImage: "/images/blog/google-tpu-8t-8i-ai-chiplandschap.png"
 ---

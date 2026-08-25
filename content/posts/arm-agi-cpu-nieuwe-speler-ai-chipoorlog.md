@@ -1,7 +1,7 @@
 ---
 title: "ARM's Eerste AGI CPU: Een Nieuwe Speler in de AI-Chipoorlog"
 date: "2026-03-30"
-category: "AI & Technologie"
+category: "Hardware & Infrastructuur"
 excerpt: "ARM heeft hun eerste AGI CPU aangekondigd voor agentische AI-toepassingen. Maar concurreert ARM nu met hun eigen klanten als Apple, Nvidia en AWS?"
 featuredImage: "/images/blog/arm-agi-cpu-nieuwe-speler-ai-chipoorlog.png"
 ---

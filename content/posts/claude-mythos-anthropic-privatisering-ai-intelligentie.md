@@ -1,7 +1,7 @@
 ---
 title: "Claude Mythos: Anthropic's Geheime Wapen en de Privatisering van AI-Intelligentie"
 date: "2026-04-09"
-category: "AI & Technologie"
+category: "Nieuws & Analyse"
 excerpt: "Anthropic's Claude Mythos is een generatiesprong in AI-intelligentie — maar toegang is beperkt tot investeerders. Wat betekent de privatisering van tokens voor de toekomst?"
 featuredImage: "/images/blog/claude-mythos-anthropic-privatisering-ai-intelligentie.png"
 ---

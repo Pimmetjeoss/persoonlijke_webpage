@@ -1,7 +1,7 @@
 ---
 title: "Alibaba's Qwen 3.5: De Revolutie van Kleine AI-Modellen voor Edge Computing"
 date: "2026-03-30"
-category: "AI & Technologie"
+category: "Modellen & Releases"
 excerpt: "Alibaba heeft de kleine varianten van het Qwen 3.5 model gelanceerd, variërend van 800 miljoen tot 9 miljard parameters, wat deze ideaal maakt voor edge-apparaten en IoT-toepassingen."
 featuredImage: "/images/blog/alibaba-qwen-3-5-kleine-ai-modellen-edge-computing.jpg"
 ---
