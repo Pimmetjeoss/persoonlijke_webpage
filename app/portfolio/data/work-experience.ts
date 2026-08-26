@@ -119,4 +119,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
     href: "/agent-ready",
   },
+  {
+    id: "agent-scan",
+    company: "AGENT-SCAN",
+    role: "AGENTIC SCORE VOOR JOUW SITE",
+    period: "",
+    description:
+      "Gratis diepe scan: ontvang een agentic-score met bewijs en concrete fixes voor jouw website.",
+    highlights: [],
+    href: "/agent-scan",
+  },
 ]
