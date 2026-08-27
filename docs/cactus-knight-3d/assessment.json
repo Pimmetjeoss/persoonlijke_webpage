@@ -1,0 +1,255 @@
+{
+  "targetName": "Code Lieshout Cactus Knight",
+  "sourceImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png",
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "stylized cactus knight mascot",
+      "primaryDomain": "character",
+      "formLanguage": [
+        "organic",
+        "character-like",
+        "sculptural",
+        "hard-surface helmet"
+      ],
+      "structureKind": [
+        "compound object",
+        "articulated assembly",
+        "layered shell"
+      ],
+      "motionPotential": [
+        "whole-object transform",
+        "articulated arms",
+        "idle squash-and-sway"
+      ],
+      "materialFamilies": [
+        "cactus skin",
+        "painted/brushed metal",
+        "matte black facial marks",
+        "satin silver tablet"
+      ],
+      "notes": "Recognizable Code Lieshout cactus-ridder. Preserve the rounded ribbed cactus body, angry black eyes, silver medieval helmet, short arms/feet, and sticker-like outlined silhouette."
+    },
+    "complexity": {
+      "tier": "complex",
+      "scores": {
+        "silhouetteComplexity": 2,
+        "componentCount": 2,
+        "hierarchyDepth": 2,
+        "repetitionDensity": 2,
+        "materialLayerCount": 3,
+        "localDetailDensity": 3,
+        "occlusionRisk": 1,
+        "actionReadinessNeed": 2
+      },
+      "estimatedCounts": {
+        "macroComponents": 5,
+        "mesoComponents": 14,
+        "microFeatureGroups": 8,
+        "materialLayers": 4,
+        "repetitionSystems": 3
+      },
+      "reasoning": [
+        "Three admitted views resolve front, back, side depth, arm thickness, helmet shell and body ribs.",
+        "Identity depends on mixed organic cactus geometry and hard-surface helmet details rather than a single primitive.",
+        "Repeated ribs, spines, rivets and visor slots require controlled procedural systems."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "complex",
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Choose simple/moderate/complex/ultra-complex from observed structure, not from a hardcoded domain."
+    },
+    "unknownsToResolveBeforeImplementation": [
+      "Exact underside and top attachment geometry beneath the helmet remain inferred.",
+      "The held silver slab is treated as a tablet/plate because its face content is not visible.",
+      "White sticker border is a presentation treatment, not physical cactus anatomy."
+    ],
+    "detailInventory": {
+      "scanMethod": "grid-3x3 plus back and side references",
+      "targetMinDetails": 12,
+      "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+      "details": []
+    },
+    "anatomy": {
+      "applies": true,
+      "styleHeads": 4.5,
+      "proportions": {
+        "headUnit": 0.22,
+        "torso": 0.52,
+        "legs": 0.18,
+        "shoulderWidth": 0.56,
+        "hipWidth": 0.44
+      },
+      "pose": {
+        "type": "compact upright mascot stance",
+        "jointAngles": {
+          "leftShoulder": [
+            0,
+            0,
+            -28
+          ],
+          "rightShoulder": [
+            0,
+            0,
+            24
+          ],
+          "leftElbow": [
+            0,
+            0,
+            -12
+          ],
+          "rightElbow": [
+            0,
+            0,
+            10
+          ]
+        }
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.34,
+        "eyeSpacing": 0.24,
+        "noseBase": null,
+        "mouthLine": null,
+        "hairline": 0.2
+      },
+      "features": [
+        "two black drop-shaped eyes",
+        "heavy inward-slanting eyebrows",
+        "no visible mouth or nose",
+        "helmet replaces hairline"
+      ],
+      "confidence": 0.9,
+      "note": "Stylized non-human cactus character. Proportions are measured from the admitted front, rear and side references; face uses only eyes and brows."
+    },
+    "sourceImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png"
+  },
+  "qualityContract": {
+    "qualityBar": "complex",
+    "definitionOfDone": [
+      "At front three-quarter view the model is immediately recognizable as the Code Lieshout cactus knight: rounded ribbed green cactus, angry black eyes, silver riveted helmet with slotted visor, short arms and feet, and a silver tablet.",
+      "Rear and side views preserve the resolved body depth, central helmet strap, arm thickness, cactus ribs and evenly sparse spine distribution.",
+      "The model exposes root, helmet, visor, arms, feet and tablet through root.userData.sculptRuntime for idle and gesture animation."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 5,
+      "mesoComponents": 12,
+      "microFeatureGroups": 7,
+      "materialLayers": 4,
+      "repetitionSystems": 3,
+      "reviewViewpoints": 3
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "required": true,
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "required": true,
+        "qualityCriteria": [
+          "Material-pass names the reference-derived albedo palette, roughness variation, tactile normal/bump/displacement response, and local masks.",
+          "When a source image is available, run reference PBR extraction and require confidence >= 0.7 before treating maps as implementation-ready.",
+          "Lighting-pass names key/fill/rim or environment light, exposure, tone mapping, background, and contact shadow behavior.",
+          "Neutral, grazing-angle, and reference-matched renders prove that surface relief survives relighting and is not painted into albedo."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "tall rounded cactus body to helmet-height ratio",
+      "short separated feet and arm negative spaces",
+      "helmet dome, brow visor and side pivots",
+      "eye spacing and angry brow angle",
+      "vertical rib spacing and spine density",
+      "silver-green material contrast",
+      "tablet position under right arm"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity."
+    ]
+  },
+  "authoringInstruction": "Fill observed object class, complexity reasoning, featureGroups, visualDeltaChecks, and unknowns before generating or implementing ObjectSculptSpec."
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "anatomy-proportion",
+    "score": 0.84,
+    "visible": true,
+    "notes": "Rounded capsule body, short side arms and split feet read as the admitted mascot silhouette."
+  },
+  {
+    "id": "knight-helmet-system",
+    "score": 0.88,
+    "visible": true,
+    "notes": "Dome, slotted visor, pivots and crown strap are present and unobstructed."
+  },
+  {
+    "id": "face-landmark-placement",
+    "score": 0.86,
+    "visible": true,
+    "notes": "Drop eyes and inward brows preserve the angry expression."
+  },
+  {
+    "id": "rib-spine-language",
+    "score": 0.76,
+    "visible": true,
+    "notes": "Vertical ribs are strong; spine clusters are intentionally simplified for the realtime stylized target."
+  },
+  {
+    "id": "outfit-and-palette",
+    "score": 0.84,
+    "visible": true,
+    "notes": "Green cactus, warm steel helmet and dark ink outline match the reference palette."
+  },
+  {
+    "id": "pose-silhouette",
+    "score": 0.83,
+    "visible": true,
+    "notes": "Compact upright pose and tablet-bearing arm remain legible from the front view."
+  }
+]

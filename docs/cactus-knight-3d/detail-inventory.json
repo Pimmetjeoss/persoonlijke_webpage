@@ -1,0 +1,251 @@
+{
+  "sourceImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png",
+  "zonesDir": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones",
+  "detailInventory": {
+    "scanMethod": "grid-3x3",
+    "targetMinDetails": 10,
+    "details": [
+      {
+        "id": "helmet-dome",
+        "kind": "material-finish",
+        "description": "Warm silver dome with cool gray shadow panels and a broad brushed highlight.",
+        "region": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "helmet material response",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "helmet-metal.domeFinish"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c0.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "helmet-crown-strap",
+        "kind": "raised-ridge",
+        "description": "Central metal strap runs front-to-back over the dome.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "helmet structure",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "helmetDome.crownStrap"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c1.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "helmet-rivets",
+        "kind": "fastener",
+        "description": "Small round rivets repeat along crown strap and lower band.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "helmet recognizability",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "helmetBand.rivets"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c2.png",
+        "confidence": 0.98
+      },
+      {
+        "id": "visor-slots",
+        "kind": "linework",
+        "description": "Five deep black vertical slots puncture the raised visor plate.",
+        "region": {
+          "x": 0.0,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "face/helmet silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "visor.ventSlots"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r1c0.png",
+        "confidence": 0.98
+      },
+      {
+        "id": "side-pivots",
+        "kind": "fastener",
+        "description": "Circular hinge discs connect visor to the band on both sides.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "helmet articulation",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "visor.sidePivots"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r1c1.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "body-ribs",
+        "kind": "raised-ridge",
+        "description": "Six broad vertical cactus ribs create alternating highlight and shadow channels.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "body form",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "body.verticalRibs"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r1c2.png",
+        "confidence": 0.98
+      },
+      {
+        "id": "cactus-spines",
+        "kind": "fastener",
+        "description": "Sparse paired black spines repeat along rib seams and outer silhouette.",
+        "region": {
+          "x": 0.0,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "cactus material identity",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "body.spineClusters"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r2c0.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "angry-eyes",
+        "kind": "linework",
+        "description": "Two matte black drop eyes with thick brows slanting down toward center.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "face expression",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "face.angryEyes"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r2c1.png",
+        "confidence": 0.99
+      },
+      {
+        "id": "arm-ribs",
+        "kind": "raised-ridge",
+        "description": "Both tapered arms carry two or three shallow longitudinal grooves.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "limb volume",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "arms.ribGrooves"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r2c2.png",
+        "confidence": 0.9
+      },
+      {
+        "id": "feet-split",
+        "kind": "recessed-groove",
+        "description": "Two short rounded feet are separated by a deep central notch.",
+        "region": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "lower silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "feet.centerSplit"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c0.png",
+        "confidence": 0.98
+      },
+      {
+        "id": "tablet-plate",
+        "kind": "bevel",
+        "description": "Thin silver rectangular slab with dark edge, held diagonally under right arm.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "prop silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "tablet.beveledPlate"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c1.png",
+        "confidence": 0.93
+      },
+      {
+        "id": "sticker-outline",
+        "kind": "bevel",
+        "description": "Bold black contour and white sticker halo frame the illustrated mascot.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "presentation",
+        "affects": "brand silhouette treatment",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "outline.stickerHalo"
+        },
+        "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c2.png",
+        "confidence": 0.9
+      }
+    ]
+  },
+  "authoringInstruction": "Open each zone crop under zonesDir and replace every detail stub's kind, description, scale, affects, mapsTo, and confidence with what is actually observed. Add more detail entries per zone if a single zone contains multiple distinct marks; do not leave stubs unfilled or unlinked (mapsTo must reference a real component.localFeatures or material.localOverrides entry)."
+}

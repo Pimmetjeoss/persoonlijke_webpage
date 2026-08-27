@@ -1,0 +1,350 @@
+.page {
+  --paper: #dff8df;
+  --ink: #06170d;
+  --green: #2dad57;
+  --green-dark: #0d552a;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 84px;
+  padding: 19px clamp(20px, 3.4vw, 54px);
+  border-bottom: 2px solid var(--ink);
+  text-transform: uppercase;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.backLink span {
+  font-size: 1.4rem;
+  transition: transform 180ms ease;
+}
+
+.backLink:hover span,
+.backLink:focus-visible span {
+  transform: translateX(-5px);
+}
+
+.backLink:focus-visible,
+.controls button:focus-visible,
+.footer a:focus-visible {
+  outline: 3px solid var(--green-dark);
+  outline-offset: 4px;
+}
+
+.headerMark {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+.headerMark strong { font-weight: 700; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.72fr) minmax(500px, 1.28fr);
+  min-height: calc(100svh - 84px);
+  border-bottom: 2px solid var(--ink);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(38px, 6vw, 96px) clamp(24px, 4.2vw, 72px);
+  border-right: 2px solid var(--ink);
+}
+
+.eyebrow,
+.referenceHeading p {
+  margin: 0 0 22px;
+  color: var(--green-dark);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.copy h1 {
+  max-width: 700px;
+  margin: 0;
+  font-family: var(--font-fjalla-one), sans-serif;
+  font-size: clamp(4.2rem, 7.2vw, 8.4rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.84;
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 590px;
+  margin: clamp(30px, 5vh, 58px) 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: clamp(38px, 6vh, 68px) 0 0;
+  border-top: 2px solid var(--ink);
+}
+
+.metrics div {
+  padding: 18px 14px 0 0;
+}
+
+.metrics div + div {
+  padding-left: 18px;
+  border-left: 1px solid color-mix(in srgb, var(--ink), transparent 48%);
+}
+
+.metrics dt {
+  font-size: clamp(2.1rem, 3.3vw, 4rem);
+  line-height: 1;
+}
+
+.metrics dd {
+  margin: 6px 0 0;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.viewerColumn {
+  display: grid;
+  grid-template-rows: minmax(580px, 1fr) auto;
+  min-height: 0;
+}
+
+.stage {
+  position: relative;
+  min-height: 580px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, transparent 49.92%, rgba(6, 23, 13, 0.1) 50%, transparent 50.08%),
+    linear-gradient(0deg, transparent 49.92%, rgba(6, 23, 13, 0.08) 50%, transparent 50.08%),
+    var(--paper);
+}
+
+.stage::before {
+  position: absolute;
+  z-index: 2;
+  inset: 5.5% 5%;
+  border: 1px solid rgba(6, 23, 13, 0.22);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.canvas { touch-action: pan-y; }
+.fallback { width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+
+.stageLabel {
+  position: absolute;
+  z-index: 3;
+  top: 20px;
+  left: 24px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.61rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.stageIndex {
+  position: absolute;
+  z-index: 3;
+  right: 22px;
+  bottom: 18px;
+  color: var(--green-dark);
+  font-size: 1.35rem;
+  line-height: 0.8;
+  text-align: right;
+  pointer-events: none;
+}
+
+.controls {
+  display: flex;
+  min-height: 68px;
+  border-top: 2px solid var(--ink);
+}
+
+.viewButtons {
+  display: flex;
+  flex: 1;
+}
+
+.controls button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.viewButtons button {
+  min-width: 96px;
+  padding: 0 22px;
+  border-right: 1px solid rgba(6, 23, 13, 0.45);
+}
+
+.controls button:hover { background: #b9efc4; }
+.controls .activeButton { background: var(--ink); color: var(--paper); }
+.controls .activeButton:hover { background: var(--green-dark); }
+
+.rotateButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  border-left: 2px solid var(--ink) !important;
+  font-family: var(--font-geist-mono), monospace !important;
+  font-size: 0.68rem !important;
+}
+
+.liveDot,
+.pausedDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1ab950;
+  box-shadow: 0 0 0 4px rgba(26, 185, 80, 0.16);
+}
+
+.pausedDot { background: #6d7e70; box-shadow: none; }
+
+.references {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.6fr) minmax(600px, 1.4fr);
+  border-bottom: 2px solid var(--ink);
+}
+
+.referenceHeading {
+  padding: clamp(46px, 6vw, 90px) clamp(24px, 4.2vw, 72px);
+  border-right: 2px solid var(--ink);
+}
+
+.referenceHeading h2 {
+  max-width: 520px;
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 6rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.referenceStrip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 560px;
+}
+
+.referenceFigure {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin: 0;
+  padding: 30px 20px 18px;
+  overflow: hidden;
+  background: #08150d;
+}
+
+.referenceFigure + .referenceFigure { border-left: 1px solid #dff8df; }
+.referenceImage { width: 100%; height: 100%; min-height: 440px; object-fit: contain; }
+
+.referenceFigure figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(223, 248, 223, 0.55);
+  color: #dff8df;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 118px;
+  padding: 26px clamp(24px, 4.2vw, 72px);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.footer p {
+  margin: 0;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.footer a {
+  color: inherit;
+  font-size: clamp(1.5rem, 2.6vw, 3rem);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footer a span { display: inline-block; transition: transform 180ms ease; }
+.footer a:hover span { transform: translateX(7px); }
+
+@media (max-width: 1040px) {
+  .hero { grid-template-columns: 1fr; }
+  .copy { border-right: 0; border-bottom: 2px solid var(--ink); }
+  .viewerColumn { min-height: 720px; }
+  .references { grid-template-columns: 1fr; }
+  .referenceHeading { border-right: 0; border-bottom: 2px solid var(--ink); }
+}
+
+@media (max-width: 700px) {
+  .header { min-height: 70px; }
+  .headerMark span { display: none; }
+  .copy h1 { font-size: clamp(3.5rem, 18vw, 5.4rem); }
+  .metrics dt { font-size: 2.2rem; }
+  .viewerColumn { min-height: 610px; grid-template-rows: 540px auto; }
+  .stage { min-height: 540px; }
+  .controls { flex-wrap: wrap; }
+  .viewButtons { min-height: 58px; }
+  .viewButtons button { min-width: 0; flex: 1; padding: 0 10px; }
+  .rotateButton { width: 100%; min-height: 52px; justify-content: center; border-top: 1px solid var(--ink) !important; border-left: 0 !important; }
+  .referenceStrip { grid-template-columns: 1fr; min-height: 0; }
+  .referenceFigure { min-height: 500px; }
+  .referenceFigure + .referenceFigure { border-top: 1px solid #dff8df; border-left: 0; }
+  .footer { align-items: flex-start; flex-direction: column; gap: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink span,
+  .controls button,
+  .footer a span { transition: none; }
+}

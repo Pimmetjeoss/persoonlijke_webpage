@@ -1,0 +1,5914 @@
+{
+  "targetName": "Code Lieshout Cactus Knight",
+  "targetId": "code-lieshout-cactus-knight",
+  "schemaVersion": "2.1",
+  "terminologyProfile": {
+    "domain": "real-time procedural Three.js asset",
+    "geometryTerms": [
+      "silhouette",
+      "topology",
+      "primitive",
+      "bevel",
+      "chamfer",
+      "taper",
+      "bend",
+      "boolean cut",
+      "edge loop",
+      "surface normal",
+      "displacement"
+    ],
+    "materialTerms": [
+      "albedo",
+      "baseColor",
+      "roughness",
+      "metalness",
+      "normal map",
+      "bump map",
+      "ambient occlusion",
+      "cavity dirt",
+      "edge wear",
+      "clearcoat"
+    ],
+    "lightingTerms": [
+      "key light",
+      "fill light",
+      "rim light",
+      "HDRI/environment reflection",
+      "contact shadow"
+    ],
+    "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters."
+  },
+  "sourceImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png",
+  "referenceCamera": {
+    "solved": false,
+    "fovDegrees": 40.0,
+    "aspect": 1.0,
+    "orientation": {
+      "yaw": 0.0,
+      "pitch": 0.0,
+      "roll": 0.0
+    },
+    "positionHint": [
+      0.0,
+      0.0,
+      3.0
+    ],
+    "note": "For likeness work, solve the reference camera (forge/stage1_intake/solve_camera_pose.py) so the review render aligns with the photo and the reference can be projected. Confirm by overlay review."
+  },
+  "suitability": "pass",
+  "scores": {
+    "object_isolation": 3,
+    "silhouette_readability": 3,
+    "depth_inference": 3,
+    "primitive_decomposition": 3,
+    "material_procedurality": 3,
+    "occlusion_risk": 1,
+    "interaction_fit": 3
+  },
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "stylized cactus knight mascot",
+      "primaryDomain": "character",
+      "formLanguage": [
+        "organic",
+        "character-like",
+        "sculptural",
+        "hard-surface helmet"
+      ],
+      "structureKind": [
+        "compound object",
+        "articulated assembly",
+        "layered shell"
+      ],
+      "motionPotential": [
+        "whole-object transform",
+        "articulated arms",
+        "idle squash-and-sway"
+      ],
+      "materialFamilies": [
+        "cactus skin",
+        "painted/brushed metal",
+        "matte black facial marks",
+        "satin silver tablet"
+      ],
+      "notes": "Recognizable Code Lieshout cactus-ridder. Preserve the rounded ribbed cactus body, angry black eyes, silver medieval helmet, short arms/feet, and sticker-like outlined silhouette."
+    },
+    "complexity": {
+      "tier": "complex",
+      "scores": {
+        "silhouetteComplexity": 2,
+        "componentCount": 2,
+        "hierarchyDepth": 2,
+        "repetitionDensity": 2,
+        "materialLayerCount": 3,
+        "localDetailDensity": 3,
+        "occlusionRisk": 1,
+        "actionReadinessNeed": 2
+      },
+      "estimatedCounts": {
+        "macroComponents": 5,
+        "mesoComponents": 14,
+        "microFeatureGroups": 8,
+        "materialLayers": 4,
+        "repetitionSystems": 3
+      },
+      "reasoning": [
+        "Three admitted views resolve front, back, side depth, arm thickness, helmet shell and body ribs.",
+        "Identity depends on mixed organic cactus geometry and hard-surface helmet details rather than a single primitive.",
+        "Repeated ribs, spines, rivets and visor slots require controlled procedural systems."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "complex",
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Choose simple/moderate/complex/ultra-complex from observed structure, not from a hardcoded domain."
+    },
+    "unknownsToResolveBeforeImplementation": [],
+    "detailInventory": {
+      "scanMethod": "grid-3x3",
+      "targetMinDetails": 10,
+      "details": [
+        {
+          "id": "helmet-dome",
+          "kind": "gloss",
+          "description": "Warm silver dome with cool gray shadow panels and a broad brushed highlight.",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "macro",
+          "affects": "helmet material response",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "domeFinish"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c0.png",
+          "confidence": 0.95
+        },
+        {
+          "id": "helmet-crown-strap",
+          "kind": "ridge",
+          "description": "Central metal strap runs front-to-back over the dome.",
+          "region": {
+            "x": 0.3333,
+            "y": 0.0,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "helmet structure",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "crownStrap"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c1.png",
+          "confidence": 0.95
+        },
+        {
+          "id": "helmet-rivets",
+          "kind": "fastener",
+          "description": "Small round rivets repeat along crown strap and lower band.",
+          "region": {
+            "x": 0.6667,
+            "y": 0.0,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "micro",
+          "affects": "helmet recognizability",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "rivetHeads"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c2.png",
+          "confidence": 0.98
+        },
+        {
+          "id": "visor-slots",
+          "kind": "linework",
+          "description": "Five deep black vertical slots puncture the raised visor plate.",
+          "region": {
+            "x": 0.0,
+            "y": 0.3333,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "face/helmet silhouette",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "ventSlots"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r1c0.png",
+          "confidence": 0.98
+        },
+        {
+          "id": "side-pivots",
+          "kind": "fastener",
+          "description": "Circular hinge discs connect visor to the band on both sides.",
+          "region": {
+            "x": 0.3333,
+            "y": 0.3333,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "helmet articulation",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "sidePivots"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r1c1.png",
+          "confidence": 0.95
+        },
+        {
+          "id": "body-ribs",
+          "kind": "ridge",
+          "description": "Six broad vertical cactus ribs create alternating highlight and shadow channels.",
+          "region": {
+            "x": 0.6667,
+            "y": 0.3333,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "body form",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "verticalRibs"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r1c2.png",
+          "confidence": 0.98
+        },
+        {
+          "id": "cactus-spines",
+          "kind": "fastener",
+          "description": "Sparse paired black spines repeat along rib seams and outer silhouette.",
+          "region": {
+            "x": 0.0,
+            "y": 0.6667,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "micro",
+          "affects": "cactus material identity",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "spineClusters"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r2c0.png",
+          "confidence": 0.95
+        },
+        {
+          "id": "angry-eyes",
+          "kind": "linework",
+          "description": "Two matte black drop eyes with thick brows slanting down toward center.",
+          "region": {
+            "x": 0.3333,
+            "y": 0.6667,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "face expression",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "angryEyes"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r2c1.png",
+          "confidence": 0.99
+        },
+        {
+          "id": "arm-ribs",
+          "kind": "ridge",
+          "description": "Both tapered arms carry two or three shallow longitudinal grooves.",
+          "region": {
+            "x": 0.6667,
+            "y": 0.6667,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "limb volume",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "armRibGrooves"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r2c2.png",
+          "confidence": 0.9
+        },
+        {
+          "id": "feet-split",
+          "kind": "groove",
+          "description": "Two short rounded feet are separated by a deep central notch.",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "macro",
+          "affects": "lower silhouette",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "centerSplit"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c0.png",
+          "confidence": 0.98
+        },
+        {
+          "id": "tablet-plate",
+          "kind": "bevel",
+          "description": "Thin silver rectangular slab with dark edge, held diagonally under right arm.",
+          "region": {
+            "x": 0.3333,
+            "y": 0.0,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "prop silhouette",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "beveledPlate"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c1.png",
+          "confidence": 0.93
+        },
+        {
+          "id": "sticker-outline",
+          "kind": "bevel",
+          "description": "Bold black contour and white sticker halo frame the illustrated mascot.",
+          "region": {
+            "x": 0.6667,
+            "y": 0.0,
+            "width": 0.3333,
+            "height": 0.3333,
+            "units": "normalized"
+          },
+          "scale": "presentation",
+          "affects": "brand silhouette treatment",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "stickerHalo"
+          },
+          "evidenceRef": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/detail-zones/zone-r0c2.png",
+          "confidence": 0.9
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": true,
+      "styleHeads": 4.5,
+      "proportions": {
+        "headUnit": 0.22,
+        "torso": 0.52,
+        "legs": 0.18,
+        "shoulderWidth": 0.56,
+        "hipWidth": 0.44
+      },
+      "pose": {
+        "type": "compact upright mascot stance",
+        "jointAngles": {
+          "leftShoulder": [
+            0,
+            0,
+            -28
+          ],
+          "rightShoulder": [
+            0,
+            0,
+            24
+          ],
+          "leftElbow": [
+            0,
+            0,
+            -12
+          ],
+          "rightElbow": [
+            0,
+            0,
+            10
+          ]
+        }
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.34,
+        "eyeSpacing": 0.24,
+        "noseBase": null,
+        "mouthLine": null,
+        "hairline": 0.2
+      },
+      "features": [
+        "two black drop-shaped eyes",
+        "heavy inward-slanting eyebrows",
+        "no visible mouth or nose",
+        "helmet replaces hairline"
+      ],
+      "confidence": 0.9,
+      "note": "Stylized non-human cactus character. Proportions are measured from the admitted front, rear and side references; face uses only eyes and brows."
+    },
+    "sourceImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png"
+  },
+  "qualityContract": {
+    "qualityBar": "complex",
+    "definitionOfDone": [
+      "At front three-quarter view the model is immediately recognizable as the Code Lieshout cactus knight: rounded ribbed green cactus, angry black eyes, silver riveted helmet with slotted visor, short arms and feet, and a silver tablet.",
+      "Rear and side views preserve the resolved body depth, central helmet strap, arm thickness, cactus ribs and evenly sparse spine distribution.",
+      "The model exposes root, helmet, visor, arms, feet and tablet through root.userData.sculptRuntime for idle and gesture animation."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 5,
+      "mesoComponents": 8,
+      "microFeatureGroups": 12,
+      "materialLayers": 5,
+      "repetitionSystems": 3,
+      "reviewViewpoints": 4
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "required": true,
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "required": true,
+        "qualityCriteria": [
+          "Material-pass names the reference-derived albedo palette, roughness variation, tactile normal/bump/displacement response, and local masks.",
+          "When a source image is available, run reference PBR extraction and require confidence >= 0.7 before treating maps as implementation-ready.",
+          "Lighting-pass names key/fill/rim or environment light, exposure, tone mapping, background, and contact shadow behavior.",
+          "Neutral, grazing-angle, and reference-matched renders prove that surface relief survives relighting and is not painted into albedo."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "tall rounded cactus body to helmet-height ratio",
+      "short separated feet and arm negative spaces",
+      "helmet dome, brow visor and side pivots",
+      "eye spacing and angry brow angle",
+      "vertical rib spacing and spine density",
+      "silver-green material contrast",
+      "tablet position under right arm"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity."
+    ]
+  },
+  "qualityTargets": {
+    "targetFidelity": 0.7,
+    "mustMatch": [
+      "macro silhouette and proportions",
+      "primary material albedo/roughness response",
+      "reference-derived PBR material response at or above 0.7 confidence when source pixels are usable",
+      "most recognizable local features"
+    ],
+    "niceToHave": [
+      "micro scratches, stains, chips, and dirt masks",
+      "secondary lighting match"
+    ],
+    "fpsTarget": 60,
+    "reviewViewpoints": [
+      "front-three-quarter",
+      "back",
+      "side-three-quarter",
+      "grazing-material"
+    ]
+  },
+  "selfCorrectLoop": {
+    "enabled": true,
+    "visualAcceptance": {
+      "reviewer": "ai-vision",
+      "threshold": 0.7,
+      "comparisonArtifactRequired": true,
+      "layerScoresRequired": true,
+      "codePixelDiffIsAcceptanceAuthority": false,
+      "scoringRule": "AI vision must inspect a side-by-side reference/render sheet and score the current pass from 0 to 1. Pixel-diff code may assist diagnostics but cannot approve a pass.",
+      "requiredLayerScores": [
+        "silhouetteProportion",
+        "componentStructure",
+        "formDetail",
+        "materialSurface",
+        "lightingCamera"
+      ],
+      "featureReviewPolicy": {
+        "enabled": true,
+        "reviewUnit": "semantic-subsystem",
+        "maxCriticalFeaturesPerPass": 5,
+        "maxImportantFeaturesPerPass": 3,
+        "criticalDefaultThreshold": 0.8,
+        "importantAverageThreshold": 0.65,
+        "adaptiveEscalation": true,
+        "singleImagePairOnly": true,
+        "selectionRule": "Choose only the most visually salient, identity-defining, user-prioritized, or high-risk semantic systems. Group repeated parts instead of reviewing every mesh. AI vision scores every selected feature from the same full reference/render pair."
+      }
+    },
+    "reviewAfterPasses": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "allowedActions": [
+      "continue",
+      "refine-spec",
+      "refine-code",
+      "request-input",
+      "stop"
+    ],
+    "specRefineTriggers": [
+      "missing component",
+      "wrong primitive family",
+      "wrong proportions",
+      "material layer under-specified",
+      "local feature not traceable to viewEvidence",
+      "reference ambiguity discovered during implementation"
+    ],
+    "codeRefineTriggers": [
+      "spec is adequate but generated geometry/material does not match",
+      "browser render differs from reference",
+      "performance budget exceeded",
+      "lighting hides geometry or material response"
+    ],
+    "stopCriteria": [
+      "target fidelity reached or user accepts current approximation",
+      "remaining gaps require new reference images or manual art"
+    ],
+    "screenshotPolicy": {
+      "requiredForPasses": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass"
+      ],
+      "preferredCapture": "in-app-browser-screenshot",
+      "fallbackCapture": "user-supplied-screenshot-path",
+      "minimumEvidence": "Each visual pass needs a reference image, rendered screenshot, side-by-side comparison sheet, AI vision score, layer scores, and critique before choosing continue.",
+      "reviewPairRule": "Compare the same camera/viewpoint whenever possible; do not judge a front reference against a random render angle.",
+      "acceptanceAuthority": "AI vision review of the comparison sheet. Code-generated pixel similarity is not sufficient evidence."
+    }
+  },
+  "featureReviewTargets": [
+    {
+      "id": "anatomy-proportion",
+      "name": "Cactus head-unit proportions and body silhouette",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "structural-pass"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot"
+      ],
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ]
+    },
+    {
+      "id": "knight-helmet-system",
+      "name": "Dome, band, visor, vents and pivots",
+      "tier": "critical",
+      "passIds": [
+        "structural-pass",
+        "form-refinement"
+      ],
+      "minimumScore": 0.82,
+      "mustPass": true,
+      "componentRefs": [
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap"
+      ],
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ]
+    },
+    {
+      "id": "face-landmark-placement",
+      "name": "Drop-eye spacing and angry brow landmarks",
+      "tier": "critical",
+      "passIds": [
+        "form-refinement"
+      ],
+      "minimumScore": 0.85,
+      "mustPass": true,
+      "componentRefs": [
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow"
+      ],
+      "evidenceRefs": [
+        "front-three-quarter"
+      ]
+    },
+    {
+      "id": "rib-spine-language",
+      "name": "Vertical ribs and sparse spine clusters",
+      "tier": "critical",
+      "passIds": [
+        "surface-pass"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "body",
+        "left-arm",
+        "right-arm"
+      ],
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back"
+      ]
+    },
+    {
+      "id": "outfit-and-palette",
+      "name": "Knight helmet, tablet and green-silver palette",
+      "tier": "important",
+      "passIds": [
+        "material-pass",
+        "lighting-pass"
+      ],
+      "minimumScore": 0.72,
+      "mustPass": false,
+      "componentRefs": [
+        "body",
+        "helmet-dome",
+        "visor",
+        "tablet"
+      ],
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back"
+      ]
+    },
+    {
+      "id": "pose-silhouette",
+      "name": "Compact upright pose, arm angle and split feet silhouette",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "structural-pass"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot"
+      ],
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ]
+    }
+  ],
+  "sculptPipeline": {
+    "passGateMode": "locked-sequential",
+    "passOrder": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "currentPass": "blockout",
+    "completedPasses": [],
+    "lastCompletedPass": "",
+    "blockedReason": "",
+    "nextRequiredEvidence": [
+      "Pass-specific identity-defining systems match admitted views.",
+      "browser render screenshot from your agent's browser/screenshot tool",
+      "side-by-side reference/render comparison sheet for AI vision review",
+      "AI vision score at or above the visual acceptance threshold",
+      "all critical semantic feature scores from the shared image pair at or above their thresholds",
+      "self-correction review appended with action=continue before the next pass"
+    ]
+  },
+  "lookDevTargets": {
+    "qualityPriority": "stylized-reference",
+    "materialPass": {
+      "albedoPaletteRequired": true,
+      "roughnessVariationRequired": true,
+      "normalOrBumpRequired": true,
+      "localOverridesRequired": true,
+      "minimumTextureResolution": 1024,
+      "preferredTextureResolution": 2048,
+      "independentMapChannels": [
+        "albedo",
+        "roughness",
+        "height",
+        "normal",
+        "ambient-occlusion"
+      ],
+      "requiredSurfaceFrequencyBands": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "geometryReliefRequiredWhenSilhouetteAffected": true,
+      "referencePbrExtraction": {
+        "requiredWhenSourceImagePresent": false,
+        "targetThreshold": 0.7,
+        "stopOnLowConfidence": true,
+        "script": "forge/stage1_intake/extract_pbr_evidence.py",
+        "acceptedLimitation": "single-image extraction is reference-derived inference, not exact photogrammetry"
+      },
+      "mustAvoid": [
+        "single flat albedo per material",
+        "uniform roughness",
+        "albedo texture reused as roughness/height/normal/AO",
+        "single-frequency random noise",
+        "plastic-looking smooth bark, stone, cloth, foliage, or aged material",
+        "local color/detail described only in prose without material masks",
+        "claiming exact PBR recovery when confidence is below the target threshold"
+      ]
+    },
+    "lightingPass": {
+      "requiredTerms": [
+        "key light",
+        "fill light",
+        "rim or environment light",
+        "exposure",
+        "tone mapping",
+        "background",
+        "contact shadow"
+      ],
+      "mustAvoid": [
+        "ambient-only lighting",
+        "flat value range",
+        "missing contact shadow",
+        "reference lighting copied without separating material readability"
+      ]
+    },
+    "screenshotReview": [
+      "Compare albedo palette and local color zones.",
+      "Compare roughness/normal/bump response under light.",
+      "Compare cavity dirt, edge wear, stains, moss, scratches, or other local masks.",
+      "Compare key/fill/rim structure, exposure, tone mapping, background, and contact shadows.",
+      "Capture a neutral-light render to verify material readability without reference lighting.",
+      "Capture a grazing-light close-up to expose flat normals, uniform roughness, tiling, and plastic highlights.",
+      "Capture a reference-matched render from the same camera framing as the source."
+    ]
+  },
+  "actionReadiness": {
+    "contract": "Every macro/meso component should be generated as a stable named Object3D pivot node with a mesh child, action metadata, optional sockets, collider proxy, and destruction metadata.",
+    "defaultRigType": "action-ready-static-rig",
+    "rootMotionNode": "root",
+    "requiredComponentFields": [
+      "id",
+      "parent",
+      "transform",
+      "attachment for child appendages, connectors, limbs, tubes, handles, legs, horns, wings, branches, or cables",
+      "actionProfile.animationRole",
+      "actionProfile.pivot",
+      "actionProfile.collider",
+      "actionProfile.destruction"
+    ],
+    "transformChannels": [
+      "translate",
+      "rotate",
+      "scale",
+      "bend",
+      "twist",
+      "detach",
+      "visibility",
+      "material-state"
+    ],
+    "authoringRules": [
+      "Do not collapse independently movable parts into one mesh.",
+      "Put transforms on component pivot groups, not only on raw meshes.",
+      "For attached child parts, put the pivot at the semantic root/socket and build visible geometry from localStart to localEnd.",
+      "Represent hinge, socket, detachable, and breakable intent even when no animation is implemented yet.",
+      "Use simplified collider proxies for runtime physics instead of visual mesh colliders by default."
+    ],
+    "destructionPolicy": {
+      "defaultBreakable": false,
+      "fractureGroupNaming": "Use stable semantic names such as body-shell, left-hinge, glass-panel, branch-segment.",
+      "debrisStrategy": "Prefer detachable component groups and a small number of procedural fragments over random mesh explosion."
+    }
+  },
+  "assumptions": [
+    "Three stylized views are mutually consistent.",
+    "The silver rectangle is modeled as an unbranded tablet.",
+    "The white sticker halo is represented by the page stage and optional silhouette shell rather than anatomy."
+  ],
+  "coordinateFrame": {
+    "front": "positive Z faces the angry eyes and visor",
+    "up": "positive Y",
+    "scaleReference": "total mascot height about 4.4 world units; feet contact y=0"
+  },
+  "silhouette": {
+    "boundingShape": "Tall rounded capsule body under a hemispherical knight helmet, with short side arms and two separated feet.",
+    "aspectRatios": [
+      "overall width:height about 0.62 without sticker halo",
+      "body depth about 0.62 of body width"
+    ],
+    "symmetry": "Near bilateral body symmetry; tablet and arm poses break it.",
+    "dominantCurves": [
+      "hemispherical helmet crown",
+      "barrel-like cactus sides",
+      "teardrop arms",
+      "rounded feet"
+    ],
+    "negativeSpaces": [
+      "gap between both feet",
+      "small arm-to-body wedges",
+      "visor vent slots"
+    ],
+    "landmarks": [
+      "helmet band at 77% height",
+      "eyes directly below band",
+      "arms centered near 45% height",
+      "feet occupy lower 18%"
+    ]
+  },
+  "viewEvidence": [
+    {
+      "id": "front-three-quarter",
+      "view": "front three-quarter",
+      "imageRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1,
+        "units": "normalized"
+      },
+      "observations": [
+        "angry eyes and brow angle",
+        "visor with five slots",
+        "tablet under right arm",
+        "body rib highlights"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "back",
+      "view": "rear",
+      "imageRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1,
+        "units": "normalized"
+      },
+      "observations": [
+        "central helmet crown strap",
+        "rear band rivets",
+        "body depth and six ribs",
+        "arm attachment heights"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "id": "side-three-quarter",
+      "view": "side three quarter",
+      "imageRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1,
+        "units": "normalized"
+      },
+      "observations": [
+        "helmet shell depth",
+        "visor projection",
+        "arm thickness",
+        "tablet depth and rear placement"
+      ],
+      "confidence": 0.93
+    }
+  ],
+  "componentTree": [
+    {
+      "id": "root",
+      "name": "Cactus Knight Root",
+      "level": "macro",
+      "role": "static-part",
+      "importance": 1,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "material-only",
+      "topologyRationale": "Cactus Knight Root is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": null,
+      "attachment": null,
+      "dimensions": {
+        "width": 1,
+        "height": 1,
+        "depth": 1,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "root",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "hidden"
+        }
+      },
+      "material": "hidden",
+      "materialLayers": [
+        "hidden"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(16, 20, 16, 0.0)",
+        "secondaryAlbedo": "rgba(16, 20, 16, 0.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "body",
+      "name": "Rounded ribbed cactus body",
+      "level": "macro",
+      "role": "static-part",
+      "importance": 1,
+      "confidence": 0.92,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rounded ribbed cactus body is resolved as a distinct capsule volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "root-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          3.15,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 2.2,
+        "height": 3.15,
+        "depth": 1.35,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          1.95,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            2.2,
+            3.15,
+            1.35
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "body",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "cactus-green"
+        }
+      },
+      "material": "cactus-green",
+      "materialLayers": [
+        "cactus-green"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "verticalRibs",
+          "type": "ridge",
+          "count": 6
+        },
+        {
+          "id": "spineClusters",
+          "type": "fastener",
+          "distribution": "sparse along rib seams"
+        },
+        {
+          "id": "angryEyes",
+          "type": "face-system",
+          "placement": "front upper third"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.02,
+        "normalPattern": "vertical rib grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(120, 169, 63, 1.0)",
+        "secondaryAlbedo": "rgba(66, 110, 47, 1.0)",
+        "materialClass": "skin",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "left-arm",
+      "name": "Left tapered cactus arm",
+      "level": "meso",
+      "role": "arm",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Left tapered cactus arm is resolved as a distinct capsule volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          1.55,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.55,
+        "height": 1.55,
+        "depth": 0.58,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -1.08,
+          1.75,
+          -0.04
+        ],
+        "rotation": [
+          0,
+          0,
+          0.55
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "arm",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.55,
+            1.55,
+            0.58
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "left-arm",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "cactus-green"
+        }
+      },
+      "material": "cactus-green",
+      "materialLayers": [
+        "cactus-green"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "armRibGrooves",
+          "type": "groove",
+          "count": 3
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.02,
+        "normalPattern": "vertical rib grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(120, 169, 63, 1.0)",
+        "secondaryAlbedo": "rgba(66, 110, 47, 1.0)",
+        "materialClass": "skin",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "right-arm",
+      "name": "Right tapered cactus arm",
+      "level": "meso",
+      "role": "arm",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Right tapered cactus arm is resolved as a distinct capsule volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          1.5,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.55,
+        "height": 1.5,
+        "depth": 0.58,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          1.02,
+          1.72,
+          0.18
+        ],
+        "rotation": [
+          0,
+          0,
+          -0.36
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "arm",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.55,
+            1.5,
+            0.58
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "right-arm",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "cactus-green"
+        }
+      },
+      "material": "cactus-green",
+      "materialLayers": [
+        "cactus-green"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rightArmGrooves",
+          "type": "groove",
+          "count": 3
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.02,
+        "normalPattern": "vertical rib grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(120, 169, 63, 1.0)",
+        "secondaryAlbedo": "rgba(66, 110, 47, 1.0)",
+        "materialClass": "skin",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "left-foot",
+      "name": "Left rounded foot",
+      "level": "macro",
+      "role": "leg",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Left rounded foot is resolved as a distinct capsule volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.92,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.82,
+        "height": 0.92,
+        "depth": 0.85,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -0.48,
+          0.45,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "leg",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.82,
+            0.92,
+            0.85
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "left-foot",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "cactus-green"
+        }
+      },
+      "material": "cactus-green",
+      "materialLayers": [
+        "cactus-green"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "centerSplit",
+          "type": "negative-space",
+          "side": "left"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.02,
+        "normalPattern": "vertical rib grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(120, 169, 63, 1.0)",
+        "secondaryAlbedo": "rgba(66, 110, 47, 1.0)",
+        "materialClass": "skin",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "right-foot",
+      "name": "Right rounded foot",
+      "level": "macro",
+      "role": "leg",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Right rounded foot is resolved as a distinct capsule volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.92,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.82,
+        "height": 0.92,
+        "depth": 0.85,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0.48,
+          0.45,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "leg",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.82,
+            0.92,
+            0.85
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "right-foot",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "cactus-green"
+        }
+      },
+      "material": "cactus-green",
+      "materialLayers": [
+        "cactus-green"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rightFootRibs",
+          "type": "ridge",
+          "count": 2
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.02,
+        "normalPattern": "vertical rib grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(120, 169, 63, 1.0)",
+        "secondaryAlbedo": "rgba(66, 110, 47, 1.0)",
+        "materialClass": "skin",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "helmet-dome",
+      "name": "Knight helmet dome",
+      "level": "macro",
+      "role": "static-part",
+      "importance": 1,
+      "confidence": 0.92,
+      "primitive": "ellipsoid",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Knight helmet dome is resolved as a distinct ellipsoid volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          1.25,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 2.28,
+        "height": 1.25,
+        "depth": 1.62,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          3.85,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            2.28,
+            1.25,
+            1.62
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "helmet-dome",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "helmet-metal"
+        }
+      },
+      "material": "helmet-metal",
+      "materialLayers": [
+        "helmet-metal"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "crownStrap",
+          "type": "raised-band",
+          "orientation": "front-to-back"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(183, 181, 168, 1.0)",
+        "secondaryAlbedo": "rgba(105, 112, 120, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "helmet-band",
+      "name": "Riveted helmet band",
+      "level": "meso",
+      "role": "static-part",
+      "importance": 0.92,
+      "confidence": 0.92,
+      "primitive": "torus",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Riveted helmet band is resolved as a distinct torus volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "helmet-dome",
+      "attachment": {
+        "parentId": "helmet-dome",
+        "parentSocket": "helmet-dome-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.24,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 2.38,
+        "height": 0.24,
+        "depth": 1.7,
+        "radius": 1.1,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          3.38,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            2.38,
+            0.24,
+            1.7
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "helmet-band",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "helmet-metal"
+        }
+      },
+      "material": "helmet-metal",
+      "materialLayers": [
+        "helmet-metal"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rivetHeads",
+          "type": "fastener",
+          "count": 10
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(183, 181, 168, 1.0)",
+        "secondaryAlbedo": "rgba(105, 112, 120, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "visor",
+      "name": "Raised slotted visor",
+      "level": "macro",
+      "role": "hinged-panel",
+      "importance": 1,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Raised slotted visor is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "helmet-band",
+      "attachment": {
+        "parentId": "helmet-band",
+        "parentSocket": "helmet-band-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.72,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 2.08,
+        "height": 0.72,
+        "depth": 0.18,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          3.35,
+          0.82
+        ],
+        "rotation": [
+          -0.08,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "hinged-panel",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            2.08,
+            0.72,
+            0.18
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "visor",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "helmet-metal"
+        }
+      },
+      "material": "helmet-metal",
+      "materialLayers": [
+        "helmet-metal"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "ventSlots",
+          "type": "hole",
+          "count": 5
+        },
+        {
+          "id": "sidePivots",
+          "type": "hinge",
+          "count": 2
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(183, 181, 168, 1.0)",
+        "secondaryAlbedo": "rgba(105, 112, 120, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "crown-strap",
+      "name": "Helmet crown strap",
+      "level": "meso",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Helmet crown strap is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "helmet-dome",
+      "attachment": {
+        "parentId": "helmet-dome",
+        "parentSocket": "helmet-dome-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          1.1,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.28,
+        "height": 1.1,
+        "depth": 0.09,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          4.12,
+          0.72
+        ],
+        "rotation": [
+          -0.62,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.28,
+            1.1,
+            0.09
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "crown-strap",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "helmet-metal"
+        }
+      },
+      "material": "helmet-metal",
+      "materialLayers": [
+        "helmet-metal"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "strapRivets",
+          "type": "fastener",
+          "count": 4
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(183, 181, 168, 1.0)",
+        "secondaryAlbedo": "rgba(105, 112, 120, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "left-eye",
+      "name": "Left drop eye",
+      "level": "meso",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "ellipsoid",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Left drop eye is resolved as a distinct ellipsoid volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.38,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.18,
+        "height": 0.38,
+        "depth": 0.09,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -0.43,
+          2.88,
+          0.7
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.18,
+            0.38,
+            0.09
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "left-eye",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "leftEyeDrop",
+          "type": "contour"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "right-eye",
+      "name": "Right drop eye",
+      "level": "meso",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "ellipsoid",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Right drop eye is resolved as a distinct ellipsoid volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.38,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.18,
+        "height": 0.38,
+        "depth": 0.09,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0.43,
+          2.88,
+          0.7
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.18,
+            0.38,
+            0.09
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "right-eye",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rightEyeDrop",
+          "type": "contour"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "left-brow",
+      "name": "Left angry brow",
+      "level": "meso",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Left angry brow is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.11,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.5,
+        "height": 0.11,
+        "depth": 0.1,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -0.43,
+          3.18,
+          0.72
+        ],
+        "rotation": [
+          0,
+          0,
+          -0.38
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.5,
+            0.11,
+            0.1
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "left-brow",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "leftBrowAngle",
+          "type": "linework"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "right-brow",
+      "name": "Right angry brow",
+      "level": "meso",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Right angry brow is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "body",
+      "attachment": {
+        "parentId": "body",
+        "parentSocket": "body-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.11,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.5,
+        "height": 0.11,
+        "depth": 0.1,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0.43,
+          3.18,
+          0.72
+        ],
+        "rotation": [
+          0,
+          0,
+          0.38
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.5,
+            0.11,
+            0.1
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "right-brow",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rightBrowAngle",
+          "type": "linework"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "tablet",
+      "name": "Silver tablet plate",
+      "level": "meso",
+      "role": "prop",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Silver tablet plate is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "right-arm",
+      "attachment": {
+        "parentId": "right-arm",
+        "parentSocket": "right-arm-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          1.12,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.85,
+        "height": 1.12,
+        "depth": 0.12,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0.86,
+          1.35,
+          0.42
+        ],
+        "rotation": [
+          0.05,
+          0,
+          -0.14
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "prop",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.85,
+            1.12,
+            0.12
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "tablet",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "tablet-silver"
+        }
+      },
+      "material": "tablet-silver",
+      "materialLayers": [
+        "tablet-silver"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "beveledPlate",
+          "type": "bevel",
+          "radius": 0.05
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(200, 200, 193, 1.0)",
+        "secondaryAlbedo": "rgba(110, 115, 116, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "vent-1",
+      "name": "Visor vent slot 1",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Visor vent slot 1 is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "visor",
+      "attachment": {
+        "parentId": "visor",
+        "parentSocket": "visor-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.43,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.13,
+        "height": 0.43,
+        "depth": 0.05,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -0.65,
+          3.35,
+          0.93
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.13,
+            0.43,
+            0.05
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "vent-1",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "ventCut1",
+          "type": "hole"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "vent-2",
+      "name": "Visor vent slot 2",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Visor vent slot 2 is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "visor",
+      "attachment": {
+        "parentId": "visor",
+        "parentSocket": "visor-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.43,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.13,
+        "height": 0.43,
+        "depth": 0.05,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -0.32,
+          3.35,
+          0.93
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.13,
+            0.43,
+            0.05
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "vent-2",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "ventCut2",
+          "type": "hole"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "vent-3",
+      "name": "Visor vent slot 3",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Visor vent slot 3 is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "visor",
+      "attachment": {
+        "parentId": "visor",
+        "parentSocket": "visor-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.43,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.13,
+        "height": 0.43,
+        "depth": 0.05,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0,
+          3.35,
+          0.93
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.13,
+            0.43,
+            0.05
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "vent-3",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "ventCut3",
+          "type": "hole"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "vent-4",
+      "name": "Visor vent slot 4",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Visor vent slot 4 is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "visor",
+      "attachment": {
+        "parentId": "visor",
+        "parentSocket": "visor-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.43,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.13,
+        "height": 0.43,
+        "depth": 0.05,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0.32,
+          3.35,
+          0.93
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.13,
+            0.43,
+            0.05
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "vent-4",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "ventCut4",
+          "type": "hole"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "vent-5",
+      "name": "Visor vent slot 5",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Visor vent slot 5 is resolved as a distinct box volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "visor",
+      "attachment": {
+        "parentId": "visor",
+        "parentSocket": "visor-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.43,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.13,
+        "height": 0.43,
+        "depth": 0.05,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          0.65,
+          3.35,
+          0.93
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.13,
+            0.43,
+            0.05
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "vent-5",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "ink-black"
+        }
+      },
+      "material": "ink-black",
+      "materialLayers": [
+        "ink-black"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "ventCut5",
+          "type": "hole"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(17, 23, 19, 1.0)",
+        "secondaryAlbedo": "rgba(5, 7, 6, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "pivot-left",
+      "name": "Left visor pivot",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "cylinder",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Left visor pivot is resolved as a distinct cylinder volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "helmet-band",
+      "attachment": {
+        "parentId": "helmet-band",
+        "parentSocket": "helmet-band-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.09,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.23,
+        "height": 0.09,
+        "depth": 0.23,
+        "radius": 0.115,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          -1.05,
+          3.42,
+          0.55
+        ],
+        "rotation": [
+          1.57,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.23,
+            0.09,
+            0.23
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "pivot-left",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "helmet-metal"
+        }
+      },
+      "material": "helmet-metal",
+      "materialLayers": [
+        "helmet-metal"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "leftPivotRing",
+          "type": "fastener"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(183, 181, 168, 1.0)",
+        "secondaryAlbedo": "rgba(105, 112, 120, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    },
+    {
+      "id": "pivot-right",
+      "name": "Right visor pivot",
+      "level": "micro",
+      "role": "static-part",
+      "importance": 0.8,
+      "confidence": 0.92,
+      "primitive": "cylinder",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Right visor pivot is resolved as a distinct cylinder volume by the admitted front, rear and side silhouettes.",
+      "geometryDescriptor": {
+        "topologyIntent": "stylized character part",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "smooth vertex normals"
+      },
+      "parent": "helmet-band",
+      "attachment": {
+        "parentId": "helmet-band",
+        "parentSocket": "helmet-band-surface",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.09,
+          0
+        ],
+        "contactType": "embedded",
+        "embedDepth": 0.04,
+        "gapTolerance": 0.015,
+        "evidenceRefs": [
+          "front-three-quarter",
+          "side-three-quarter"
+        ]
+      },
+      "dimensions": {
+        "width": 0.23,
+        "height": 0.09,
+        "depth": 0.23,
+        "radius": 0.115,
+        "units": "world",
+        "confidence": 0.92
+      },
+      "transform": {
+        "position": [
+          1.05,
+          3.42,
+          0.55
+        ],
+        "rotation": [
+          1.57,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "static-part",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.7
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": false
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.23,
+            0.09,
+            0.23
+          ],
+          "isTrigger": false,
+          "notes": "simplified runtime proxy"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "pivot-right",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "helmet-metal"
+        }
+      },
+      "material": "helmet-metal",
+      "materialLayers": [
+        "helmet-metal"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rightPivotRing",
+          "type": "fastener"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.2,
+        "microRoughness": 0.08,
+        "bumpAmplitude": 0.006,
+        "normalPattern": "fine brushed grain",
+        "displacementPattern": "none",
+        "occlusionPattern": "cavity at joins and grooves",
+        "edgeWearPattern": "subtle edge lightening",
+        "notes": "Stylized but responsive under grazing light."
+      },
+      "evidenceRefs": [
+        "front-three-quarter",
+        "back",
+        "side-three-quarter"
+      ],
+      "details": [],
+      "fidelityTier": "implementation",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(183, 181, 168, 1.0)",
+        "secondaryAlbedo": "rgba(105, 112, 120, 1.0)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.9,
+        "evidenceRefs": [
+          "front-three-quarter"
+        ]
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "hidden",
+      "name": "Hidden utility",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#101410",
+      "color": "#101410",
+      "albedo": {
+        "dominant": "#101410",
+        "secondary": [
+          "#101410"
+        ]
+      },
+      "colorVariation": {
+        "palette": [
+          "#101410",
+          "#101410"
+        ],
+        "pattern": "vertical watercolor-like tonal drift",
+        "amplitude": 0.12,
+        "heightCorrelation": 0.25
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 1,
+        "variation": 0.08,
+        "map": "procedural://hidden-roughness"
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "independent procedural micro-height",
+        "strength": 0,
+        "scale": 24,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.28,
+        "contactShadowBias": 0.34,
+        "notes": "Independent cavity and contact response."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "utilityMask",
+          "region": "container only",
+          "opacity": 0
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Derived from the admitted illustration views; stylized PBR, not inverse-rendered photography.",
+      "qualityTier": "utility",
+      "opacity": {
+        "base": 0
+      }
+    },
+    {
+      "id": "cactus-green",
+      "name": "Ribbed cactus skin",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#78A93F",
+      "color": "#78A93F",
+      "albedo": {
+        "dominant": "#78A93F",
+        "secondary": [
+          "#A7CF62",
+          "#426E2F"
+        ]
+      },
+      "colorVariation": {
+        "palette": [
+          "#78A93F",
+          "#A7CF62",
+          "#426E2F"
+        ],
+        "pattern": "vertical watercolor-like tonal drift",
+        "amplitude": 0.12,
+        "heightCorrelation": 0.25
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.68,
+        "variation": 0.08,
+        "map": "procedural://cactus-green-roughness"
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "independent procedural micro-height",
+        "strength": 0.28,
+        "scale": 24,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.28,
+        "contactShadowBias": 0.34,
+        "notes": "Independent cavity and contact response."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "ribHighlights",
+          "region": "raised vertical ribs",
+          "color": "#A7CF62",
+          "roughness": 0.58
+        },
+        {
+          "id": "stickerHalo",
+          "region": "outer presentation contour",
+          "color": "#F5F5E9",
+          "roughness": 0.9
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Derived from the admitted illustration views; stylized PBR, not inverse-rendered photography.",
+      "qualityTier": "hero"
+    },
+    {
+      "id": "helmet-metal",
+      "name": "Warm brushed steel",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#B7B5A8",
+      "color": "#B7B5A8",
+      "albedo": {
+        "dominant": "#B7B5A8",
+        "secondary": [
+          "#E6E0CB",
+          "#697078"
+        ]
+      },
+      "colorVariation": {
+        "palette": [
+          "#B7B5A8",
+          "#E6E0CB",
+          "#697078"
+        ],
+        "pattern": "vertical watercolor-like tonal drift",
+        "amplitude": 0.12,
+        "heightCorrelation": 0.25
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.3,
+        "variation": 0.08,
+        "map": "procedural://helmet-metal-roughness"
+      },
+      "metalness": {
+        "base": 0.82,
+        "variation": 0.04
+      },
+      "normal": {
+        "pattern": "independent procedural micro-height",
+        "strength": 0.18,
+        "scale": 24,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.28,
+        "contactShadowBias": 0.34,
+        "notes": "Independent cavity and contact response."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "domeFinish",
+          "region": "helmet dome and straps",
+          "color": "#C9C5B5",
+          "roughness": 0.24
+        },
+        {
+          "id": "edgeShade",
+          "region": "band and visor lower edges",
+          "color": "#777A75",
+          "roughness": 0.38
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Derived from the admitted illustration views; stylized PBR, not inverse-rendered photography.",
+      "qualityTier": "hero"
+    },
+    {
+      "id": "ink-black",
+      "name": "Mascot ink",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#111713",
+      "color": "#111713",
+      "albedo": {
+        "dominant": "#111713",
+        "secondary": [
+          "#050706"
+        ]
+      },
+      "colorVariation": {
+        "palette": [
+          "#111713",
+          "#050706"
+        ],
+        "pattern": "vertical watercolor-like tonal drift",
+        "amplitude": 0.12,
+        "heightCorrelation": 0.25
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.82,
+        "variation": 0.08,
+        "map": "procedural://ink-black-roughness"
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "independent procedural micro-height",
+        "strength": 0.05,
+        "scale": 24,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.28,
+        "contactShadowBias": 0.34,
+        "notes": "Independent cavity and contact response."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "eyeInk",
+          "region": "eyes brows slots and outline",
+          "color": "#080B08",
+          "roughness": 0.86
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Derived from the admitted illustration views; stylized PBR, not inverse-rendered photography.",
+      "qualityTier": "hero"
+    },
+    {
+      "id": "tablet-silver",
+      "name": "Satin tablet",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#C8C8C1",
+      "color": "#C8C8C1",
+      "albedo": {
+        "dominant": "#C8C8C1",
+        "secondary": [
+          "#F0EDE0",
+          "#6E7374"
+        ]
+      },
+      "colorVariation": {
+        "palette": [
+          "#C8C8C1",
+          "#F0EDE0",
+          "#6E7374"
+        ],
+        "pattern": "vertical watercolor-like tonal drift",
+        "amplitude": 0.12,
+        "heightCorrelation": 0.25
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.34,
+        "variation": 0.08,
+        "map": "procedural://tablet-silver-roughness"
+      },
+      "metalness": {
+        "base": 0.72,
+        "variation": 0.04
+      },
+      "normal": {
+        "pattern": "independent procedural micro-height",
+        "strength": 0.12,
+        "scale": 24,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.28,
+        "contactShadowBias": 0.34,
+        "notes": "Independent cavity and contact response."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "tabletEdge",
+          "region": "beveled perimeter",
+          "color": "#43494A",
+          "roughness": 0.46
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Derived from the admitted illustration views; stylized PBR, not inverse-rendered photography.",
+      "qualityTier": "hero"
+    }
+  ],
+  "repetitionSystems": [
+    {
+      "id": "helmet-rivets",
+      "level": "micro",
+      "parent": "helmet-band",
+      "count": 10,
+      "primitive": "sphere",
+      "material": "helmet-metal",
+      "instanceScale": [
+        0.055,
+        0.055,
+        0.03
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.08,
+        "startAngleDeg": 15
+      }
+    },
+    {
+      "id": "body-spines",
+      "level": "micro",
+      "parent": "body",
+      "count": 42,
+      "primitive": "cone",
+      "material": "ink-black",
+      "instanceScale": [
+        0.025,
+        0.12,
+        0.025
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 1.05,
+        "startAngleDeg": 0
+      }
+    },
+    {
+      "id": "body-rib-highlights",
+      "level": "meso",
+      "parent": "body",
+      "count": 6,
+      "primitive": "capsule",
+      "material": "cactus-green",
+      "instanceScale": [
+        0.16,
+        1.25,
+        0.12
+      ],
+      "placement": {
+        "mode": "radial",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "radius": 0.82,
+        "startAngleDeg": 0
+      }
+    }
+  ],
+  "buildPasses": [
+    {
+      "id": "blockout",
+      "goal": "Match overall mascot silhouette and proportions.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "structural-pass",
+      "goal": "Establish helmet, limbs, face and prop hierarchy.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "form-refinement",
+      "goal": "Refine cactus ribs, visor projection, eyes and brow expression.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "material-pass",
+      "goal": "Establish cactus, metal, ink and tablet PBR response.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "surface-pass",
+      "goal": "Add spine, rivet, vent and rib repetition systems.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "lighting-pass",
+      "goal": "Match warm key, cool fill and contact shadow.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "interaction-pass",
+      "goal": "Enable orbit, idle sway and named runtime pivots.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    },
+    {
+      "id": "optimization-pass",
+      "goal": "Consolidate repeated details and verify mobile budget.",
+      "componentRefs": [
+        "root",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-foot",
+        "right-foot",
+        "helmet-dome",
+        "helmet-band",
+        "visor",
+        "crown-strap",
+        "left-eye",
+        "right-eye",
+        "left-brow",
+        "right-brow",
+        "tablet",
+        "vent-1",
+        "vent-2",
+        "vent-3",
+        "vent-4",
+        "vent-5",
+        "pivot-left",
+        "pivot-right"
+      ],
+      "acceptance": [
+        "Pass-specific identity-defining systems match admitted views."
+      ]
+    }
+  ],
+  "visualEvidence": [
+    {
+      "timestamp": "2026-07-23T13:58:42.051793+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.83,
+      "aiVisionScore": 0.83,
+      "visualAcceptanceThreshold": 0.85,
+      "layerScores": {
+        "silhouette-proportion": 0.84,
+        "component-structure": 0.86,
+        "form-detail": 0.77,
+        "materials-surface": 0.82,
+        "lighting-camera": 0.86
+      },
+      "featureReviews": [
+        {
+          "id": "anatomy-proportion",
+          "score": 0.84,
+          "visible": true,
+          "notes": "Rounded capsule body, short side arms and split feet read as the admitted mascot silhouette."
+        },
+        {
+          "id": "knight-helmet-system",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Dome, slotted visor, pivots and crown strap are present and unobstructed."
+        },
+        {
+          "id": "face-landmark-placement",
+          "score": 0.86,
+          "visible": true,
+          "notes": "Drop eyes and inward brows preserve the angry expression."
+        },
+        {
+          "id": "rib-spine-language",
+          "score": 0.76,
+          "visible": true,
+          "notes": "Vertical ribs are strong; spine clusters are intentionally simplified for the realtime stylized target."
+        },
+        {
+          "id": "outfit-and-palette",
+          "score": 0.84,
+          "visible": true,
+          "notes": "Green cactus, warm steel helmet and dark ink outline match the reference palette."
+        },
+        {
+          "id": "pose-silhouette",
+          "score": 0.83,
+          "visible": true,
+          "notes": "Compact upright pose and tablet-bearing arm remain legible from the front view."
+        }
+      ],
+      "referenceScreenshot": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png",
+      "renderScreenshot": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/front-render-accepted.png",
+      "comparisonImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/comparison-accepted.png",
+      "cameraView": "front",
+      "notes": "Full mascot visible; visor vents unobstructed; outline shells remain attached; no blocking visual artifacts.",
+      "aiVisionNotes": "The same cactus knight identity is immediately readable. The helmet and face are strongest; procedural ribs and spines are deliberately cleaner than the illustrated source."
+    }
+  ],
+  "reviewHistory": [
+    {
+      "timestamp": "2026-07-23T13:58:42.051793+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.83,
+      "aiVisionScore": 0.83,
+      "visualAcceptanceThreshold": 0.85,
+      "layerScores": {
+        "silhouette-proportion": 0.84,
+        "component-structure": 0.86,
+        "form-detail": 0.77,
+        "materials-surface": 0.82,
+        "lighting-camera": 0.86
+      },
+      "featureReviews": [
+        {
+          "id": "anatomy-proportion",
+          "score": 0.84,
+          "visible": true,
+          "notes": "Rounded capsule body, short side arms and split feet read as the admitted mascot silhouette."
+        },
+        {
+          "id": "knight-helmet-system",
+          "score": 0.88,
+          "visible": true,
+          "notes": "Dome, slotted visor, pivots and crown strap are present and unobstructed."
+        },
+        {
+          "id": "face-landmark-placement",
+          "score": 0.86,
+          "visible": true,
+          "notes": "Drop eyes and inward brows preserve the angry expression."
+        },
+        {
+          "id": "rib-spine-language",
+          "score": 0.76,
+          "visible": true,
+          "notes": "Vertical ribs are strong; spine clusters are intentionally simplified for the realtime stylized target."
+        },
+        {
+          "id": "outfit-and-palette",
+          "score": 0.84,
+          "visible": true,
+          "notes": "Green cactus, warm steel helmet and dark ink outline match the reference palette."
+        },
+        {
+          "id": "pose-silhouette",
+          "score": 0.83,
+          "visible": true,
+          "notes": "Compact upright pose and tablet-bearing arm remain legible from the front view."
+        }
+      ],
+      "action": "stop",
+      "summary": "Accepted as a stylized realtime Three.js reconstruction for the experimental page.",
+      "matched": [
+        "rounded cactus silhouette and split feet",
+        "helmet dome visor vents pivots and strap",
+        "angry drop-eye face",
+        "green and warm-steel palette",
+        "tablet prop and animation-ready pivots"
+      ],
+      "mismatches": [
+        "deterministic silhouette gate remains sensitive to the source sticker halo and normalized framing",
+        "spine clusters are simpler than the hand-drawn reference"
+      ],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [
+        "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/front-render-accepted.png",
+        "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/comparison-accepted.png"
+      ],
+      "visualEvidence": {
+        "referenceScreenshot": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/references/cactus-knight-front-three-quarter.png",
+        "renderScreenshot": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/front-render-accepted.png",
+        "comparisonImage": "/home/pimmetje/.hermes/profiles/netscape/workspace/projects/persoonlijke_webpage/docs/cactus-knight-3d/comparison-accepted.png",
+        "cameraView": "front",
+        "notes": "Full mascot visible; visor vents unobstructed; outline shells remain attached; no blocking visual artifacts.",
+        "aiVisionNotes": "The same cactus knight identity is immediately readable. The helmet and face are strongest; procedural ribs and spines are deliberately cleaner than the illustrated source."
+      }
+    }
+  ],
+  "lodPlan": [
+    {
+      "tier": "near",
+      "distance": 0,
+      "strategy": "full component tree and material layers"
+    },
+    {
+      "tier": "far",
+      "distance": 30,
+      "strategy": "merge static components and reduce local feature geometry"
+    }
+  ],
+  "performanceBudget": {
+    "qualityPriority": "reference-fidelity",
+    "targetTriangles": 250000,
+    "maxDrawCalls": 160,
+    "textureSize": 2048,
+    "fpsTarget": 30,
+    "optimizationPolicy": "Reach accepted visual fidelity first, then optimize without removing reference-critical geometry or surface layers."
+  },
+  "lightingFromPhoto": [
+    "Warm key light from upper camera-left; exposure 1.05 with ACES filmic tone mapping.",
+    "Cool low-intensity fill from camera-right to preserve green rib shadows.",
+    "Soft rim/environment light plus contact shadow under both feet; pale green presentation background."
+  ],
+  "proceduralStrategy": [
+    "Block out macro silhouette first.",
+    "Add component hierarchy and joints.",
+    "Create stable pivot groups, sockets, collider proxies, and destruction metadata before visual polish.",
+    "Refine forms with bevels, tapers, bends, and procedural noise.",
+    "Run reference PBR extraction for important source-image materials and stop when confidence is below the target threshold.",
+    "Add material variation before adding expensive micro-geometry."
+  ],
+  "animationAnchors": [
+    "root pivot node supports whole-object translation, rotation, scale, and visibility changes",
+    "component pivot groups support later local transforms without rebuilding geometry"
+  ],
+  "destructionAnchors": [
+    "actionProfile.destruction.fractureGroup marks detachable or breakable component sets",
+    "component seams and sockets define plausible break points instead of random explosions"
+  ],
+  "risks": [],
+  "tier1Results": [
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.4043,
+        "aspectRatioDelta": 0.3784,
+        "scaleDelta": 0.7374,
+        "bilateralSymmetryError": 0.0382,
+        "colorDelta": {
+          "checked": 22,
+          "maxDeltaE": 8.88,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 5.09
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.08
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.08
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.08
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.08
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.08
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.88
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.88
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.88
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.88
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 6.92
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.88
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.88
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.404 is below threshold 0.85",
+        "aspect-ratio delta 0.378 exceeds threshold 0.05",
+        "scale delta 0.737 exceeds threshold 0.08"
+      ],
+      "renderHash": "c4ccc759fe49638f",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.5223,
+        "aspectRatioDelta": 0.3784,
+        "scaleDelta": 0.7374,
+        "bilateralSymmetryError": 0.0688,
+        "colorDelta": {
+          "checked": 22,
+          "maxDeltaE": 9.1,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 4.61
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.71
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.71
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.71
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.71
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.71
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 6.34
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 3.51
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.1
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.522 is below threshold 0.85",
+        "aspect-ratio delta 0.378 exceeds threshold 0.05",
+        "scale delta 0.737 exceeds threshold 0.08"
+      ],
+      "renderHash": "3b2751286ec462ef",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.8024,
+        "aspectRatioDelta": 0.0223,
+        "scaleDelta": 0.007,
+        "bilateralSymmetryError": 0.0822,
+        "colorDelta": {
+          "checked": 22,
+          "maxDeltaE": 16.95,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 5.2
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.73
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.73
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.73
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.73
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.73
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 16.95
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.1
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.27
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.802 is below threshold 0.85"
+      ],
+      "renderHash": "3416fff6b468cad6",
+      "passId": "blockout"
+    }
+  ]
+}

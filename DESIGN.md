@@ -32,7 +32,15 @@ version: 1.0.0
 - Portfolio accordion item `webdesign` routes directly to `/webdesign`; it must not fall back to `/under-construction`.
 - The `Werkwijze` section uses a slowly rotating, interactive Three.js point cube behind the editorial content. Hover proximity enlarges one point at a time; colors stay within the Code Lieshout green palette, and reduced-motion preferences must be respected.
 
+## Cactus 3D page
+- `/cactus-3d` is an experimental brand showcase that reconstructs the canonical cactus-ridder as procedural Three.js geometry; it must not load GLB/OBJ/FBX assets.
+- Preserve the pale-green paper surface, near-black structural borders, condensed uppercase typography, and sparse mono labels from the wider Code Lieshout identity.
+- The model must retain the mascot’s rounded ribbed cactus body, angry drop eyes, silver riveted knight helmet, short arms/feet, dark illustrated outline, and optional tablet prop.
+- Use warm key light, cool fill, a restrained green rim and a contact shadow. The full desktop experience may auto-rotate; reduced-motion and narrow screens keep a composed static view.
+- Keep the canvas as a focused interactive stage rather than a full-site background. Pair it with semantic view controls and nearby source-reference imagery.
+
 ## Pitfalls
 - Do not replace the `/ai-agents` header/navigation behavior.
 - Do not touch unrelated portfolio/tool changes unless requested.
 - Avoid generic SaaS cards; this site’s strongest pattern is bold border-led accordion rows.
+- Do not redesign the cactus-ridder into a generic cactus or import an external mesh for `/cactus-3d`.
