@@ -1,0 +1,689 @@
+/* site.css — PRIKKEL × WebMCP uitlegpagina
+   Styled EXCLUSIEF met tokens uit variables.css (IKEA/PRIKKEL system).
+   Regels: gewichten 400/700 · één radius 8px · geen schaduwen · geel alleen
+   als vlak · blauw alleen links · negatieve tracking per token · 8px raster. */
+
+/* ---------- Basis ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--surface-page-canvas);
+  color: var(--color-ink-black);
+  font-family: var(--font-noto-ikea);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-link-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink-black);
+  outline-offset: 2px;
+  border-radius: var(--radius-default);
+}
+
+.container {
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  padding-inline: var(--spacing-24);
+}
+
+/* ---------- Type helpers (uitsluitend token-stappen) ---------- */
+.t-caption {
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  font-weight: var(--font-weight-regular);
+}
+
+.t-heading {
+  font-size: var(--text-heading);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.t-display {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---------- Topnavigatie ---------- */
+.topnav {
+  background: var(--surface-page-canvas);
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.topnav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  padding-block: var(--spacing-16);
+}
+
+.topnav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-24);
+  flex-wrap: wrap;
+}
+
+.topnav__links a {
+  color: var(--color-ink-black);
+  font-size: 14px;
+  line-height: var(--leading-body);
+  text-decoration: none;
+}
+
+.topnav__links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.topnav__cta {
+  margin-left: var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-16);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-buttons);
+}
+
+/* PRIKKEL-badge: het echte logo (ovaaal uitgesneden, transparante achtergrond) */
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-badge img {
+  display: block;
+  height: 46px;
+  width: auto;
+}
+
+/* ---------- Handleiding-strip boven hero ---------- */
+.manual-strip {
+  padding-block: var(--spacing-16) 0;
+}
+
+.manual-strip__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8) var(--spacing-24);
+  color: var(--color-steel-gray);
+}
+
+/* ---------- Hero: 2/3 mediakaart + 1/3 gele CTA ---------- */
+.hero {
+  margin-top: var(--spacing-16);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-24);
+}
+
+.media-card {
+  position: relative;
+  border-radius: var(--radius-images);
+  overflow: hidden;
+  min-height: 560px;
+  background: var(--color-true-black);
+}
+
+.media-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.media-card__content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: var(--spacing-24) var(--spacing-24) var(--spacing-24);
+  color: var(--color-pure-white);
+  max-width: 90%;
+}
+
+.media-card__kicker {
+  color: var(--color-pure-white);
+  margin: 0 0 var(--spacing-8);
+  font-size: 14px;
+  line-height: var(--leading-body);
+  font-weight: var(--font-weight-regular);
+}
+
+.media-card__title {
+  margin: 0;
+  color: var(--color-pure-white);
+}
+
+.media-card__control {
+  position: absolute;
+  right: var(--spacing-24);
+  bottom: var(--spacing-24);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(17, 17, 17, 0.85);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-pure-white);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.media-card__control:hover {
+  background: var(--color-ink-black);
+}
+
+.cta-card {
+  background: var(--surface-accent-surface);
+  border-radius: var(--radius-cards);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-80);
+  min-height: 560px;
+}
+
+.cta-card__title {
+  margin: 0;
+  color: var(--color-ink-black);
+}
+
+.cta-card__note {
+  margin: var(--spacing-16) 0 0;
+  color: var(--color-ink-black);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: var(--font-weight-regular);
+  max-width: 30ch;
+}
+
+.arrow-button {
+  align-self: flex-start;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-ink-black);
+  color: var(--color-pure-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.arrow-button:hover {
+  transform: translateX(4px);
+}
+
+/* ---------- Secties ---------- */
+.section {
+  margin-top: var(--section-gap);
+}
+
+.section__head {
+  margin: 0 0 var(--spacing-24);
+}
+
+.section__index {
+  display: block;
+  color: var(--color-steel-gray);
+  margin-bottom: var(--spacing-8);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-24);
+  align-items: stretch;
+}
+
+.prose p {
+  margin: 0 0 var(--spacing-16);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lees-dit-eerst: warm white + 1px inktRand */
+.readfirst {
+  margin-top: var(--spacing-16);
+  background: var(--surface-warm-white-surface);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-24);
+  display: flex;
+  gap: var(--spacing-16);
+  align-items: flex-start;
+}
+
+.readfirst svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.readfirst__title {
+  margin: 0 0 var(--spacing-8);
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+  letter-spacing: var(--tracking-subheading);
+  font-weight: var(--font-weight-bold);
+}
+
+.readfirst p {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.readfirst .t-caption {
+  display: block;
+  margin-top: var(--spacing-8);
+  color: var(--color-steel-gray);
+}
+
+/* Illustratiepaneel (handleiding-lijntekening) */
+.illustration-panel {
+  background: var(--surface-warm-white-surface);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration-panel svg {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+}
+
+.callout {
+  margin-top: var(--spacing-24);
+  border-left: 4px solid var(--color-ikea-yellow);
+  padding: var(--spacing-8) 0 var(--spacing-8) var(--spacing-16);
+}
+
+.callout p {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.callout p strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---------- Stappen ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-24);
+  counter-reset: step;
+}
+
+.step-card {
+  background: var(--surface-card-surface);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-24);
+}
+
+.step-card__number {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-ink-black);
+}
+
+.step-card__title {
+  margin: var(--spacing-8) 0 var(--spacing-8);
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+  letter-spacing: var(--tracking-subheading);
+  font-weight: var(--font-weight-bold);
+}
+
+.step-card p {
+  margin: 0 0 var(--spacing-16);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.step-card__figure {
+  border-top: 1px solid var(--color-ink-black);
+  padding-top: var(--spacing-16);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.step-card__figure svg {
+  height: 72px;
+  width: auto;
+}
+
+/* ---------- Toepassingen (2-koloms kaarten) ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-24);
+}
+
+.story-card {
+  position: relative;
+  border-radius: var(--radius-cards);
+  overflow: hidden;
+  min-height: 420px;
+  background: var(--color-true-black);
+  display: flex;
+}
+
+.story-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+.story-card__content {
+  position: relative;
+  margin-top: auto;
+  padding: var(--spacing-24);
+  color: var(--color-pure-white);
+}
+
+.story-card__kicker {
+  margin: 0 0 var(--spacing-8);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-pure-white);
+}
+
+.story-card__title {
+  margin: 0;
+  color: var(--color-pure-white);
+  font-size: var(--text-heading);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-card {
+  background: var(--surface-warm-white-surface);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  min-height: 420px;
+}
+
+.text-card--bordered {
+  background: var(--surface-card-surface);
+  border: 1px solid var(--color-ink-black);
+}
+
+.text-card__kicker {
+  margin: 0;
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-steel-gray);
+}
+
+.text-card__title {
+  margin: 0 0 var(--spacing-8);
+  font-size: var(--text-heading);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-card p {
+  margin: 0 0 var(--spacing-16);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.text-card__footer {
+  margin-top: auto;
+}
+
+/* ---------- Gele CTA-band ---------- */
+.cta-band {
+  margin-top: var(--section-gap);
+  background: var(--surface-accent-surface);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-80) var(--spacing-24);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-24);
+  align-items: center;
+}
+
+.cta-band__title {
+  margin: 0 0 var(--spacing-16);
+  color: var(--color-ink-black);
+}
+
+.cta-band p {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--color-ink-black);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  border-top: 1px solid var(--color-ink-black);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--color-ink-black);
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  padding: var(--spacing-24) 0;
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+  letter-spacing: var(--tracking-subheading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-ink-black);
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary .faq__icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-ink-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink-black);
+}
+
+.faq details[open] summary .faq__icon {
+  background: var(--color-ink-black);
+  color: var(--color-pure-white);
+}
+
+.faq__answer {
+  padding: 0 0 var(--spacing-24);
+  max-width: 70ch;
+}
+
+.faq__answer p {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  margin: var(--section-gap) 0 var(--spacing-80);
+}
+
+.footer__strip {
+  background: var(--surface-page-canvas);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-16);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__strip a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  color: var(--color-ink-black);
+  font-size: 14px;
+  line-height: var(--leading-body);
+  text-decoration: none;
+  padding: var(--spacing-8);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-buttons);
+}
+
+.footer__strip a:hover {
+  background: var(--surface-warm-white-surface);
+}
+
+.footer__fineprint {
+  margin-top: var(--spacing-24);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8) var(--spacing-24);
+  color: var(--color-steel-gray);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .hero__grid,
+  .two-col,
+  .steps,
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card,
+  .cta-card {
+    min-height: 420px;
+  }
+
+  .cta-card {
+    gap: var(--spacing-24);
+  }
+
+  .cta-band {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-24);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Display tekst valt terug op de 36px-stap uit de typeschaal */
+  .t-display {
+    font-size: var(--text-heading);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  .media-card,
+  .story-card {
+    min-height: 360px;
+  }
+
+  .cta-card {
+    min-height: 0;
+    padding: var(--spacing-24);
+  }
+
+  .topnav__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-16);
+  }
+
+  .section {
+    margin-top: var(--spacing-80);
+  }
+}

@@ -29,6 +29,7 @@ export function WorkExperience() {
     router.prefetch('/google-score')
     router.prefetch('/chatgpt-check')
     router.prefetch('/mcp-explorer')
+    router.prefetch('/webmcp')
     router.prefetch('/under-construction')
   }, [router])
 

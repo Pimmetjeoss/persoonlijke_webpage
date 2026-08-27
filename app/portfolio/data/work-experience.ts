@@ -129,4 +129,14 @@ export const workExperiences: WorkExperience[] = [
     highlights: [],
     href: "/agent-scan",
   },
+  {
+    id: "webmcp",
+    company: "WEBMCP",
+    role: "HET INTERNET VAN AI-ASSISTENTEN",
+    period: "",
+    description:
+      "Uitlegpagina in PRIKKEL-stijl: wat WebMCP is, hoe het werkt en wat je ermee kunt.",
+    highlights: [],
+    href: "/webmcp",
+  },
 ]

@@ -39,6 +39,11 @@ version: 1.0.0
 - Use warm key light, cool fill, a restrained green rim and a contact shadow. The full desktop experience may auto-rotate; reduced-motion and narrow screens keep a composed static view.
 - Keep the canvas as a focused interactive stage rather than a full-site background. Pair it with semantic view controls and nearby source-reference imagery.
 
+## WebMCP page
+- `/webmcp` shows the static PRIKKEL-styled one-pager from `public/webmcp/` inside a fullscreen iframe (same pattern as `/mcp-explorer`); the static files are the single source of truth for content and styling.
+- The page keeps its own IKEA/PRIKKEL design system (yellow `#ffdb00` only as CTA/panel fills, ink-black text, 8px radius, no shadows, Noto IKEA fallback stack) — do not restyle it into the Code Lieshout green identity.
+- The portfolio accordion row `WEBMCP` must link to `/webmcp`, not fall back to `/under-construction`.
+
 ## Pitfalls
 - Do not replace the `/ai-agents` header/navigation behavior.
 - Do not touch unrelated portfolio/tool changes unless requested.
