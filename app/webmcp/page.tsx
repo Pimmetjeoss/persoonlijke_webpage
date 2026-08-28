@@ -484,6 +484,40 @@ export default function WebmcpPage() {
           <div className={styles.cardsGrid}>
             <article className={styles.storyCard}>
               <Image
+                src={`${IMAGES}/chatgpt-webmcp-actions.png`}
+                alt="Illustratie van een AI-assistent die via WebMCP zoek-, toevoeg- en reserveringsacties uitvoert"
+                fill
+                sizes="(max-width: 960px) 100vw, 50vw"
+              />
+            </article>
+
+            <article className={`${styles.textCard} ${styles.textCardBordered}`}>
+              <p className={styles.textCardKicker}>CHATGPT &amp; WEBMCP</p>
+              <h3 className={styles.textCardTitle}>ChatGPT kan nu ook acties uitvoeren</h3>
+              <p>
+                In de ingebouwde browser van de ChatGPT-desktopapp kan ChatGPT de functies gebruiken
+                die een website via WebMCP aanbiedt. Denk aan zoeken, een winkelmand aanpassen of een
+                reservering afronden.
+              </p>
+              <p>
+                Jij geeft de opdracht. ChatGPT kiest de juiste site-tool en vraagt toestemming voordat
+                een gevoelige of definitieve actie wordt uitgevoerd.
+              </p>
+              <div className={styles.textCardFooter}>
+                <a
+                  className={styles.arrowButton}
+                  href="https://www.searchenginejournal.com/chatgpt-adds-webmcp-support/587237/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Lees meer over WebMCP-ondersteuning in ChatGPT bij Search Engine Journal"
+                >
+                  <ArrowRightIcon />
+                </a>
+              </div>
+            </article>
+
+            <article className={styles.storyCard}>
+              <Image
                 src={`${IMAGES}/zweedse-gehaktballetjes.jpeg`}
                 alt="Zweedse gehaktballetjes met friet, roomsaus en cranberrysaus"
                 fill

@@ -27,6 +27,7 @@ Belangrijk: de website zelf verandert niet. Zelfde design, zelfde knoppen, zelfd
 
 ## Waarvoor je het gebruikt
 
+- **Acties uitvoeren met ChatGPT** — in de ingebouwde browser van de ChatGPT-desktopapp kan ChatGPT via WebMCP aangeboden site-tools gebruiken om bijvoorbeeld te zoeken, een winkelmand aan te passen of een reservering af te ronden. [Lees meer bij Search Engine Journal](https://www.searchenginejournal.com/chatgpt-adds-webmcp-support/587237/).
 - **Bestellen zonder te klikken** — iets laten zoeken en reserveren via de stappen die de site zelf aanbiedt.
 - **Status en service** — "waar is mijn pakket", "is mijn afspraak gelukt", "tot hoe laat is het kantoor open": één vraag, één antwoord, in plaats van tien tabbladen.
 - **De site legt zichzelf uit** — openingstijden, voorwaarden, voorraad en prijzen als gestructureerde informatie die een assistent meteen begrijpt.
