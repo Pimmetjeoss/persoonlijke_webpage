@@ -510,9 +510,11 @@
   justify-content: flex-start;
 }
 
-.stepCardFigure svg {
+.stepCardFigure svg,
+.stepCardFigure img {
   height: 72px;
   width: auto;
+  object-fit: contain;
 }
 
 /* ---------- Toepassingen (2-koloms kaarten) ---------- */

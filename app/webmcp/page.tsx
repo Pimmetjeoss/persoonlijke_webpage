@@ -56,16 +56,12 @@ const STEPS = [
     title: "Jij stelt je vraag",
     body: "Je typt in je AI-assistent wat je wilt. Bijvoorbeeld: “zoek een trainingspak voor mijn zoon” of “check of mijn pakket al onderweg is”. Meer hoef jij niet te doen.",
     figure: (
-      <svg viewBox="0 0 96 72" fill="none" aria-hidden="true">
-        <path
-          d="M12 14h72a6 6 0 0 1 6 6v26a6 6 0 0 1-6 6H46l-14 14V52H12a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6Z"
-          stroke="var(--color-ink-black)"
-          strokeWidth="3"
-          strokeLinejoin="round"
-        />
-        <line x1="18" y1="30" x2="66" y2="30" stroke="var(--color-ink-black)" strokeWidth="3" strokeLinecap="round" />
-        <line x1="18" y1="40" x2="48" y2="40" stroke="var(--color-ink-black)" strokeWidth="3" strokeLinecap="round" />
-      </svg>
+      <Image
+        src={`${IMAGES}/webmcp-stap-1-vraag.jpg`}
+        alt="Persoon met handleiding en gereedschap die zich afvraagt hoe de onderdelen in elkaar passen"
+        width={448}
+        height={251}
+      />
     ),
   },
   {
@@ -74,19 +70,12 @@ const STEPS = [
     title: "De assistent leest de handleiding",
     body: "De website biedt van zichzelf een lijstje aan: “ik kan zoeken, ik kan reserveren, ik kan status tonen”. De assistent leest wat er mogelijk is — zonder te gokken.",
     figure: (
-      <svg viewBox="0 0 96 72" fill="none" aria-hidden="true">
-        <rect x="10" y="8" width="76" height="56" rx="8" stroke="var(--color-ink-black)" strokeWidth="3" />
-        <line x1="10" y1="24" x2="86" y2="24" stroke="var(--color-ink-black)" strokeWidth="3" />
-        <line x1="22" y1="38" x2="62" y2="38" stroke="var(--color-ink-black)" strokeWidth="3" strokeLinecap="round" />
-        <line x1="22" y1="50" x2="48" y2="50" stroke="var(--color-ink-black)" strokeWidth="3" strokeLinecap="round" />
-        <path
-          d="M66 44h16m0 0-5-5m5 5-5 5"
-          stroke="var(--color-ink-black)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Image
+        src={`${IMAGES}/webmcp-stap-2-handleiding.jpg`}
+        alt="Persoon die met een handleiding in de hand telefonisch hulp krijgt bij het monteren"
+        width={487}
+        height={281}
+      />
     ),
   },
   {
