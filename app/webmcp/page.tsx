@@ -484,8 +484,8 @@ export default function WebmcpPage() {
           <div className={styles.cardsGrid}>
             <article className={styles.storyCard}>
               <Image
-                src={`${IMAGES}/prikkel-gevel.jpg`}
-                alt="PRIKKEL-gevel in geel en blauw"
+                src={`${IMAGES}/zweedse-gehaktballetjes.jpeg`}
+                alt="Zweedse gehaktballetjes met friet, roomsaus en cranberrysaus"
                 fill
                 sizes="(max-width: 960px) 100vw, 50vw"
               />
@@ -538,7 +538,7 @@ export default function WebmcpPage() {
               </div>
             </article>
 
-            <article className={styles.textCard}>
+            <article className={`${styles.textCard} ${styles.textCardBordered}`}>
               <p className={styles.textCardKicker}>TERUGKERENDE TAKEN</p>
               <h3 className={styles.textCardTitle}>Elke week hetzelfde? Laat het lopen.</h3>
               <p>
