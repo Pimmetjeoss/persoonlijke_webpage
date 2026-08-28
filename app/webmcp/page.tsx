@@ -484,11 +484,20 @@ export default function WebmcpPage() {
           <div className={styles.cardsGrid}>
             <article className={styles.storyCard}>
               <Image
-                src={`${IMAGES}/chatgpt-webmcp-actions.png`}
-                alt="Illustratie van een AI-assistent die via WebMCP zoek-, toevoeg- en reserveringsacties uitvoert"
+                src={`${IMAGES}/kledingkast-chatgpt.jpg`}
+                alt="Overzichtelijke inloopkast met kleding, schoenen en opberglades"
                 fill
                 sizes="(max-width: 960px) 100vw, 50vw"
               />
+              <div className={styles.storyCardOverlay} aria-hidden="true" />
+              <div className={styles.storyCardContent}>
+                <p className={styles.storyCardKicker}>CHATGPT</p>
+                <h3 className={styles.storyCardTitle}>Van advies naar actie</h3>
+                <p className={styles.storyCardText}>
+                  Vraag om een outfit, product of reservering. Met WebMCP kan ChatGPT niet alleen
+                  adviseren, maar de volgende stap ook voor je uitvoeren.
+                </p>
+              </div>
             </article>
 
             <article className={`${styles.textCard} ${styles.textCardBordered}`}>
