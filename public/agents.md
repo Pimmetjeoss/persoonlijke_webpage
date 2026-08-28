@@ -17,13 +17,14 @@ Code Lieshout is het bedrijf van Pim van Lieshout. De site helpt Nederlandse ond
 - Portfolio: https://code-lieshout.nl/portfolio
 - AI-agents: https://code-lieshout.nl/ai-agents
 - Blog: https://code-lieshout.nl/blog
+- Wat is WebMCP: https://code-lieshout.nl/webmcp
 - Contact: https://code-lieshout.nl/contact
 
 ## Markdown-versies
 
 Agents kunnen deze Markdown-versies gebruiken:
 
-- https://code-lieshout.nl/index.md
+- https://code-lieshout.nl/home.md
 - https://code-lieshout.nl/about.md
 - https://code-lieshout.nl/portfolio.md
 - https://code-lieshout.nl/ai-agents.md
@@ -33,6 +34,7 @@ Agents kunnen deze Markdown-versies gebruiken:
 - https://code-lieshout.nl/agent-ready.md
 - https://code-lieshout.nl/FAQ.md
 - https://code-lieshout.nl/sir-prikkel.md
+- https://code-lieshout.nl/webmcp.md
 
 Een complete machine-leesbare index staat in https://code-lieshout.nl/sitemap_agentic_discovery.xml
 
@@ -46,9 +48,10 @@ Een complete machine-leesbare index staat in https://code-lieshout.nl/sitemap_ag
 
 ## Content per intentie
 
-- **Oriëntatie**: https://code-lieshout.nl/index.md en https://code-lieshout.nl/about.md
+- **Oriëntatie**: https://code-lieshout.nl/home.md en https://code-lieshout.nl/about.md
 - **Portfolio en bewijs**: https://code-lieshout.nl/portfolio.md
 - **AI-agent diensten**: https://code-lieshout.nl/ai-agents.md, https://code-lieshout.nl/agent-ready.md en https://code-lieshout.nl/sir-prikkel.md
+- **Uitleg over WebMCP en agent-standaarden**: https://code-lieshout.nl/webmcp.md
 - **Antwoorden op veelgestelde vragen**: https://code-lieshout.nl/FAQ.md
 - **Nieuwe website laten bouwen**: https://code-lieshout.nl/jouw-website.md
 - **Contact en conversie**: https://code-lieshout.nl/contact.md

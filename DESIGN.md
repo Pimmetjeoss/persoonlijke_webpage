@@ -40,9 +40,15 @@ version: 1.0.0
 - Keep the canvas as a focused interactive stage rather than a full-site background. Pair it with semantic view controls and nearby source-reference imagery.
 
 ## WebMCP page
-- `/webmcp` shows the static PRIKKEL-styled one-pager from `public/webmcp/` inside a fullscreen iframe (same pattern as `/mcp-explorer`); the static files are the single source of truth for content and styling.
+- `/webmcp` is a regular Next.js route: `app/webmcp/page.tsx` (server component) plus the scoped `app/webmcp/webmcp.module.css`. It is no longer a static one-pager in an iframe — `public/webmcp/` now only holds the images the page references at `/webmcp/images/`.
+- The design system is isolated by scoping, not by an iframe. Keep it that way: tokens live on `.page` (never `:root`), and the base element rules (`a`, `img`, `*`, `strong`, `:focus-visible`) are wrapped in `:where(.page)` so they keep their original zero-class specificity. Dropping the `:where()` lifts `a` above `.arrowButton`/`.brandBadge`/`.mediaCardControl` and turns the round arrow buttons blue and underlined.
+- Tailwind preflight (via `globals.css`) zeroes heading/paragraph margins, so the four spots that relied on UA defaults carry explicit margins: `.sectionHead h2` (`0.83em`), `.manualStripInner`, `.storyCardText`, and `.footerFineprint` (all `1em`). Do not "clean these up".
 - The page keeps its own IKEA/PRIKKEL design system (yellow `#ffdb00` only as CTA/panel fills, ink-black text, 8px radius, no shadows, Noto IKEA fallback stack) — do not restyle it into the Code Lieshout green identity.
 - The portfolio accordion row `WEBMCP` must link to `/webmcp`, not fall back to `/under-construction`.
+- `.page` carries `display: flow-root`. Without it the footer's `margin-block-end` collapses out of `.page`, the white surface stops 80px short of the page end, and `globals.css` (`html, body { background: var(--background) }`, `#0a0a0a` under `prefers-color-scheme: dark`) shows through as a dark band. Do not swap it for a plain `display: block`.
+- `--color-steel-gray` is `#767676`, not the `#818181` from the original token dump: it is only ever used for 13px text, where `#818181` is 3.9:1 on white and fails WCAG AA.
+- Internal destinations are internal links. The two Agent-Ready CTAs use `next/link` to `/agent-ready`; they must not go back to an absolute `https://code-lieshout.nl/...` URL with `target="_blank"`. They skip the slider transition on purpose — turning this server component into a client component for two CTAs is not worth it, and a real anchor beats an `onClick` span.
+- The FAQ renders from the `FAQ` array and the FAQPage JSON-LD is derived from that same array. Keep them derived, never hand-maintained side by side.
 
 ## Pitfalls
 - Do not replace the `/ai-agents` header/navigation behavior.

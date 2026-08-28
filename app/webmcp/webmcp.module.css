@@ -1,33 +1,86 @@
-/* site.css — PRIKKEL × WebMCP uitlegpagina
-   Styled EXCLUSIEF met tokens uit variables.css (IKEA/PRIKKEL system).
-   Regels: gewichten 400/700 · één radius 8px · geen schaduwen · geel alleen
-   als vlak · blauw alleen links · negatieve tracking per token · 8px raster. */
+/* webmcp.module.css - PRIKKEL x WebMCP uitlegpagina.
+   Scoped port van de voormalige public/webmcp/styles/{variables,site}.css
+   (verwijderd toen de pagina van iframe naar een echte Next.js-route ging).
 
-/* ---------- Basis ---------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+   Drie bewuste afwijkingen t.o.v. het statische origineel, puur om
+   hetzelfde beeld te houden nu de pagina in de app-cascade valt:
+   1. De tokens staan op .page i.p.v. :root, zodat ze niet in de rest
+      van de app lekken (globals.css heeft een eigen :root).
+   2. De element-selectors (body/img/a/*) hangen onder .page.
+   3. De UA-marges waar het origineel op leunde staan hier expliciet
+      (.sectionHead h2, .manualStripInner, .storyCardText, .footerFineprint);
+      Tailwind preflight zet die anders op 0.
 
-html {
-  scroll-behavior: smooth;
-}
+   Regels ongewijzigd: gewichten 400/700, een radius 8px, geen schaduwen,
+   geel alleen als vlak, blauw alleen links, negatieve tracking per token,
+   8px raster. */
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
-  }
-}
+/* ---------- Tokens + basis (was :root + body) ---------- */
+.page {
+  /* Colors */
+  --color-ikea-yellow: #ffdb00;
+  --color-ink-black: #111111;
+  --color-pure-white: #ffffff;
+  /* Was #818181, maar dat is 3.9:1 op wit en dit token draagt uitsluitend
+     13px-tekst (manual-strip, sectienummers, kickers, fineprint). #767676
+     is de donkerste stap die visueel nog hetzelfde leest en 4.54:1 haalt. */
+  --color-steel-gray: #767676;
+  --color-true-black: #000000;
+  --color-link-blue: #0159a3;
 
-body {
+  /* Typography - Font Families */
+  --font-noto-ikea: 'Noto IKEA', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography - Scale */
+  --text-caption: 13px;
+  --leading-caption: 1.4;
+  --text-body: 16px;
+  --leading-body: 1.57;
+  --text-subheading: 20px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: -0.54px;
+  --text-heading: 36px;
+  --leading-heading: 1.08;
+  --tracking-heading: -0.97px;
+  --text-display: 51px;
+  --leading-display: 1;
+  --tracking-display: -1.48px;
+
+  /* Typography - Weights */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-80: 80px;
+
+  /* Layout */
+  --page-max-width: 1440px;
+  --section-gap: 80px;
+
+  /* Border Radius */
+  --radius-cards: 8px;
+  --radius-images: 8px;
+  --radius-buttons: 8px;
+  --radius-default: 8px;
+
+  /* Surfaces */
+  --surface-page-canvas: #ffffff;
+  --surface-card-surface: #ffffff;
+  --surface-warm-white-surface: #fffefb;
+  --surface-accent-surface: #ffdb00;
+
+  /* Was: body { ... } in site.css */
   margin: 0;
+  min-height: 100dvh;
+  /* .footer (laatste child) heeft margin-block-end: 80px. Zonder BFC collapst die
+     door .page heen: het witte vlak stopt dan 80px voor het einde van de pagina,
+     en globals.css laat html/body onder prefers-color-scheme: dark op #0a0a0a
+     staan -- dus een zwarte band onder de footer. flow-root houdt de marge binnen
+     .page en laat de rest van de spacing exact zoals hij was. */
+  display: flow-root;
   background: var(--surface-page-canvas);
   color: var(--color-ink-black);
   font-family: var(--font-noto-ikea);
@@ -38,22 +91,49 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-img {
+/* De basisregels hieronder stonden in het origineel op kale element-selectors
+   (a, img, *). Ze hier onder `.page` hangen zou hun specificiteit optillen van
+   (0,0,1) naar (0,1,1) -- dan verslaat `a` ineens .arrowButton / .brandBadge /
+   .mediaCardControl (0,1,0) en worden de ronde pijlknoppen blauw + onderstreept.
+   `:where()` draagt nul specificiteit bij, dus de cascade blijft exact zoals hij
+   in de statische pagina was, terwijl de scoping behouden blijft. */
+:where(.page),
+:where(.page) *,
+:where(.page) *::before,
+:where(.page) *::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.page) *,
+  :where(.page) *::before,
+  :where(.page) *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+:where(.page) img {
   display: block;
   max-width: 100%;
 }
 
-a {
+:where(.page) a {
   color: var(--color-link-blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-a:hover {
+:where(.page) a:hover {
   text-decoration-thickness: 2px;
 }
 
-:focus-visible {
+/* Preflight zet strong op 'bolder'; in een 700-context zou dat 900 worden. */
+:where(.page) strong {
+  font-weight: var(--font-weight-bold);
+}
+
+:where(.page) :focus-visible {
   outline: 2px solid var(--color-ink-black);
   outline-offset: 2px;
   border-radius: var(--radius-default);
@@ -66,20 +146,20 @@ a:hover {
 }
 
 /* ---------- Type helpers (uitsluitend token-stappen) ---------- */
-.t-caption {
+.tCaption {
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
   font-weight: var(--font-weight-regular);
 }
 
-.t-heading {
+.tHeading {
   font-size: var(--text-heading);
   line-height: var(--leading-heading);
   letter-spacing: var(--tracking-heading);
   font-weight: var(--font-weight-bold);
 }
 
-.t-display {
+.tDisplay {
   font-size: var(--text-display);
   line-height: var(--leading-display);
   letter-spacing: var(--tracking-display);
@@ -92,7 +172,7 @@ a:hover {
   border-bottom: 1px solid #f0f0f0;
 }
 
-.topnav__inner {
+.topnavInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -100,51 +180,54 @@ a:hover {
   padding-block: var(--spacing-16);
 }
 
-.topnav__links {
+.topnavLinks {
   display: flex;
   align-items: center;
   gap: var(--spacing-24);
   flex-wrap: wrap;
 }
 
-.topnav__links a {
+.topnavLinks a {
   color: var(--color-ink-black);
   font-size: 14px;
   line-height: var(--leading-body);
   text-decoration: none;
 }
 
-.topnav__links a:hover {
+.topnavLinks a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.topnav__cta {
+.topnavCta {
   margin-left: var(--spacing-8);
   padding: var(--spacing-8) var(--spacing-16);
   border: 1px solid var(--color-ink-black);
   border-radius: var(--radius-buttons);
 }
 
-/* PRIKKEL-badge: het echte logo (ovaaal uitgesneden, transparante achtergrond) */
-.brand-badge {
+/* PRIKKEL-badge: het echte logo (ovaal uitgesneden, transparante achtergrond) */
+.brandBadge {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
 }
 
-.brand-badge img {
+.brandBadge img {
   display: block;
   height: 46px;
   width: auto;
 }
 
 /* ---------- Handleiding-strip boven hero ---------- */
-.manual-strip {
+.manualStrip {
   padding-block: var(--spacing-16) 0;
 }
 
-.manual-strip__inner {
+.manualStripInner {
+  /* margin-block was de UA-default van <p> (1em bij 13px). */
+  margin-block: 1em;
+  margin-inline: 0;
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-8) var(--spacing-24);
@@ -156,13 +239,13 @@ a:hover {
   margin-top: var(--spacing-16);
 }
 
-.hero__grid {
+.heroGrid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: var(--spacing-24);
 }
 
-.media-card {
+.mediaCard {
   position: relative;
   border-radius: var(--radius-images);
   overflow: hidden;
@@ -170,7 +253,7 @@ a:hover {
   background: var(--color-true-black);
 }
 
-.media-card img {
+.mediaCard img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -178,22 +261,22 @@ a:hover {
   object-fit: cover;
 }
 
-.media-card__overlay {
+.mediaCardOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.6) 100%);
 }
 
-.media-card__content {
+.mediaCardContent {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: var(--spacing-24) var(--spacing-24) var(--spacing-24);
+  padding: var(--spacing-24);
   color: var(--color-pure-white);
   max-width: 90%;
 }
 
-.media-card__kicker {
+.mediaCardKicker {
   color: var(--color-pure-white);
   margin: 0 0 var(--spacing-8);
   font-size: 14px;
@@ -201,12 +284,12 @@ a:hover {
   font-weight: var(--font-weight-regular);
 }
 
-.media-card__title {
+.mediaCardTitle {
   margin: 0;
   color: var(--color-pure-white);
 }
 
-.media-card__control {
+.mediaCardControl {
   position: absolute;
   right: var(--spacing-24);
   bottom: var(--spacing-24);
@@ -223,11 +306,11 @@ a:hover {
   text-decoration: none;
 }
 
-.media-card__control:hover {
+.mediaCardControl:hover {
   background: var(--color-ink-black);
 }
 
-.cta-card {
+.ctaCard {
   background: var(--surface-accent-surface);
   border-radius: var(--radius-cards);
   padding: 40px;
@@ -238,12 +321,12 @@ a:hover {
   min-height: 560px;
 }
 
-.cta-card__title {
+.ctaCardTitle {
   margin: 0;
   color: var(--color-ink-black);
 }
 
-.cta-card__note {
+.ctaCardNote {
   margin: var(--spacing-16) 0 0;
   color: var(--color-ink-black);
   font-size: var(--text-body);
@@ -252,7 +335,7 @@ a:hover {
   max-width: 30ch;
 }
 
-.arrow-button {
+.arrowButton {
   align-self: flex-start;
   width: 40px;
   height: 40px;
@@ -268,7 +351,7 @@ a:hover {
   transition: transform 150ms ease;
 }
 
-.arrow-button:hover {
+.arrowButton:hover {
   transform: translateX(4px);
 }
 
@@ -277,17 +360,23 @@ a:hover {
   margin-top: var(--section-gap);
 }
 
-.section__head {
+.sectionHead {
   margin: 0 0 var(--spacing-24);
 }
 
-.section__index {
+/* De <h2> leunde op de UA-default van 0.83em; preflight zou die nullen. */
+.sectionHead h2 {
+  margin-block: 0.83em;
+  margin-inline: 0;
+}
+
+.sectionIndex {
   display: block;
   color: var(--color-steel-gray);
   margin-bottom: var(--spacing-8);
 }
 
-.two-col {
+.twoCol {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-24);
@@ -304,7 +393,7 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* Lees-dit-eerst: warm white + 1px inktRand */
+/* Lees-dit-eerst: warm white + 1px inktrand */
 .readfirst {
   margin-top: var(--spacing-16);
   background: var(--surface-warm-white-surface);
@@ -321,7 +410,7 @@ a:hover {
   margin-top: 2px;
 }
 
-.readfirst__title {
+.readfirstTitle {
   margin: 0 0 var(--spacing-8);
   font-size: var(--text-subheading);
   line-height: var(--leading-subheading);
@@ -335,14 +424,14 @@ a:hover {
   line-height: var(--leading-body);
 }
 
-.readfirst .t-caption {
+.readfirst .tCaption {
   display: block;
   margin-top: var(--spacing-8);
   color: var(--color-steel-gray);
 }
 
 /* Illustratiepaneel (handleiding-lijntekening) */
-.illustration-panel {
+.illustrationPanel {
   background: var(--surface-warm-white-surface);
   border: 1px solid var(--color-ink-black);
   border-radius: var(--radius-cards);
@@ -352,7 +441,7 @@ a:hover {
   justify-content: center;
 }
 
-.illustration-panel svg {
+.illustrationPanel svg {
   width: 100%;
   max-width: 460px;
   height: auto;
@@ -379,17 +468,20 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-24);
-  counter-reset: step;
 }
 
-.step-card {
+.stepCard {
   background: var(--surface-card-surface);
   border: 1px solid var(--color-ink-black);
   border-radius: var(--radius-cards);
   padding: var(--spacing-24);
 }
 
-.step-card__number {
+.stepCardKicker {
+  display: block;
+}
+
+.stepCardNumber {
   font-size: var(--text-display);
   line-height: var(--leading-display);
   letter-spacing: var(--tracking-display);
@@ -397,7 +489,7 @@ a:hover {
   color: var(--color-ink-black);
 }
 
-.step-card__title {
+.stepCardTitle {
   margin: var(--spacing-8) 0 var(--spacing-8);
   font-size: var(--text-subheading);
   line-height: var(--leading-subheading);
@@ -405,32 +497,32 @@ a:hover {
   font-weight: var(--font-weight-bold);
 }
 
-.step-card p {
+.stepCard p {
   margin: 0 0 var(--spacing-16);
   font-size: var(--text-body);
   line-height: var(--leading-body);
 }
 
-.step-card__figure {
+.stepCardFigure {
   border-top: 1px solid var(--color-ink-black);
   padding-top: var(--spacing-16);
   display: flex;
   justify-content: flex-start;
 }
 
-.step-card__figure svg {
+.stepCardFigure svg {
   height: 72px;
   width: auto;
 }
 
 /* ---------- Toepassingen (2-koloms kaarten) ---------- */
-.cards-grid {
+.cardsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-24);
 }
 
-.story-card {
+.storyCard {
   position: relative;
   border-radius: var(--radius-cards);
   overflow: hidden;
@@ -439,7 +531,7 @@ a:hover {
   display: flex;
 }
 
-.story-card img {
+.storyCard img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -447,27 +539,27 @@ a:hover {
   object-fit: cover;
 }
 
-.story-card__overlay {
+.storyCardOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.65) 100%);
 }
 
-.story-card__content {
+.storyCardContent {
   position: relative;
   margin-top: auto;
   padding: var(--spacing-24);
   color: var(--color-pure-white);
 }
 
-.story-card__kicker {
+.storyCardKicker {
   margin: 0 0 var(--spacing-8);
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
   color: var(--color-pure-white);
 }
 
-.story-card__title {
+.storyCardTitle {
   margin: 0;
   color: var(--color-pure-white);
   font-size: var(--text-heading);
@@ -476,7 +568,13 @@ a:hover {
   font-weight: var(--font-weight-bold);
 }
 
-.text-card {
+/* Had geen eigen class; leunde op de UA-default van <p> (1em bij 16px). */
+.storyCardText {
+  margin-block: 1em;
+  margin-inline: 0;
+}
+
+.textCard {
   background: var(--surface-warm-white-surface);
   border-radius: var(--radius-cards);
   padding: var(--spacing-24);
@@ -486,19 +584,19 @@ a:hover {
   min-height: 420px;
 }
 
-.text-card--bordered {
+.textCardBordered {
   background: var(--surface-card-surface);
   border: 1px solid var(--color-ink-black);
 }
 
-.text-card__kicker {
+.textCardKicker {
   margin: 0;
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
   color: var(--color-steel-gray);
 }
 
-.text-card__title {
+.textCardTitle {
   margin: 0 0 var(--spacing-8);
   font-size: var(--text-heading);
   line-height: var(--leading-heading);
@@ -506,18 +604,18 @@ a:hover {
   font-weight: var(--font-weight-bold);
 }
 
-.text-card p {
+.textCard p {
   margin: 0 0 var(--spacing-16);
   font-size: var(--text-body);
   line-height: var(--leading-body);
 }
 
-.text-card__footer {
+.textCardFooter {
   margin-top: auto;
 }
 
 /* ---------- Gele CTA-band ---------- */
-.cta-band {
+.ctaBand {
   margin-top: var(--section-gap);
   background: var(--surface-accent-surface);
   border-radius: var(--radius-cards);
@@ -528,12 +626,12 @@ a:hover {
   align-items: center;
 }
 
-.cta-band__title {
+.ctaBandTitle {
   margin: 0 0 var(--spacing-16);
   color: var(--color-ink-black);
 }
 
-.cta-band p {
+.ctaBand p {
   margin: 0;
   max-width: 60ch;
   color: var(--color-ink-black);
@@ -569,7 +667,7 @@ a:hover {
   display: none;
 }
 
-.faq summary .faq__icon {
+.faq summary .faqIcon {
   flex: none;
   width: 40px;
   height: 40px;
@@ -581,17 +679,17 @@ a:hover {
   color: var(--color-ink-black);
 }
 
-.faq details[open] summary .faq__icon {
+.faq details[open] summary .faqIcon {
   background: var(--color-ink-black);
   color: var(--color-pure-white);
 }
 
-.faq__answer {
+.faqAnswer {
   padding: 0 0 var(--spacing-24);
   max-width: 70ch;
 }
 
-.faq__answer p {
+.faqAnswer p {
   margin: 0;
   font-size: var(--text-body);
   line-height: var(--leading-body);
@@ -602,15 +700,17 @@ a:hover {
   margin: var(--section-gap) 0 var(--spacing-80);
 }
 
-.footer__strip {
+.footerStrip {
   background: var(--surface-page-canvas);
   border-radius: var(--radius-cards);
   padding: var(--spacing-16);
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-16);
 }
 
-.footer__strip a {
+.footerStrip a {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-8);
@@ -623,12 +723,13 @@ a:hover {
   border-radius: var(--radius-buttons);
 }
 
-.footer__strip a:hover {
+.footerStrip a:hover {
   background: var(--surface-warm-white-surface);
 }
 
-.footer__fineprint {
-  margin-top: var(--spacing-24);
+/* margin-bottom was de UA-default van <p> (1em bij 13px). */
+.footerFineprint {
+  margin: var(--spacing-24) 0 1em;
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-8) var(--spacing-24);
@@ -637,23 +738,23 @@ a:hover {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .hero__grid,
-  .two-col,
+  .heroGrid,
+  .twoCol,
   .steps,
-  .cards-grid {
+  .cardsGrid {
     grid-template-columns: 1fr;
   }
 
-  .media-card,
-  .cta-card {
+  .mediaCard,
+  .ctaCard {
     min-height: 420px;
   }
 
-  .cta-card {
+  .ctaCard {
     gap: var(--spacing-24);
   }
 
-  .cta-band {
+  .ctaBand {
     grid-template-columns: 1fr;
     padding: var(--spacing-24);
   }
@@ -661,23 +762,23 @@ a:hover {
 
 @media (max-width: 640px) {
   /* Display tekst valt terug op de 36px-stap uit de typeschaal */
-  .t-display {
+  .tDisplay {
     font-size: var(--text-heading);
     line-height: var(--leading-heading);
     letter-spacing: var(--tracking-heading);
   }
 
-  .media-card,
-  .story-card {
+  .mediaCard,
+  .storyCard {
     min-height: 360px;
   }
 
-  .cta-card {
+  .ctaCard {
     min-height: 0;
     padding: var(--spacing-24);
   }
 
-  .topnav__inner {
+  .topnavInner {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-16);
