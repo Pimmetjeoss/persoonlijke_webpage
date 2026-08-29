@@ -144,9 +144,18 @@ export function GoogleScoreForm() {
             {!submitting && <ArrowRightIcon className="w-5 h-5" />}
           </button>
           <p className="text-xs text-gray-600 max-w-md">
-            Voor elk domein halen we een officiële domeinscore (0–100) op uit
-            een externe databron. Er wordt geen persoonlijke data opgeslagen;
-            alleen domeinnamen en scores kunnen worden gelogd voor analyse.
+            Voor elk domein halen we de Domain Rating (0–100) op. Er wordt geen
+            persoonlijke data opgeslagen; alleen domeinnamen en scores kunnen
+            worden gelogd voor analyse. Domain Rating by{" "}
+            <a
+              href="https://ahrefs.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Ahrefs
+            </a>
+            .
           </p>
         </div>
       </form>

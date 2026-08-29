@@ -54,14 +54,23 @@ async function fetchDomainRating(target: string): Promise<CompareResult> {
   const url = new URL("https://api.ahrefs.com/v3/public/domain-rating-free")
   url.searchParams.set("target", normalized)
   url.searchParams.set("output", "json")
+  const apiKey = process.env.AHREFS_API_KEY?.trim()
+
+  if (!apiKey) {
+    return {
+      target: normalized,
+      domain_rating: null,
+      error: "De Ahrefs API-key ontbreekt op de server.",
+    }
+  }
 
   try {
     const res = await fetch(url.toString(), {
       method: "GET",
       headers: {
         Accept: "application/json",
+        Authorization: `Bearer ${apiKey}`,
       },
-      // Ahrefs public endpoint heeft geen key nodig; limieten zijn aan hun kant geregeld
       cache: "no-store",
     })
 
@@ -127,6 +136,21 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
       fetchDomainRating(competitor2),
     ])
 
+    const results = [own, c1, c2]
+    const failed = results.find(
+      (result) => result.error || result.domain_rating === null,
+    )
+
+    if (failed) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: failed.error ?? `Geen Domain Rating beschikbaar voor ${failed.target}.`,
+        },
+        { status: 502 },
+      )
+    }
+
     let saved = null
     try {
       saved = await saveComparison({
@@ -145,7 +169,7 @@ export async function POST(req: Request): Promise<NextResponse<ApiResponse>> {
 
     return NextResponse.json({
       success: true,
-      data: { results: [own, c1, c2], ownDomain: redirectDomain, persisted: Boolean(saved) },
+      data: { results, ownDomain: redirectDomain, persisted: Boolean(saved) },
     })
   } catch (err) {
     console.error("[google-score] compare route failed", err)

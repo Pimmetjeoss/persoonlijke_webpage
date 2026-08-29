@@ -91,6 +91,24 @@ function scoreTone(
   return "red"
 }
 
+function ScoreValue({
+  score,
+  tone,
+}: {
+  score: number | null
+  tone: "green" | "orange" | "red"
+}) {
+  if (score === null) {
+    return (
+      <div className="flex h-[180px] w-[180px] items-center justify-center rounded-full border-[12px] border-gray-200 text-center text-sm font-semibold text-gray-600">
+        Score niet beschikbaar
+      </div>
+    )
+  }
+
+  return <ScoreCircle score={score} tone={tone} />
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { domain } = await params
   const decoded = decodeURIComponent(domain)
@@ -204,12 +222,24 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
           icon={<BarChartIcon className="w-10 h-10 md:w-12 md:h-12" />}
         >
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <ScoreCircle score={row.own_dr ?? 0} tone={ownTone} />
+            <ScoreValue score={row.own_dr} tone={ownTone} />
             <div className="text-center md:text-left max-w-md">
               <p className="text-sm text-gray-700">
                 Deze score loopt van 0 tot 100. Hoe hoger de score, hoe sterker
                 jouw domein staat ten opzichte van andere websites qua
                 autoriteit en vindbaarheid.
+              </p>
+              <p className="mt-3 text-xs text-gray-500">
+                Domain Rating by{" "}
+                <a
+                  href="https://ahrefs.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Ahrefs
+                </a>
+                .
               </p>
             </div>
           </div>
@@ -261,13 +291,13 @@ export default async function GoogleScoreDetailPage({ params }: PageProps) {
               <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
                 {row.competitor1}
               </p>
-              <ScoreCircle score={row.competitor1_dr ?? 0} tone={competitor1Tone} />
+              <ScoreValue score={row.competitor1_dr} tone={competitor1Tone} />
             </div>
             <div className="flex flex-col items-center gap-4">
               <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
                 {row.competitor2}
               </p>
-              <ScoreCircle score={row.competitor2_dr ?? 0} tone={competitor2Tone} />
+              <ScoreValue score={row.competitor2_dr} tone={competitor2Tone} />
             </div>
           </div>
         </ResultSection>
