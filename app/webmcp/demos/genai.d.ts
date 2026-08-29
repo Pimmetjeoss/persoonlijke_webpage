@@ -2,7 +2,9 @@
 
    Het pakket staat bewust niet in package.json: het wordt pas in de browser
    van esm.sh geladen op het moment dat de bezoeker zijn eigen API-sleutel
-   invoert. Alleen de stukjes die bistro-assistant.tsx gebruikt staan hier.
+   invoert. Alleen de stukjes die de chat-assistenten in deze map gebruiken
+   staan hier. Gedeeld door alle demo's: een ambient module-declaratie kan
+   maar één keer in het project staan.
 
    Dit bestand heeft expres geen imports of exports op het hoogste niveau —
    een ambient module-declaratie kan alleen in een script-bestand staan. */

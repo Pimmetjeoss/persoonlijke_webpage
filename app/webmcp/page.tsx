@@ -148,8 +148,9 @@ const CATEGORIEEN = [
 /** Proeftuin-band: sites die hun functies nu al als WebMCP-tools aanbieden.
  *  Nieuwe demo toevoegen = één object erbij; de grid vult zichzelf.
  *  `href` extern (https://) opent in een nieuw tabblad, intern via <Link>.
- *  De externe demo's komen uit GoogleChromeLabs/webmcp-tools; de bistro is
- *  onze eigen Nederlandse kloon daarvan en staat op /webmcp/demos/bistro. */
+ *  De externe demo's komen uit GoogleChromeLabs/webmcp-tools; de bistro en
+ *  CinePrikkel zijn onze eigen Nederlandse klonen daarvan en staan op
+ *  /webmcp/demos/bistro en /webmcp/demos/bioscoop. */
 const PROEFTUIN = [
   {
     kicker: "EIGEN SITE",
@@ -188,13 +189,13 @@ const PROEFTUIN = [
     linkLabel: "Open de bistro",
   },
   {
-    kicker: "STATUS & RETOUR",
-    title: "Bestelling volgen",
+    kicker: "EIGEN DEMO",
+    title: "CinePrikkel",
     body:
-      "Waar is mijn pakket, en kan er iets terug? Deze demo laat zien hoe status opvragen en een retour aanmelden er als functie uitzien.",
-    prompt: "Waar is mijn bestelling, en meld één artikel aan voor retour.",
-    href: "https://googlechromelabs.github.io/webmcp-tools/demos/order-tracking/",
-    linkLabel: "Open het volgsysteem",
+      "Een bioscoop in zeven Nederlandse steden. Hier is niet één formulier de functie, maar het zoeken zelf: de stad kiezen, op genre filteren en een voorstelling aanklikken zijn alle drie functies die de assistent kan gebruiken.",
+    prompt: "Ik zit in Oss. Welke thrillers draaien er, en zet er vanavond eentje klaar.",
+    href: "/webmcp/demos/bioscoop",
+    linkLabel: "Open de bioscoop",
   },
   {
     kicker: "BEDIENING",
@@ -211,7 +212,7 @@ const FAQ = [
   {
     question: "Heb ik iets extra’s nodig?",
     answer:
-      "Nee. WebMCP is geen app of abonnement. Nieuwe browsers en AI-assistenten begrijpen het automatisch. Heb je een ouder systeem? Dan werkt alles gewoon zoals je gewend bent — WebMCP is erbij, niet ervoor in de plaats.",
+      "WebMCP is geen apart abonnement. Voor Site tools in ChatGPT heb je momenteel wel de nieuwste desktopapp, ingeschakelde Site tools en GPT-5.6 Sol of Terra nodig. Buiten een ondersteunde agent blijft de website gewoon handmatig werken.",
   },
   {
     question: "Is dit veilig?",
@@ -588,16 +589,16 @@ export default function WebmcpPage() {
                 reservering afronden.
               </p>
               <p>
-                Jij geeft de opdracht. ChatGPT kiest de juiste site-tool en vraagt toestemming voordat
-                een gevoelige of definitieve actie wordt uitgevoerd.
+                Jij geeft de opdracht. ChatGPT kiest de juiste site-tool. Voor gevoelige of
+                definitieve acties blijven de normale veiligheids- en bevestigingsregels gelden.
               </p>
               <div className={styles.textCardFooter}>
                 <a
                   className={styles.arrowButton}
-                  href="https://www.searchenginejournal.com/chatgpt-adds-webmcp-support/587237/"
+                  href="https://learn.chatgpt.com/docs/webmcp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Lees meer over WebMCP-ondersteuning in ChatGPT bij Search Engine Journal"
+                  aria-label="Lees de officiële OpenAI-documentatie over Site tools en WebMCP"
                 >
                   <ArrowRightIcon />
                 </a>
@@ -711,16 +712,16 @@ export default function WebmcpPage() {
           <div className={styles.tryBand}>
             <div className={styles.tryBandHead}>
               <p className={`${styles.tryBandKicker} ${styles.tCaption}`}>
-                PROEFTUIN · GEEN INSTALLATIE NODIG
+                PROEFTUIN · SITE TOOLS IN CHATGPT
               </p>
               <h2 className={`${styles.tryBandTitle} ${styles.tHeading}`}>
                 Probeer het zelf met ChatGPT
               </h2>
               <p className={styles.tryBandIntro}>
-                De sites hieronder bieden hun functies nu al aan zoals WebMCP het bedoelt. Open er één
-                in de ingebouwde browser van de ChatGPT-desktopapp — of in een andere browser met
-                agent-modus — en geef de voorbeeldvraag door. Je ziet de assistent dan de knoppen van
-                de site zélf gebruiken, in plaats van het scherm af te lezen en te gokken.
+                De sites hieronder registreren imperatieve WebMCP-tools die ChatGPT als Site tools kan
+                ontdekken. Open er één in de ingebouwde browser van de nieuwste ChatGPT-desktopapp,
+                schakel Site tools in en gebruik GPT-5.6 Sol of Terra. Geef daarna de voorbeeldvraag
+                door. De assistent gebruikt dan de functies van de site zelf.
               </p>
             </div>
 

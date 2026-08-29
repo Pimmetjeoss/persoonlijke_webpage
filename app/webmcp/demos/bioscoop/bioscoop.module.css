@@ -1,0 +1,735 @@
+/* bioscoop.module.css — CinePrikkel, een Nederlandse kloon van de
+   ticket-booking-demo van Google Chrome Labs (webmcp-tools, Apache-2.0).
+
+   Het origineel is een Tailwind-CDN-pagina in grijstinten met blauwe
+   accenten. Hier staat dezelfde layout in een scoped module, omgekleurd
+   naar de groenschaal uit kleuren.txt — net als bij de bistro-demo. Er zit
+   geen blauw of grijsblauw meer in de pagina.
+
+   Drie dingen die het origineel gratis van de UA kreeg en hier expliciet
+   staan, omdat Tailwind preflight ze op 0 zet: marges op koppen, de
+   button-reset en de font-stack. De tokens staan op .page en niet op :root,
+   zodat ze niet in de rest van de site lekken. */
+
+/* De buitenste laag van de pagina. Hier staan de tokens, want zowel de demo
+   zelf (.app) als de chat-assistent (.agentContainer) hangen eronder — die
+   laatste is een broer van .app, geen kind, dus tokens op .app zouden hem
+   niet bereiken. */
+.page {
+  /* Rollen, geen kleurnamen: een volgende omkleuring hoeft alleen hier. */
+  --ink: #f0fdf4; /* 138.5 76.5% 96.7% - tekst op donker */
+  --ink-dim: #86efac; /* 141.7 76.6% 73.1% - bijschrift */
+  --ink-faint: #4ade80; /* 141.9 69.2% 58%   - tellers, hints */
+  --surface: #052e16; /* 144.9 80.4% 10%   - paginavlak */
+  --surface-2: #0b3d20; /* tussen 10% en 20.2% - kaarten, knoppen */
+  --surface-3: #14532d; /* 143.8 61.2% 20.2% - hover */
+  --line: #166534; /* 142.8 64.2% 24.1% - randen */
+  --accent: #22c55e; /* 142.1 70.6% 45.3% - actief, nadruk */
+  --accent-strong: #16a34a; /* 142.1 76.2% 36.3% - hover op actief */
+  --on-accent: #052e16; /* tekst op --accent */
+
+  color: var(--ink);
+  font-family: var(--font-vietnam), 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Preflight haalt de UA-styling van knoppen weg, maar zet er ook geen
+   cursor terug. Dit geldt voor alle knoppen op deze pagina. */
+.page button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface);
+}
+
+/* --- Kop --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background-color: #041f0f;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.logoAccent {
+  color: var(--accent);
+}
+
+.locationBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--surface-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.locationBtn:hover {
+  background-color: var(--surface-3);
+}
+
+.chevron {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+/* --- Hoofdvlak --- */
+.main {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Genrefilter --- */
+.genres {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
+}
+
+.genreBtn {
+  flex-shrink: 0;
+  padding: 6px 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: var(--surface-2);
+  color: var(--ink-dim);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.genreBtn:hover {
+  background-color: var(--surface-3);
+  color: var(--ink);
+}
+
+.genreBtnActief {
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.genreBtnActief:hover {
+  background-color: var(--accent-strong);
+  color: var(--on-accent);
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.count {
+  margin-left: 8px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+.leeg {
+  padding: 80px 0;
+  text-align: center;
+  color: var(--ink-faint);
+}
+
+/* --- Filmraster --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: block;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: var(--surface-2);
+  overflow: hidden;
+  text-align: left;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.posterWrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background-color: var(--surface-3);
+}
+
+.poster {
+  object-fit: cover;
+}
+
+.cardBody {
+  display: block;
+  padding: 12px;
+}
+
+.cardTitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardGenre {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-transform: capitalize;
+}
+
+/* --- Detailpagina --- */
+.backBtn {
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.backBtn:hover {
+  text-decoration: underline;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .detail {
+    flex-direction: row;
+  }
+}
+
+.detailPosterWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--surface-2);
+}
+
+.detailBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.detailTitle {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.detailGenre {
+  margin: 0 0 4px;
+  color: var(--ink-dim);
+  text-transform: capitalize;
+}
+
+.detailLocaties {
+  margin: 0 0 28px;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+.subTitle {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* --- Datumkiezer --- */
+.datums {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.datumBtn {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 64px;
+  padding: 8px 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background-color: var(--surface-2);
+  color: var(--ink-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.datumBtn:hover {
+  background-color: var(--surface-3);
+  color: var(--ink);
+}
+
+.datumBtnActief {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.datumBtnActief:hover {
+  background-color: var(--accent-strong);
+  color: var(--on-accent);
+}
+
+.datumDag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.datumNr {
+  margin: 2px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.datumMaand {
+  font-size: 0.7rem;
+}
+
+/* --- Speeltijden --- */
+.tijden {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tijdBtn {
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: var(--surface-2);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.tijdBtn:hover {
+  background-color: var(--surface-3);
+  border-color: var(--accent);
+}
+
+.tijdBtnActief {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* --- Bestelblok --- */
+.checkout {
+  margin-top: 32px;
+  padding: 20px;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  background-color: rgba(34, 197, 94, 0.12);
+}
+
+.checkoutTitle {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.checkout p {
+  margin: 0;
+}
+
+.payBtn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.payBtn:hover {
+  background-color: var(--accent-strong);
+}
+
+/* --- Locatievenster --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(2, 15, 8, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background-color: var(--surface-2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modalTitle {
+  margin: 0;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.modalHint {
+  margin: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+.select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background-color: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.primaryBtn,
+.secondaryBtn,
+.ghostBtn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.primaryBtn {
+  border: none;
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.primaryBtn:hover:not(:disabled) {
+  background-color: var(--accent-strong);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  border: 1px solid var(--line);
+  background-color: var(--surface-3);
+  color: var(--ink);
+}
+
+.secondaryBtn:hover {
+  border-color: var(--accent);
+}
+
+.ghostBtn {
+  border: none;
+  background: none;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.ghostBtn:hover {
+  color: var(--ink);
+}
+
+/* --- Melding rechtsonder ---
+   Hij blijft altijd in de DOM staan en schuift alleen in en uit beeld, zodat
+   `aria-live` de tekst kan voorlezen zodra hij verandert. Links onderin,
+   want rechtsonder zit de chatknop van de assistent. */
+.toast {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 40;
+  max-width: min(380px, calc(100vw - 32px));
+  padding: 12px 20px;
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.toastZichtbaar {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --- Chat-assistent ---
+   Zelfde opzet als bij de bistro, in de kleuren van deze pagina. */
+.agentContainer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+}
+
+.agentToggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background-color: var(--surface-2);
+  font-size: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.agentToggle:hover {
+  transform: scale(1.1);
+}
+
+.agentChat {
+  position: absolute;
+  right: 0;
+  bottom: 80px;
+  width: 350px;
+  max-width: calc(100vw - 40px);
+  height: 500px;
+  max-height: calc(100dvh - 140px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background-color: var(--surface-2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.agentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.agentHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.agentLogout {
+  padding: 2px 8px;
+  border: 1px solid var(--on-accent);
+  border-radius: 4px;
+  background: none;
+  color: var(--on-accent);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.agentChatWindow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: var(--surface);
+}
+
+.agentMessage {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.agentMessageUser {
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.agentMessageAgent {
+  align-self: flex-start;
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 0;
+  background-color: var(--surface-2);
+  color: var(--ink);
+}
+
+.agentMessageSystem {
+  width: 90%;
+  align-self: center;
+  border: 1px solid var(--line);
+  background-color: transparent;
+  color: var(--ink-faint);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.agentInputArea {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.agentUserInput {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background-color: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.agentUserInput:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.agentSendBtn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.agentSendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.agentSetup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  height: 100%;
+  padding: 28px;
+  text-align: center;
+}
+
+.agentSetup p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+
+.agentApiKeyInput {
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: monospace;
+}
+
+.agentSaveKeyBtn {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}

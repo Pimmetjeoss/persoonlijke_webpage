@@ -1,28 +1,39 @@
 "use client"
 
 import { useEffect } from "react"
+import { usePathname } from "next/navigation"
+import type {
+  WebMcpModelContext,
+  WebMcpToolAnnotations,
+  WebMcpToolDefinition,
+} from "../webmcp/demos/webmcp"
 
-type ToolDefinition = {
-  name: string
-  description: string
-  inputSchema: Record<string, unknown>
-  execute: (input: Record<string, unknown>) => Promise<unknown>
+type SiteToolDefinition = Omit<WebMcpToolDefinition, "execute"> & {
+  execute: (input: Record<string, unknown>) => unknown | Promise<unknown>
 }
 
-type ModelContext = {
-  registerTool?: (tool: ToolDefinition, options?: { signal?: AbortSignal }) => void
-  provideContext?: (tools: ToolDefinition[]) => void
+type CompatibleModelContext = WebMcpModelContext & {
+  provideContext?: (tools: SiteToolDefinition[]) => void
 }
 
 declare global {
   interface Navigator {
-    modelContext?: ModelContext
+    /** Tijdelijke compatibiliteit met oudere WebMCP-prototypes. ChatGPT
+        gebruikt de actuele API op `document.modelContext`. */
+    modelContext?: CompatibleModelContext
   }
 }
 
 const ORIGIN = "https://code-lieshout.nl"
 
-const TOOLS: ToolDefinition[] = [
+const readOnlyAnnotations = (openWorldHint = false): WebMcpToolAnnotations => ({
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint,
+})
+
+const TOOLS: SiteToolDefinition[] = [
   {
     name: "scan_agent_readiness",
     description:
@@ -36,7 +47,9 @@ const TOOLS: ToolDefinition[] = [
         },
       },
       required: ["url"],
+      additionalProperties: false,
     },
+    annotations: readOnlyAnnotations(true),
     execute: async (input) => {
       const url = typeof input.url === "string" ? input.url : ""
       const res = await fetch(`${ORIGIN}/agent-ready/api/scan`, {
@@ -60,7 +73,9 @@ const TOOLS: ToolDefinition[] = [
     inputSchema: {
       type: "object",
       properties: {},
+      additionalProperties: false,
     },
+    annotations: readOnlyAnnotations(),
     execute: async () => ({
       sections: [
         { url: `${ORIGIN}/`, label: "Home", description: "Overview of Code Lieshout" },
@@ -80,7 +95,9 @@ const TOOLS: ToolDefinition[] = [
     inputSchema: {
       type: "object",
       properties: {},
+      additionalProperties: false,
     },
+    annotations: readOnlyAnnotations(),
     execute: async () => ({
       business: "Code Lieshout",
       founder: "Pim van Lieshout",
@@ -104,7 +121,9 @@ const TOOLS: ToolDefinition[] = [
         },
       },
       required: ["path"],
+      additionalProperties: false,
     },
+    annotations: readOnlyAnnotations(),
     execute: async (input) => {
       const path = typeof input.path === "string" ? input.path : "/"
       const res = await fetch(`${ORIGIN}${path}`, {
@@ -117,31 +136,55 @@ const TOOLS: ToolDefinition[] = [
 ]
 
 export function WebMcpRegistrar() {
+  const pathname = usePathname()
+
   useEffect(() => {
-    if (typeof navigator === "undefined") return
-    const ctx = navigator.modelContext
-    if (!ctx) return
+    // Demo-routes bieden alleen hun eigen, taakgerichte tools aan. Zo krijgt
+    // een restaurantagent geen algemene site- of scannertools ertussen.
+    if (pathname.startsWith("/webmcp/demos/")) return
 
     const controller = new AbortController()
+    let interval: ReturnType<typeof setInterval> | null = null
+    let timeout: ReturnType<typeof setTimeout> | null = null
 
-    if (typeof ctx.registerTool === "function") {
-      for (const tool of TOOLS) {
+    const register = () => {
+      const current =
+        (document.modelContext as CompatibleModelContext | undefined) ?? navigator.modelContext
+      if (!current) return false
+
+      if (typeof current.registerTool === "function") {
+        for (const tool of TOOLS) {
+          Promise.resolve(current.registerTool(tool, { signal: controller.signal })).catch(() => {})
+        }
+      } else if (typeof current.provideContext === "function") {
         try {
-          ctx.registerTool(tool, { signal: controller.signal })
+          current.provideContext(TOOLS)
         } catch {
-          // Silently ignore individual tool-registration failures.
+          // Silent fallback for older prototypes.
         }
       }
-    } else if (typeof ctx.provideContext === "function") {
-      try {
-        ctx.provideContext(TOOLS)
-      } catch {
-        // Silent fallback.
-      }
+
+      return true
     }
 
-    return () => controller.abort()
-  }, [])
+    if (!register()) {
+      interval = setInterval(() => {
+        if (!register()) return
+        if (interval) clearInterval(interval)
+        interval = null
+      }, 100)
+      timeout = setTimeout(() => {
+        if (interval) clearInterval(interval)
+        interval = null
+      }, 10_000)
+    }
+
+    return () => {
+      controller.abort()
+      if (interval) clearInterval(interval)
+      if (timeout) clearTimeout(timeout)
+    }
+  }, [pathname])
 
   return null
 }

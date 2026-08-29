@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        // Filmposters van de WebMCP-demo /webmcp/demos/bioscoop; ze komen
+        // uit de ticket-booking-demo van Google Chrome Labs.
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
   },
   async redirects() {

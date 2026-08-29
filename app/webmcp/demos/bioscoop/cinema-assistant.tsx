@@ -1,12 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import styles from "./bistro.module.css";
+import styles from "./bioscoop.module.css";
 import type { GenAiChat, GoogleGenAI } from "https://esm.sh/@google/genai";
 import type { WebMcpTool } from "../webmcp";
 
 /** De sleutel blijft in de browser van de bezoeker; hij gaat alleen naar
-    Google, nooit naar deze site. Zelfde opzet als de demo van Chrome Labs. */
+    Google, nooit naar deze site. Zelfde opzet als de demo van Chrome Labs.
+    Dezelfde opslagsleutel als bij de bistro: wie daar zijn sleutel al heeft
+    ingevoerd, kan hier meteen door. */
 const API_KEY_STORAGE_KEY = "gemini_api_key";
 const MODEL = "gemini-3.1-flash-lite";
 const GENAI_MODULE = "https://esm.sh/@google/genai";
@@ -18,11 +20,11 @@ let messageId = 0;
 /** De chat-assistent rechtsonder.
  *
  *  Hij praat met Gemini en voert de tools uit die hij op deze pagina vindt —
- *  hier dus de reserveringsactie die de pagina met `registerTool` aanmeldt.
- *  Zo is de demo ook te proberen in een browser zonder native WebMCP:
- *  de polyfill levert document.modelContext, deze widget levert het model.
+ *  hier dus de drie functies die CinePrikkel met `registerTool` aanmeldt.
+ *  Zo is de demo ook te proberen in een browser zonder WebMCP: de polyfill
+ *  levert document.modelContext, deze widget levert het model.
  */
-export function BistroAssistant() {
+export function CinemaAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [apiKey, setApiKey] = useState<string | null>(null);
   const [keyDraft, setKeyDraft] = useState("");
@@ -60,12 +62,13 @@ export function BistroAssistant() {
   useEffect(() => {
     if (!isOpen || document.modelContext) return;
     const timer = setTimeout(() => {
+      if (document.modelContext) return;
       append(
         "Systeem",
         "⚠️ Geen WebMCP-API gevonden. Gebruik een browser waarin het experiment aanstaat.",
         "system"
       );
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [isOpen, append]);
 
@@ -79,11 +82,13 @@ export function BistroAssistant() {
     const tools = await getTools();
     return {
       systemInstruction: [
-        'Je bent de assistent van restaurant "Le Prikkel Bistro".',
-        "Help de gast met het maken van een reservering via de beschikbare tools.",
-        "De tool bereidt de aanvraag alleen voor. Zeg na succes altijd dat de gast de ingevulde aanvraag nog zelf moet controleren en versturen.",
+        'Je bent de kassamedewerker van bioscoop "CinePrikkel".',
+        "Help de bezoeker een film en een voorstelling te kiezen met de beschikbare tools.",
         "BELANGRIJKE REGEL: gebruik geen andere tools dan de beschikbare.",
         "Antwoord altijd in het Nederlands.",
+        "Filmtitels en genres zijn Engels; laat die staan zoals ze zijn.",
+        "Noem tijden altijd in 24-uursnotatie, dus '20:00 uur' en nooit '8 PM'.",
+        "Ken je het id van een film nog niet, gebruik dan eerst query_content om het op te zoeken.",
         `EXTRA CONTEXT: vandaag is het ${new Date().toLocaleDateString("nl-NL", {
           weekday: "long",
           year: "numeric",
@@ -113,7 +118,11 @@ export function BistroAssistant() {
       /* webpackIgnore: true */ /* turbopackIgnore: true */ GENAI_MODULE
     );
     clientRef.current = new GoogleGenAI({ apiKey: key });
-    append("Systeem", "Welkom bij Le Prikkel Bistro! Waarmee kan ik je helpen?", "system");
+    append(
+      "Systeem",
+      "Welkom bij CinePrikkel! Vraag gerust naar een genre, een stad of een tijd.",
+      "system"
+    );
   };
 
   const saveKey = async () => {
@@ -223,7 +232,7 @@ export function BistroAssistant() {
       {isOpen && (
         <div className={styles.agentChat}>
           <div className={styles.agentHeader}>
-            <h3>Bistro-assistent</h3>
+            <h3>Kassa-assistent</h3>
             {apiKey && (
               <button type="button" className={styles.agentLogout} onClick={logout}>
                 Uitloggen
@@ -289,7 +298,7 @@ export function BistroAssistant() {
         aria-expanded={isOpen}
         onClick={() => setIsOpen((open) => !open)}
       >
-        {"\u{1F4AC}"}
+        {"\u{1F3AC}"}
       </button>
     </div>
   );

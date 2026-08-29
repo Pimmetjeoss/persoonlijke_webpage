@@ -15,14 +15,14 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Le Prikkel Bistro — WebMCP-demo",
   description:
-    "Reserveer online een tafel bij Le Prikkel Bistro. Een demo van declaratieve WebMCP: het reserveringsformulier is tegelijk een tool die een AI-agent kan invullen.",
+    "Reserveer online een tafel bij Le Prikkel Bistro. Een demo van WebMCP Site tools: een AI-agent kan de aanvraag invullen en de bezoeker bevestigt.",
   alternates: {
     canonical: "https://code-lieshout.nl/webmcp/demos/bistro",
   },
   openGraph: {
     title: "Le Prikkel Bistro — WebMCP-demo",
     description:
-      "Een reserveringsformulier dat tegelijk een tool is voor AI-agents. Declaratieve WebMCP in de praktijk.",
+      "Een reserveringsformulier dat via een WebMCP Site tool door AI-agents kan worden voorbereid.",
     url: "https://code-lieshout.nl/webmcp/demos/bistro",
     type: "website",
   },
@@ -33,12 +33,11 @@ export const metadata: Metadata = {
  *  kleuren.txt. Eerste bewoner van app/webmcp/demos/; volgende demo's
  *  krijgen hier een eigen map naast.
  *
- *  Het punt van de demo: het formulier in <ReservationForm /> draagt de
- *  attributen `toolname`, `tooldescription` en `toolparamdescription`. Dat
- *  is alles wat er nodig is om het voor een AI-agent tot een bruikbare tool
- *  te maken — geen aparte API, geen tweede implementatie. De polyfill in
- *  public/vendor/ levert `document.modelContext` in browsers waar WebMCP
- *  nog niet ingebouwd is; in een browser die het wél heeft, doet hij niets.
+ *  Het formulier in <ReservationForm /> registreert op de bovenliggende
+ *  pagina een imperatieve Site tool met `document.modelContext.registerTool`.
+ *  Die route wordt ondersteund door ChatGPTs ingebouwde browser. De tool en
+ *  de bezoeker delen dezelfde formulier-DOM en validatie. De polyfill in
+ *  public/vendor/ levert `document.modelContext` in andere browsers.
  */
 export default function LePrikkelBistroPage() {
   return (
