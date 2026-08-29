@@ -203,10 +203,200 @@
   width: 100%;
   aspect-ratio: 2 / 3;
   background-color: var(--surface-3);
+  overflow: hidden;
 }
 
-.poster {
-  object-fit: cover;
+/* Lokale poster-art. Titel en beeld komen uit hetzelfde Film-object, zodat
+   een externe afbeelding nooit meer onder de verkeerde film kan belanden. */
+.posterArt {
+  --poster-a: #0f766e;
+  --poster-b: #020617;
+  --poster-glow: #5eead4;
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--poster-glow) 65%, transparent) 0, transparent 28%),
+    linear-gradient(155deg, var(--poster-a), var(--poster-b) 72%);
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.62);
+}
+
+.posterArt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.76) 100%);
+}
+
+.posterGrid,
+.posterOrb,
+.posterSlash {
+  position: absolute;
+  z-index: -2;
+  display: block;
+  pointer-events: none;
+}
+
+.posterGrid {
+  inset: -20%;
+  opacity: 0.22;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 17px, rgba(255, 255, 255, 0.3) 18px 19px),
+    repeating-linear-gradient(0deg, transparent 0 17px, rgba(255, 255, 255, 0.2) 18px 19px);
+  transform: perspective(260px) rotateX(58deg) translateY(-18%);
+}
+
+.posterOrb {
+  top: 16%;
+  left: 50%;
+  width: 58%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--poster-glow) 76%, white);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.7), transparent 7%),
+    radial-gradient(circle at 48% 45%, var(--poster-glow), var(--poster-a) 58%, #020617 100%);
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--poster-glow) 48%, transparent),
+    inset -12px -14px 28px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+}
+
+.posterSlash {
+  top: -8%;
+  right: 9%;
+  width: 12%;
+  height: 76%;
+  background: linear-gradient(180deg, transparent, var(--poster-glow), transparent);
+  opacity: 0.72;
+  transform: rotate(24deg);
+  filter: blur(1px);
+}
+
+.posterStudio,
+.posterArtTitle,
+.posterArtFooter {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.posterStudio {
+  margin-bottom: auto;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.38rem, 4.8cqw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.posterArtTitle {
+  font-size: clamp(1rem, 13cqw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.posterArtFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8%;
+  padding-top: 5%;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.4rem, 4.6cqw, 0.65rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.posterAction {
+  --poster-a: #b91c1c;
+  --poster-b: #1c0805;
+  --poster-glow: #fb923c;
+}
+
+.posterComedy {
+  --poster-a: #0e7490;
+  --poster-b: #082f49;
+  --poster-glow: #fde047;
+}
+
+.posterHorror {
+  --poster-a: #450a0a;
+  --poster-b: #030303;
+  --poster-glow: #ef4444;
+}
+
+.posterDrama {
+  --poster-a: #7c2d12;
+  --poster-b: #172554;
+  --poster-glow: #fda4af;
+}
+
+.posterScifi {
+  --poster-a: #164e63;
+  --poster-b: #1e1b4b;
+  --poster-glow: #22d3ee;
+}
+
+.posterThriller {
+  --poster-a: #134e4a;
+  --poster-b: #09090b;
+  --poster-glow: #f59e0b;
+}
+
+.posterVariant0 .posterOrb {
+  top: 9%;
+  left: 28%;
+  width: 72%;
+}
+
+.posterVariant1 .posterOrb {
+  top: 22%;
+  left: 72%;
+  width: 66%;
+}
+
+.posterVariant2 .posterOrb {
+  top: 12%;
+  width: 48%;
+  border-radius: 8%;
+  transform: translateX(-50%) rotate(18deg);
+}
+
+.posterVariant3 .posterSlash {
+  right: 58%;
+  width: 20%;
+  transform: rotate(-31deg);
+}
+
+.posterVariant4 .posterOrb {
+  top: 7%;
+  left: 62%;
+  width: 82%;
+  background: transparent;
+  border-width: 5px;
+}
+
+.posterVariant5 .posterGrid {
+  opacity: 0.38;
+  transform: rotate(42deg) scale(1.4);
+}
+
+.posterArtDetail .posterArtTitle {
+  font-size: clamp(1.75rem, 14cqw, 2.65rem);
 }
 
 .cardBody {

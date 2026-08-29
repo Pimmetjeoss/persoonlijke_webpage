@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { FILMS, GENRE_FILTERS, STEDEN, type Film } from "./films";
+import { FilmPoster } from "./film-poster";
 import styles from "./bioscoop.module.css";
 import type { WebMcpToolDefinition } from "../webmcp";
 
@@ -510,13 +510,7 @@ export function CinePrikkel() {
                     onClick={() => navigeer({ filmId: film.id })}
                   >
                     <span className={styles.posterWrap}>
-                      <Image
-                        src={film.poster}
-                        alt=""
-                        fill
-                        sizes="(max-width: 640px) 45vw, (max-width: 1100px) 25vw, 180px"
-                        className={styles.poster}
-                      />
+                      <FilmPoster film={film} />
                     </span>
                     <span className={styles.cardBody}>
                       <span className={styles.cardTitle}>{film.title}</span>
@@ -624,13 +618,7 @@ function FilmDetail({
 
       <div className={styles.detail}>
         <div className={styles.detailPosterWrap}>
-          <Image
-            src={film.poster}
-            alt={`Poster van ${film.title}`}
-            fill
-            sizes="(max-width: 768px) 90vw, 280px"
-            className={styles.poster}
-          />
+          <FilmPoster film={film} detail />
         </div>
 
         <div className={styles.detailBody}>
