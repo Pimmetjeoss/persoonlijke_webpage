@@ -226,8 +226,7 @@ export const FILMS: Film[] = [
     id: "209",
     title: "Apex",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCMEQpzGxac58EMUu_Kt5k7fd3jlx__hTIatscIfOZS9AXpzHYBqq2_KKD45QJfak3nkCLAyjRnwaDcQDzNzjmCeFLZq_wiWikSDQXzaZ-JbXaUatVfwJq4M7hmH3edjLvY2E0ISah0oi6LKBhlM4KAJ1hrKD3ge3cP9eflvHFHmBRNfwB9o_yWnEigCVDWEwnxcDp0EBk1_x_fsSHZcmHjcjj81ZlKz7IHY2kmuQXS71gZOHY8VMJPxVVDeJw083NorTMfJJIjhLQz",
+    poster: "/webmcp/images/bioscoop/apex.png",
     locations: ["Amsterdam", "Oss", "Nijmegen", "Den Bosch"],
     showtimes: ["10:00", "17:00", "20:00", "21:30"],
   },
@@ -393,8 +392,7 @@ export const FILMS: Film[] = [
     id: "408",
     title: "The Last Letter",
     genre: "drama",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuARC_rtp9kjjsVxg_dJm1FP03PsHTn4zk2XmpZ_6g8nky6TxCF40PI7fkWjD8PUC7n6koW0pBcQmS821js4Td6YRO8MYBvzkcUtm3o-ToHVM8mM-Mr31z5yF2dB-PW9ur-3VfAzyKAYgCJH5D85o0IOOw0AcYtSAq0ytCQQ9oCgpAaNFH0zjpeKaUqrj83WjpMa4l4C-rRjKDdtPGSVx4L9bwmGLnxSXIkqH0Pu44lgaLHAJBifGWjUoD8-IKa31__pxGoeTesDIou9",
+    poster: "/webmcp/images/bioscoop/the-last-letter.png",
     locations: ["Oss", "Amsterdam"],
     showtimes: ["10:00", "12:30", "14:00", "20:00", "21:30"],
   },
