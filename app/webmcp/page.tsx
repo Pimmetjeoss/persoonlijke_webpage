@@ -148,7 +148,8 @@ const CATEGORIEEN = [
 /** Proeftuin-band: sites die hun functies nu al als WebMCP-tools aanbieden.
  *  Nieuwe demo toevoegen = één object erbij; de grid vult zichzelf.
  *  `href` extern (https://) opent in een nieuw tabblad, intern via <Link>.
- *  Alle externe demo's komen uit GoogleChromeLabs/webmcp-tools. */
+ *  De externe demo's komen uit GoogleChromeLabs/webmcp-tools; de bistro is
+ *  onze eigen Nederlandse kloon daarvan en staat op /webmcp/demos/bistro. */
 const PROEFTUIN = [
   {
     kicker: "EIGEN SITE",
@@ -178,13 +179,13 @@ const PROEFTUIN = [
     linkLabel: "Open de sportwinkel",
   },
   {
-    kicker: "RESERVEREN",
-    title: "Restaurant",
+    kicker: "EIGEN DEMO",
+    title: "Le Prikkel Bistro",
     body:
-      "Een bistro met een reserveringssysteem. Beschikbaarheid opvragen en een tafel vastleggen staan als aparte stappen in de handleiding van de site.",
+      "Een reserveringsformulier dat tegelijk een functie is. De assistent vult naam, datum, tijd en tafelvoorkeur in; jij ziet wat hij invulde en drukt zelf op bevestigen. Vult hij iets fout in, dan krijgt hij de foutmelding per veld terug.",
     prompt: "Reserveer een tafel voor twee personen, vrijdagavond om half acht.",
-    href: "https://googlechromelabs.github.io/webmcp-tools/demos/french-bistro/",
-    linkLabel: "Open het restaurant",
+    href: "/webmcp/demos/bistro",
+    linkLabel: "Open de bistro",
   },
   {
     kicker: "STATUS & RETOUR",

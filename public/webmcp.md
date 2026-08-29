@@ -50,11 +50,11 @@ Deze sites bieden hun functies nu al als WebMCP-tools aan. Open er één in de i
 - **Deze website zelf** — [code-lieshout.nl](https://code-lieshout.nl) meldt vier functies aan: een agent-scan van een website, pagina-inhoud als platte tekst, een overzicht van alle secties en de contactgegevens. Probeer: *"Scan code-lieshout.nl op agent-readiness en vat de uitkomst voor me samen."*
 - **Het verschil in beeld** — [explainer-demo](https://googlechromelabs.github.io/webmcp-tools/demos/explainer/): links een assistent die de pagina moet aflezen en gokken, rechts dezelfde pagina die zijn functies netjes aanbiedt.
 - **Sportwinkel** — [sport-shop-demo](https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/): zoeken, filteren en het winkelmandje als losse functies. Probeer: *"Zoek een hardloopschoen onder de 100 euro en leg hem in mijn mandje."*
-- **Restaurant** — [french-bistro-demo](https://googlechromelabs.github.io/webmcp-tools/demos/french-bistro/): beschikbaarheid opvragen en een tafel vastleggen als aparte stappen. Probeer: *"Reserveer een tafel voor twee personen, vrijdagavond om half acht."*
+- **Le Prikkel Bistro** — [onze eigen demo](https://code-lieshout.nl/webmcp/demos/bistro): een reserveringsformulier dat tegelijk een functie is. De assistent vult het in, jij bevestigt; vult hij iets fout in, dan krijgt hij de foutmelding per veld terug. Probeer: *"Reserveer een tafel voor twee personen, vrijdagavond om half acht."*
 - **Bestelling volgen** — [order-tracking-demo](https://googlechromelabs.github.io/webmcp-tools/demos/order-tracking/): status opvragen en een retour aanmelden. Probeer: *"Waar is mijn bestelling, en meld één artikel aan voor retour."*
 - **Slim huis** — [smart-home-demo](https://googlechromelabs.github.io/webmcp-tools/demos/smart-home/): elke schakelaar op het dashboard bestaat ook als functie. Probeer: *"Zet de woonkamer op 20 graden en dim de lampen naar 30 procent."*
 
-De externe demo's komen uit [GoogleChromeLabs/webmcp-tools](https://github.com/GoogleChromeLabs/webmcp-tools).
+De externe demo's komen uit [GoogleChromeLabs/webmcp-tools](https://github.com/GoogleChromeLabs/webmcp-tools). Le Prikkel Bistro is onze eigen Nederlandse kloon van hun french-bistro-demo.
 
 ## Veelgestelde vragen
 
