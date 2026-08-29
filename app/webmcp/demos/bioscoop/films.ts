@@ -159,8 +159,7 @@ export const FILMS: Film[] = [
     id: "201",
     title: "Action Hero",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAMBsFlmpR42x8IT45iF61SrByfPV0183f2aUrLKzwgSi-1nDUMWu2_ntue_s8CvzgxZ_xAb08IqxUEBPnNnisKymSjJrpn7rF5Ulj45A5Q58xsKhCYwypJAez81LZ2WmVIfY5YtclVDJ_YpXiHyPv6TqLQyJVKelDJOVwnQLLDMXuMHKAKa73oirTtgLaCoHmS4anyUvGfyAk9gMnrrKmCXiR00EFhL7hqn3SGe0a_Rhl7mdsiAs3WVkgGLKCifCLwCK7uHpTCnlD4",
+    poster: "/webmcp/images/bioscoop/action-hero.png",
     locations: ["Rotterdam", "Amsterdam", "Utrecht", "Eindhoven"],
     showtimes: ["10:00", "16:30", "19:00"],
   },
@@ -186,8 +185,7 @@ export const FILMS: Film[] = [
     id: "204",
     title: "Explosive",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAuZv3aXqFtE82Z-HF0c84c-crg_bUVCvlyww__9AWi528n_p6igj-SRcEc1qmuBJ5R7bURVr43QEL1tJspskxplzq_cP3UuaGqauHX2PZSjtR1rqrf0imi8-ctMH-kbGVketvFszCnpGgLSPHp9Mfi7IXxqyhSRGbc3T2Rk7leu73Y-yI-Q2zYva3gbkw37EqeR18kyD3HmxyMo4uB3KDexp5UAjlmBoc0laubneWaHobzpg2K5diJFrxYtSuKMzXngZ6iXL7VkCHX",
+    poster: "/webmcp/images/bioscoop/explosive.webp",
     locations: ["Den Bosch", "Rotterdam"],
     showtimes: ["10:00", "12:30", "16:30"],
   },
@@ -195,8 +193,7 @@ export const FILMS: Film[] = [
     id: "205",
     title: "Neon City",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCPAj5JkBdwqYyitb12GvJPd--zDX8yam7Mq8n8HehvB50bnsqfALMgKxgXJykJBgPlyy8My1d3sQhOtYJPGfmGJaAI1Z0lJD7IMZFo2lDxOhNMZgbk4CHHtSxB6xEoQcQweNar2-4jwNbOPDFJOEeB9tnlsdYk9cJrlpSjLfbV6fEhazt4w0p0-bZ1J56bZP9R-LrOMt2WfKAcbmlC8S0T_IA5jcoTC_u2AM5bz3P7MrPitIhDw4bIQ3qj-Z5E-KkriRMQCoBcAizo",
+    poster: "/webmcp/images/bioscoop/neon-city.png",
     locations: ["Amsterdam", "Oss", "Eindhoven", "Utrecht"],
     showtimes: ["12:30", "14:00", "16:30", "20:00", "23:45"],
   },
@@ -204,8 +201,7 @@ export const FILMS: Film[] = [
     id: "206",
     title: "Bulletstorm",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCcupdnoICPy7I_snUqc_tJkuE5ufUqo2HcD7DelxDeOdRERnkc1_JGJuPgMhIaPEWefKh0irZ3PLXdbnsRZOQcIEMtjsaEPOD828h0OxdHHHbfzVjPEgnSt9FAfByzuBQf4vFJyr5SSWOZYx3FD5xBXj79Z9pm9Og7MWJYsOyruEe8akYL2EZbpql4ENu_PypwQFXOMWGLbfX1n8gSYIYDlCjG9vwAxireofSOGBC4HNzBbOAON1yzyfPu5H0SQxcGVcZ4hcY0l7hl",
+    poster: "/webmcp/images/bioscoop/bulletstorm.png",
     locations: ["Oss", "Amsterdam", "Eindhoven", "Utrecht"],
     showtimes: ["16:30", "17:00", "21:30"],
   },
@@ -213,8 +209,7 @@ export const FILMS: Film[] = [
     id: "207",
     title: "The Heist",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCISif8qofdtZMTixTYIQx5f0_GiKNz8n5KmmuUDU25UYA6GOTCDjKqoK6FXTljYz7RcH2HrPx68uPJh_nig9pOdUsB59VYI5Z304KR-ZqSd-2qslUi-s9iXsM98OeEH0OvdyN7PNczVPLxBltYDMpQDRMSSTXBOrk4CZffSKeD6LALHOaXnQKZS-nGDckQWufeq_btaOtNK-RCvcQFkKl11N71yJ28KABR4xSVue2H2vgX1hPBnrqE5LK_L5QR3__OPbI7N6qQJW_t",
+    poster: "/webmcp/images/bioscoop/the-heist.jpg",
     locations: ["Eindhoven", "Den Bosch", "Amsterdam"],
     showtimes: ["10:00", "12:30", "22:30"],
   },
