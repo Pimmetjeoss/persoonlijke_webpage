@@ -118,6 +118,94 @@ const STEPS = [
   },
 ];
 
+/** De drie categorieën waarin het gebruik van WebMCP in de praktijk uiteenvalt.
+ *  Bewust in mensentaal: geen functienamen, geen code — die horen op een
+ *  pagina voor website-eigenaren, niet in een instructie "voor iedereen". */
+const CATEGORIEEN = [
+  {
+    kicker: "CATEGORIE 1 VAN 3",
+    title: "Aankopen doen",
+    voorbeeld:
+      "Boodschappen voor een kinderfeestje, verdeeld over drie winkels. Of gewoon die kaasstengels van vorige maand opnieuw bestellen — waarvan je het merk niet meer weet.",
+    hoe: "De assistent zoekt de producten op bij elke winkel, vergelijkt de prijzen en legt ze klaar in een mandje of verlanglijst. Jij klikt niet door twintig categorieën; jij bekijkt de lijst en rekent af.",
+  },
+  {
+    kicker: "CATEGORIE 2 VAN 3",
+    title: "Formulieren invullen",
+    voorbeeld:
+      "Een garantieclaim voor een televisie die niet meer aangaat. Een offerte bij een cateraar voor honderd gasten. De uren van deze week doorgeven. Of een tweedehands auto zoeken met zeven zitplaatsen.",
+    hoe: "De website biedt het formulier zelf aan als functie, met uitleg per veld. De assistent hoeft niet te zoeken wáár het formulier staat en gokt niet welk hokje waarvoor is: hij vult in wat jij verteld hebt, en jij drukt op verzenden.",
+  },
+  {
+    kicker: "CATEGORIE 3 VAN 3",
+    title: "Zoeken en filteren",
+    voorbeeld:
+      "Een huurappartement met drie slaapkamers en een vaatwasser, op tien minuten lopen van het station. Of een hotel in Berlijn onder de 300 euro, met zwembad en ontbijt.",
+    hoe: "De site geeft zijn filters door zoals ze zijn. Eén vraag in gewone taal wordt in één keer omgezet naar alle filters tegelijk, in plaats van dat jij twaalf schuifjes op de goede stand zet.",
+  },
+];
+
+/** Proeftuin-band: sites die hun functies nu al als WebMCP-tools aanbieden.
+ *  Nieuwe demo toevoegen = één object erbij; de grid vult zichzelf.
+ *  `href` extern (https://) opent in een nieuw tabblad, intern via <Link>.
+ *  Alle externe demo's komen uit GoogleChromeLabs/webmcp-tools. */
+const PROEFTUIN = [
+  {
+    kicker: "EIGEN SITE",
+    title: "Deze website zelf",
+    body:
+      "Code Lieshout meldt vier functies aan: een agent-scan van een website, de pagina-inhoud als platte tekst, een overzicht van alle secties en de contactgegevens.",
+    prompt: "Scan code-lieshout.nl op agent-readiness en vat de uitkomst voor me samen.",
+    href: "/",
+    linkLabel: "Open de startpagina",
+  },
+  {
+    kicker: "VOOR & NA",
+    title: "Het verschil in beeld",
+    body:
+      "Twee schermen naast elkaar: links een assistent die de pagina moet aflezen en gokken, rechts dezelfde pagina die zijn functies netjes aanbiedt. Begin hier.",
+    prompt: "Vergelijk beide kanten en leg uit waarom de rechterkant minder misgaat.",
+    href: "https://googlechromelabs.github.io/webmcp-tools/demos/explainer/",
+    linkLabel: "Open de vergelijking",
+  },
+  {
+    kicker: "WEBSHOP",
+    title: "Sportwinkel",
+    body:
+      "Een winkel die zoeken, filteren en het winkelmandje als losse functies aanbiedt. De assistent klikt niet — hij gebruikt de knoppen die de site zelf aanreikt.",
+    prompt: "Zoek een hardloopschoen onder de 100 euro en leg hem in mijn mandje.",
+    href: "https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/",
+    linkLabel: "Open de sportwinkel",
+  },
+  {
+    kicker: "RESERVEREN",
+    title: "Restaurant",
+    body:
+      "Een bistro met een reserveringssysteem. Beschikbaarheid opvragen en een tafel vastleggen staan als aparte stappen in de handleiding van de site.",
+    prompt: "Reserveer een tafel voor twee personen, vrijdagavond om half acht.",
+    href: "https://googlechromelabs.github.io/webmcp-tools/demos/french-bistro/",
+    linkLabel: "Open het restaurant",
+  },
+  {
+    kicker: "STATUS & RETOUR",
+    title: "Bestelling volgen",
+    body:
+      "Waar is mijn pakket, en kan er iets terug? Deze demo laat zien hoe status opvragen en een retour aanmelden er als functie uitzien.",
+    prompt: "Waar is mijn bestelling, en meld één artikel aan voor retour.",
+    href: "https://googlechromelabs.github.io/webmcp-tools/demos/order-tracking/",
+    linkLabel: "Open het volgsysteem",
+  },
+  {
+    kicker: "BEDIENING",
+    title: "Slim huis",
+    body:
+      "Een dashboard voor lampen, thermostaat en sloten. Elke schakelaar op het scherm bestaat ook als functie die je in gewone taal kunt aanroepen.",
+    prompt: "Zet de woonkamer op 20 graden en dim de lampen naar 30 procent.",
+    href: "https://googlechromelabs.github.io/webmcp-tools/demos/smart-home/",
+    linkLabel: "Open het dashboard",
+  },
+];
+
 const FAQ = [
   {
     question: "Heb ik iets extra’s nodig?",
@@ -185,6 +273,7 @@ export default function WebmcpPage() {
             <a href="#wat-is">Wat is het?</a>
             <a href="#hoe-werkt-het">Zo werkt het</a>
             <a href="#toepassingen">Toepassingen</a>
+            <a href="#zelf-testen">Zelf testen</a>
             <a href="#faq">Vragen</a>
             <Link className={styles.topnavCta} href="/agent-ready">
               Gratis scan
@@ -588,6 +677,93 @@ export default function WebmcpPage() {
                 </a>
               </div>
             </article>
+          </div>
+          <p className={styles.useCasesLead}>
+            Kijk je naar wat mensen hun assistent in de praktijk vragen, dan vallen die vragen in drie
+            categorieën. Voor alle drie geldt hetzelfde: de site biedt zijn eigen functies aan, de
+            assistent gebruikt ze.
+          </p>
+
+          <div className={styles.useCases}>
+            {CATEGORIEEN.map((categorie) => (
+              <article className={styles.useCase} key={categorie.title}>
+                <div className={styles.useCaseLabel}>
+                  <span className={`${styles.useCaseKicker} ${styles.tCaption}`}>
+                    {categorie.kicker}
+                  </span>
+                  <h3 className={styles.useCaseTitle}>{categorie.title}</h3>
+                </div>
+                <dl className={styles.useCaseBody}>
+                  <dt className={`${styles.useCaseTerm} ${styles.tCaption}`}>VOORBEELD</dt>
+                  <dd className={styles.useCaseText}>{categorie.voorbeeld}</dd>
+                  <dt className={`${styles.useCaseTerm} ${styles.tCaption}`}>HOE WEBMCP HELPT</dt>
+                  <dd className={styles.useCaseText}>{categorie.hoe}</dd>
+                </dl>
+              </article>
+            ))}
+          </div>
+        </section>
+
+
+        {/* ===== Gele proeftuin-band: zelf testen met ChatGPT ===== */}
+        <section className={styles.container} id="zelf-testen">
+          <div className={styles.tryBand}>
+            <div className={styles.tryBandHead}>
+              <p className={`${styles.tryBandKicker} ${styles.tCaption}`}>
+                PROEFTUIN · GEEN INSTALLATIE NODIG
+              </p>
+              <h2 className={`${styles.tryBandTitle} ${styles.tHeading}`}>
+                Probeer het zelf met ChatGPT
+              </h2>
+              <p className={styles.tryBandIntro}>
+                De sites hieronder bieden hun functies nu al aan zoals WebMCP het bedoelt. Open er één
+                in de ingebouwde browser van de ChatGPT-desktopapp — of in een andere browser met
+                agent-modus — en geef de voorbeeldvraag door. Je ziet de assistent dan de knoppen van
+                de site zélf gebruiken, in plaats van het scherm af te lezen en te gokken.
+              </p>
+            </div>
+
+            <ul className={styles.tryGrid}>
+              {PROEFTUIN.map((item) => {
+                const isExtern = item.href.startsWith("http");
+
+                return (
+                  <li key={item.title} className={styles.tryCard}>
+                    <p className={styles.tryCardKicker}>{item.kicker}</p>
+                    <h3 className={styles.tryCardTitle}>{item.title}</h3>
+                    <p className={styles.tryCardText}>{item.body}</p>
+                    <p className={styles.tryCardPrompt}>
+                      <span className={styles.tryCardPromptLabel}>Vraag dit</span>
+                      <span>“{item.prompt}”</span>
+                    </p>
+                    <div className={styles.tryCardFooter}>
+                      {isExtern ? (
+                        <a
+                          className={styles.tryCardLink}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {item.linkLabel}
+                          <ArrowRightIcon />
+                        </a>
+                      ) : (
+                        <Link className={styles.tryCardLink} href={item.href}>
+                          {item.linkLabel}
+                          <ArrowRightIcon />
+                        </Link>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <p className={`${styles.tryBandNote} ${styles.tCaption}`} role="note">
+              LET OP: WEBMCP IS EEN STANDAARD IN ONTWIKKELING. GEBEURT ER NIETS? DAN ONDERSTEUNT JOUW
+              BROWSER OF ASSISTENT DE FUNCTIES NOG NIET — DE SITES BLIJVEN GEWOON MET DE HAND TE
+              BEDIENEN.
+            </p>
           </div>
         </section>
 

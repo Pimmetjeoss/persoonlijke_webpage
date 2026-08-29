@@ -616,6 +616,183 @@
   margin-top: auto;
 }
 
+/* ---------- Categorieën (specificatie-opmaak onder de kaarten) ---------- */
+/* Bewust géén kaartjes: dit leest als de specificatielijst achter in een
+   handleiding. De haarlijnen zijn dezelfde als in .faq — label links,
+   voorbeeld en uitleg rechts. */
+.useCasesLead {
+  margin: var(--spacing-80) 0 var(--spacing-24);
+  max-width: 68ch;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.useCases {
+  border-top: 1px solid var(--color-ink-black);
+}
+
+.useCase {
+  border-bottom: 1px solid var(--color-ink-black);
+  padding-block: var(--spacing-24);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--spacing-24);
+  align-items: start;
+}
+
+.useCaseKicker {
+  display: block;
+  color: var(--color-steel-gray);
+}
+
+.useCaseTitle {
+  margin: var(--spacing-8) 0 0;
+  font-size: var(--text-heading);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+/* <dl> leunde op UA-marges die preflight nult; hier expliciet. */
+.useCaseBody {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.useCaseTerm {
+  margin: 0;
+  color: var(--color-steel-gray);
+}
+
+.useCaseTerm:not(:first-child) {
+  margin-top: var(--spacing-16);
+}
+
+.useCaseText {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* ---------- Gele proeftuin-band ---------- */
+/* Zelfde gele vlak als .ctaBand, maar met witte kaarten erin. Alle tekst op
+   het geel staat in inkt-zwart: --color-steel-gray haalt op #ffdb00 maar
+   3.3:1 en dit blok draagt 13px-kickers. Binnen de witte kaarten mag grijs
+   weer wel. */
+.tryBand {
+  margin-top: var(--section-gap);
+  background: var(--surface-accent-surface);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-80) var(--spacing-24);
+}
+
+.tryBandHead {
+  max-width: 68ch;
+  margin-bottom: var(--spacing-24);
+}
+
+.tryBandKicker {
+  margin: 0 0 var(--spacing-8);
+  color: var(--color-ink-black);
+}
+
+.tryBandTitle {
+  margin: 0 0 var(--spacing-16);
+  color: var(--color-ink-black);
+}
+
+.tryBandIntro {
+  margin: 0;
+  color: var(--color-ink-black);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.tryGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-24);
+  align-items: stretch;
+}
+
+.tryCard {
+  background: var(--surface-card-surface);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-24);
+  display: flex;
+  flex-direction: column;
+}
+
+.tryCardKicker {
+  margin: 0 0 var(--spacing-8);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-steel-gray);
+}
+
+.tryCardTitle {
+  margin: 0 0 var(--spacing-8);
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+  letter-spacing: var(--tracking-subheading);
+  font-weight: var(--font-weight-bold);
+}
+
+.tryCardText {
+  margin: 0 0 var(--spacing-16);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* Voorbeeldvraag: warm white met dezelfde 1px inktrand als .readfirst, zodat
+   het als citaat leest en niet als tweede kaart. */
+.tryCardPrompt {
+  margin: 0 0 var(--spacing-24);
+  padding: var(--spacing-16);
+  background: var(--surface-warm-white-surface);
+  border: 1px solid var(--color-ink-black);
+  border-radius: var(--radius-default);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.tryCardPromptLabel {
+  display: block;
+  margin-bottom: var(--spacing-8);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-steel-gray);
+}
+
+.tryCardFooter {
+  margin-top: auto;
+}
+
+.tryCardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  color: var(--color-link-blue);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.tryCardLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tryBandNote {
+  margin: var(--spacing-24) 0 0;
+  color: var(--color-ink-black);
+}
+
 /* ---------- Gele CTA-band ---------- */
 .ctaBand {
   margin-top: var(--section-gap);
@@ -760,6 +937,19 @@
     grid-template-columns: 1fr;
     padding: var(--spacing-24);
   }
+
+  .tryBand {
+    padding: var(--spacing-24);
+  }
+
+  .tryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .useCase {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-16);
+  }
 }
 
 @media (max-width: 640px) {
@@ -788,5 +978,9 @@
 
   .section {
     margin-top: var(--spacing-80);
+  }
+
+  .tryGrid {
+    grid-template-columns: 1fr;
   }
 }

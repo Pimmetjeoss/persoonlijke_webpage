@@ -33,6 +33,29 @@ Belangrijk: de website zelf verandert niet. Zelfde design, zelfde knoppen, zelfd
 - **De site legt zichzelf uit** — openingstijden, voorwaarden, voorraad en prijzen als gestructureerde informatie die een assistent meteen begrijpt.
 - **Terugkerende taken** — elke maandag hetzelfde rapport, elke vrijdag dezelfde reservering: omdat de stappen vastliggen, kan een assistent ze betrouwbaar herhalen.
 
+### Drie categorieën, concreet
+
+Kijk je naar wat mensen hun assistent in de praktijk vragen, dan vallen die vragen in drie categorieën.
+
+**1. Aankopen doen.** *Voorbeeld:* boodschappen voor een kinderfeestje, verdeeld over drie winkels; of die kaasstengels van vorige maand opnieuw bestellen waarvan je het merk niet meer weet. *Hoe WebMCP helpt:* de assistent zoekt de producten op bij elke winkel, vergelijkt de prijzen en legt ze klaar in een mandje of verlanglijst — in plaats van dat je zelf door twintig categorieën klikt.
+
+**2. Formulieren invullen.** *Voorbeeld:* een garantieclaim voor een televisie die niet meer aangaat; een offerte bij een cateraar voor honderd gasten; de uren van deze week doorgeven; een tweedehands auto zoeken met zeven zitplaatsen. *Hoe WebMCP helpt:* de website biedt het formulier zelf aan als functie, met uitleg per veld. De assistent hoeft niet te zoeken wáár het formulier staat en gokt niet welk hokje waarvoor is: hij vult in wat je verteld hebt, jij drukt op verzenden.
+
+**3. Zoeken en filteren.** *Voorbeeld:* een huurappartement met drie slaapkamers en een vaatwasser, op tien minuten lopen van het station; of een hotel in Berlijn onder de 300 euro met zwembad en ontbijt. *Hoe WebMCP helpt:* de site geeft zijn filters door zoals ze zijn, zodat één vraag in gewone taal in één keer wordt omgezet naar alle filters tegelijk.
+
+## Zelf uitproberen
+
+Deze sites bieden hun functies nu al als WebMCP-tools aan. Open er één in de ingebouwde browser van de ChatGPT-desktopapp — of in een andere browser met agent-modus — en geef de voorbeeldvraag door. Werkt er niets? Dan ondersteunt de browser of assistent de functies nog niet; de sites blijven gewoon met de hand te bedienen.
+
+- **Deze website zelf** — [code-lieshout.nl](https://code-lieshout.nl) meldt vier functies aan: een agent-scan van een website, pagina-inhoud als platte tekst, een overzicht van alle secties en de contactgegevens. Probeer: *"Scan code-lieshout.nl op agent-readiness en vat de uitkomst voor me samen."*
+- **Het verschil in beeld** — [explainer-demo](https://googlechromelabs.github.io/webmcp-tools/demos/explainer/): links een assistent die de pagina moet aflezen en gokken, rechts dezelfde pagina die zijn functies netjes aanbiedt.
+- **Sportwinkel** — [sport-shop-demo](https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/): zoeken, filteren en het winkelmandje als losse functies. Probeer: *"Zoek een hardloopschoen onder de 100 euro en leg hem in mijn mandje."*
+- **Restaurant** — [french-bistro-demo](https://googlechromelabs.github.io/webmcp-tools/demos/french-bistro/): beschikbaarheid opvragen en een tafel vastleggen als aparte stappen. Probeer: *"Reserveer een tafel voor twee personen, vrijdagavond om half acht."*
+- **Bestelling volgen** — [order-tracking-demo](https://googlechromelabs.github.io/webmcp-tools/demos/order-tracking/): status opvragen en een retour aanmelden. Probeer: *"Waar is mijn bestelling, en meld één artikel aan voor retour."*
+- **Slim huis** — [smart-home-demo](https://googlechromelabs.github.io/webmcp-tools/demos/smart-home/): elke schakelaar op het dashboard bestaat ook als functie. Probeer: *"Zet de woonkamer op 20 graden en dim de lampen naar 30 procent."*
+
+De externe demo's komen uit [GoogleChromeLabs/webmcp-tools](https://github.com/GoogleChromeLabs/webmcp-tools).
+
 ## Veelgestelde vragen
 
 **Heb ik iets extra's nodig?**
