@@ -6,11 +6,8 @@
    speeltijden staan in 24-uursnotatie — geen AM/PM. Titels en genres zijn
    bewust Engels gebleven; zo heet een film in een Nederlandse bioscoop ook.
 
-   De `poster`-URL's komen uit de oorspronkelijke voorbeelddata. Die bron
-   hergebruikt en verschuift meerdere afbeeldingen, dus de interface rendert
-   voortaan lokale FilmPoster-art op basis van id, titel en genre. De velden
-   blijven hier alleen staan om de herkomst van de dataset herkenbaar te
-   houden en worden niet meer aan bezoekers getoond. */
+   De posters komen rechtstreeks uit de oorspronkelijke voorbeelddata van
+   Google Chrome Labs; next.config.ts staat deze externe afbeeldingsbron toe. */
 
 /** De genres zoals ze in de data staan. Engelstalig, want zo staan ze ook
     op een filmposter — de knoppen tonen ze met een hoofdletter. */
@@ -20,7 +17,7 @@ export type Film = {
   id: string;
   title: string;
   genre: Genre;
-  /** Verouderde bron-URL uit de upstream demo; niet gebruiken in de UI. */
+  /** Originele poster-URL uit de upstream ticket-booking-demo. */
   poster: string;
   /** Steden waar deze film draait. */
   locations: string[];
