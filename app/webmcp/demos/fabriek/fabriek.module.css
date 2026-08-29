@@ -1,0 +1,746 @@
+.page {
+  --ink: #f7f4e8;
+  --ink-dim: #c8c4b5;
+  --ink-faint: #8f9288;
+  --surface: #111512;
+  --surface-raised: #1a201c;
+  --surface-high: #252d27;
+  --line: #3d473f;
+  --line-bright: #667269;
+  --accent: #f4b942;
+  --accent-hot: #ffd166;
+  --on-accent: #17130a;
+  --ok: #77d98b;
+  --danger: #ff6b5f;
+  min-height: 100dvh;
+  color: var(--ink);
+  background: var(--surface);
+  font-family: var(--font-factory), "Segoe UI", sans-serif;
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.page button,
+.page input {
+  color: inherit;
+  font: inherit;
+}
+
+.page button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100dvh;
+  padding-bottom: 92px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    radial-gradient(circle at 50% -20%, #2b342d 0, var(--surface) 48%);
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 76px;
+  padding: 14px clamp(18px, 4vw, 56px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(11, 14, 12, 0.9);
+  backdrop-filter: blur(14px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+
+.logoIcoon {
+  width: 36px;
+  height: 36px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 12px rgba(244, 185, 66, 0.25));
+}
+
+.logoAccent {
+  color: var(--accent);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.controlBtn,
+.promptsKopieer {
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface-raised);
+  transition: border-color 160ms, background 160ms, transform 160ms;
+}
+
+.controlBtn {
+  padding: 8px 12px;
+  color: var(--ink-dim);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.controlBtn:hover,
+.promptsKopieer:hover {
+  border-color: var(--accent);
+  background: var(--surface-high);
+  color: var(--ink);
+}
+
+.controlBtn:active,
+.promptsKopieer:active {
+  transform: translateY(1px);
+}
+
+.prompts {
+  margin: 18px clamp(18px, 4vw, 56px) 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(26, 32, 28, 0.82);
+  overflow: hidden;
+}
+
+.promptsKop {
+  padding: 12px 15px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.promptsLijst {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 1px 0 0;
+  background: var(--line);
+  list-style: none;
+}
+
+.promptsItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 11px 14px;
+  background: var(--surface-raised);
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.promptsKopieer {
+  flex: none;
+  padding: 5px 8px;
+  color: var(--ink-faint);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.72fr) minmax(390px, 1.65fr) minmax(260px, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 18px clamp(18px, 4vw, 56px) 40px;
+}
+
+.paneel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(22, 27, 23, 0.92);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.paneelKop {
+  margin: 0;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-dim);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.voorraad {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px;
+}
+
+.tegel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 104px;
+  padding: 11px 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-high);
+  transition: opacity 180ms, border-color 180ms, transform 180ms, box-shadow 180ms;
+}
+
+.tegelAantal {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  min-width: 21px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.67rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.tegelIcoon {
+  width: 44px;
+  height: 44px;
+  color: var(--accent-hot);
+}
+
+.tegelLabel {
+  max-width: 100%;
+  color: var(--ink-dim);
+  font-size: 0.67rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tegelLeeg {
+  opacity: 0.38;
+}
+
+.tegelGewijzigd {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(244, 185, 66, 0.18), 0 0 24px rgba(244, 185, 66, 0.15);
+}
+
+.paneelMidden {
+  min-height: 555px;
+}
+
+.machines {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+}
+
+.machine {
+  position: relative;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 205px;
+  padding: 20px 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 45%),
+    var(--surface-high);
+  text-align: center;
+  transition: border-color 160ms, box-shadow 160ms, transform 160ms;
+}
+
+.machine:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.machineIcoon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 10px;
+  color: var(--ink-dim);
+  transition: color 180ms, filter 180ms, transform 180ms;
+}
+
+.machineLabel {
+  font-size: 0.91rem;
+  font-weight: 700;
+}
+
+.machineOnder {
+  margin-top: 3px;
+  color: var(--ink-faint);
+  font-size: 0.67rem;
+}
+
+.bak {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  min-height: 32px;
+  margin-top: auto;
+  padding: 8px 5px 0;
+  border-top: 1px dashed var(--line);
+}
+
+.bakItem {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(244, 185, 66, 0.12);
+  color: var(--accent-hot);
+  font-size: 0.61rem;
+  font-weight: 600;
+}
+
+.bakLeeg {
+  color: var(--ink-faint);
+  font-size: 0.61rem;
+}
+
+.machineActief {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(244, 185, 66, 0.15), 0 0 28px rgba(244, 185, 66, 0.16);
+}
+
+.machineActief .machineIcoon {
+  color: var(--accent-hot);
+  filter: drop-shadow(0 0 12px rgba(244, 185, 66, 0.45));
+  transform: rotate(2deg) scale(1.04);
+}
+
+.machineFout {
+  border-color: var(--danger);
+  animation: machine-shake 280ms ease-in-out 2;
+  box-shadow: 0 0 22px rgba(255, 107, 95, 0.18);
+}
+
+@keyframes machine-shake {
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.paneelLog {
+  display: flex;
+  flex-direction: column;
+  min-height: 555px;
+}
+
+.logLijst {
+  flex: 1;
+  max-height: 520px;
+  padding: 12px;
+  overflow-y: auto;
+  font-family: var(--font-geist-mono), Consolas, monospace;
+  scrollbar-color: var(--line-bright) transparent;
+}
+
+.logLeeg {
+  margin: 0;
+  padding: 12px;
+  border-left: 2px solid var(--accent);
+  color: var(--ink-faint);
+  font-family: var(--font-factory), "Segoe UI", sans-serif;
+  font-size: 0.77rem;
+  line-height: 1.55;
+}
+
+.logRegel {
+  margin-bottom: 7px;
+  padding: 8px 9px;
+  border-radius: 5px;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.logAanroep {
+  border-left: 2px solid var(--accent);
+  background: rgba(244, 185, 66, 0.08);
+}
+
+.logAanroep::before {
+  content: "> ";
+  color: var(--accent);
+}
+
+.logTool {
+  color: var(--accent-hot);
+  font-weight: 700;
+}
+
+.logArgs {
+  display: block;
+  margin-top: 3px;
+  color: var(--ink-faint);
+}
+
+.logAntwoord {
+  margin-left: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--ink-dim);
+}
+
+.logGelukt {
+  border-left-color: var(--ok);
+}
+
+.logMislukt {
+  border-left-color: var(--danger);
+  color: #ffaaa3;
+}
+
+.logSkill {
+  border-left-color: #a78bfa;
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.logSkill .logTool {
+  color: #c4b5fd;
+}
+
+.meldingen {
+  position: fixed;
+  top: 88px;
+  right: 20px;
+  z-index: 50;
+  display: grid;
+  gap: 8px;
+  width: min(360px, calc(100vw - 40px));
+  pointer-events: none;
+}
+
+.melding {
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #1e251f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.38);
+  font-size: 0.76rem;
+  animation: melding-in 180ms ease-out;
+}
+
+.meldingOk {
+  border-left: 3px solid var(--ok);
+}
+
+.meldingFout {
+  border-left: 3px solid var(--danger);
+}
+
+@keyframes melding-in {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+/* Ingebouwde assistent */
+.agentContainer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+}
+
+.agentToggle {
+  width: 62px;
+  height: 62px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--surface-raised);
+  color: var(--accent-hot);
+  font-size: 27px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.48), 0 0 0 5px rgba(244, 185, 66, 0.08);
+  transition: transform 180ms, background 180ms;
+}
+
+.agentToggle:hover {
+  transform: rotate(18deg) scale(1.06);
+  background: var(--surface-high);
+}
+
+.agentChat {
+  position: absolute;
+  right: 0;
+  bottom: 78px;
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+  max-width: calc(100vw - 40px);
+  height: 540px;
+  max-height: calc(100dvh - 125px);
+  border: 1px solid var(--line-bright);
+  border-radius: 10px;
+  background: var(--surface-raised);
+  box-shadow: 0 20px 65px rgba(0, 0, 0, 0.62);
+  overflow: hidden;
+}
+
+.agentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 15px;
+  border-bottom: 1px solid #d49a29;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.agentHeader h3 {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.agentLogout {
+  padding: 3px 7px;
+  border: 1px solid var(--on-accent);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--on-accent);
+  font-size: 0.63rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.agentChatWindow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px;
+  overflow-y: auto;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    var(--surface);
+  background-size: 100% 28px;
+}
+
+.agentMessage {
+  max-width: 88%;
+  padding: 9px 11px;
+  border-radius: 7px;
+  font-size: 0.78rem;
+  line-height: 1.48;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.agentMessageUser {
+  align-self: flex-end;
+  border-bottom-right-radius: 1px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.agentMessageAgent {
+  align-self: flex-start;
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 1px;
+  background: var(--surface-high);
+}
+
+.agentMessageSystem {
+  align-self: center;
+  border: 1px dashed var(--line);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--ink-faint);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.agentInputArea {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.agentUserInput,
+.agentApiKeyInput {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.agentUserInput {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+}
+
+.agentUserInput:focus,
+.agentApiKeyInput:focus {
+  border-color: var(--accent);
+  outline: 2px solid rgba(244, 185, 66, 0.2);
+}
+
+.agentSendBtn,
+.agentSaveKeyBtn {
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 800;
+}
+
+.agentSendBtn {
+  padding: 8px 13px;
+  font-size: 0.72rem;
+}
+
+.agentSendBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.agentSetup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  height: 100%;
+  padding: 28px;
+  text-align: center;
+}
+
+.agentSetup p {
+  margin: 0;
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.agentApiKeyInput {
+  padding: 9px;
+  font-family: var(--font-geist-mono), Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+.agentSaveKeyBtn {
+  padding: 9px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1120px) {
+  .main {
+    grid-template-columns: minmax(190px, 0.65fr) minmax(430px, 1.6fr);
+  }
+
+  .paneelLog {
+    grid-column: 1 / -1;
+    min-height: 300px;
+  }
+
+  .logLijst {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 760px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .controls {
+    justify-content: flex-start;
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .paneelLog {
+    grid-column: auto;
+  }
+
+  .voorraad {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .tegel {
+    min-height: 94px;
+  }
+
+  .machines {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine,
+  .machine:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .machine:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 510px) {
+  .voorraad {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machines {
+    grid-template-columns: 1fr;
+  }
+
+  .machine:last-child {
+    grid-column: auto;
+  }
+
+  .agentContainer {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .agentChat {
+    max-width: calc(100vw - 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

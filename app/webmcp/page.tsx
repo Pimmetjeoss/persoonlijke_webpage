@@ -148,9 +148,9 @@ const CATEGORIEEN = [
 /** Proeftuin-band: sites die hun functies nu al als WebMCP-tools aanbieden.
  *  Nieuwe demo toevoegen = één object erbij; de grid vult zichzelf.
  *  `href` extern (https://) opent in een nieuw tabblad, intern via <Link>.
- *  De externe demo's komen uit GoogleChromeLabs/webmcp-tools; de bistro en
- *  CinePrikkel zijn onze eigen Nederlandse klonen daarvan en staan op
- *  /webmcp/demos/bistro en /webmcp/demos/bioscoop. */
+ *  De externe demo's komen uit GoogleChromeLabs/webmcp-tools; de bistro,
+ *  CinePrikkel en PrikkelFabriek zijn onze eigen Nederlandse demo's en staan
+ *  onder /webmcp/demos/. */
 const PROEFTUIN = [
   {
     kicker: "EIGEN SITE",
@@ -196,6 +196,15 @@ const PROEFTUIN = [
     prompt: "Ik zit in Oss. Welke thrillers draaien er, en zet er vanavond eentje klaar.",
     href: "/webmcp/demos/bioscoop",
     linkLabel: "Open de bioscoop",
+  },
+  {
+    kicker: "EIGEN DEMO",
+    title: "PrikkelFabriek",
+    body:
+      "Een productielijn met vijftien Site tools. De assistent bedient niet alleen mijnen en machines, maar vraagt ook recepten en productieprotocollen op om een meerstapsopdracht betrouwbaar af te maken.",
+    prompt: "Bouw een elektromotor.",
+    href: "/webmcp/demos/fabriek",
+    linkLabel: "Open de fabriek",
   },
   {
     kicker: "BEDIENING",
