@@ -6,8 +6,8 @@
    speeltijden staan in 24-uursnotatie — geen AM/PM. Titels en genres zijn
    bewust Engels gebleven; zo heet een film in een Nederlandse bioscoop ook.
 
-   De posters komen rechtstreeks uit de oorspronkelijke voorbeelddata van
-   Google Chrome Labs; next.config.ts staat deze externe afbeeldingsbron toe. */
+   De meeste posters komen uit de oorspronkelijke voorbeelddata van Google
+   Chrome Labs. Enkele gecorrigeerde posters staan als lokale assets in public. */
 
 /** De genres zoals ze in de data staan. Engelstalig, want zo staan ze ook
     op een filmposter — de knoppen tonen ze met een hoofdletter. */
@@ -17,7 +17,7 @@ export type Film = {
   id: string;
   title: string;
   genre: Genre;
-  /** Originele poster-URL uit de upstream ticket-booking-demo. */
+  /** Externe upstream-URL of lokaal pad naar de poster. */
   poster: string;
   /** Steden waar deze film draait. */
   locations: string[];
@@ -125,8 +125,7 @@ export const FILMS: Film[] = [
     id: "109",
     title: "Creep",
     genre: "horror",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDLok0nIU4qwC0Vp7dhV_KCyGe_MiMnjbdsLcoVsQn_AnGY9B1t6kK2D0qaCm7Niw161UG0Ew0sV1d9PgF-0Xi_O0ekoPdcevM6kdQWdPECSECkGuFQicQTjm3zkToZs-KtO83LAGdVdqIe7jfyJn_T-oQlgAXfM3_fFVH2mq6Z9uVC3y7pC3UdKBn6u-npCpdB7BkiZLMRRVKGkx0bT6knx0EZqYZ1yZwEK1NYb3r5YNtaQ0RjowiHZR6yaBYkXlo03zvMWMNwnMif",
+    poster: "/webmcp/images/bioscoop/creep.png",
     locations: ["Amsterdam", "Utrecht", "Rotterdam", "Eindhoven"],
     showtimes: ["10:00", "14:00", "23:45"],
   },
@@ -359,8 +358,7 @@ export const FILMS: Film[] = [
     id: "403",
     title: "City Lights",
     genre: "drama",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBW6pD5H5c7gHqjHp6iZQ7XNSXBC62fIbcr0MinVW-_7Z7VN-cYajn8UbL3ChShftCKJXGzsaOXa5Kid4NEee7Xag9NsU5VVscne-AURoh7Oy0tBcfo6V1dqhAc5Ew4zsD78SbawicE6L6bRKhBVlDRHsZW-5FVVJYgP4wL8lgfHBWnm98m-NfJSxxx4D-KkG9ixC1DJKzIl364CfpIo3_28-Hq87GomVEfK1zFv-88qr1_viJfLPzRUKqyt9nkCnbg0HDfLmNqk4Ak",
+    poster: "/webmcp/images/bioscoop/city-lights.png",
     locations: ["Amsterdam", "Eindhoven", "Oss"],
     showtimes: ["10:00", "12:30", "19:00"],
   },
@@ -449,8 +447,7 @@ export const FILMS: Film[] = [
     id: "503",
     title: "The Colony",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAxToT-H4fDNeVjCu17xNVD73Ys6tG9t2ZBa1y36_qCDFs4mNVA6PAgd8tngdH_aubBkSMzF_taq4YqdhRq7SZXnZhUDCc2qRPqQ0XYn4nSZxx6Gzt5ELB5e-ji4lhOvIDzyjH_En_s91qOxa2gzec16UDwSP08jm7Vlckq-11Yj11NH1q89W27JC7NaWu61ssDWCFnkoAU-6_sg_fAIHiH1L9hbO5JeuoC41uV-00SWgSLIV1p5g2hdgau0MylrUxqo39NISuVR_TU",
+    poster: "/webmcp/images/bioscoop/the-colony.png",
     locations: ["Utrecht", "Den Bosch"],
     showtimes: ["12:30", "20:00", "21:30"],
   },
@@ -458,8 +455,7 @@ export const FILMS: Film[] = [
     id: "504",
     title: "Cyber Void",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCNPaOQzH69g7AHV3UDmeRe3a-vYDGaUFfhYCXjavJq_Rg_x-fMmcT41q4_AZW-8xp9CvyecJKgvoz_jHUCyV5AZr6GHMZvDZt-0PZcnQSp0bUQjlwY1mNiZR0uoebG1Ge4l_AL60rQilKNzTshhWJIO8_zz0NDjs_k6JaxjdW45JbSATKav--GBP3IMkzx5ZnJ_fGw74fQxaSk31tEoa-_EfM_7ftYuUy7J7vSiyvN1buDAVLZXSERtYgDwPxaVHQO1uYUS7gpgd00",
+    poster: "/webmcp/images/bioscoop/cyber-void.png",
     locations: ["Amsterdam", "Den Bosch", "Nijmegen", "Eindhoven"],
     showtimes: ["14:00", "17:00", "20:00"],
   },
@@ -476,8 +472,7 @@ export const FILMS: Film[] = [
     id: "506",
     title: "Time Jumpers",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCTCFFF9V6A6loTZY6npx9Q5McmkRaAqrrKUrauUH6oyTUvfBPXxC-7zuwuid_YP5nXvxuZKz3DoV8V7LpzPbAfM4P1SU0j8SRBcRwJ7ltoaXRp6wsc61KM071oGuZPnEn4UMutwY0xhEmLy3Vh88OsVIg_ymEW5TqL8j6xbRVoTPr7mLV3hVGDKZFv4t-CcrkJL18G9mx0rX5MEA6hGGCXINTRtA7yckE2TtnUydZl1yOVHSElimDvZAQdLUOOg6Uq4QlQpETjPC_B",
+    poster: "/webmcp/images/bioscoop/time-jumpers.png",
     locations: ["Utrecht", "Amsterdam"],
     showtimes: ["12:30", "17:00", "19:00", "21:30", "22:30"],
   },
@@ -485,8 +480,7 @@ export const FILMS: Film[] = [
     id: "507",
     title: "Event Horizon",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDh9wwlDXYewE6zjl6jxI21imVScRH2qhc5-pngYrst5KM8q8pRI3Q1tJiIqUB9qGn9QdLm_OCisq7Bd8TDS2re_Sfsmnp-qxDFOlwIpzmmpuIzncMf5WmOY5KUbfwPDNNHGrPhJOgtlWMSWJI5-vkqY-LjyJIh7a_bfQt0KHYcFt1OcJhRu8goLhpeUkL3nWbukyn18utgPmZxIFKmarIDPJJeF7K3CDWD5Etg8HaEmGsU0xsBkNbkmk9iCiPh4bZvarlcdd95qVpB",
+    poster: "/webmcp/images/bioscoop/event-horizon.png",
     locations: ["Utrecht", "Oss", "Rotterdam", "Amsterdam"],
     showtimes: ["16:30", "17:00", "21:30"],
   },
@@ -494,8 +488,7 @@ export const FILMS: Film[] = [
     id: "508",
     title: "The Machine",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCe3dPQ1b8PrqNvINAqWEy7d522L6F_P4Cl7DJCRJuUlKP60TMpuhe4o3ZxD0XUy23uDqAjqt8fLusfv6otg2-4fHCILsFmhEXkTUz-C4dMA24GV8ooX7tfJGvNEhMY-qoc68LeqsHv1YKB42vku0a_FLx4qw_T3ifNkRdx1uscPjNALn0J0tNSuCDy2vZtNq13vFGUx2ca99KIfDi-l5XTgcxqJFiGH4Zw8PMj5_O6UROEVU4rgEJbgfeXGgSUdIUdEjSZVcyGtxdW",
+    poster: "/webmcp/images/bioscoop/the-machine.png",
     locations: ["Amsterdam", "Oss", "Rotterdam"],
     showtimes: ["16:30", "17:00", "19:00"],
   },
@@ -503,8 +496,7 @@ export const FILMS: Film[] = [
     id: "509",
     title: "Alien Planet",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBciu8rc6dG6uXo3XY34Wx2G_kgVUCUfL8zNqBmDlyt7LuDTW-7U6-5q-i1gUNC0ahVIDED1FrY3QRSXGgj-pdpSiAe6IW6p1074me1ZbwF20T2sNoSxsFTfV5JNf_k8xDNUJwEdYXNzR7lAqdTtyz2yrj78M4C1F-kx3_csPLUIizkPd1bAf5W0TNXFsnG6iEHz4CKmO_LcL2kqgvywgN0SRD37kv7kGv4S__dTMaI1rcEtSpWuT6OFuys3kR5hGsXiZSGfIJaV60Q",
+    poster: "/webmcp/images/bioscoop/alien-planet.png",
     locations: ["Utrecht", "Rotterdam", "Oss"],
     showtimes: ["17:00", "19:00", "21:30"],
   },
@@ -512,8 +504,7 @@ export const FILMS: Film[] = [
     id: "510",
     title: "Quantum",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDALoPrhfPQOA0qYR2nLNDJuSREBWUcBxSkefsGw-oAqH2IrKZK-eqNs-8l9CvlFtlLEGkVcP1Mjrkhx_qIHsLeiuMAg_B9poAD9xrYGmh3_YSToJoLWQqBmPTk51Ob829VutcFWM7bwbC0p5ZpAl7Rihvr8muKQ5FO0kf01edwUL5zDsbc9FA7u2ol2-G5PttTWODXOSDYnm2CPWD34-_zwUnzGemcxE6SKEImF-9SLIW98mYh5aTNHJYtuXM-Ij_pAOvlT1-0D0Nh",
+    poster: "/webmcp/images/bioscoop/quantum.png",
     locations: ["Amsterdam", "Eindhoven", "Oss"],
     showtimes: ["16:30", "17:00", "19:00", "20:00"],
   },
@@ -521,8 +512,7 @@ export const FILMS: Film[] = [
     id: "601",
     title: "The Suspect",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDLok0nIU4qwC0Vp7dhV_KCyGe_MiMnjbdsLcoVsQn_AnGY9B1t6kK2D0qaCm7Niw161UG0Ew0sV1d9PgF-0Xi_O0ekoPdcevM6kdQWdPECSECkGuFQicQTjm3zkToZs-KtO83LAGdVdqIe7jfyJn_T-oQlgAXfM3_fFVH2mq6Z9uVC3y7pC3UdKBn6u-npCpdB7BkiZLMRRVKGkx0bT6knx0EZqYZ1yZwEK1NYb3r5YNtaQ0RjowiHZR6yaBYkXlo03zvMWMNwnMif",
+    poster: "/webmcp/images/bioscoop/the-suspect.png",
     locations: ["Oss", "Rotterdam"],
     showtimes: ["19:00", "20:00", "23:45"],
   },
@@ -530,8 +520,7 @@ export const FILMS: Film[] = [
     id: "602",
     title: "Dark Waters",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD7AeLhOtvwrX9syZOaz_nIDhqRxfTr5t9bxQHHMb3NJvPOVC0zPwZpBiWK2Qazjmm4wmQCMTaqmap4BQ26sHO5h08Nykj4LFJHzOQFL70lUO3nNJUtrs2TdCIRJF2f3WiVgF3KqfcGLgrY9_81QT5BJzMUiCjfJjK4ryEjt3CavMHrAjL4v-80mIn1k3VluSTecotnagOowIsEwPrR5rLMi01wlVcIvadDnabXOibTWJjOqSsO-mvVnnfkopIus41kiTkWAjEbwBNW",
+    poster: "/webmcp/images/bioscoop/dark-waters.png",
     locations: ["Rotterdam", "Nijmegen", "Utrecht", "Oss"],
     showtimes: ["10:00", "17:00", "19:00", "21:30"],
   },
@@ -539,8 +528,7 @@ export const FILMS: Film[] = [
     id: "603",
     title: "Mind Games",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAWdnzTyyz66J-d32eSS-rdwbTSWspHcb83HaA4C6scMs8SNejzMNXnPXYxM6VOvQk12CdUHYb5AG2DclR6Uwa1GJoeBXF8-3f4KnpxSkco36J0joXuz0XLIHvc3ga9y0AnM3hoXUaWLCnzLIRXsbg5kpXQvFU0cY3G9emDPZXTMoR6QNvlyL_Ql9yiukD_3LI9lghLlnYJ6rW0kc_re-neTk-P2FHSdyeGunQuqBXLu42B4HMW49pgcVlXHR0G6dSTD5rvi_EEr4RP",
+    poster: "/webmcp/images/bioscoop/mind-games.png",
     locations: ["Amsterdam", "Oss", "Eindhoven", "Nijmegen"],
     showtimes: ["16:30", "17:00", "19:00", "20:00", "21:30"],
   },
@@ -548,8 +536,7 @@ export const FILMS: Film[] = [
     id: "604",
     title: "The Detective",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAMpAo2d_dQek0HcrfriVkkTuPPHNp1L2cTMzxeibfarBq2Ve3eO96fUxbTCaHSCX6C15hYHDl1KRUw7tJ2WsOY7g6oNcpSQyEdZ3nY_P8rbQ0LHXrVfGWakeQYcqZ7HJCiN_WBCUkU_dSqGJkwe8VyoCWqLetONtHrUTrMo3kQrVeicAWlAVU33xN24Cyg3DlC4K_OyxLhzYh4xsMVFZqQkrr5CVJu-_vwghB4cjUutVZ42l6NfQYFPeZ5WfX6WiDE4AcOMm46EaML",
+    poster: "/webmcp/images/bioscoop/the-detective.png",
     locations: ["Den Bosch", "Rotterdam", "Amsterdam"],
     showtimes: ["10:00", "12:30", "19:00", "20:00", "23:45"],
   },
@@ -557,8 +544,7 @@ export const FILMS: Film[] = [
     id: "605",
     title: "No Escape",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAMBsFlmpR42x8IT45iF61SrByfPV0183f2aUrLKzwgSi-1nDUMWu2_ntue_s8CvzgxZ_xAb08IqxUEBPnNnisKymSjJrpn7rF5Ulj45A5Q58xsKhCYwypJAez81LZ2WmVIfY5YtclVDJ_YpXiHyPv6TqLQyJVKelDJOVwnQLLDMXuMHKAKa73oirTtgLaCoHmS4anyUvGfyAk9gMnrrKmCXiR00EFhL7hqn3SGe0a_Rhl7mdsiAs3WVkgGLKCifCLwCK7uHpTCnlD4",
+    poster: "/webmcp/images/bioscoop/no-escape.png",
     locations: ["Amsterdam", "Nijmegen", "Oss"],
     showtimes: ["14:00", "22:30", "23:45"],
   },
@@ -566,8 +552,7 @@ export const FILMS: Film[] = [
     id: "606",
     title: "The Cabin",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCT_A2qvLooDL_PVT5py52uK2GiSpVQkfVSt9MIrcPZQ7ZCM3WZB3P8TQg4cRvB2Eq2BJltdzP1K7gJqL1t7cVtCWw1vQ3URvmIwDhj8cBDk5BOOu-uwvLmkDXgtCIAiLd6xUiWngXnUpFDunFkIW3rtanhz9gBSnQyr5n7JVx10dMZDRmzHcyv7qAtnGtwmEmOFXblhH351JlaHE4sgVOIIXVusNNU5L_pM4mW6UMzYf6asZoWp3ZMdx7MQ_T7CV9bScAFii_Mtznu",
+    poster: "/webmcp/images/bioscoop/the-cabin.png",
     locations: ["Amsterdam", "Eindhoven", "Oss", "Rotterdam"],
     showtimes: ["10:00", "12:30", "21:30"],
   },
@@ -575,8 +560,7 @@ export const FILMS: Film[] = [
     id: "607",
     title: "Midnight",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuARC_rtp9kjjsVxg_dJm1FP03PsHTn4zk2XmpZ_6g8nky6TxCF40PI7fkWjD8PUC7n6koW0pBcQmS821js4Td6YRO8MYBvzkcUtm3o-ToHVM8mM-Mr31z5yF2dB-PW9ur-3VfAzyKAYgCJH5D85o0IOOw0AcYtSAq0ytCQQ9oCgpAaNFH0zjpeKaUqrj83WjpMa4l4C-rRjKDdtPGSVx4L9bwmGLnxSXIkqH0Pu44lgaLHAJBifGWjUoD8-IKa31__pxGoeTesDIou9",
+    poster: "/webmcp/images/bioscoop/midnight.png",
     locations: ["Amsterdam", "Eindhoven"],
     showtimes: ["19:00", "20:00", "23:45"],
   },
@@ -584,8 +568,7 @@ export const FILMS: Film[] = [
     id: "608",
     title: "The Stalker",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAuZv3aXqFtE82Z-HF0c84c-crg_bUVCvlyww__9AWi528n_p6igj-SRcEc1qmuBJ5R7bURVr43QEL1tJspskxplzq_cP3UuaGqauHX2PZSjtR1rqrf0imi8-ctMH-kbGVketvFszCnpGgLSPHp9Mfi7IXxqyhSRGbc3T2Rk7leu73Y-yI-Q2zYva3gbkw37EqeR18kyD3HmxyMo4uB3KDexp5UAjlmBoc0laubneWaHobzpg2K5diJFrxYtSuKMzXngZ6iXL7VkCHX",
+    poster: "/webmcp/images/bioscoop/the-stalker.png",
     locations: ["Amsterdam", "Oss", "Rotterdam", "Eindhoven"],
     showtimes: ["14:00", "16:30", "19:00", "21:30"],
   },
@@ -593,8 +576,7 @@ export const FILMS: Film[] = [
     id: "609",
     title: "Paranoia",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCPAj5JkBdwqYyitb12GvJPd--zDX8yam7Mq8n8HehvB50bnsqfALMgKxgXJykJBgPlyy8My1d3sQhOtYJPGfmGJaAI1Z0lJD7IMZFo2lDxOhNMZgbk4CHHtSxB6xEoQcQweNar2-4jwNbOPDFJOEeB9tnlsdYk9cJrlpSjLfbV6fEhazt4w0p0-bZ1J56bZP9R-LrOMt2WfKAcbmlC8S0T_IA5jcoTC_u2AM5bz3P7MrPitIhDw4bIQ3qj-Z5E-KkriRMQCoBcAizo",
+    poster: "/webmcp/images/bioscoop/paranoia.jpg",
     locations: ["Amsterdam", "Utrecht", "Eindhoven", "Rotterdam"],
     showtimes: ["10:00", "12:30", "16:30", "19:00", "21:30"],
   },
@@ -602,8 +584,7 @@ export const FILMS: Film[] = [
     id: "610",
     title: "The Informant",
     genre: "thriller",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCcupdnoICPy7I_snUqc_tJkuE5ufUqo2HcD7DelxDeOdRERnkc1_JGJuPgMhIaPEWefKh0irZ3PLXdbnsRZOQcIEMtjsaEPOD828h0OxdHHHbfzVjPEgnSt9FAfByzuBQf4vFJyr5SSWOZYx3FD5xBXj79Z9pm9Og7MWJYsOyruEe8akYL2EZbpql4ENu_PypwQFXOMWGLbfX1n8gSYIYDlCjG9vwAxireofSOGBC4HNzBbOAON1yzyfPu5H0SQxcGVcZ4hcY0l7hl",
+    poster: "/webmcp/images/bioscoop/the-informant.jpg",
     locations: ["Oss", "Rotterdam"],
     showtimes: ["10:00", "17:00", "20:00", "21:30"],
   },
