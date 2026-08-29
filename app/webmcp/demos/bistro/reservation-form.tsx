@@ -222,38 +222,25 @@ export function ReservationForm() {
         properties: {
           name: {
             type: "string",
-            minLength: 2,
-            description: "Volledige naam van de gast.",
           },
           phone: {
             type: "string",
-            description: "Telefoonnummer van de gast, met minimaal 10 cijfers.",
           },
           date: {
             type: "string",
-            pattern: "^\\d{4}-\\d{2}-\\d{2}$",
-            description: "Datum in YYYY-MM-DD-formaat; vandaag of later.",
           },
           time: {
             type: "string",
-            pattern: "^([01]\\d|2[0-3]):[0-5]\\d$",
-            description: "Tijd in 24-uursnotatie HH:MM.",
           },
           guests: {
             type: "integer",
-            minimum: 1,
-            maximum: 6,
-            description: "Aantal gasten; 6 betekent zes personen of meer.",
           },
           seating: {
             type: "string",
             enum: ["restaurant", "terrace", "private", "bar"],
-            description: "Gewenste plek: restaurant, terrace, private of bar.",
           },
           requests: {
             type: "string",
-            maxLength: 1000,
-            description: "Optionele bijzonderheden, zoals allergieën of een kinderstoel.",
           },
         },
         required: ["name", "phone", "date", "time", "guests", "seating"],

@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Slim huis: bezoeker aan de voordeur",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Er staat iemand voor de deur. Laat zien wie het is en geef me de bediening van het slot."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "richt_slim_huis_dashboard_in",
+        "arguments": {
+          "tegelIds": ["deurcamera", "voordeur_slot"],
+          "uitleg": { "$type": "string" }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Slim huis: veilig vertrekken",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Ik ga weg. Toon alleen wat ik nodig heb om het huis veilig achter te laten."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "richt_slim_huis_dashboard_in",
+        "arguments": {
+          "tegelIds": ["voordeur_slot", "alarm", "woonkamer_lampen", "robotstofzuiger"],
+          "uitleg": { "$type": "string" }
+        }
+      }
+    ]
+  }
+]

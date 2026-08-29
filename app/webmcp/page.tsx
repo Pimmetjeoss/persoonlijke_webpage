@@ -207,13 +207,13 @@ const PROEFTUIN = [
     linkLabel: "Open de fabriek",
   },
   {
-    kicker: "BEDIENING",
-    title: "Slim huis",
+    kicker: "EIGEN DEMO",
+    title: "PrikkelThuis",
     body:
-      "Een dashboard voor lampen, thermostaat en sloten. Elke schakelaar op het scherm bestaat ook als functie die je in gewone taal kunt aanroepen.",
-    prompt: "Zet de woonkamer op 20 graden en dim de lampen naar 30 procent.",
-    href: "https://googlechromelabs.github.io/webmcp-tools/demos/smart-home/",
-    linkLabel: "Open het dashboard",
+      "Een slim-huisdashboard dat zich aanpast aan de situatie. De assistent toont en ordent alleen de bediening die je nu nodig hebt — van deurcamera en slot tot klimaat en energie.",
+    prompt: "Er staat iemand voor de deur. Laat zien wie het is en geef me de bediening van het slot.",
+    href: "/webmcp/demos/slim-huis",
+    linkLabel: "Open PrikkelThuis",
   },
 ];
 

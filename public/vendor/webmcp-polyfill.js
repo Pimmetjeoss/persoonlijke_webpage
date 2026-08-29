@@ -4,7 +4,27 @@
  */
 
 (function () {
+  // The current WebMCP API lives on navigator.modelContext. Older prototypes
+  // (and the demos that were based on them) used document.modelContext. When
+  // Chrome exposes the native API, make the legacy name point at that same
+  // object so registrations remain visible to native WebMCP clients.
+  if (window.navigator.modelContext) {
+    if (!window.document.modelContext) {
+      Object.defineProperty(window.document, 'modelContext', {
+        value: window.navigator.modelContext,
+        writable: false,
+        configurable: true,
+      });
+    }
+    return;
+  }
+
   if (window.document.modelContext) {
+    Object.defineProperty(window.navigator, 'modelContext', {
+      value: window.document.modelContext,
+      writable: false,
+      configurable: true,
+    });
     return;
   }
 
@@ -507,6 +527,12 @@
   const modelContext = new ModelContext();
 
   Object.defineProperty(window.document, 'modelContext', {
+    value: modelContext,
+    writable: false,
+    configurable: true,
+  });
+
+  Object.defineProperty(window.navigator, 'modelContext', {
     value: modelContext,
     writable: false,
     configurable: true,

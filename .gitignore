@@ -21,6 +21,7 @@
 /build
 
 # misc
+.evals/
 .DS_Store
 *.pem
 

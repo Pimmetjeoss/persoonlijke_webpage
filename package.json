@@ -9,6 +9,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/seo-dashboard.test.mjs",
+    "eval:webmcp": "node scripts/run-webmcp-evals.mjs browser",
+    "eval:webmcp:smoke": "node scripts/run-webmcp-evals.mjs smoke",
     "seo:fetch:gsc": "node scripts/seo/fetch-gsc.mjs",
     "seo:fetch:ga4": "node scripts/seo/fetch-ga4.mjs",
     "seo:export:ga4-mcp": "python scripts/seo/export-ga4-mcp.py --json",

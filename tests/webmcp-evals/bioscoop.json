@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Bioscoop: zoek thrillers in Oss",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Ik zit in Oss. Welke thrillers draaien daar?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "update_location",
+        "arguments": { "city": "Oss" }
+      },
+      {
+        "functionName": "query_content",
+        "arguments": { "genre": "thriller" }
+      }
+    ]
+  },
+  {
+    "name": "Bioscoop: zet een concrete voorstelling klaar",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Ik ben in Oss. Zoek in het volledige aanbod naar The Boogeyman en zet de voorstelling op __TODAY__ om 20:00 voor me klaar."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "update_location",
+        "arguments": { "city": "Oss" }
+      },
+      {
+        "functionName": "query_content",
+        "arguments": { "genre": "all" }
+      },
+      {
+        "functionName": "select_showtime",
+        "arguments": {
+          "movie_id": "123",
+          "date": "__TODAY__",
+          "time": "20:00"
+        }
+      }
+    ]
+  }
+]

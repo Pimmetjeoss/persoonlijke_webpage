@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Bistro: reserveer een tafel met bijzonderheid",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Vul een reservering in voor Noor de Vries, telefoon 0612345678, op __TOMORROW__ om 19:30 voor 2 personen in het restaurant. Vermeld dat een gast glutenvrij eet. Verstuur de aanvraag niet."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "prepare_table_reservation",
+        "arguments": {
+          "name": "Noor de Vries",
+          "phone": "0612345678",
+          "date": "__TOMORROW__",
+          "time": "19:30",
+          "guests": 2,
+          "seating": "restaurant",
+          "requests": { "$contains": "glutenvrij" }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Bistro: reserveer een privéruimte",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bereid voor __TOMORROW__ om 20:00 een reservering voor 6 personen in een privéruimte voor. Naam: Pim Lieshout, telefoon: +31687654321."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "prepare_table_reservation",
+        "arguments": {
+          "name": "Pim Lieshout",
+          "phone": "+31687654321",
+          "date": "__TOMORROW__",
+          "time": "20:00",
+          "guests": 6,
+          "seating": "private"
+        }
+      }
+    ]
+  }
+]

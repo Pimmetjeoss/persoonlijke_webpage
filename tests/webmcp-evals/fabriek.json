@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Fabriek: lees de toestand voordat je handelt",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Controleer de huidige toestand van de fabriek, maar verander nog niets."
+      }
+    ],
+    "expectedCall": [
+      { "functionName": "get_state", "arguments": {} }
+    ]
+  },
+  {
+    "name": "Fabriek: bouw één elektromotor volgens het protocol",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bouw één elektromotor. Volg de aangeboden werkinstructies, controleer eerst en als laatste de toestand, en meld het eindresultaat."
+      }
+    ],
+    "expectedCall": [
+      {
+        "unordered": [
+          { "functionName": "skill_assemble_electric_motor", "arguments": {} },
+          { "functionName": "get_state", "arguments": {} }
+        ]
+      },
+      { "functionName": "skill_recipe_iron_plate", "arguments": {} },
+      { "functionName": "load", "arguments": { "device": "smelter", "item": "iron_ore", "qty": 1 } },
+      { "functionName": "smelt", "arguments": {} },
+      { "functionName": "load", "arguments": { "device": "smelter", "item": "iron_ore", "qty": 1 } },
+      { "functionName": "smelt", "arguments": {} },
+      { "functionName": "skill_recipe_iron_gear", "arguments": {} },
+      { "functionName": "load", "arguments": { "device": "forge", "item": "iron_plate", "qty": 2 } },
+      { "functionName": "forge", "arguments": {} },
+      { "functionName": "skill_recipe_copper_coil", "arguments": {} },
+      { "functionName": "load", "arguments": { "device": "assembler", "item": "copper_plate", "qty": 1 } },
+      { "functionName": "assemble", "arguments": {} },
+      { "functionName": "skill_recipe_electric_motor", "arguments": {} },
+      { "functionName": "load", "arguments": { "device": "assembler", "item": "iron_gear", "qty": 1 } },
+      { "functionName": "load", "arguments": { "device": "assembler", "item": "copper_coil", "qty": 2 } },
+      { "functionName": "assemble", "arguments": {} },
+      { "functionName": "get_state", "arguments": {} }
+    ]
+  }
+]
