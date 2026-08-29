@@ -151,8 +151,7 @@ export const FILMS: Film[] = [
     id: "112",
     title: "Phantom",
     genre: "horror",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAMpAo2d_dQek0HcrfriVkkTuPPHNp1L2cTMzxeibfarBq2Ve3eO96fUxbTCaHSCX6C15hYHDl1KRUw7tJ2WsOY7g6oNcpSQyEdZ3nY_P8rbQ0LHXrVfGWakeQYcqZ7HJCiN_WBCUkU_dSqGJkwe8VyoCWqLetONtHrUTrMo3kQrVeicAWlAVU33xN24Cyg3DlC4K_OyxLhzYh4xsMVFZqQkrr5CVJu-_vwghB4cjUutVZ42l6NfQYFPeZ5WfX6WiDE4AcOMm46EaML",
+    poster: "/webmcp/images/bioscoop/phantom.png",
     locations: ["Nijmegen", "Rotterdam", "Amsterdam"],
     showtimes: ["10:00", "12:30", "14:00"],
   },
@@ -241,8 +240,7 @@ export const FILMS: Film[] = [
     id: "210",
     title: "Overdrive",
     genre: "action",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBZ0CZ19hG91LCh-whhZYlF2_khhWzFvFV2zPNs6KUVXVZc_op3D4Rx-1hyaczNHeiYx2N4Y_lGOpOxIM2mwKV2_YpHL5CnLnJ4X_CgZn5cxJtHvOjj4DLWCW_PpHUd4x-fTCFtD-C5Mi8Q1FkWS2EtpPhZTtUvWRdxY8hYN7t_P6bJ_0ZhAVP6V2ixt5jAKz3S9FXKzpA1ujReXovrgXgUCG7IgjRC08eUdvR0TyVqsgMwVQGh6PFh_9kJ97WNKQAZMoaNrV0mF7hr",
+    poster: "/webmcp/images/bioscoop/overdrive.png",
     locations: ["Nijmegen", "Rotterdam", "Den Bosch"],
     showtimes: ["12:30", "16:30", "22:30"],
   },
@@ -313,8 +311,7 @@ export const FILMS: Film[] = [
     id: "308",
     title: "Funny Business",
     genre: "comedy",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD7wlZPAlNJ7Ef6gHhqT9zRPU7nkERi9asxmSaa1QHHiQDQI-ZwbDUuXDGmdSmEUKd85c-ym8UB304qKqb6ShcMnMYFSzW0NXDatQ4zcQRRD6QrOnqx0OvsnFnLdfCTArQo_OA7use3Inu1wLsJhk3GD1s7tx5NaO6zfqIQcIuj84O16wwoiIIzxF6hDk0rAOhtkaaonKqOiXod9nSYn7eiZEB9T1wXJJCWzdHsBYYM2PQg_rnHnRrKt6w5XMRDbs-bV_pfMPgHwNbT",
+    poster: "/webmcp/images/bioscoop/funny-business.png",
     locations: ["Oss", "Amsterdam", "Rotterdam", "Nijmegen"],
     showtimes: ["12:30", "21:30", "23:45"],
   },
@@ -384,8 +381,7 @@ export const FILMS: Film[] = [
     id: "406",
     title: "Tears in the Rain",
     genre: "drama",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCNPaOQzH69g7AHV3UDmeRe3a-vYDGaUFfhYCXjavJq_Rg_x-fMmcT41q4_AZW-8xp9CvyecJKgvoz_jHUCyV5AZr6GHMZvDZt-0PZcnQSp0bUQjlwY1mNiZR0uoebG1Ge4l_AL60rQilKNzTshhWJIO8_zz0NDjs_k6JaxjdW45JbSATKav--GBP3IMkzx5ZnJ_fGw74fQxaSk31tEoa-_EfM_7ftYuUy7J7vSiyvN1buDAVLZXSERtYgDwPxaVHQO1uYUS7gpgd00",
+    poster: "/webmcp/images/bioscoop/tears-in-the-rain.png",
     locations: ["Den Bosch", "Oss", "Utrecht", "Rotterdam"],
     showtimes: ["10:00", "12:30", "19:00", "20:00", "22:30"],
   },
@@ -429,8 +425,7 @@ export const FILMS: Film[] = [
     id: "501",
     title: "Galactic",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuByLAAnFwEX6yvWw6OW2nDNUEuk9GkUGGjnttBQZkAvZ7I34Sd3fhSUCx5pTbkoDXL42UffoTHJXMfy0D5mcKCTl62n3d7Sfp0njqWn9osU3w9xYpHiSo_myZh5lkDVL4yZjlKF33MG0nN7ECkcFvy0-46vuoK0rOqOo_IvV0CnsoRuWZUKxFFDjF6scuxo8kCSJPI4X5v7ZaD23k4_KyULN4UoF_f6FNxUJBTAKHx2Zi195L3sahFH5cFQQdJtSTljnlqjtLRqovCL",
+    poster: "/webmcp/images/bioscoop/galactic.png",
     locations: ["Amsterdam", "Oss"],
     showtimes: ["10:00", "12:30", "14:00", "20:00", "22:30"],
   },
@@ -438,8 +433,7 @@ export const FILMS: Film[] = [
     id: "502",
     title: "Starfall",
     genre: "sci-fi",
-    poster:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCT_A2qvLooDL_PVT5py52uK2GiSpVQkfVSt9MIrcPZQ7ZCM3WZB3P8TQg4cRvB2Eq2BJltdzP1K7gJqL1t7cVtCWw1vQ3URvmIwDhj8cBDk5BOOu-uwvLmkDXgtCIAiLd6xUiWngXnUpFDunFkIW3rtanhz9gBSnQyr5n7JVx10dMZDRmzHcyv7qAtnGtwmEmOFXblhH351JlaHE4sgVOIIXVusNNU5L_pM4mW6UMzYf6asZoWp3ZMdx7MQ_T7CV9bScAFii_Mtznu",
+    poster: "/webmcp/images/bioscoop/starfall.png",
     locations: ["Utrecht", "Oss"],
     showtimes: ["10:00", "19:00", "21:30", "22:30", "23:45"],
   },
