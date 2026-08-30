@@ -1,43 +1,43 @@
 {
-  "generatedAt": "2026-08-27T03:15:02.690Z",
+  "generatedAt": "2026-08-30T03:15:02.768Z",
   "site": "sc-domain:code-lieshout.nl",
   "dateRange": {
-    "start": "2026-02-27",
-    "end": "2026-08-26",
+    "start": "2026-03-02",
+    "end": "2026-08-29",
     "label": "Laatste 180 dagen"
   },
   "sources": [
     {
       "source": "gsc",
       "status": "ok",
-      "generatedAt": "2026-08-27T03:15:02.069Z",
+      "generatedAt": "2026-08-30T03:15:02.283Z",
       "rows": 0
     },
     {
       "source": "ga4",
       "status": "unavailable",
-      "generatedAt": "2026-08-27T03:15:02.114Z",
+      "generatedAt": "2026-08-30T03:15:02.327Z",
       "detail": "SEO_GA4_COMMAND is not configured. Point it to the existing Analytics MCP/GA4 read-only export command; placeholders: {property}, {days}, {limit}.",
       "rows": 0
     },
     {
       "source": "pagespeed",
       "status": "unavailable",
-      "generatedAt": "2026-08-27T03:15:02.395Z",
+      "generatedAt": "2026-08-30T03:15:02.551Z",
       "detail": "PageSpeed Insights data is unavailable. Set SEO_PAGESPEED_API_KEY if quota/auth is required.",
       "rows": 0
     },
     {
       "source": "crux",
       "status": "unavailable",
-      "generatedAt": "2026-08-27T03:15:02.546Z",
+      "generatedAt": "2026-08-30T03:15:02.630Z",
       "detail": "SEO_CRUX_API_KEY or SEO_PAGESPEED_API_KEY is not configured. PageSpeed may still expose limited field data when available.",
       "rows": 0
     },
     {
       "source": "gbp",
       "status": "unavailable",
-      "generatedAt": "2026-08-27T03:15:02.588Z",
+      "generatedAt": "2026-08-30T03:15:02.678Z",
       "detail": "SEO_GBP_COMMAND is not configured. Point it to a read-only Google Business Profile export command; placeholders: {location}, {days}, {limit}.",
       "rows": 0
     },
@@ -51,7 +51,7 @@
     {
       "source": "clarity",
       "status": "ok",
-      "generatedAt": "2026-08-27T03:15:02.691Z",
+      "generatedAt": "2026-08-30T03:15:02.768Z",
       "detail": "Discovery board klaar voor project wtkycths2o.",
       "rows": 3
     }
@@ -1875,6 +1875,45 @@
     {
       "generatedAt": "2026-08-27T03:15:02.690Z",
       "date": "2026-08-27",
+      "gscRows": 0,
+      "quickWins": 0,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-08-28T03:15:02.160Z",
+      "date": "2026-08-28",
+      "gscRows": 0,
+      "quickWins": 0,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-08-29T03:15:02.227Z",
+      "date": "2026-08-29",
+      "gscRows": 0,
+      "quickWins": 0,
+      "organicSessions": 0,
+      "techScore": 0,
+      "mobilePerformance": 0,
+      "desktopPerformance": 0,
+      "gbpWebsiteClicks": 0,
+      "botVisits": 1,
+      "okSources": 3
+    },
+    {
+      "generatedAt": "2026-08-30T03:15:02.768Z",
+      "date": "2026-08-30",
       "gscRows": 0,
       "quickWins": 0,
       "organicSessions": 0,
