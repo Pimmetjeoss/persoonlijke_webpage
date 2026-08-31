@@ -61,7 +61,7 @@ title: "De titel van je blog post"
 date: "2025-03-20"
 category: "Development"
 excerpt: "Een korte beschrijving (1-2 zinnen) die verschijnt op de listing pagina."
-featuredImage: "https://images.unsplash.com/photo-xxx" # Optioneel
+featuredImage: "/images/blog/mijn-nieuwe-post.jpg"
 ---
 
 # Hoofdkop van je artikel
@@ -127,7 +127,7 @@ Sluit af met belangrijkste punten en call-to-action.
 | `date` | string | ✅ | Publicatiedatum (format: `YYYY-MM-DD`) |
 | `category` | string | ✅ | Categorie tag (bijv. "Development", "Design") |
 | `excerpt` | string | ✅ | Korte beschrijving voor listing page |
-| `featuredImage` | string | ❌ | URL naar featured image (Unsplash of lokaal) |
+| `featuredImage` | string | ✅ | Lokale featured image die bovenaan de blog en op de overzichtskaart verschijnt |
 
 ### Stap 4: Build de site
 
@@ -277,15 +277,21 @@ git push
    - 1-2 zinnen is ideaal
 
 3. **Featured images:**
-   - Gebruik 16:9 aspect ratio (800x600px of 1200x675px)
+   - Voeg bij iedere nieuwe blog een unieke, met Codex CLI en de ingebouwde Codex `imagegen`-skill / image-generation tool gegenereerde afbeelding toe
+   - Download of hergebruik geen thumbnail, stockfoto of bronafbeelding als featured image
+   - Gebruik bij voorkeur dezelfde verticale verhouding als de bestaande covers (bijv. 896×1200px)
    - Optimaliseer voor web (< 200KB)
-   - Kies relevante, high-quality images
+   - Kies een relevante, artikel-specifieke compositie
 
-4. **Categorieën:**
+4. **Bronvermeldingen:**
+   - Zet geen losse afsluitende regels zoals “Deze blogpost is gebaseerd op een video”, “Bekijk de originele video” of “Primaire bron” onder het artikel
+   - Verwerk noodzakelijke bronverwijzingen natuurlijk in de lopende tekst wanneer dat inhoudelijk nodig is
+
+5. **Categorieën:**
    - Blijf consistent (gebruik bestaande categorieën)
    - Gebruik title case: "Development", "Design", "AI & Technologie"
 
-5. **Dates:**
+6. **Dates:**
    - Gebruik ISO format: `YYYY-MM-DD`
    - Posts worden gesorteerd van nieuw naar oud
 

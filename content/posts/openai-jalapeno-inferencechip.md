@@ -3,6 +3,7 @@ title: "OpenAI Jalapeño: een snelle AI-chip, maar geen NVIDIA-vervanger"
 date: "2026-08-30"
 category: "Hardware & Infrastructuur"
 excerpt: "OpenAI's eerste eigen inferencechip scoort sterk op snelheid en energie-efficiëntie. De voorlopige benchmarks zijn indrukwekkend, maar meten nog maar een smal deel van echte AI-workloads."
+featuredImage: "/images/blog/openai-jalapeno-inferencechip-fal.jpg"
 ---
 
 OpenAI bouwt niet langer alleen modellen en software. Met **Jalapeño**, de eerste eigen chip van het bedrijf, schuift het ook de hardwarelaag in. De eerste resultaten zijn opvallend: bij het serveren van grote taalmodellen combineert de chip volgens OpenAI een hoge doorvoer met een relatief laag energieverbruik en korte responstijden.
@@ -88,8 +89,3 @@ Tegelijkertijd blijft terughoudendheid nodig. De publieke tests bestrijken een b
 - Publieke resultaten voor langdurige, multi-turn agentworkloads ontbreken nog.
 - Het voordeel komt uit de combinatie van chip, geheugen, netwerk, kernels en servingsoftware.
 - Eigen chips kunnen OpenAI minder afhankelijk maken van externe hardware per geserveerd token.
-
----
-
-*Deze blogpost is gebaseerd op een video van [Caleb Writes Code](https://www.youtube.com/channel/UCuU9jE4MHHEIyYMbDfUPSew). [Bekijk de originele video](https://www.youtube.com/watch?v=yHNp_rT6uEo).*  
-*Primaire bron: [Jalapeño’s first results show industry-leading speed and efficiency in AI inference — OpenAI](https://openai.com/index/jalapeno-first-results/).*
