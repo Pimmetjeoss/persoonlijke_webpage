@@ -47,10 +47,10 @@ type CopyButtonProps = {
 };
 
 /**
- * Eén klik voor de twee dingen die je in de ChatGPT-desktopapp moet plakken:
- * de link in de adresbalk van de ingebouwde browser, en daarna de prompt in het
- * gesprek ernaast. Valt terug op een verborgen textarea + execCommand voor
- * browsers zonder clipboard-API of buiten een secure context.
+ * Vervangt het oude label "Vraag dit": in één klik staat de volledige prompt op
+ * het klembord, klaar om in de ChatGPT-desktopapp te plakken. Valt terug op een
+ * verborgen textarea + execCommand voor browsers zonder clipboard-API of buiten
+ * een secure context.
  */
 export function CopyButton({ text, label, className, doneClassName }: CopyButtonProps) {
   const [gekopieerd, setGekopieerd] = useState(false);

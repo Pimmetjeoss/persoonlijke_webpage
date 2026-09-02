@@ -26,10 +26,6 @@ export const metadata: Metadata = {
 
 const IMAGES = "/webmcp/images";
 
-/** Absolute basis voor de te kopiëren demo-links: die worden in de adresbalk van
- *  de ChatGPT-browser geplakt, waar een relatief pad niets betekent. */
-const SITE_URL = "https://code-lieshout.nl";
-
 /** Pijl-naar-rechts, identiek in de hero-CTA, beide tekstkaarten en de CTA-band. */
 function ArrowRightIcon() {
   return (
@@ -162,7 +158,8 @@ const PROEFTUIN = [
     title: "Deze website zelf",
     body:
       "Code Lieshout meldt vier functies aan: een agent-scan van een website, de pagina-inhoud als platte tekst, een overzicht van alle secties en de contactgegevens.",
-    prompt: "Scan deze site op agent-readiness en vat de uitkomst voor me samen.",
+    prompt:
+      "Open https://code-lieshout.nl in je ingebouwde browser en gebruik de Site tools van deze pagina om een agent-readiness scan te draaien. Vraag mij eerst welke website ik gescand wil hebben. Laat daarna de uitkomst zien, vat de belangrijkste bevindingen samen en noem per punt wat ik zou moeten aanpassen.",
     href: "/",
     linkLabel: "Open de startpagina",
   },
@@ -171,7 +168,8 @@ const PROEFTUIN = [
     title: "Sportwinkel",
     body:
       "Een winkel die zoeken, filteren en het winkelmandje als losse functies aanbiedt. De assistent klikt niet — hij gebruikt de knoppen die de site zelf aanreikt.",
-    prompt: "Zoek een hardloopschoen onder de 100 euro en leg hem in mijn mandje.",
+    prompt:
+      "Open https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/ in je ingebouwde browser en gebruik de Site tools van deze pagina om een hardloopschoen onder de 100 euro te zoeken. Vraag mij eerst om eventuele ontbrekende gegevens, zoals maat en voorkeurskleur. Laat me daarna de gevonden schoenen zien en leg pas met mijn bevestiging de gekozen schoen in het mandje.",
     href: "https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/",
     linkLabel: "Open de sportwinkel",
   },
@@ -180,7 +178,8 @@ const PROEFTUIN = [
     title: "Le Prikkel Bistro",
     body:
       "Een reserveringsformulier dat tegelijk een functie is. De assistent vult naam, datum, tijd en tafelvoorkeur in; jij ziet wat hij invulde en drukt zelf op bevestigen. Vult hij iets fout in, dan krijgt hij de foutmelding per veld terug.",
-    prompt: "Reserveer een tafel voor twee personen, vrijdagavond om half acht.",
+    prompt:
+      "Open https://code-lieshout.nl/webmcp/demos/bistro in je ingebouwde browser en gebruik de Site tools van deze pagina om een tafel te reserveren voor twee personen op de eerstvolgende vrijdag om 19:30. Vraag mij eerst om eventuele ontbrekende verplichte gegevens. Vul daarna de reservering in, laat mij de gegevens controleren en verstuur de aanvraag pas definitief met mijn bevestiging.",
     href: "/webmcp/demos/bistro",
     linkLabel: "Open de bistro",
   },
@@ -189,7 +188,8 @@ const PROEFTUIN = [
     title: "CinePrikkel",
     body:
       "Een bioscoop in zeven Nederlandse steden. Hier is niet één formulier de functie, maar het zoeken zelf: de stad kiezen, op genre filteren en een voorstelling aanklikken zijn alle drie functies die de assistent kan gebruiken.",
-    prompt: "Ik zit in Oss. Welke thrillers draaien er, en zet er vanavond eentje klaar.",
+    prompt:
+      "Open https://code-lieshout.nl/webmcp/demos/bioscoop in je ingebouwde browser en gebruik de Site tools van deze pagina om te kijken welke thrillers er vanavond in Oss draaien. Vraag mij eerst om eventuele ontbrekende gegevens, zoals het aantal kaarten. Laat me daarna de voorstellingen zien en zet er pas met mijn bevestiging eentje klaar.",
     href: "/webmcp/demos/bioscoop",
     linkLabel: "Open de bioscoop",
   },
@@ -198,7 +198,8 @@ const PROEFTUIN = [
     title: "PrikkelFabriek",
     body:
       "Een productielijn met vijftien Site tools. De assistent bedient niet alleen mijnen en machines, maar vraagt ook recepten en productieprotocollen op om een meerstapsopdracht betrouwbaar af te maken.",
-    prompt: "Bouw een elektromotor.",
+    prompt:
+      "Open https://code-lieshout.nl/webmcp/demos/fabriek in je ingebouwde browser en gebruik de Site tools van deze pagina om een elektromotor te bouwen. Vraag eerst het recept en het productieprotocol op en laat mij het stappenplan zien. Voer de stappen daarna uit en meld het meteen als een grondstof of machine ontbreekt.",
     href: "/webmcp/demos/fabriek",
     linkLabel: "Open de fabriek",
   },
@@ -207,7 +208,8 @@ const PROEFTUIN = [
     title: "PrikkelThuis",
     body:
       "Een slim-huisdashboard dat zich aanpast aan de situatie. De assistent toont en ordent alleen de bediening die je nu nodig hebt — van deurcamera en slot tot klimaat en energie.",
-    prompt: "Er staat iemand voor de deur. Laat zien wie het is en geef me de bediening van het slot.",
+    prompt:
+      "Open https://code-lieshout.nl/webmcp/demos/slim-huis in je ingebouwde browser en gebruik de Site tools van deze pagina: er staat iemand voor de deur. Laat eerst zien wie het is en zet daarna de bediening van het slot voor me klaar. Ontgrendel de deur pas met mijn bevestiging.",
     href: "/webmcp/demos/slim-huis",
     linkLabel: "Open PrikkelThuis",
   },
@@ -724,11 +726,11 @@ export default function WebmcpPage() {
               </h2>
               <p className={styles.tryBandIntro}>
                 De sites hieronder registreren imperatieve WebMCP-tools die ChatGPT als Site tools
-                kan ontdekken. Vragen om een site te openen werkt niet — de functies bestaan alleen in
-                een pagina die al draait. Zet daarom in de nieuwste ChatGPT-desktopapp Site tools aan,
-                kies GPT-5.6 Sol of Terra en open de ingebouwde browser via de werkbalk. Plak dan de
-                link van een kaart in de adresbalk: zodra de pagina staat, verschijnt er een grijs
-                pijltje in de adresbalk. Plak daarna de prompt in het gesprek ernaast — het pijltje
+                kan ontdekken. Zet in de nieuwste ChatGPT-desktopapp Site tools aan en kies GPT-5.6 Sol
+                of Terra. Kopieer daarna de prompt van een kaart en plak hem in het gesprek: elke
+                prompt noemt zijn eigen URL, vraagt de pagina in de ingebouwde browser te openen en
+                zegt erbij dat ChatGPT eerst om ontbrekende gegevens vraagt en pas op jouw bevestiging
+                verstuurt. Zodra de pagina draait, verschijnt er een pijltje in de adresbalk — dat
                 kleurt blauw op het moment dat ChatGPT de functies van de site gebruikt.
               </p>
             </div>
@@ -736,7 +738,6 @@ export default function WebmcpPage() {
             <ul className={styles.tryGrid}>
               {PROEFTUIN.map((item) => {
                 const isExtern = item.href.startsWith("http");
-                const demoUrl = isExtern ? item.href : `${SITE_URL}${item.href}`;
 
                 return (
                   <li key={item.title} className={styles.tryCard}>
@@ -744,30 +745,13 @@ export default function WebmcpPage() {
                     <h3 className={styles.tryCardTitle}>{item.title}</h3>
                     <p className={styles.tryCardText}>{item.body}</p>
                     <div className={styles.tryCardPrompt}>
-                      <div className={styles.tryCardStep}>
-                        <p className={`${styles.tryCardStepLabel} ${styles.tCaption}`}>
-                          1 · IN DE ADRESBALK
-                        </p>
-                        <p className={styles.tryCardStepUrl}>{demoUrl}</p>
-                        <CopyButton
-                          text={demoUrl}
-                          label="Kopieer link"
-                          className={styles.tryCardCopy}
-                          doneClassName={styles.tryCardCopyDone}
-                        />
-                      </div>
-                      <div className={styles.tryCardStep}>
-                        <p className={`${styles.tryCardStepLabel} ${styles.tCaption}`}>
-                          2 · IN HET GESPREK ERNAAST
-                        </p>
-                        <p className={styles.tryCardStepPrompt}>“{item.prompt}”</p>
-                        <CopyButton
-                          text={item.prompt}
-                          label="Kopieer prompt"
-                          className={styles.tryCardCopy}
-                          doneClassName={styles.tryCardCopyDone}
-                        />
-                      </div>
+                      <CopyButton
+                        text={item.prompt}
+                        label="Kopieer prompt"
+                        className={styles.tryCardCopy}
+                        doneClassName={styles.tryCardCopyDone}
+                      />
+                      <p className={styles.tryCardPromptText}>“{item.prompt}”</p>
                     </div>
                     <div className={styles.tryCardFooter}>
                       {isExtern ? (
@@ -793,9 +777,10 @@ export default function WebmcpPage() {
             </ul>
 
             <p className={`${styles.tryBandNote} ${styles.tCaption}`} role="note">
-              LET OP: WEBMCP IS EEN STANDAARD IN ONTWIKKELING. GEBEURT ER NIETS? DAN ONDERSTEUNT JOUW
-              BROWSER OF ASSISTENT DE FUNCTIES NOG NIET — DE SITES BLIJVEN GEWOON MET DE HAND TE
-              BEDIENEN.
+              LET OP: WEBMCP IS EEN STANDAARD IN ONTWIKKELING. BLIJFT DE INGEBOUWDE BROWSER DICHT?
+              OPEN HEM DAN ZELF VIA DE WERKBALK EN GA EERST NAAR DE PAGINA. GEBEURT ER DAARNA NOG
+              NIETS? DAN ONDERSTEUNT JOUW BROWSER OF ASSISTENT DE FUNCTIES NOG NIET — DE SITES BLIJVEN
+              GEWOON MET DE HAND TE BEDIENEN.
             </p>
           </div>
         </section>
