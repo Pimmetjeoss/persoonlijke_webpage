@@ -45,10 +45,9 @@ Kijk je naar wat mensen hun assistent in de praktijk vragen, dan vallen die vrag
 
 ## Zelf uitproberen
 
-Deze sites registreren imperatieve WebMCP-tools die ChatGPT momenteel ondersteunt. Open er één in de ingebouwde browser van de nieuwste ChatGPT-desktopapp, schakel Site tools in en gebruik GPT-5.6 Sol of Terra. Geef daarna de voorbeeldvraag door. De sites blijven ook gewoon met de hand te bedienen.
+Deze sites registreren imperatieve WebMCP-tools die ChatGPT momenteel ondersteunt. Zet in de nieuwste ChatGPT-desktopapp Site tools aan en kies GPT-5.6 Sol of Terra. Plak daarna de voorbeeldvraag met de bijbehorende link in het gesprek: ChatGPT opent de site zelf in de ingebouwde browser. De sites blijven ook gewoon met de hand te bedienen.
 
 - **Deze website zelf** — [code-lieshout.nl](https://code-lieshout.nl) meldt vier functies aan: een agent-scan van een website, pagina-inhoud als platte tekst, een overzicht van alle secties en de contactgegevens. Probeer: *"Scan code-lieshout.nl op agent-readiness en vat de uitkomst voor me samen."*
-- **Het verschil in beeld** — [explainer-demo](https://googlechromelabs.github.io/webmcp-tools/demos/explainer/): links een assistent die de pagina moet aflezen en gokken, rechts dezelfde pagina die zijn functies netjes aanbiedt.
 - **Sportwinkel** — [sport-shop-demo](https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/): zoeken, filteren en het winkelmandje als losse functies. Probeer: *"Zoek een hardloopschoen onder de 100 euro en leg hem in mijn mandje."*
 - **Le Prikkel Bistro** — [onze eigen demo](https://code-lieshout.nl/webmcp/demos/bistro): een reserveringsformulier dat tegelijk een functie is. De assistent vult het in, jij bevestigt; vult hij iets fout in, dan krijgt hij de foutmelding per veld terug. Probeer: *"Reserveer een tafel voor twee personen, vrijdagavond om half acht."*
 - **CinePrikkel** — [onze eigen demo](https://code-lieshout.nl/webmcp/demos/bioscoop): een stad kiezen, films op genre zoeken en een voorstelling klaarzetten. Probeer: *"Ik zit in Oss. Welke thrillers draaien er, en zet er vanavond eentje klaar."*

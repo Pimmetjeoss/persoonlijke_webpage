@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CopyPromptButton } from "./copy-prompt-button";
 import { SmoothScroll } from "./smooth-scroll";
 import styles from "./webmcp.module.css";
 
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
 };
 
 const IMAGES = "/webmcp/images";
+
+/** Absolute basis voor de gekopieerde prompts: ChatGPT moet de demo zelf kunnen
+ *  openen, dus een relatief pad is daar waardeloos. */
+const SITE_URL = "https://code-lieshout.nl";
 
 /** Pijl-naar-rechts, identiek in de hero-CTA, beide tekstkaarten en de CTA-band. */
 function ArrowRightIcon() {
@@ -160,15 +165,6 @@ const PROEFTUIN = [
     prompt: "Scan code-lieshout.nl op agent-readiness en vat de uitkomst voor me samen.",
     href: "/",
     linkLabel: "Open de startpagina",
-  },
-  {
-    kicker: "VOOR & NA",
-    title: "Het verschil in beeld",
-    body:
-      "Twee schermen naast elkaar: links een assistent die de pagina moet aflezen en gokken, rechts dezelfde pagina die zijn functies netjes aanbiedt. Begin hier.",
-    prompt: "Vergelijk beide kanten en leg uit waarom de rechterkant minder misgaat.",
-    href: "https://googlechromelabs.github.io/webmcp-tools/demos/explainer/",
-    linkLabel: "Open de vergelijking",
   },
   {
     kicker: "WEBSHOP",
@@ -728,25 +724,31 @@ export default function WebmcpPage() {
               </h2>
               <p className={styles.tryBandIntro}>
                 De sites hieronder registreren imperatieve WebMCP-tools die ChatGPT als Site tools kan
-                ontdekken. Open er één in de ingebouwde browser van de nieuwste ChatGPT-desktopapp,
-                schakel Site tools in en gebruik GPT-5.6 Sol of Terra. Geef daarna de voorbeeldvraag
-                door. De assistent gebruikt dan de functies van de site zelf.
+                ontdekken. Zet in de nieuwste ChatGPT-desktopapp Site tools aan en kies GPT-5.6 Sol of
+                Terra. Kopieer daarna de prompt van een kaart en plak hem in het gesprek: ChatGPT opent
+                de site zelf in de ingebouwde browser en bedient hem met de functies van de site.
               </p>
             </div>
 
             <ul className={styles.tryGrid}>
               {PROEFTUIN.map((item) => {
                 const isExtern = item.href.startsWith("http");
+                const demoUrl = isExtern ? item.href : `${SITE_URL}${item.href}`;
 
                 return (
                   <li key={item.title} className={styles.tryCard}>
                     <p className={styles.tryCardKicker}>{item.kicker}</p>
                     <h3 className={styles.tryCardTitle}>{item.title}</h3>
                     <p className={styles.tryCardText}>{item.body}</p>
-                    <p className={styles.tryCardPrompt}>
-                      <span className={styles.tryCardPromptLabel}>Vraag dit</span>
-                      <span>“{item.prompt}”</span>
-                    </p>
+                    <div className={styles.tryCardPrompt}>
+                      <CopyPromptButton
+                        text={`${item.prompt}\n${demoUrl}`}
+                        className={styles.tryCardCopy}
+                        doneClassName={styles.tryCardCopyDone}
+                      />
+                      <p className={styles.tryCardPromptText}>“{item.prompt}”</p>
+                      <p className={styles.tryCardPromptUrl}>{demoUrl}</p>
+                    </div>
                     <div className={styles.tryCardFooter}>
                       {isExtern ? (
                         <a

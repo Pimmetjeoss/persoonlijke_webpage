@@ -762,12 +762,49 @@
   line-height: var(--leading-body);
 }
 
-.tryCardPromptLabel {
-  display: block;
-  margin-bottom: var(--spacing-8);
+/* Het oude label "Vraag dit" is een kopieerknop geworden: de bezoeker plakt de
+   prompt in de ChatGPT-desktopapp. Ziet eruit als een link, is een <button>. */
+.tryCardCopy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  margin: 0 0 var(--spacing-8);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-link-blue);
+  cursor: pointer;
+}
+
+.tryCardCopy:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tryCardCopyDone {
+  color: var(--color-ink-black);
+}
+
+.tryCardCopyDone:hover {
+  text-decoration: none;
+}
+
+.tryCardPromptText {
+  margin: 0;
+}
+
+/* De demo-URL hoort bij de gekopieerde tekst — ChatGPT opent hem zelf. Klein en
+   grijs, zodat de prompt zelf het citaat blijft. */
+.tryCardPromptUrl {
+  margin: var(--spacing-8) 0 0;
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
   color: var(--color-steel-gray);
+  overflow-wrap: anywhere;
 }
 
 .tryCardFooter {
