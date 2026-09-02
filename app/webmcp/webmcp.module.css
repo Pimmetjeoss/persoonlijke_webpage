@@ -795,15 +795,7 @@
 
 .tryCardPromptText {
   margin: 0;
-}
-
-/* De demo-URL hoort bij de gekopieerde tekst — ChatGPT opent hem zelf. Klein en
-   grijs, zodat de prompt zelf het citaat blijft. */
-.tryCardPromptUrl {
-  margin: var(--spacing-8) 0 0;
-  font-size: var(--text-caption);
-  line-height: var(--leading-caption);
-  color: var(--color-steel-gray);
+  /* De prompt bevat een volledige URL — anders duwt die de kaart uit het raster. */
   overflow-wrap: anywhere;
 }
 
