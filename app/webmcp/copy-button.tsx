@@ -38,20 +38,21 @@ function CheckIcon() {
   );
 }
 
-type CopyPromptButtonProps = {
+type CopyButtonProps = {
   /** Precies de tekst die op het klembord belandt. */
   text: string;
+  label: string;
   className: string;
   doneClassName: string;
 };
 
 /**
- * Vervangt het oude label "Vraag dit": de bezoeker kopieert de prompt in één
- * klik en plakt hem in de ChatGPT-desktopapp, die de site dan zelf opent in de
- * ingebouwde browser. Valt terug op een verborgen textarea + execCommand voor
+ * Eén klik voor de twee dingen die je in de ChatGPT-desktopapp moet plakken:
+ * de link in de adresbalk van de ingebouwde browser, en daarna de prompt in het
+ * gesprek ernaast. Valt terug op een verborgen textarea + execCommand voor
  * browsers zonder clipboard-API of buiten een secure context.
  */
-export function CopyPromptButton({ text, className, doneClassName }: CopyPromptButtonProps) {
+export function CopyButton({ text, label, className, doneClassName }: CopyButtonProps) {
   const [gekopieerd, setGekopieerd] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -92,7 +93,7 @@ export function CopyPromptButton({ text, className, doneClassName }: CopyPromptB
       className={gekopieerd ? `${className} ${doneClassName}` : className}
     >
       {gekopieerd ? <CheckIcon /> : <ClipboardIcon />}
-      <span aria-live="polite">{gekopieerd ? "Gekopieerd" : "Kopieer prompt"}</span>
+      <span aria-live="polite">{gekopieerd ? "Gekopieerd" : label}</span>
     </button>
   );
 }

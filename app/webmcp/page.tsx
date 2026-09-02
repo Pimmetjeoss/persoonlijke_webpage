@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { CopyPromptButton } from "./copy-prompt-button";
+import { CopyButton } from "./copy-button";
 import { SmoothScroll } from "./smooth-scroll";
 import styles from "./webmcp.module.css";
 
@@ -25,6 +25,10 @@ export const metadata: Metadata = {
 };
 
 const IMAGES = "/webmcp/images";
+
+/** Absolute basis voor de te kopiëren demo-links: die worden in de adresbalk van
+ *  de ChatGPT-browser geplakt, waar een relatief pad niets betekent. */
+const SITE_URL = "https://code-lieshout.nl";
 
 /** Pijl-naar-rechts, identiek in de hero-CTA, beide tekstkaarten en de CTA-band. */
 function ArrowRightIcon() {
@@ -158,8 +162,7 @@ const PROEFTUIN = [
     title: "Deze website zelf",
     body:
       "Code Lieshout meldt vier functies aan: een agent-scan van een website, de pagina-inhoud als platte tekst, een overzicht van alle secties en de contactgegevens.",
-    prompt:
-      "Open https://code-lieshout.nl in je ingebouwde browser en gebruik de Site tools van de pagina om de site op agent-readiness te scannen. Vat de uitkomst voor me samen.",
+    prompt: "Scan deze site op agent-readiness en vat de uitkomst voor me samen.",
     href: "/",
     linkLabel: "Open de startpagina",
   },
@@ -168,8 +171,7 @@ const PROEFTUIN = [
     title: "Sportwinkel",
     body:
       "Een winkel die zoeken, filteren en het winkelmandje als losse functies aanbiedt. De assistent klikt niet — hij gebruikt de knoppen die de site zelf aanreikt.",
-    prompt:
-      "Open https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/ in je ingebouwde browser en zoek met de Site tools van de pagina een hardloopschoen onder de 100 euro. Leg hem in mijn mandje.",
+    prompt: "Zoek een hardloopschoen onder de 100 euro en leg hem in mijn mandje.",
     href: "https://googlechromelabs.github.io/webmcp-tools/demos/sport-shop-angular/",
     linkLabel: "Open de sportwinkel",
   },
@@ -178,8 +180,7 @@ const PROEFTUIN = [
     title: "Le Prikkel Bistro",
     body:
       "Een reserveringsformulier dat tegelijk een functie is. De assistent vult naam, datum, tijd en tafelvoorkeur in; jij ziet wat hij invulde en drukt zelf op bevestigen. Vult hij iets fout in, dan krijgt hij de foutmelding per veld terug.",
-    prompt:
-      "Open https://code-lieshout.nl/webmcp/demos/bistro in je ingebouwde browser en reserveer met de Site tools van de pagina een tafel voor twee personen, vrijdagavond om half acht.",
+    prompt: "Reserveer een tafel voor twee personen, vrijdagavond om half acht.",
     href: "/webmcp/demos/bistro",
     linkLabel: "Open de bistro",
   },
@@ -188,8 +189,7 @@ const PROEFTUIN = [
     title: "CinePrikkel",
     body:
       "Een bioscoop in zeven Nederlandse steden. Hier is niet één formulier de functie, maar het zoeken zelf: de stad kiezen, op genre filteren en een voorstelling aanklikken zijn alle drie functies die de assistent kan gebruiken.",
-    prompt:
-      "Open https://code-lieshout.nl/webmcp/demos/bioscoop in je ingebouwde browser en gebruik de Site tools van de pagina: ik zit in Oss, welke thrillers draaien er? Zet er vanavond eentje klaar.",
+    prompt: "Ik zit in Oss. Welke thrillers draaien er, en zet er vanavond eentje klaar.",
     href: "/webmcp/demos/bioscoop",
     linkLabel: "Open de bioscoop",
   },
@@ -198,8 +198,7 @@ const PROEFTUIN = [
     title: "PrikkelFabriek",
     body:
       "Een productielijn met vijftien Site tools. De assistent bedient niet alleen mijnen en machines, maar vraagt ook recepten en productieprotocollen op om een meerstapsopdracht betrouwbaar af te maken.",
-    prompt:
-      "Open https://code-lieshout.nl/webmcp/demos/fabriek in je ingebouwde browser en bouw met de Site tools van de pagina een elektromotor.",
+    prompt: "Bouw een elektromotor.",
     href: "/webmcp/demos/fabriek",
     linkLabel: "Open de fabriek",
   },
@@ -208,8 +207,7 @@ const PROEFTUIN = [
     title: "PrikkelThuis",
     body:
       "Een slim-huisdashboard dat zich aanpast aan de situatie. De assistent toont en ordent alleen de bediening die je nu nodig hebt — van deurcamera en slot tot klimaat en energie.",
-    prompt:
-      "Open https://code-lieshout.nl/webmcp/demos/slim-huis in je ingebouwde browser en gebruik de Site tools van de pagina: er staat iemand voor de deur. Laat zien wie het is en geef me de bediening van het slot.",
+    prompt: "Er staat iemand voor de deur. Laat zien wie het is en geef me de bediening van het slot.",
     href: "/webmcp/demos/slim-huis",
     linkLabel: "Open PrikkelThuis",
   },
@@ -725,17 +723,20 @@ export default function WebmcpPage() {
                 Probeer het zelf met ChatGPT
               </h2>
               <p className={styles.tryBandIntro}>
-                De sites hieronder registreren imperatieve WebMCP-tools die ChatGPT als Site tools kan
-                ontdekken. Zet in de nieuwste ChatGPT-desktopapp Site tools aan en kies GPT-5.6 Sol of
-                Terra. Kopieer daarna de prompt van een kaart en plak hem in het gesprek: elke prompt
-                noemt de URL en vraagt ChatGPT die in de ingebouwde browser te openen. Via gewone
-                websearch werkt het niet — de functies bestaan alleen in een draaiende pagina.
+                De sites hieronder registreren imperatieve WebMCP-tools die ChatGPT als Site tools
+                kan ontdekken. Vragen om een site te openen werkt niet — de functies bestaan alleen in
+                een pagina die al draait. Zet daarom in de nieuwste ChatGPT-desktopapp Site tools aan,
+                kies GPT-5.6 Sol of Terra en open de ingebouwde browser via de werkbalk. Plak dan de
+                link van een kaart in de adresbalk: zodra de pagina staat, verschijnt er een grijs
+                pijltje in de adresbalk. Plak daarna de prompt in het gesprek ernaast — het pijltje
+                kleurt blauw op het moment dat ChatGPT de functies van de site gebruikt.
               </p>
             </div>
 
             <ul className={styles.tryGrid}>
               {PROEFTUIN.map((item) => {
                 const isExtern = item.href.startsWith("http");
+                const demoUrl = isExtern ? item.href : `${SITE_URL}${item.href}`;
 
                 return (
                   <li key={item.title} className={styles.tryCard}>
@@ -743,12 +744,30 @@ export default function WebmcpPage() {
                     <h3 className={styles.tryCardTitle}>{item.title}</h3>
                     <p className={styles.tryCardText}>{item.body}</p>
                     <div className={styles.tryCardPrompt}>
-                      <CopyPromptButton
-                        text={item.prompt}
-                        className={styles.tryCardCopy}
-                        doneClassName={styles.tryCardCopyDone}
-                      />
-                      <p className={styles.tryCardPromptText}>“{item.prompt}”</p>
+                      <div className={styles.tryCardStep}>
+                        <p className={`${styles.tryCardStepLabel} ${styles.tCaption}`}>
+                          1 · IN DE ADRESBALK
+                        </p>
+                        <p className={styles.tryCardStepUrl}>{demoUrl}</p>
+                        <CopyButton
+                          text={demoUrl}
+                          label="Kopieer link"
+                          className={styles.tryCardCopy}
+                          doneClassName={styles.tryCardCopyDone}
+                        />
+                      </div>
+                      <div className={styles.tryCardStep}>
+                        <p className={`${styles.tryCardStepLabel} ${styles.tCaption}`}>
+                          2 · IN HET GESPREK ERNAAST
+                        </p>
+                        <p className={styles.tryCardStepPrompt}>“{item.prompt}”</p>
+                        <CopyButton
+                          text={item.prompt}
+                          label="Kopieer prompt"
+                          className={styles.tryCardCopy}
+                          doneClassName={styles.tryCardCopyDone}
+                        />
+                      </div>
                     </div>
                     <div className={styles.tryCardFooter}>
                       {isExtern ? (
