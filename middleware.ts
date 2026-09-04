@@ -107,6 +107,14 @@ export function middleware(request: NextRequest) {
   const accept = request.headers.get("accept") ?? ""
   const wantsMarkdown = accept.includes("text/markdown")
 
+  // URL-hygiëne (B5): /FAQ → 301 /faq. Exacte case-match in middleware omdat
+  // next.config-redirects case-insensitief matchen en /faq in een loop zouden vangen.
+  if (pathname === "/FAQ") {
+    const url = request.nextUrl.clone()
+    url.pathname = "/faq"
+    return NextResponse.redirect(url, 308)
+  }
+
   // Serve static .md files (e.g. /about.md, /agents.md) with an explicit
   // markdown content type so AI-agents get text/markdown; charset=utf-8.
   if (pathname.endsWith(".md")) {

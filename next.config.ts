@@ -30,11 +30,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/FAQ',
-        destination: '/faq',
-        permanent: true,
-      },
-      {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.code-lieshout.nl' }],
         destination: 'https://code-lieshout.nl/:path*',
