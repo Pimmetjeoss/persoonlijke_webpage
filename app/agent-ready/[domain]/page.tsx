@@ -17,6 +17,7 @@ import {
 } from "@/lib/agent-ready/scoring"
 import { IsItAgentReadyResponseSchema } from "@/lib/agent-ready/schemas"
 import { ScoreDisplay } from "../components/score-display"
+import { ScanCompleteTracker } from "../components/scan-complete-tracker"
 import { CategoryBar } from "../components/category-bar"
 import { IssueList } from "../components/issue-list"
 import { NextLevelCard } from "../components/next-level-card"
@@ -68,6 +69,7 @@ export default async function ScanResultPage({ params }: PageProps) {
         hoverColor="hsl(141 78.9% 85.1%)"
         startExpanded={true}
       />
+      <ScanCompleteTracker domain={domain} issueCount={issues.length} />
 
       <div className="mx-auto max-w-5xl p-6 lg:p-10 space-y-10">
         <div>

@@ -9,6 +9,8 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "./components/transition_provider";
+import { SiteNav } from "./components/site-nav";
+import { SiteFooter } from "./components/site-footer";
 import { WebMcpRegistrar } from "./components/web-mcp-registrar";
 
 const geistMono = Geist_Mono({
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Code Lieshout",
   },
   description:
-    "Pim van Lieshout bouwt slimme web-apps en AI-oplossingen voor Nederlandse bedrijven. Webdesign bureau in Lieshout (Noord-Brabant) — van chatbots en AI agents tot workflow-automatisering en moderne websites.",
+    "Webdesign bureau in Lieshout (Noord-Brabant). Pim van Lieshout bouwt websites, web-apps en AI-agents voor het MKB. Vrijblijvend kennismaken?",
   alternates: {
     canonical: "https://code-lieshout.nl",
     types: {
@@ -116,9 +118,24 @@ const schemaMarkup = {
       "founder": { "@id": "https://code-lieshout.nl/#pim" },
       "email": "pim@code-lieshout.nl",
       "telephone": "+31612419980",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+31612419980",
+        "email": "pim@code-lieshout.nl",
+        "contactType": "sales",
+        "areaServed": "NL",
+        "availableLanguage": ["nl", "en"]
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "KvK",
+        "value": "99344882"
+      },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Lieshout",
+        "streetAddress": "Eventer 17",
+        "postalCode": "5351 SK",
+        "addressLocality": "Berghem",
         "addressRegion": "Noord-Brabant",
         "addressCountry": "NL"
       },
@@ -152,7 +169,7 @@ const schemaMarkup = {
       "@type": "Person",
       "@id": "https://code-lieshout.nl/#pim",
       "name": "Pim van Lieshout",
-      "url": "https://code-lieshout.nl/about-me",
+      "url": "https://code-lieshout.nl/about",
       "email": "pim@code-lieshout.nl",
       "telephone": "+31612419980",
       "jobTitle": "AI Automatisering Specialist",
@@ -258,6 +275,7 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} ${fjallaOne.variable} ${homemadeApple.variable} antialiased`}
       >
+        <SiteNav />
         <TransitionProvider
           colors={[
             'hsl(141, 78.9%, 85.1%)',
@@ -270,6 +288,7 @@ export default function RootLayout({
         >
           {children}
         </TransitionProvider>
+        <SiteFooter />
         <CookieBanner />
         <ScrollTracker />
         <WebMcpRegistrar />

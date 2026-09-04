@@ -10,9 +10,52 @@ const MARKDOWN_ROUTES: Record<string, string> = {
   "/blog": "/blog.md",
   "/jouw-website": "/jouw-website.md",
   "/agent-ready": "/agent-ready.md",
-  "/FAQ": "/FAQ.md",
+  "/faq": "/faq.md",
   "/sir-prikkel": "/sir-prikkel.md",
 }
+
+const KNOWN_FIRST_SEGMENTS = new Set([
+  "about",
+  "portfolio",
+  "ai-agents",
+  "contact",
+  "blog",
+  "jouw-website",
+  "agent-ready",
+  "faq",
+  "FAQ",
+  "sir-prikkel",
+  "webmcp",
+  "test",
+  "webdesign",
+  "database",
+  "seo-dashboard",
+  "google-score",
+  "chatgpt-check",
+  "agent-scan",
+  "speed-check",
+  "seo-geo-scan",
+  "mcp-explorer",
+  "cactus-3d",
+  "klantenportaal",
+  "under-construction",
+  "about-me",
+  "api",
+  ".well-known",
+])
+
+const MARKDOWN_404_BODY = `# 404 — Pagina niet gevonden
+
+Deze pagina bestaat niet op code-lieshout.nl.
+
+Waar moet je zijn?
+
+- Sitemap (alle pagina's): https://code-lieshout.nl/sitemap.xml
+- Agent-overzicht (llms.txt): https://code-lieshout.nl/llms.txt
+- Prijzen (machineleesbaar): https://code-lieshout.nl/pricing.md
+- Contact met Pim: https://code-lieshout.nl/contact
+- Home: https://code-lieshout.nl
+`
 
 const BOT_PATTERNS = [
   { name: "GPTBot", family: "openai", pattern: /GPTBot/i },
@@ -60,19 +103,53 @@ function logBotVisit(request: NextRequest) {
 export function middleware(request: NextRequest) {
   logBotVisit(request)
 
+  const pathname = request.nextUrl.pathname
+  const accept = request.headers.get("accept") ?? ""
+  const wantsMarkdown = accept.includes("text/markdown")
+
   // Serve static .md files (e.g. /about.md, /agents.md) with an explicit
   // markdown content type so AI-agents get text/markdown; charset=utf-8.
-  if (request.nextUrl.pathname.endsWith(".md")) {
+  if (pathname.endsWith(".md")) {
     const response = NextResponse.next()
     response.headers.set("Content-Type", "text/markdown; charset=utf-8")
     response.headers.set("Cache-Control", "public, max-age=300")
+    response.headers.set("Vary", "Accept")
     return response
   }
 
+  // acceptmarkdown.com content negotiation: serve the curated markdown
+  // variant on the same URL when the client asks for text/markdown.
+  // Vary: Accept voorkomt dat een CDN de HTML-variant aan agents serveert.
+  const target = MARKDOWN_ROUTES[pathname]
+  if (target && wantsMarkdown) {
+    const response = NextResponse.rewrite(new URL(target, request.url))
+    response.headers.set("Content-Type", "text/markdown; charset=utf-8")
+    response.headers.set("Cache-Control", "public, max-age=300")
+    response.headers.set("Vary", "Accept")
+    return response
+  }
+
+  // Agent-vriendelijke 404: echte 404-status met markdown-body (sitemap-,
+  // llms.txt- en contact-links) voor agents die om markdown vragen op een
+  // onbekend pad. Browsers (Accept: text/html) blijven de HTML-404 krijgen.
+  if (wantsMarkdown && request.method === "GET") {
+    const hasExtension = /\.[a-z0-9]+$/i.test(pathname)
+    const firstSegment = pathname.split("/").filter(Boolean)[0] ?? ""
+    const known = pathname === "/" || KNOWN_FIRST_SEGMENTS.has(firstSegment)
+    if (!hasExtension && !known) {
+      return new NextResponse(MARKDOWN_404_BODY, {
+        status: 404,
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "Cache-Control": "no-store",
+          "Vary": "Accept",
+        },
+      })
+    }
+  }
+
   // Keep browser routes as HTML. Markdown remains available explicitly via
-  // /index.md, /about.md, etc. Vercel/CDN caching can otherwise serve a
-  // negotiated markdown response to normal browsers for the same URL.
-  const target = MARKDOWN_ROUTES[request.nextUrl.pathname]
+  // /about.md, etc. and via Accept-negotiation hierboven.
   if (target) {
     const next = NextResponse.next()
     next.headers.set("Link", `<${target}>; rel="alternate"; type="text/markdown"`)

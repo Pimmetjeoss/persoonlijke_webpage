@@ -3,7 +3,7 @@ title: "De Strategie Achter Christmas Claude: Hoe Anthropic AI Omvormt tot Digit
 date: "2025-12-22"
 category: "Nieuws & Analyse"
 excerpt: "Anthropic heeft de afgelopen weken veel nieuwe functies uitgebracht. Het lijken losse updates, maar bij nadere beschouwing ontstaat er een groter plan: Claude moet een digitale collega worden die overal meewerkt waar jij werkt."
-featuredImage: "/blog/images/De Strategie Achter Christmas Claude.png"
+featuredImage: "/blog/images/strategie-christmas-claude.webp"
 ---
 
 # De Strategie Achter Christmas Claude: Hoe Anthropic AI Omvormt tot Digitale Collega

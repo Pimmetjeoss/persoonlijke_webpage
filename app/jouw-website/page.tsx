@@ -243,6 +243,7 @@ export default function WelkomPage() {
     >
       <StickyHeader
         title="WELKOM"
+        titleAs="p"
         backgroundColor="hsl(142.1 76.2% 36.3%)"
         hoverColor="hsl(141.9 69.2% 58%)"
         startExpanded={true}
@@ -287,6 +288,70 @@ export default function WelkomPage() {
                 className="drop-shadow-lg"
               />
             </div>
+          </section>
+        </TimelineContent>
+
+        {/* ── Antwoordblok: wat krijg je? (C3) ── */}
+        <TimelineContent animationNum={0} timelineRef={pageRef} once={true}>
+          <section
+            aria-label="In het kort"
+            className="rounded-xl border-[3px] bg-white p-8 md:p-10"
+            style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
+          >
+            <h2
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
+              style={{ color: "hsl(144.9 80.4% 10%)" }}
+            >
+              Wat kost een website laten maken in Lieshout?
+            </h2>
+            <p
+              className="text-lg leading-relaxed max-w-3xl"
+              style={{ color: "hsl(143.8 61.2% 20.2%)" }}
+            >
+              Een maatwerk website door Code Lieshout kost vanaf €499 eenmalig,
+              met een vaste projectprijs vooraf — geen verrassingen achteraf. Je
+              krijgt een moderne, snelle site die past bij jouw bedrijf, inclusief
+              basis-SEO en agent-ready content zodat ook AI-assistenten je vinden.
+              Van eerste gesprek tot livegang ben je in weken (niet maanden) klaar,
+              met direct contact met de bouwer zelf. Onderhoud en support kan erbij
+              vanaf €250 per jaar. Twijfel je tussen een website, een AI-agent of
+              eerst een check? De{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/agent-ready">
+                gratis agent-ready scan
+              </a>{" "}
+              laat in 10 seconden zien hoe vindbaar je huidige site is, en via de{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
+                contactpagina
+              </a>{" "}
+              vraag je een vrijblijvende offerte aan.
+            </p>
+            <table className="mt-6 w-full max-w-3xl text-left text-base">
+              <caption className="sr-only">Vergelijking diensten en vanaf-prijzen</caption>
+              <thead>
+                <tr className="border-b-2" style={{ borderColor: "hsl(144.9 80.4% 10%)" }}>
+                  <th scope="col" className="py-2 pr-4">Dienst</th>
+                  <th scope="col" className="py-2 pr-4">Vanaf</th>
+                  <th scope="col" className="py-2">Meer info</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
+                  <td className="py-2 pr-4 font-semibold">Website op maat</td>
+                  <td className="py-2 pr-4">€499 eenmalig</td>
+                  <td className="py-2"><a className="underline" href="#pakketten">Pakketten</a></td>
+                </tr>
+                <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
+                  <td className="py-2 pr-4 font-semibold">AI-agent op maat</td>
+                  <td className="py-2 pr-4">€350 eenmalig</td>
+                  <td className="py-2"><a className="underline" href="/ai-agents">AI-agents</a></td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 font-semibold">Agent-ready scan</td>
+                  <td className="py-2 pr-4">Gratis</td>
+                  <td className="py-2"><a className="underline" href="/agent-ready">Start de scan</a></td>
+                </tr>
+              </tbody>
+            </table>
           </section>
         </TimelineContent>
 
@@ -373,7 +438,11 @@ export default function WelkomPage() {
               className="text-lg mb-10 max-w-2xl"
               style={{ color: "hsl(143.8 61.2% 20.2%)" }}
             >
-              Transparante prijzen, geen verrassingen. Kies wat bij je past.
+              Transparante prijzen, geen verrassingen. Kies wat bij je past.{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/pricing.md">
+                Machineleesbare prijslijst (voor AI-agents)
+              </a>
+              .
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -471,7 +540,7 @@ export default function WelkomPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="mailto:info@code-lieshout.nl"
+                  href="mailto:pim@code-lieshout.nl"
                   className="inline-block px-8 py-4 bg-white font-sans text-lg rounded-xl transition-all hover:scale-105"
                   style={{
                     color: "hsl(142.1 76.2% 36.3%)",

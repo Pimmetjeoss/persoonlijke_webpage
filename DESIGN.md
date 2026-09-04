@@ -55,3 +55,21 @@ version: 1.0.0
 - Do not touch unrelated portfolio/tool changes unless requested.
 - Avoid generic SaaS cards; this site’s strongest pattern is bold border-led accordion rows.
 - Do not redesign the cactus-ridder into a generic cactus or import an external mesh for `/cactus-3d`.
+
+## SEO/agent-readiness sprint (4 sep 2026, handoff sporen A–C + §7)
+
+- SSR-chrome: `app/components/site-nav.tsx` + `app/components/site-footer.tsx`
+  (server components in root-layout) — menu + NAP/KvK-footer op elke pagina in ruwe HTML.
+- 1 H1 per pagina: accordion-titels en markdown-content h1 → h2; `StickyHeader`
+  kreeg `titleAs`-prop ("p" waar de pagina al een H1 heeft); portfolio kreeg sr-only H1.
+- Contact: NAP-blok (Eventer 17, 5351 SK Berghem, KvK 99344882), telefoon gedemaskeerd
+  naar +31612419980 (ook in JSON-LD + contactPoint).
+- Nieuwe routes: `/privacy`, `/not-found` (met zoekveld + sitemap/llms-links);
+  `/FAQ` → 301 `/faq`; www → apex 301; `/about-me` → `/about` (redirect-typo gefixt).
+- Markdown-negotiation via middleware (`Accept: text/markdown` → .md-variant,
+  `Vary: Accept`; markdown-404 met sitemap/llms-links bij onbekende paden).
+- Assets: `public/og-image.png` (1200×630, merkstijl) nieuw; blogimages → WebP ≤1600px.
+- Machineleesbaar: `public/llms.txt`, `public/pricing.md` (gelinkt uit footer,
+  jouw-website en agentic sitemap); `when_to_use` in agent-skills index.
+- GA4-events: `email_click` (naast bestaand), `generate_lead` (mailto/tel/scan),
+  `scan_complete` (resultaatpagina). Geen formulier → geen `contact_submit`.

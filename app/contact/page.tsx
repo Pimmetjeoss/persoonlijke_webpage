@@ -177,6 +177,16 @@ export default function HorizontalScroll() {
               <br /><br />
               Pim van Lieshout
             </h2>
+            <address
+              className="mt-6 text-lg md:text-xl not-italic leading-relaxed"
+              style={{ color: "hsl(144.9 80.4% 10%)" }}
+            >
+              Code Lieshout · Eventer 17, 5351 SK Berghem · KvK 99344882
+              <br />
+              <a className="underline" href="mailto:pim@code-lieshout.nl">pim@code-lieshout.nl</a>
+              {" · "}
+              <a className="underline" href="tel:+31612419980">+31 6 12419980</a>
+            </address>
           </div>
         </div>
 
@@ -185,7 +195,7 @@ export default function HorizontalScroll() {
             <ul ref={ulRef} className='flex sticky top-0 h-screen'>
               <li className='relative h-screen w-[100vw] min-w-[100vw] flex flex-col justify-center overflow-visible items-center' style={{ backgroundColor: 'hsl(142.1, 76.2%, 36.3%)' }}>
                 <a href="mailto:pim@code-lieshout.nl" onClick={() => trackEmailClick('pim@code-lieshout.nl')} className="flex flex-col items-center cursor-pointer">
-                <h1
+                <p
                   className='text-[8vw] sm:text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight inline-block'
                   style={{
                     backgroundImage: 'linear-gradient(to bottom, hsl(138.5, 76.5%, 96.7%) 50%, hsl(141, 78.9%, 85.1%) 50%)',
@@ -198,7 +208,7 @@ export default function HorizontalScroll() {
                   }}
                 >
                   pim@code-lieshout.nl
-                </h1>
+                </p>
                 <span
                   className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight'
                   style={{ color: 'hsl(141, 78.9%, 85.1%)' }}
@@ -222,7 +232,7 @@ export default function HorizontalScroll() {
                 >
                   Mobiel nummer
                 </span>
-                <h1
+                <p
                   className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block'
                   style={{
                     color: 'hsl(141, 78.9%, 85.1%)',
@@ -230,7 +240,7 @@ export default function HorizontalScroll() {
                   }}
                 >
                   0612419980
-                </h1>
+                </p>
                 </a>
                 <Image
                   src="/cactus_mobile.png"
@@ -247,7 +257,7 @@ export default function HorizontalScroll() {
                 >
                   Social 1
                 </span>
-                <h1
+                <p
                   className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block transition-colors duration-300 hover:text-[hsl(141,78.9%,85.1%)] cursor-pointer'
                   style={{
                     color: 'transparent',
@@ -255,7 +265,7 @@ export default function HorizontalScroll() {
                   }}
                 >
                   <TextScramble text="Instagram" />
-                </h1>
+                </p>
                 <Image
                   src="/cactus_instagram.png"
                   alt="Cactus met Instagram"
@@ -268,9 +278,9 @@ export default function HorizontalScroll() {
                 <a href="https://www.youtube.com/channel/UCY58wz5iIWjZkbHxiQmCSXA" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer"
                   onClick={() => trackOutboundClick('https://www.youtube.com/@PimvanLieshout', 'YouTube')}>
                   <span className='relative inline-block'>
-                    <h1 className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
+                    <p className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block' style={{ color: 'hsl(141, 78.9%, 85.1%)' }}>
                       Youtube
-                    </h1>
+                    </p>
                     <span
                       className='youtube-underline absolute left-0 bottom-0 w-full h-3 md:h-4'
                       style={{
@@ -305,7 +315,7 @@ export default function HorizontalScroll() {
                   >
                     Social 2
                   </span>
-                  <h1
+                  <p
                     className='text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85] inline-block border-4 rounded-2xl px-6 py-3 md:px-8 md:py-4'
                     style={{
                       color: 'hsl(141, 78.9%, 85.1%)',
@@ -313,7 +323,7 @@ export default function HorizontalScroll() {
                     }}
                   >
                     LinkedIn
-                  </h1>
+                  </p>
                 </a>
                 <Image
                   src="/cactus_linkedin.png"

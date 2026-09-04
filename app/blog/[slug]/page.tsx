@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import StickyHeader from '@/app/components/sticky-header';
 import { StickyFooter } from '@/app/components/sticky-footer';
 import { MarkdownContent } from '../components/markdown-content';
+import { RelatedPosts } from '../components/related-posts';
 import { ImageLightbox } from '../components/image-lightbox';
 import { getAllPostSlugs, getPostBySlug } from '../lib/blog';
 import { Calendar, Tag, ArrowLeft } from 'lucide-react';
@@ -29,18 +30,29 @@ export async function generateMetadata({
     };
   }
 
+  const description =
+    post.excerpt.length > 155
+      ? post.excerpt.slice(0, post.excerpt.lastIndexOf(" ", 152)).trimEnd() + "…"
+      : post.excerpt;
+
   return {
     title: `${post.title} | Blog`,
-    description: post.excerpt,
+    description,
     alternates: {
       canonical: `https://code-lieshout.nl/blog/${slug}`,
     },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description,
       type: 'article',
       publishedTime: post.date,
       images: post.featuredImage ? [post.featuredImage] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: post.featuredImage ? [post.featuredImage] : ["/og-image.png"],
     },
   };
 }
@@ -107,6 +119,7 @@ export default async function BlogPostPage({
       />
       <StickyHeader
         title="BLOG"
+        titleAs="p"
         backgroundColor="hsl(140.6 84.2% 92.5%)"
         hoverColor="hsl(141 78.9% 85.1%)"
         startExpanded={false}
@@ -165,6 +178,9 @@ export default async function BlogPostPage({
         <div className="bg-white rounded-lg border-[3px] border-[hsl(144.9,80.4%,10%)] shadow-xl p-8 md:p-12">
           <MarkdownContent content={post.content} />
         </div>
+
+        {/* Gerelateerde artikelen + CTA (B4): interne links + conversiepad in SSR */}
+        <RelatedPosts slug={slug} category={post.category} />
       </article>
 
       <StickyFooter />

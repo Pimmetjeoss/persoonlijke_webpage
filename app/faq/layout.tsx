@@ -88,21 +88,28 @@ const faqPageSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "FAQ — Veelgestelde Vragen over AI Agents & Web Development",
+  title: "Vragen over AI-agents & webdesign",
   description:
-    "Antwoorden op de meest gestelde vragen over Code Lieshout, AI-agents, kosten, samenwerking en support. Geen verkooppraat — gewoon eerlijke antwoorden.",
+    "Antwoorden op vragen over Code Lieshout: AI-agents, kosten, samenwerking en support. Eerlijk, zonder verkooppraat.",
   alternates: {
-    canonical: "https://code-lieshout.nl/FAQ",
+    canonical: "https://code-lieshout.nl/faq",
     types: {
-      "text/markdown": "https://code-lieshout.nl/FAQ.md",
+      "text/markdown": "https://code-lieshout.nl/faq.md",
     },
   },
   openGraph: {
-    title: "FAQ — Veelgestelde Vragen | Code Lieshout",
+    title: "Vragen over AI-agents & webdesign | Code Lieshout",
     description:
       "Antwoorden op vragen over AI-agents, kosten, samenwerking en support. Eerlijk en concreet.",
-    url: "https://code-lieshout.nl/FAQ",
+    url: "https://code-lieshout.nl/faq",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vragen over AI-agents & webdesign",
+    description:
+      "Veelgestelde vragen over Code Lieshout — eerlijk beantwoord.",
+    images: ["/og-image.png"],
   },
 };
 

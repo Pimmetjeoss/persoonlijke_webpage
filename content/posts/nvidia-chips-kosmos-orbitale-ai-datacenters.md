@@ -3,7 +3,7 @@ title: "Waarom we Nvidia-chips naar de kosmos schieten: De waanzinnige economie 
 date: "2026-01-16"
 category: "Hardware & Infrastructuur"
 excerpt: "Terwijl de vraag naar AI-rekenkracht op aarde tegen fysieke, ecologische en politieke grenzen aanloopt, lijkt de ruimte de ultieme uitweg. Maar is dit een peperdure publiciteitsstunt, of een noodzakelijke evolutie?"
-featuredImage: "/blog/images/datacenter-ruimte.png"
+featuredImage: "/blog/images/datacenter-ruimte.webp"
 ---
 
 # Datacenters in de ruimte: simpel uitgelegd

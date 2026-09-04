@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Jouw Website — Maatwerk Websites & Web-apps door Code Lieshout",
+  title: "Webdesign Lieshout — Website laten maken?",
   description:
-    "Een moderne, snelle en agent-ready website laten bouwen door Code Lieshout. Van ontwerp tot livegang met Next.js, React en aandacht voor SEO en AI-vindbaarheid.",
+    "Website laten maken in Lieshout? Moderne, snelle site op maat voor het MKB — van ontwerp tot livegang. Vraag een vrijblijvende offerte aan.",
   alternates: {
     canonical: "https://code-lieshout.nl/jouw-website",
     types: {
@@ -11,11 +11,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Jouw Website — Maatwerk door Code Lieshout",
+    title: "Webdesign Lieshout — Website laten maken?",
     description:
-      "Een moderne, snelle en agent-ready website op maat. Next.js, React, SEO en AI-vindbaarheid.",
+      "Moderne, snelle website op maat voor het MKB in Lieshout en omgeving. Vraag een vrijblijvende offerte aan.",
     url: "https://code-lieshout.nl/jouw-website",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Webdesign Lieshout — Website laten maken?",
+    description:
+      "Moderne, snelle website op maat voor het MKB. Vraag een vrijblijvende offerte aan.",
+    images: ["/og-image.png"],
   },
 };
 

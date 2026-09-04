@@ -10,6 +10,8 @@ interface StickyHeaderProps {
   wrapperBackgroundColor?: string
   className?: string
   startExpanded?: boolean
+  /** Heading-niveau van de titel. Gebruik "p" op pagina's die al een eigen H1 hebben (1 H1 per pagina). */
+  titleAs?: "h1" | "p"
 }
 
 export default function StickyHeader({
@@ -18,7 +20,8 @@ export default function StickyHeader({
   hoverColor = "hsl(141 78.9% 85.1%)",
   wrapperBackgroundColor,
   className = "",
-  startExpanded = false
+  startExpanded = false,
+  titleAs = "h1"
 }: StickyHeaderProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -73,9 +76,15 @@ export default function StickyHeader({
             <div className="grid grid-cols-[1fr_auto] gap-4 md:gap-8 items-end w-full max-w-7xl mx-auto">
               {/* Title */}
               <div>
-                <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]">
-                  {title}
-                </h1>
+                {titleAs === "p" ? (
+                  <p className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]">
+                    {title}
+                  </p>
+                ) : (
+                  <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-[0.85]">
+                    {title}
+                  </h1>
+                )}
               </div>
 
               {/* Icon */}

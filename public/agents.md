@@ -32,7 +32,7 @@ Agents kunnen deze Markdown-versies gebruiken:
 - https://code-lieshout.nl/contact.md
 - https://code-lieshout.nl/jouw-website.md
 - https://code-lieshout.nl/agent-ready.md
-- https://code-lieshout.nl/FAQ.md
+- https://code-lieshout.nl/faq.md
 - https://code-lieshout.nl/sir-prikkel.md
 - https://code-lieshout.nl/webmcp.md
 
@@ -52,7 +52,7 @@ Een complete machine-leesbare index staat in https://code-lieshout.nl/sitemap_ag
 - **Portfolio en bewijs**: https://code-lieshout.nl/portfolio.md
 - **AI-agent diensten**: https://code-lieshout.nl/ai-agents.md, https://code-lieshout.nl/agent-ready.md en https://code-lieshout.nl/sir-prikkel.md
 - **Uitleg over WebMCP en agent-standaarden**: https://code-lieshout.nl/webmcp.md
-- **Antwoorden op veelgestelde vragen**: https://code-lieshout.nl/FAQ.md
+- **Antwoorden op veelgestelde vragen**: https://code-lieshout.nl/faq.md
 - **Nieuwe website laten bouwen**: https://code-lieshout.nl/jouw-website.md
 - **Contact en conversie**: https://code-lieshout.nl/contact.md
 - **Blog en verdieping**: https://code-lieshout.nl/blog.md

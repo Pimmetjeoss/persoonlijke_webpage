@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact — Direct Contact met Pim van Lieshout",
+  title: "Contact — Websitebouwer Lieshout",
   description:
-    "Direct contact met Code Lieshout. Mail naar pim@code-lieshout.nl, bel 06-12419980, of vind ons op LinkedIn, YouTube en Instagram. Reactie binnen één werkdag.",
+    "Contact met websitebouwer Code Lieshout in Lieshout. Mail pim@code-lieshout.nl of bel 06-12419980. Reactie binnen één werkdag.",
   alternates: {
     canonical: "https://code-lieshout.nl/contact",
     types: {
@@ -11,11 +11,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Contact Code Lieshout",
+    title: "Contact — Websitebouwer Lieshout",
     description:
-      "Direct contact met Pim van Lieshout — mail, telefoon, of social. Reactie binnen één werkdag.",
+      "Direct contact met Pim van Lieshout — mail of bel. Reactie binnen één werkdag.",
     url: "https://code-lieshout.nl/contact",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact — Websitebouwer Lieshout",
+    description:
+      "Mail of bel direct met Pim van Lieshout. Reactie binnen één werkdag.",
+    images: ["/og-image.png"],
   },
 };
 

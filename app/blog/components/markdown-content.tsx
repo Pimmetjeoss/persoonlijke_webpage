@@ -12,9 +12,9 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
   const components: Components = {
     // Headings
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold text-[hsl(144.9,80.4%,10%)] mt-8 mb-4 pb-2 border-b-2 border-[hsl(141,78.9%,85.1%)]">
+      <h2 className="text-4xl font-bold text-[hsl(144.9,80.4%,10%)] mt-8 mb-4 pb-2 border-b-2 border-[hsl(141,78.9%,85.1%)]">
         {children}
-      </h1>
+      </h2>
     ),
     h2: ({ children }) => (
       <h2 className="text-3xl font-bold text-[hsl(144.9,80.4%,10%)] mt-8 mb-4">

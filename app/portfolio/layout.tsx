@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Werk & Projecten van Pim van Lieshout",
+  title: "Portfolio — AI-agents en websites",
   description:
-    "Bekijk het portfolio van Code Lieshout: AI-agents, web-applicaties en automatiseringen voor Nederlandse bedrijven. Van chatbots tot complete platforms.",
+    "Portfolio van Code Lieshout: AI-agents, web-apps en automatiseringen voor Nederlandse bedrijven. Bekijk het werk.",
   alternates: {
     canonical: "https://code-lieshout.nl/portfolio",
     types: {
@@ -11,11 +11,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Portfolio — Werk & Projecten van Pim van Lieshout",
+    title: "Portfolio — AI-agents en websites",
     description:
-      "AI-agents, web-applicaties en automatiseringen voor Nederlandse bedrijven door Code Lieshout.",
+      "AI-agents, web-applicaties en automatiseringen voor Nederlandse bedrijven.",
     url: "https://code-lieshout.nl/portfolio",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio — AI-agents en websites",
+    description:
+      "Bekijk het werk van Code Lieshout: AI-agents en websites voor het MKB.",
+    images: ["/og-image.png"],
   },
 };
 

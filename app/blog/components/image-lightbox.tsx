@@ -27,6 +27,7 @@ export function ImageLightbox({ src, alt, width = 1200, height = 630 }: ImageLig
           alt={alt}
           width={width}
           height={height}
+          sizes="(max-width: 768px) 100vw, 1200px"
           className="w-full h-auto"
           priority
         />

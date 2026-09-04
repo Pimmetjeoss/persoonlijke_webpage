@@ -60,7 +60,7 @@ export default function AgentReadyLanding() {
             >
               Gratis scan
             </p>
-            <h1
+            <h2
               className="text-4xl md:text-6xl font-bold leading-tight mb-4"
               style={{
                 color: "hsl(144.9 80.4% 10%)",
@@ -82,11 +82,32 @@ export default function AgentReadyLanding() {
               >
                 AI-agents?
               </TegakiRenderer>
-            </h1>
+            </h2>
             <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
               ChatGPT, Perplexity en Claude verwijzen steeds vaker naar bronnen
               op basis van agent-readiness. Scan jouw website in 10 seconden
               tegen 19 actuele standaarden.
+            </p>
+            <p className="mt-4 text-base md:text-lg text-gray-700 max-w-2xl">
+              De scan controleert onder meer je{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/llms.txt">
+                llms.txt
+              </a>
+              , robots.txt-regels voor AI-crawlers, JSON-LD-schema, markdown-beschikbaarheid
+              en contactvindbaarheid — en geeft per onderdeel concrete fixes. Scoor je
+              laag? Code Lieshout maakt je site{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/ai-agents">
+                agent-ready
+              </a>{" "}
+              of bouwt een{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/jouw-website">
+                nieuwe website
+              </a>{" "}
+              die het vanaf dag één is. Liever direct sparren?{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
+                Neem contact op
+              </a>
+              .
             </p>
           </div>
         </TimelineContent>

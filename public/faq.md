@@ -1,7 +1,7 @@
 ---
 title: FAQ — Veelgestelde Vragen over AI Agents & Web Development
 description: Antwoorden op de meest gestelde vragen over Code Lieshout, AI-agents, kosten, samenwerking en support. Geen verkooppraat — gewoon eerlijke antwoorden.
-canonical: https://code-lieshout.nl/FAQ
+canonical: https://code-lieshout.nl/faq
 language: nl-NL
 updated: 2026-05-27
 ---

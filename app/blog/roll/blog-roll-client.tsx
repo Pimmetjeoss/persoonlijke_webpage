@@ -88,7 +88,7 @@ export default function BlogRollClient({ projects }: { projects: Project[] }) {
     <main className="relative h-dvh w-full overflow-hidden bg-[hsl(140.6_84.2%_92.5%)]">
       {/* Geen `startExpanded`: deze pagina scrollt niet, dus de header zou
           anders altijd volledig uitgeklapt blijven staan. */}
-      <StickyHeader title="BLOG" />
+      <StickyHeader title="BLOG" titleAs="p" />
 
       <PaperRoll
         projects={projects}

@@ -173,6 +173,70 @@ export default function AIAgentsPage() {
       />
 
       <main>
+        {/* Antwoordblok (C3): zelfstandig citeerbaar, direct antwoord eerst */}
+        <section
+          aria-label="In het kort"
+          className="mx-auto max-w-5xl px-6 lg:px-10 pt-10"
+        >
+          <div
+            className="rounded-xl border-[3px] bg-white p-8 md:p-10"
+            style={{ borderColor: "hsl(144.9 80.4% 10%)" }}
+          >
+            <h2
+              className="text-3xl md:text-4xl font-bold tracking-tight mb-4"
+              style={{ color: "hsl(144.9 80.4% 10%)" }}
+            >
+              Wat is een AI-agent en wat kost het om er een te laten maken?
+            </h2>
+            <p
+              className="text-lg leading-relaxed max-w-3xl"
+              style={{ color: "hsl(143.8 61.2% 20.2%)" }}
+            >
+              Een AI-agent is een digitale medewerker die zelfstandig taken uitvoert:
+              e-mails beantwoorden, planningen bijhouden, data analyseren of klanten
+              te woord staan — 24/7, zonder dat je erbij hoeft te zijn. Code Lieshout
+              bouwt zulke agents op maat voor MKB-bedrijven, vanaf €350 eenmalig met
+              een vaste projectprijs vooraf. Elke agent wordt getraind op jouw data,
+              jouw toon en jouw processen; geen generieke chatbot. Benieuwd of jouw
+              website al klaar is voor dit soort techniek? Doe de{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/agent-ready">
+                gratis agent-ready scan
+              </a>{" "}
+              of vraag via de{" "}
+              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
+                contactpagina
+              </a>{" "}
+              een vrijblijvende demo aan.
+            </p>
+            <table className="mt-6 w-full max-w-3xl text-left text-base">
+              <caption className="sr-only">Vergelijking AI-agent toepassingen</caption>
+              <thead>
+                <tr className="border-b-2" style={{ borderColor: "hsl(144.9 80.4% 10%)" }}>
+                  <th scope="col" className="py-2 pr-4">Toepassing</th>
+                  <th scope="col" className="py-2 pr-4">Wat levert het op</th>
+                  <th scope="col" className="py-2">Volgende stap</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
+                  <td className="py-2 pr-4 font-semibold">Klantcontact-agent</td>
+                  <td className="py-2 pr-4">Vragen beantwoorden, ook &apos;s nachts</td>
+                  <td className="py-2"><a className="underline" href="/contact">Demo aanvragen</a></td>
+                </tr>
+                <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
+                  <td className="py-2 pr-4 font-semibold">Workflow-agent</td>
+                  <td className="py-2 pr-4">Repeterend werk automatiseren</td>
+                  <td className="py-2"><a className="underline" href="/contact">Demo aanvragen</a></td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 font-semibold">Website-check</td>
+                  <td className="py-2 pr-4">Weten waar je staat in 10 seconden</td>
+                  <td className="py-2"><a className="underline" href="/agent-ready">Gratis scan</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
         <div className="relative h-[50vh] overflow-visible">
           <Image
             src="/cactus_laptop_transparent.png"
@@ -285,6 +349,37 @@ export default function AIAgentsPage() {
         </div>
 
         <div className="h-12" />
+
+        {/* Conversiepad (B4): scan + contact als logische vervolgstap */}
+        <section aria-label="Volgende stap" className="mx-auto max-w-5xl px-6 lg:px-10 pb-4">
+          <div
+            className="rounded-xl p-8 md:p-10 text-center space-y-4"
+            style={{ backgroundColor: "hsl(142.1 76.2% 36.3%)", border: "3px solid black" }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+              Klaar voor je eigen AI-agent?
+            </h2>
+            <p className="text-lg text-white/90 max-w-xl mx-auto">
+              Check eerst gratis hoe klaar je site is — of plan direct een demo.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/agent-ready"
+                className="inline-block px-8 py-3 bg-white font-sans text-lg rounded-xl transition-all hover:scale-105"
+                style={{ color: "hsl(142.1 76.2% 36.3%)", border: "3px solid black" }}
+              >
+                GRATIS SCAN
+              </a>
+              <a
+                href="/contact"
+                className="inline-block px-8 py-3 font-sans text-lg rounded-xl text-white transition-all hover:scale-105"
+                style={{ backgroundColor: "hsl(142.4 71.8% 29.2%)", border: "3px solid black" }}
+              >
+                DEMO AANVRAGEN
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <StickyFooter />
