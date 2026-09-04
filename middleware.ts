@@ -149,10 +149,16 @@ export function middleware(request: NextRequest) {
   }
 
   // Keep browser routes as HTML. Markdown remains available explicitly via
-  // /about.md, etc. and via Accept-negotiation hierboven.
+  // /about.md, etc. and via Accept-negotiation hierboven. Vary: Accept ook op
+  // de HTML-variant, zodat caches beide varianten uit elkaar houden.
   if (target) {
     const next = NextResponse.next()
     next.headers.set("Link", `<${target}>; rel="alternate"; type="text/markdown"`)
+    const existingVary = next.headers.get("Vary")
+    next.headers.set(
+      "Vary",
+      existingVary && !existingVary.includes("Accept") ? `${existingVary}, Accept` : "Accept"
+    )
     return next
   }
 
