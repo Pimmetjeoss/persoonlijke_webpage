@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import Link from "next/link"
 import {
   MagnifyingGlassIcon,
   LightningBoltIcon,
@@ -90,23 +91,23 @@ export default function AgentReadyLanding() {
             </p>
             <p className="mt-4 text-base md:text-lg text-gray-700 max-w-2xl">
               De scan controleert onder meer je{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/llms.txt">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/llms.txt">
                 llms.txt
-              </a>
+              </Link>
               , robots.txt-regels voor AI-crawlers, JSON-LD-schema, markdown-beschikbaarheid
               en contactvindbaarheid — en geeft per onderdeel concrete fixes. Scoor je
               laag? Code Lieshout maakt je site{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/ai-agents">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/ai-agents">
                 agent-ready
-              </a>{" "}
+              </Link>{" "}
               of bouwt een{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/jouw-website">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/jouw-website">
                 nieuwe website
-              </a>{" "}
+              </Link>{" "}
               die het vanaf dag één is. Liever direct sparren?{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
                 Neem contact op
-              </a>
+              </Link>
               .
             </p>
           </div>

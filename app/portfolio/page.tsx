@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { WorkExperience } from "./components"
 import { Footer } from "./components/footer"
 import { Navigation } from "./components/navigation"
@@ -39,10 +40,10 @@ export default function Portfolio() {
           bekijk eerst de AI-agent-diensten en de gratis agent-ready scan.
         </p>
         <ul>
-          <li><a href="/ai-agents">AI-agents voor het MKB</a></li>
-          <li><a href="/agent-ready">Gratis agent-ready scan</a></li>
-          <li><a href="/jouw-website">Website laten maken</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><Link href="/ai-agents">AI-agents voor het MKB</Link></li>
+          <li><Link href="/agent-ready">Gratis agent-ready scan</Link></li>
+          <li><Link href="/jouw-website">Website laten maken</Link></li>
+          <li><Link href="/contact">Contact</Link></li>
         </ul>
       </div>
       <section aria-label="Volgende stap" className="mx-auto max-w-5xl px-6 pb-16">
@@ -60,20 +61,20 @@ export default function Portfolio() {
             Vaste projectprijs vooraf, direct contact met de bouwer.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="/contact"
               className="inline-block px-8 py-3 text-white font-sans text-lg rounded-xl transition-all hover:scale-105"
               style={{ backgroundColor: "hsl(142.1 76.2% 36.3%)", border: "3px solid black" }}
             >
               OFFERTE AANVRAGEN
-            </a>
-            <a
+            </Link>
+            <Link
               href="/ai-agents"
               className="inline-block px-8 py-3 font-sans text-lg rounded-xl transition-all hover:scale-105 bg-white"
               style={{ color: "hsl(144.9 80.4% 10%)", border: "3px solid black" }}
             >
               BEKIJK AI-AGENTS
-            </a>
+            </Link>
           </div>
         </div>
       </section>

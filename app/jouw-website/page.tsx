@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   CheckCircledIcon,
   LaptopIcon,
@@ -316,13 +317,13 @@ export default function WelkomPage() {
               met direct contact met de bouwer zelf. Onderhoud en support kan erbij
               vanaf €250 per jaar. Twijfel je tussen een website, een AI-agent of
               eerst een check? De{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/agent-ready">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/agent-ready">
                 gratis agent-ready scan
-              </a>{" "}
+              </Link>{" "}
               laat in 10 seconden zien hoe vindbaar je huidige site is, en via de{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
                 contactpagina
-              </a>{" "}
+              </Link>{" "}
               vraag je een vrijblijvende offerte aan.
             </p>
             <table className="mt-6 w-full max-w-3xl text-left text-base">
@@ -343,12 +344,12 @@ export default function WelkomPage() {
                 <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
                   <td className="py-2 pr-4 font-semibold">AI-agent op maat</td>
                   <td className="py-2 pr-4">€350 eenmalig</td>
-                  <td className="py-2"><a className="underline" href="/ai-agents">AI-agents</a></td>
+                  <td className="py-2"><Link className="underline" href="/ai-agents">AI-agents</Link></td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-4 font-semibold">Agent-ready scan</td>
                   <td className="py-2 pr-4">Gratis</td>
-                  <td className="py-2"><a className="underline" href="/agent-ready">Start de scan</a></td>
+                  <td className="py-2"><Link className="underline" href="/agent-ready">Start de scan</Link></td>
                 </tr>
               </tbody>
             </table>

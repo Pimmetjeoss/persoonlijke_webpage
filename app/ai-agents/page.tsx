@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { Plus } from "lucide-react";
 
@@ -199,13 +200,13 @@ export default function AIAgentsPage() {
               een vaste projectprijs vooraf. Elke agent wordt getraind op jouw data,
               jouw toon en jouw processen; geen generieke chatbot. Benieuwd of jouw
               website al klaar is voor dit soort techniek? Doe de{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/agent-ready">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/agent-ready">
                 gratis agent-ready scan
-              </a>{" "}
+              </Link>{" "}
               of vraag via de{" "}
-              <a className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
+              <Link className="underline font-semibold" style={{ color: "hsl(142.1 76.2% 36.3%)" }} href="/contact">
                 contactpagina
-              </a>{" "}
+              </Link>{" "}
               een vrijblijvende demo aan.
             </p>
             <table className="mt-6 w-full max-w-3xl text-left text-base">
@@ -221,17 +222,17 @@ export default function AIAgentsPage() {
                 <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
                   <td className="py-2 pr-4 font-semibold">Klantcontact-agent</td>
                   <td className="py-2 pr-4">Vragen beantwoorden, ook &apos;s nachts</td>
-                  <td className="py-2"><a className="underline" href="/contact">Demo aanvragen</a></td>
+                  <td className="py-2"><Link className="underline" href="/contact">Demo aanvragen</Link></td>
                 </tr>
                 <tr className="border-b" style={{ borderColor: "hsl(141 78.9% 85.1%)" }}>
                   <td className="py-2 pr-4 font-semibold">Workflow-agent</td>
                   <td className="py-2 pr-4">Repeterend werk automatiseren</td>
-                  <td className="py-2"><a className="underline" href="/contact">Demo aanvragen</a></td>
+                  <td className="py-2"><Link className="underline" href="/contact">Demo aanvragen</Link></td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-4 font-semibold">Website-check</td>
                   <td className="py-2 pr-4">Weten waar je staat in 10 seconden</td>
-                  <td className="py-2"><a className="underline" href="/agent-ready">Gratis scan</a></td>
+                  <td className="py-2"><Link className="underline" href="/agent-ready">Gratis scan</Link></td>
                 </tr>
               </tbody>
             </table>
@@ -363,20 +364,20 @@ export default function AIAgentsPage() {
               Check eerst gratis hoe klaar je site is — of plan direct een demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/agent-ready"
                 className="inline-block px-8 py-3 bg-white font-sans text-lg rounded-xl transition-all hover:scale-105"
                 style={{ color: "hsl(142.1 76.2% 36.3%)", border: "3px solid black" }}
               >
                 GRATIS SCAN
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="inline-block px-8 py-3 font-sans text-lg rounded-xl text-white transition-all hover:scale-105"
                 style={{ backgroundColor: "hsl(142.4 71.8% 29.2%)", border: "3px solid black" }}
               >
                 DEMO AANVRAGEN
-              </a>
+              </Link>
             </div>
           </div>
         </section>
