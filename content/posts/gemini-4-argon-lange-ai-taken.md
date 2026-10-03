@@ -6,6 +6,8 @@ excerpt: "Google vergroot de uitvoerruimte van Gemini 4 Argon van 64.000 naar é
 featuredImage: "/images/blog/gemini-4-argon-lange-ai-taken.jpg"
 ---
 
+<!-- youtube-video: 1ZbNgx6Gscw | Gemini 4 Argon explained in 5min.. -->
+
 Google positioneert Gemini 4 Argon niet als een model voor één slimme prompt, maar als een motor voor werk dat urenlang kan doorlopen: grote codebases migreren, dossiers analyseren en kwetsbaarheden onderzoeken. De opvallendste technische verandering is daarom niet alleen een hogere benchmarkscore. Het model mag volgens Google tot **één miljoen outputtokens** in één traject genereren, tegenover 64.000 bij de vorige limiet.
 
 Dat vergroot het bereik van autonome AI-systemen aanzienlijk. Tegelijk ontstaat een nieuwe vraag: wat heb je aan een extreem lange uitvoer als fouten, kosten en controlewerk onderweg sneller oplopen dan de waarde van het resultaat?
