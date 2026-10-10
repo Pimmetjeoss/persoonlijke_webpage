@@ -24,6 +24,7 @@ export function ImageLightbox({ src, alt, width = 1200, height = 630 }: ImageLig
       >
         <Image
           src={src}
+          unoptimized={src.startsWith('/images/blog/')}
           alt={alt}
           width={width}
           height={height}
@@ -75,6 +76,7 @@ export function ImageLightbox({ src, alt, width = 1200, height = 630 }: ImageLig
               >
                 <Image
                   src={src}
+                  unoptimized={src.startsWith('/images/blog/')}
                   alt={alt}
                   width={width * 2}
                   height={height * 2}
