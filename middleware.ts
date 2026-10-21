@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+import { MAINTENANCE_ENABLED, isMaintenanceAsset, maintenanceHeaders, maintenanceHtml } from "./lib/site-maintenance"
 
 const MARKDOWN_ROUTES: Record<string, string> = {
   "/": "/home.md",
@@ -101,6 +102,29 @@ function logBotVisit(request: NextRequest) {
 }
 
 export function middleware(request: NextRequest) {
+  // Return the maintenance document before any page, markdown rewrite or API runs.
+  // No redirects, app scripts, trackers or navigation to hidden pages are rendered.
+  if (MAINTENANCE_ENABLED) {
+    if (isMaintenanceAsset(request.nextUrl.pathname)) return NextResponse.next()
+    const apiRequest = /(?:^|\/)api(?:\/|$)/.test(request.nextUrl.pathname)
+    const body = request.method === "HEAD" ? null : apiRequest
+      ? JSON.stringify({ error: "Tijdelijk onderhoud", contact: "pim@code-lieshout.nl", telephone: "+31612419980" })
+      : maintenanceHtml
+    return new NextResponse(body, {
+      status: 503,
+      headers: {
+        ...maintenanceHeaders,
+        "Content-Type": apiRequest ? "application/json; charset=utf-8" : "text/html; charset=utf-8",
+      },
+    })
+  }
+
+  // The broad matcher is needed only for maintenance. Preserve the original
+  // static-file behavior when the site is restored.
+  if (/^\/_next\/(?:static|image)(?:\/|$)/.test(request.nextUrl.pathname) ||
+      /\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|txt|xml)$/.test(request.nextUrl.pathname)) {
+    return NextResponse.next()
+  }
   logBotVisit(request)
 
   const pathname = request.nextUrl.pathname
@@ -174,5 +198,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|txt|xml)$).*)"],
+  // Match public files as well, so old HTML demos, markdown and API manifests
+  // cannot bypass maintenance. When disabled, retain the original asset bypass.
+  matcher: ["/:path*"],
 }

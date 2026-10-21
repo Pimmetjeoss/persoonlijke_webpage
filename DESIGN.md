@@ -5,6 +5,14 @@ version: 1.0.0
 
 # Code Lieshout Personal Site Design Notes
 
+## Temporary renovation mode
+
+- Full-site static maintenance document in `lib/site-maintenance.ts`, before all page rendering, API handlers and content negotiation. Switch `MAINTENANCE_ENABLED` to false and deploy to restore the original site. No pages or content are deleted.
+- Preserve the established pale green (#dcfce7), mint (#bbf7d0), forest ink (#052e16), Fjalla One condensed display typography, substantial borders and authentic cactus-knight asset. No generic construction stock art, new mascot or SaaS layout.
+- Editorial asymmetrical hero: monumental “Even verbouwen.”, outline secondary line “Niet verdwenen.”, familiar mascot and workbench note. Contact strip offers mail, phone and WhatsApp with generous accessible touch targets.
+- Self-hosted font and optimized mascot; no JavaScript, trackers, cookie prompts, WebGL or external font requests during maintenance. Every route returns HTTP 503 with Retry-After and no-store, not a permanent redirect or a replacement indexed landing page. APIs return JSON 503 without invoking their handlers. Old static HTML and markdown URLs cannot bypass the gate.
+- Responsive stacked composition under 600px; no horizontal clipping, keyboard-visible focus and readable dark ink throughout. No animation required.
+
 ## Visual system
 - Primary surface: pale green `hsl(140.6 84.2% 92.5%)`.
 - Ink: deep green/black mix `hsl(144.9 80.4% 10%)` and solid black for structural borders.
