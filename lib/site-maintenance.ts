@@ -8,8 +8,20 @@ export const maintenanceHeaders = {
   'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
 };
 
+// Only the blog is public during renovation. Prefix boundaries prevent
+// /blogger, encoded traversal and unrelated API routes from bypassing the gate.
+export function isPublicBlogPath(pathname: string) {
+  if (/[\\%]/.test(pathname) || pathname.split('/').some(part => part === '.' || part === '..' || part === 'api')) return false;
+  return pathname === '/blog' || pathname.startsWith('/blog/');
+}
+
 export function isMaintenanceAsset(pathname: string) {
   return pathname.startsWith('/_next/static/') ||
+    /^\/images\/blog\/[^/]+\.(?:jpe?g|png|webp|gif|avif)$/.test(pathname) ||
+    pathname === '/robots.txt' ||
+    pathname === '/sitemap.xml' ||
+    pathname === '/og-image.png' ||
+    pathname === '/cactus_laptop_transparent.png' ||
     pathname === '/maintenance/fjalla-one.ttf' ||
     pathname === '/maintenance/cactus.webp' ||
     pathname === '/favicon.ico';

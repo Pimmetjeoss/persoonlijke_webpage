@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "node --test tests/seo-dashboard.test.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "eval:webmcp": "node scripts/run-webmcp-evals.mjs browser",
     "eval:webmcp:smoke": "node scripts/run-webmcp-evals.mjs smoke",
     "seo:fetch:gsc": "node scripts/seo/fetch-gsc.mjs",

@@ -7,6 +7,10 @@ version: 1.0.0
 
 ## Temporary renovation mode
 
+- Approved blog exception: `/blog`, article/archive routes and their local images remain publicly readable during maintenance. All other pages, tools and APIs retain the holding document or API JSON 503. Framework static assets and the blog's shared identity images are allowed; no arbitrary static HTML or optimizer bypass is opened. Blog images use direct local URLs, including older `/blog/images/` files.
+
+- `robots.txt` remains readable; during renovation `sitemap.xml` advertises only the public blog index and articles. `npm test` includes maintenance-boundary and all-featured-image gate regression tests, protecting future scheduled posts.
+
 - Full-site static maintenance document in `lib/site-maintenance.ts`, before all page rendering, API handlers and content negotiation. Switch `MAINTENANCE_ENABLED` to false and deploy to restore the original site. No pages or content are deleted.
 - Preserve the established pale green (#dcfce7), mint (#bbf7d0), forest ink (#052e16), Fjalla One condensed display typography, substantial borders and authentic cactus-knight asset. No generic construction stock art, new mascot or SaaS layout.
 - Editorial asymmetrical hero: monumental “Even verbouwen.”, outline secondary line “Niet verdwenen.”, familiar mascot and workbench note. Contact strip offers mail, phone and WhatsApp with generous accessible touch targets.

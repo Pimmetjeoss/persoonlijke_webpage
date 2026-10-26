@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
-import { MAINTENANCE_ENABLED, isMaintenanceAsset, maintenanceHeaders, maintenanceHtml } from "./lib/site-maintenance"
+import { MAINTENANCE_ENABLED, isMaintenanceAsset, isPublicBlogPath, maintenanceHeaders, maintenanceHtml } from "./lib/site-maintenance"
 
 const MARKDOWN_ROUTES: Record<string, string> = {
   "/": "/home.md",
@@ -105,7 +105,8 @@ export function middleware(request: NextRequest) {
   // Return the maintenance document before any page, markdown rewrite or API runs.
   // No redirects, app scripts, trackers or navigation to hidden pages are rendered.
   if (MAINTENANCE_ENABLED) {
-    if (isMaintenanceAsset(request.nextUrl.pathname)) return NextResponse.next()
+    // Explicitly approved exception: render the existing blog and its assets.
+    if (isPublicBlogPath(request.nextUrl.pathname) || isMaintenanceAsset(request.nextUrl.pathname)) return NextResponse.next()
     const apiRequest = /(?:^|\/)api(?:\/|$)/.test(request.nextUrl.pathname)
     const body = request.method === "HEAD" ? null : apiRequest
       ? JSON.stringify({ error: "Tijdelijk onderhoud", contact: "pim@code-lieshout.nl", telephone: "+31612419980" })

@@ -42,6 +42,7 @@ export function BlogPostCard({
             <div className="relative w-full h-48 overflow-hidden bg-[hsl(141,78.9%,85.1%)]">
               <Image
                 src={featuredImage}
+                unoptimized={featuredImage.startsWith('/images/blog/') || featuredImage.startsWith('/blog/images/')}
                 alt={title}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"

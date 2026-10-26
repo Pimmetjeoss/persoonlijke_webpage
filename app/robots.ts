@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { MAINTENANCE_ENABLED } from "../lib/site-maintenance";
 
 const BASE_URL = "https://code-lieshout.nl";
 
@@ -20,7 +21,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        // Let crawlers render the public blog and observe temporary 503s elsewhere.
+        disallow: MAINTENANCE_ENABLED ? ["/api/"] : ["/api/", "/_next/"],
       },
       ...AI_ALLOW.map((userAgent) => ({
         userAgent,
@@ -31,7 +33,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/",
       },
     ],
-    sitemap: [`${BASE_URL}/sitemap.xml`, `${BASE_URL}/sitemap_agentic_discovery.xml`],
+    sitemap: MAINTENANCE_ENABLED
+      ? [`${BASE_URL}/sitemap.xml`]
+      : [`${BASE_URL}/sitemap.xml`, `${BASE_URL}/sitemap_agentic_discovery.xml`],
     host: BASE_URL,
   };
 }

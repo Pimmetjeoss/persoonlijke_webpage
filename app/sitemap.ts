@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { MAINTENANCE_ENABLED } from "../lib/site-maintenance";
 import fs from "fs";
 import path from "path";
 
@@ -136,5 +137,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const publicRoutes = [...staticRoutes, ...blogRoutes];
+  return MAINTENANCE_ENABLED
+    ? publicRoutes.filter(route => route.url === `${BASE_URL}/blog` || route.url.startsWith(`${BASE_URL}/blog/`))
+    : publicRoutes;
 }
